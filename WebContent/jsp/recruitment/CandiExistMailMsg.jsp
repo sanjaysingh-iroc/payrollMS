@@ -1,0 +1,1 @@
+<%=(request.getAttribute("message") != null && !request.getAttribute("message").equals("")) ? request.getAttribute("message") : "" %>

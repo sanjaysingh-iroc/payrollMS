@@ -1,0 +1,300 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*style sheet for dropdown menu */
+
+.suckertreemenu
+{
+ font-family:verdana,Arial, Helvetica, sans-serif;
+ font-weight:bold;
+ font-size:12px;
+ margin:0px 29px 0px 29px; 
+ z-index:300;
+}
+
+.suckertreemenu ul,li
+{
+  list-style-type:none;
+  list-style:none;
+  margin:0px 0px 0px 0px ;
+  padding:0px 0px 0px 0px;	
+}
+
+#treemenu1
+{
+  float:left;
+  margin: 0 0 0 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#treemenu2
+{
+  float:right;
+  background:#FF9900;
+}
+
+
+/*Top level list items*/
+.suckertreemenu ul li
+{
+position: relative;
+display:block;
+display:inline;
+width:auto;
+background: url(../images1/navigation_dots_white.png) no-repeat scroll right center;
+
+}
+
+.suckertreemenu ul li.top
+{
+	position: relative;
+display:block;
+float: left;
+display:inline;
+width:auto;
+background: url(../images1/navigation_dots_white.png) no-repeat scroll right center;
+	
+	
+	}	
+
+
+
+/*Top level menu link items style*/
+.suckertreemenu ul li a
+{
+display: block;
+padding:0px 5px 0px 5px;
+text-decoration: none;
+color: #fff;
+/*width:150px;*/
+line-height: 35px;
+float:left;
+
+
+}
+
+.suckertreemenu ul li.top a:hover
+{
+background-color: #E0ECF8;
+color: #005ba3;
+text-decoration: none;
+}
+.suckertreemenu ul.sub li
+	{
+	    
+	
+	
+	}
+	
+.suckertreemenu ul.sub li a:hover
+{
+  background:#005ba3;
+  color:#fff;
+  line-height:33px;
+  text-decoration: none;
+ 
+}
+	
+/*1st sub level menu*/
+.suckertreemenu ul li ul
+{
+left: 0;
+position: absolute;
+/*top: 1em;*/ /* no need to change, as true value set by script */
+display: block;
+visibility: hidden;
+margin:0px 0px 0px 0px;
+background-image:none;
+background-color:#4F9FEA;
+/*border:#CCCCCC solid 1px;*/
+float:none;
+width:170px;
+z-index:500;
+
+
+}
+
+/*Sub level menu list items (undo style from Top level List Items)*/
+.suckertreemenu ul li ul li{
+display: list-item;
+float: none;
+background-color:#4f9fea;
+background-image:none;
+width:185px;
+_width:180px;
+}
+
+/*All subsequent sub menu levels offset after 1st level sub menu */
+.suckertreemenu ul li ul li ul
+{ 
+left: 159px; /* no need to change, as true value set by script */
+top: 0;
+}
+
+/* Sub level menu links style */
+.suckertreemenu ul li ul li a
+{
+display: block;
+width: 175px; /*width of sub menu levels*/
+color: #fff;
+text-decoration: none;
+float:none;
+line-height:33px;
+background:#4F9FEA;
+
+}
+
+.suckertreemenu ul li ul li a.fly:hover
+{
+ background:url("../images/arrow_over.gif") no-repeat scroll 170px 50% #4F9FEA;
+ background-color: #005ba3;
+ color:#FFFFFF;
+ text-decoration: none;
+}
+
+
+
+.fly
+{
+ background:url("../images/arrow.gif") no-repeat scroll 170px 50% #4F9FEA;
+}
+
+a.fly:hover
+{
+   background:url("../images/arrow_over.gif") no-repeat scroll 160px 50% #4F9FEA;
+}
+
+a.menuSelection1 span {
+    color: #005BA3;
+}
+
+
+#treemenu2 li a.topR_link
+{
+  background:#FF9900;
+  font-size:12px;
+  text-decoration: none;
+}
+
+#treemenu2 li a.topR_link:hover
+{
+  background:#FF9900;
+  color:#FFFFFF;
+  text-decoration: none;
+}
+
+
+#treemenu2 li ul
+{
+ 
+  left:-186px;
+   _left:-120px;
+  background:#FF9900;
+  width:180px;
+  /*border:#ff0000 solid 1px;*/
+  padding:2px 2px 2px 2px;
+}
+
+#treemenu2 li ul li {
+    background-color:#faac58;
+    background-image: none;
+    display: list-item;
+    float: none;
+	  line-height:20px;
+      height:20px;
+      font-size:11px;
+	 width:170px;
+}
+
+#treemenu2 li ul li a {
+    background-color:#faac58;
+    background-image: none;
+    display: list-item;
+    float: none;
+	  line-height:20px;
+      height:20px;
+      font-size:11px;
+	  width:170px;
+	  _width:173px;
+	  text-decoration: none;
+	 
+}
+
+#treemenu2 li ul li a:hover {
+    background-color:#ff8000;
+	/*background-image:url(../images/arrow_over1.png);
+	background-repeat:no-repeat;*/
+    display: list-item;
+    float: none;
+	  line-height:20px;
+      height:20px;
+      font-size:11px;
+	  color:#FFFFFF;
+	 text-decoration: none;
+}
+
+
+
+#treemenu2 li ul.subR li a.flyR
+{
+  display: block;
+  width: 170px; /*width of sub menu levels*/
+  color: #fff;
+  text-decoration: none;
+  background:#faac58;
+  background:url("../images/arrow1.png") no-repeat scroll 2px 50% #faac58;
+ 
+  line-height:20px;
+  height:20px;
+  font-size:11px;
+  text-indent:5px;
+}
+
+
+#treemenu2 li ul.subR li a.flyR:hover
+{
+   background:#ff8000;
+    line-height:20px;
+	height:20px;
+	 background:url("../images/arrow_over1.png") no-repeat scroll 2px 50% #ff8000;
+}
+
+#treemenu2 li ul li ul
+	{
+	  width:180px;
+	  left:-185px;
+	  _left:-180px;
+	}
+
+#treemenu2 li ul li ul li a:hover
+{
+  background-image:none;
+}
+
+
+/*
+/*Background image for top level menu list links */
+/*.suckertreemenu .mainfoldericon{
+background: url(media/arrow-down.gif) no-repeat center right;
+}
+*/
+/*Background image for subsequent level menu list links */
+/*.suckertreemenu .subfoldericon{
+background: url(media/arrow-right.gif) no-repeat center right;
+}*/
+
+* html p#iepara{ /*For a paragraph (if any) that immediately follows suckertree menu, add 1em top spacing between the two in IE*/
+padding-top: 1em;
+}
+	
+/* Holly Hack for IE \*/
+* html .suckertreemenu ul li { float: left; height: 1%; }
+* html #treemenu1 li { float: left; height: 1%; }
+* html .suckertreemenu ul li a { height: 1%; }
+* html #treemenu1 li a { height: 1%; }
+* html .suckertreemenu ul li ul li { float: left;}
+* html #treemenu1 li ul li { float: left;}
+/* End */
+

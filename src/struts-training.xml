@@ -1,0 +1,907 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="struts-training" extends="struts-default">
+	
+		<action name="AddTrainingPlan" class="com.konnect.jpms.training.AddTrainingPlan">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/AddTrainingPlan.jsp</result>
+			<result name="success" type="redirect-action">TrainingPlanInfo</result>
+			<!-- <result name="LPlan" type="redirect-action">TrainingPlanInfo</result> -->
+			<result name="successgoback" type="redirect-action">
+				<param name="actionName">AddLearningPlan</param>
+				<param name="operation">${operation}</param>
+				<param name="step">${lPlanStep}</param>
+				<param name="ID">${lPlanId}</param>
+			</result>
+			
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddLearningPlan" class="com.konnect.jpms.training.AddLearningPlan">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/AddLearningPlan.jsp</result>
+			<result name="success" type="redirect-action">LearningPlanDashboard</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+		</action>		
+		
+		
+				
+		<action name="AddCertificate" class="com.konnect.jpms.training.AddCertificate">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">CertificateInfo</result>
+			<result name="popup">/jsp/training/AddCertificate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+			<result name="successgoback" type="redirect-action">
+				<param name="actionName">AddTrainingPlan</param>
+				<param name="operation">A</param>
+			</result>		
+		</action>		
+	
+	
+		<action name="MyLearningPlan" class="com.konnect.jpms.training.MyLearningPlan">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>	
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/training/GetCertificateList.jsp</result>
+			<result name="view">/jsp/training/MyLearningPlan.jsp</result>
+		</action>
+	
+		
+		<action name="TrainerInfo" class="com.konnect.jpms.training.TrainerInfo">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/training/TrainerInfo.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>	
+		
+		
+		<action name="CertificateInfo" class="com.konnect.jpms.training.CertificateInfo">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/training/CertificateInfo.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>
+	 
+	 	<action name="TrainingPlanInfo" class="com.konnect.jpms.training.TrainingPlanInfo">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/training/TrainingPlanInfo.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>
+	 	 
+	 	<action name="GetSelectedEmployeeAjax"	class="com.konnect.jpms.training.GetSelectedEmployeeAjax">
+			<result name="success">/jsp/training/GetSelectedEmployeeAjax.jsp</result>
+		</action>
+	 
+	 	 <action name="GetSelectedTrainerAjax"	class="com.konnect.jpms.training.GetSelectedTrainerAjax">
+			<result name="success">/jsp/training/GetSelectedTrainerAjax.jsp</result>
+		</action>
+	 
+	 
+	 	<action name="TakeLearningPlan"	class="com.konnect.jpms.training.TakeLearningPlan">
+			<result name="success" type="redirect-action">MyLearningPlan</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+				<result name="load">/jsp/training/LearnerTrainingInfo.jsp</result>
+		</action>
+	 
+	 
+	 	 <action name="GetTrainerCalenderAjax"	class="com.konnect.jpms.training.GetTrainerCalenderAjax">
+			<result name="success">/jsp/training/GetTrainerCalenderAjax.jsp</result>
+		</action>
+	 
+	 
+	 	<action name="TrainingStatus" class="com.konnect.jpms.training.TrainingStatus">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<!-- <result name="success" type="redirect-action">MyLearningPlan</result> -->
+			<result name="success" type="redirect-action">
+				<param name="actionName">LearningPlanAssessmentStatus</param>
+				<param name="lPlanId">${lPlanId}</param>
+			</result>
+			<result name="view" type="redirect-action">
+				<param name="actionName">MyLearningPlan</param>
+				<param name="fromPage">MyHR</param>
+			</result>
+			<result name="popup">/jsp/training/TrainingStatus.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>		
+		</action>
+	 
+	 	<action name="ViewCertificate" class="com.konnect.jpms.training.ViewCertificate">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/training/ViewCertificate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>		
+		</action>
+		
+		<action name="DownloadCertificate" class="com.konnect.jpms.training.DownloadCertificate">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+
+		
+		<action name="AddTrainer" class="com.konnect.jpms.training.AddTrainerNew">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/AddTrainer.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+			<result name="deleted" type="redirect-action">TrainersNameList</result>
+			<result name="finish" type="redirect-action">TrainerInfo</result>
+			<result name="profile" type="redirectAction">
+	            <param name="actionName">TrainerMyProfile</param>
+	            <param name="empId">${empId}</param>
+            </result>
+		</action>
+		
+		<action name="TrainingDashboard" class="com.konnect.jpms.training.TrainingDashboard">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>
+		
+		<action name="LearnersInfoDashboard" class="com.konnect.jpms.training.LearnersInfoDashboard">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/training/LearnersInfoDashboard.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>
+		
+		<action name="TrainerMyProfile" class="com.konnect.jpms.training.TrainerMyProfile">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="proPopup">/jsp/training/TrainerMyProfilePopup.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>
+		
+		<action name="InsertTrainerComment" class="com.konnect.jpms.training.InsertTrainerComment">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/InsertTrainerComment.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>
+		
+		<action name="InsertTrainerCommentAjax" class="com.konnect.jpms.training.InsertTrainerCommentAjax">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/training/InsertTrainerCommentAjax.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>
+		
+		<action name="AssignCertificate" class="com.konnect.jpms.training.AssignCertificate">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/training/AssignCertificate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>
+		
+		
+		<action name="Assessment" class="com.konnect.jpms.training.Assessments">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>	
+		
+		<action name="AttributeTrainingDetails" class="com.konnect.jpms.training.AttributeTrainingDetails">
+			<result name="load">/jsp/training/AttributeTrainingDetails.jsp</result>
+			<result name="success" type="redirect-action">TrainingGap</result>
+		</action> 
+		
+		<action name="GetTrainingDetails" class="com.konnect.jpms.training.GetTrainingDetails"> 
+			<result name="success">/jsp/training/GetTrainingDetails.jsp</result>
+		</action>
+		
+		<action name="GetEmpList" class="com.konnect.jpms.training.GetEmployeeList"> 
+			<result name="success">/jsp/training/GetEmployeeList.jsp</result>
+		</action>
+		
+		<action name="GetLearningEmployeeList" class="com.konnect.jpms.training.GetLearningEmployeeList"> 
+			<result name="success">/jsp/training/GetLearningEmployeeList.jsp</result>
+		</action>
+		
+		<action name="HistoricalPlan" class="com.konnect.jpms.training.HistoricalPlan">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>
+		
+		<action name="TrainingFeedBack" class="com.konnect.jpms.training.TrainingFeedBack">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">MyLearningPlan</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>	
+		</action>	
+		
+		<action name="ShowFeedBack" class="com.konnect.jpms.training.ShowFeedBack">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/training/ShowFeedBack.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action> 
+		
+		<action name="FeedBackDetails" class="com.konnect.jpms.training.FeedBackDetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="popup">/jsp/training/FeedBackDetails.jsp</result>
+		</action>
+		
+		<action name="TrainerCheck" class="com.konnect.jpms.training.TrainerCheck"> 
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">TrainerInfo</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+			<result name="load" type="redirect-action">AddTrainer</result>
+			<result name="view">/jsp/training/TrainerCheck.jsp</result>	
+		</action>
+		
+		<action name="GetEmpListForTrainer" class="com.konnect.jpms.training.GetEmpListForTrainer"> 
+			<result name="success">/jsp/training/GetEmpListForTrainer.jsp</result>
+		</action>
+		
+		<action name="PreviousFeedback" class="com.konnect.jpms.training.PreviousFeedback">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/training/PreviousFeedback.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>
+
+		<action name="TrainingPlanDashboard" class="com.konnect.jpms.training.TrainingPlanDashboard">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>	
+		</action>
+
+		<action name="GetStageDetails" class="com.konnect.jpms.training.GetStageDetails">
+			<result name="load">/jsp/training/GetStageDetails.jsp</result>
+		</action>
+
+		<action name="SelectLearningPlanQuestion" class="com.konnect.jpms.training.SelectLearningPlanQuestion">
+			<result name="load">/jsp/training/SelectLearningPlanQuestion.jsp</result>
+		</action>
+		
+		<action name="SetLearningPlanQuestionToTextfield" class="com.konnect.jpms.training.SetLearningPlanQuestionToTextfield">
+			<result name="success">/jsp/training/SetLearningPlanQuestionToTextfield.jsp</result>
+		</action>
+		
+		<action name="DeleteLearningFeedbackQuestion" class="com.konnect.jpms.training.DeleteLearningFeedbackQuestion"> 
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="load" type="redirect-action">
+				<param name="actionName">AddLearningPlan</param>
+				<param name="operation">${operation}</param>
+				<param name="step">${step}</param>
+				<param name="ID">${ID}</param>
+			</result>
+			<!-- <result name="load">/jsp/common/viewPage.jsp</result> -->
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="getLearningFeedbackQuestion" class="com.konnect.jpms.training.EditLearningFeedbackQuestion"> 
+			<result name="success">/jsp/training/EditLearningFeedbackQuestion.jsp</result>
+		</action>
+		
+		<action name="editLearningFeedbackQuestion" class="com.konnect.jpms.training.EditLearningFeedbackQuestion"> 
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="load" type="redirect-action">
+				<param name="actionName">AddLearningPlan</param>
+				<param name="operation">${operation}</param>
+				<param name="step">${step}</param>
+				<param name="ID">${ID}</param>
+			</result>
+			<!-- <result name="load">/jsp/common/viewPage.jsp</result> -->
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+				
+		<action name="AddQuestionOfLearningFeedback" class="com.konnect.jpms.training.AddQuestionOfLearningFeedback"> 
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="load" type="redirect-action">
+				<param name="actionName">AddLearningPlan</param>
+				<param name="operation">${operation}</param>
+				<param name="step">${step}</param>
+				<param name="ID">${ID}</param>
+			</result>
+			<!-- <result name="load">/jsp/common/viewPage.jsp</result> -->
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>		
+
+		<action name="LearningPlanDashboard" class="com.konnect.jpms.training.LearningPlanDashboard">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/training/LearningPlanDashboard.jsp</result>
+			<result name="success">/jsp/training/LearningPlanDashboard.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="PublishLearningPlan" class="com.konnect.jpms.training.PublishLearningPlan">
+			<result name="login" type="redirect-action">Login</result>
+			<!-- <result>/jsp/training/PublishLearningPlan.jsp</result>		 -->
+			<result name="success" type="redirect-action" >
+				<param name="actionName">LearningPlanSummary</param>
+				<param name="learningPlanId">${id}</param>
+			</result>	
+		</action>
+		
+		<action name="AddNewCourse" class="com.konnect.jpms.training.AddNewCourse">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/AddNewCourse.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">CourseDashboardData</param>
+				<param name="dataType">C</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+		</action> 
+
+		<action name="SelectCourseAssessmentQuestion" class="com.konnect.jpms.training.SelectCourseAssessmentQuestion">
+			<result name="load">/jsp/training/SelectCourseAssessmentQuestion.jsp</result>
+		</action>
+		
+		<action name="SetCourseAssessmentToTextfield" class="com.konnect.jpms.training.SetCourseAssessmentToTextfield">
+			<result name="success">/jsp/training/SetCourseAssessmentToTextfield.jsp</result>
+		</action>
+
+		<action name="DeleteCourseAssessmentContentAndSubchapter" class="com.konnect.jpms.training.DeleteCourseAssessmentContentAndSubchapter">
+			<result name="login" type="redirect-action">Login</result>
+			<!-- <result>/jsp/performance/PublishAppraisal.jsp</result>			 -->
+		</action>
+
+		<action name="ViewCourseDetails" class="com.konnect.jpms.training.ViewCourseDetails">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/ViewCourseDetails2.jsp</result>
+			<!-- <result name="load">/jsp/common/viewPage.jsp</result> -->
+			<!-- <result name="success" type="redirect-action">CourseDashboard</result> -->
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="CourseDashboard" class="com.konnect.jpms.training.CourseDashboard">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/CourseDashboard.jsp</result>
+			<result name="success">/jsp/training/CourseDashboard.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	
+		<action name="LearningPlanPreview" class="com.konnect.jpms.training.LearningPlanPreview">
+			<result name="load">/jsp/training/LearningPlanPreview.jsp</result>
+			<result name="success">/jsp/training/LearningPlanPreview.jsp</result>
+			<!-- <result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result> -->
+		</action>	
+
+		<action name="TrainingAttend" class="com.konnect.jpms.training.TrainingAttend"> 
+			<result name="success">/jsp/training/TrainingAttend.jsp</result>
+		</action>
+														
+		<action name="CourseRead" class="com.konnect.jpms.training.CourseRead"> 
+			<result name="success">/jsp/training/CourseRead.jsp</result>
+		</action>												
+				
+		<action name="CourseReadStatusUpdatePopup" class="com.konnect.jpms.training.CourseReadStatusUpdate"> 
+			<result name="load">/jsp/training/CourseReadStatusUpdate.jsp</result>
+		</action>
+		
+		<action name="CourseReadStatusUpdate" class="com.konnect.jpms.training.CourseReadStatusUpdate"> 
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyLearningPlan</param>
+				<param name="fromPage">MyHR</param>
+			</result>
+		</action>												
+		
+		<action name="AddTrainingFeedbackPopup" class="com.konnect.jpms.training.AddTrainingFeedback">
+			<result name="load">/jsp/training/AddTrainingFeedback.jsp</result> 
+		</action>
+		
+		<action name="AddTrainingFeedback" class="com.konnect.jpms.training.AddTrainingFeedback">
+		<!-- <result name="load">/jsp/training/AddTrainingFeedback.jsp</result> --> 
+		    <result name="load" type="redirect-action">
+				<param name="actionName">LearningPlanAssessmentStatus</param>
+				<param name="lPlanId">${lPlanId}</param>
+			</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyLearningPlan</param>
+				<param name="fromPage">MyHR</param>
+			</result>
+		</action>
+		
+		<action name="AddNewAssessment" class="com.konnect.jpms.training.AddNewAssessment">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/AddNewAssessment.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">CourseDashboardData</param>
+				<param name="dataType">A</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="SelectAssessmentQuestion" class="com.konnect.jpms.training.SelectAssessmentQuestion">
+			<result name="load">/jsp/training/SelectAssessmentQuestion.jsp</result>
+		</action>
+		
+		<action name="SetAssessmentQuestionToTextfield" class="com.konnect.jpms.training.SetAssessmentQuestionToTextfield">
+			<result name="success">/jsp/training/SetAssessmentQuestionToTextfield.jsp</result>
+		</action>
+
+		<action name="DeleteAssessmentQuestions" class="com.konnect.jpms.training.DeleteAssessmentQuestions">
+			<result name="login" type="redirect-action">Login</result>
+			<!-- <result>/jsp/performance/PublishAppraisal.jsp</result>			 -->
+		</action>		
+
+		<action name="ViewAssessmentDetails" class="com.konnect.jpms.training.ViewAssessmentDetails">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/ViewAssessmentDetails.jsp</result>
+			<!-- <result name="load">/jsp/common/viewPage.jsp</result> -->
+			<!-- <result name="success" type="redirect-action">CourseDashboard</result> -->
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="TakeAssessmentPopup" class="com.konnect.jpms.training.TakeAssessment">
+			<result name="load">/jsp/training/TakeAssessment.jsp</result> 
+		</action>
+		
+		<action name="TakeAssessment" class="com.konnect.jpms.training.TakeAssessment">
+		<!-- <result name="load">/jsp/training/AddTrainingFeedback.jsp</result> --> 
+			<result name="success" type="redirect-action">MyLearningPlan</result>
+		</action>
+		
+		
+		<!-- <action name="TakeAssessmentPopup1" class="com.konnect.jpms.training.TakeAssessment1">
+			<result name="success">/jsp/training/TakeAssessment1.jsp</result> 
+		</action>
+		
+		<action name="TakeAssessment1" class="com.konnect.jpms.training.TakeAssessment1">
+		<result name="load">/jsp/training/AddTrainingFeedback.jsp</result> 
+			<result name="success" type="redirect-action">MyLearningPlan</result>
+		</action>
+		 -->
+		
+		<action name="LearningPlanAssessmentStatus" class="com.konnect.jpms.training.LearningPlanAssessmentStatus">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/training/LearningPlanAssessmentStatus.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="LearningPlanAssessmentScoreSummary" class="com.konnect.jpms.training.LearningPlanAssessmentScoreSummary">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/training/LearningPlanAssessmentScoreSummary.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		<action name="LearningPlanReasonPopup" class="com.konnect.jpms.training.LearningPlanReasonPopup">
+			<result name="load">/jsp/training/LearningPlanReasonPopup.jsp</result> 
+		</action>
+
+		<action name="LearningPlanAssessmentFinalize" class="com.konnect.jpms.training.LearningPlanAssessmentFinalize">
+			<result name="load">/jsp/training/LearningPlanAssessmentFinalize.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">LearningPlanAssessmentStatus</param>
+				<param name="lPlanId">${learningId}</param>
+			</result>
+			<result name="view">/jsp/training/LearningPlanAssessmentFinalize.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="IFrameTakeAssessment" class="com.konnect.jpms.training.IFrameTakeAssessment"> 
+			<result name="success">/jsp/training/IFrameTakeAssessment.jsp</result>
+		</action>
+		
+		<action name="TakeAssessment1" class="com.konnect.jpms.training.TakeAssessment1">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/TakeAssessment1.jsp</result>
+			<result name="success">/jsp/training/TakeAssessment1.jsp</result>
+			<!-- <result name="update">/jsp/training/TakeAssessment1.jsp</result> -->
+			<result name="update" type="redirect-action">
+				<param name="actionName">TakeAssessmentPreview</param>
+				<param name="assessmentId">${assessmentId}</param>
+				<param name="lPlanId">${lPlanId}</param>
+				<param name="empID">${empID}</param>
+				<param name="userType">${userType}</param>
+			</result>
+			<result name="finish" type="redirect-action">
+				<param name="actionName">TakeAssessmentSummary</param>
+				<param name="assessmentId">${assessmentId}</param>
+				<param name="lPlanId">${lPlanId}</param>
+				<param name="empID">${empID}</param>
+				<param name="userType">${userType}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="TakeAssessmentPreview" class="com.konnect.jpms.training.TakeAssessmentPreview">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/TakeAssessmentPreview.jsp</result>
+			<result name="success">/jsp/training/TakeAssessmentPreview.jsp</result>
+			<result name="update" type="redirect-action">
+				<param name="actionName">TakeAssessmentSummary</param>
+				<param name="assessmentId">${assessmentId}</param>
+				<param name="lPlanId">${lPlanId}</param>
+				<param name="empID">${empID}</param>
+				<param name="userType">${userType}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="TakeAssessmentSummary" class="com.konnect.jpms.training.TakeAssessmentSummary">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/TakeAssessmentSummary.jsp</result>
+			<result name="success">/jsp/training/TakeAssessmentSummary.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="EditTakeAssessmentQueAnswerPopUp" class="com.konnect.jpms.training.EditTakeAssessmentQueAnswer">
+			<result name="load">/jsp/training/EditTakeAssessmentQueAnswer.jsp</result>
+			<result name="success">/jsp/training/EditTakeAssessmentQueAnswer.jsp</result>
+		</action>
+		
+		<action name="EditTakeAssessmentQueAnswer" class="com.konnect.jpms.training.EditTakeAssessmentQueAnswer">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">TakeAssessmentPreview</param>
+				<param name="assessmentId">${assessmentId}</param>
+				<param name="lPlanId">${lPlanId}</param>
+				<param name="empID">${empID}</param>
+				<param name="userType">${userType}</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="SelectTrainingFeedbackQuestion" class="com.konnect.jpms.training.SelectTrainingFeedbackQuestion">
+			<result name="load">/jsp/training/SelectTrainingFeedbackQuestion.jsp</result>
+		</action>
+		
+		<action name="SetTrainingFeedbackQueToTextfield" class="com.konnect.jpms.training.SetTrainingFeedbackQueToTextfield">
+			<result name="success">/jsp/training/SetTrainingFeedbackQueToTextfield.jsp</result>
+		</action>
+		
+		<action name="DeleteTrainingFeedbackQuestion" class="com.konnect.jpms.training.DeleteTrainingFeedbackQuestion"> 
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="load" type="redirect-action">
+				<param name="actionName">AddTrainingPlan</param>
+				<param name="operation">${operation}</param>
+				<param name="step">${step}</param>
+				<param name="ID">${ID}</param>
+				<param name="trainingType">${trainingType}</param>
+			</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="getTrainingFeedbackQuestion" class="com.konnect.jpms.training.EditTrainingFeedbackQuestion"> 
+			<result name="success">/jsp/training/EditTrainingFeedbackQuestion.jsp</result>
+		</action>
+		
+		<action name="editTrainingFeedbackQuestion" class="com.konnect.jpms.training.EditTrainingFeedbackQuestion"> 
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="load" type="redirect-action">
+				<param name="actionName">AddTrainingPlan</param>
+				<param name="operation">${operation}</param>
+				<param name="step">${step}</param>
+				<param name="ID">${ID}</param>
+				<param name="trainingType">${trainingType}</param>
+			</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="AddTrainingFeedbackByTrainerPopup" class="com.konnect.jpms.training.AddTrainingFeedbackByTrainer">
+			<result name="load">/jsp/training/AddTrainingFeedbackByTrainer.jsp</result> 
+		</action>
+		
+		<action name="AddTrainingFeedbackByTrainer" class="com.konnect.jpms.training.AddTrainingFeedbackByTrainer">
+		<!-- <result name="load">/jsp/training/AddTrainingFeedback.jsp</result> --> 
+			<result name="success" type="redirect-action">
+				<param name="actionName">LearningPlanAssessmentStatus</param>
+				<param name="lPlanId">${lPlanId}</param>
+			</result>
+		</action>
+		
+		<action name="TrainingFeedbackSummary" class="com.konnect.jpms.training.TrainingFeedbackSummary">
+			<result name="load">/jsp/training/TrainingFeedbackSummary.jsp</result> 
+		</action>
+		
+		<action name="CreateNewVersionAssessmentPopup" class="com.konnect.jpms.training.CreateNewVersionAssessmentPopup">
+			<result name="load">/jsp/training/CreateNewVersionAssessmentPopup.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AddNewAssessment</param>
+				<param name="assessmentId">${assessmentId}</param>
+				<param name="assignToExist">${assignToExist}</param>
+				<param name="operation">${operation}</param>
+			</result>
+		</action>
+				
+		<action name="CreateNewVersionCoursePopup" class="com.konnect.jpms.training.CreateNewVersionCoursePopup">
+			<result name="load">/jsp/training/CreateNewVersionCoursePopup.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AddNewCourse</param>
+				<param name="courseId">${courseId}</param>
+				<param name="assignToExist">${assignToExist}</param>
+				<param name="operation">${operation}</param>
+			</result>
+		</action>
+
+		<action name="TrainingCalendarPopup" class="com.konnect.jpms.training.TrainingCalendar">
+			<result name="load">/jsp/training/TrainingCalendar.jsp</result>
+			<result name="success">/jsp/training/TrainingCalendar.jsp</result> 
+		</action>
+
+		<action name="GetWorkLocationList" class="com.konnect.jpms.training.GetWorkLocationList"> 
+			<result name="success">/jsp/training/GetWorkLocationList.jsp</result>
+		</action>
+
+		<action name="GetLearningEmpList" class="com.konnect.jpms.training.GetLearningEmpList"> 
+			<result name="success">/jsp/training/GetLearningEmpList.jsp</result>
+		</action>
+		
+		<action name="TrainingScheduleOneDayDetails" class="com.konnect.jpms.training.TrainingScheduleOneDayDetails"> 
+			<result name="success">/jsp/training/TrainingScheduleOneDayDetails.jsp</result>
+		</action>
+		
+		<action name="TrainingScheduleAllDayDetails" class="com.konnect.jpms.training.TrainingScheduleAllDayDetails"> 
+			<result name="success">/jsp/training/TrainingScheduleAllDayDetails.jsp</result>
+			<result name="load">/jsp/training/TrainingScheduleAllDayDetails.jsp</result>
+		</action>
+		
+		<action name="GetLearningLocDeptLvlAndDesig" class="com.konnect.jpms.training.GetLearningLocDeptLvlAndDesig"> 
+			<result name="success">/jsp/training/GetLearningLocDeptLvlAndDesig.jsp</result>
+		</action>
+		
+		<!-- <action name="TrainingCalendar" class="com.konnect.jpms.training.TrainingCalendar">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> -->
+
+		<action name="CloseLearningPlan" class="com.konnect.jpms.training.CloseLearningPlan">
+			<result name="load">/jsp/training/CloseLearningPlan.jsp</result>
+			<result name="success" type="redirect-action">LearningPlanDashboard</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+		</action>
+		
+		<action name="CreateNewVersionCertificatePopup" class="com.konnect.jpms.training.CreateNewVersionCertificatePopup">
+			<result name="load">/jsp/training/CreateNewVersionCertificatePopup.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AddCertificate</param>
+				<param name="certiId">${certiId}</param>
+				<param name="assignToExist">${assignToExist}</param>
+				<param name="operation">${operation}</param>
+			</result>
+		</action>
+		
+		<action name="ViewEmpCertificate" class="com.konnect.jpms.training.ViewEmpCertificate">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/training/ViewEmpCertificate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>		
+		</action>
+		
+		<action name="LearningEmpActivityLevelSalary" class="com.konnect.jpms.training.LearningEmpActivityLevelSalary">
+	 		<result name="load">/jsp/training/LearningEmpActivityLevelSalary.jsp</result>
+			<result name="success">/jsp/training/LearningEmpActivityLevelSalary.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	 	</action>
+	 	
+		<action name="AssessmentEmpRemainTime" class="com.konnect.jpms.training.AssessmentEmpRemainTime">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>			
+		</action>
+		
+ 		 <action name="LearningPlanDetails" class="com.konnect.jpms.training.LearningPlanDetails">
+	 		<result name="load">/jsp/training/LearningPlanDetails.jsp</result>
+			<result name="success">/jsp/training/LearningPlanDetails.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+	 	</action>
+	 	
+		<action name="LearningPlanList" class="com.konnect.jpms.training.LearningPlanList">
+			<result name="load">/jsp/training/LearningPlanList.jsp</result>
+			<result name="success">/jsp/training/LearningPlanList.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="LearningPlanCallDetails" class="com.konnect.jpms.training.LearningPlanCallDetails">
+	 		<result name="load">/jsp/training/LearningPlanCallDetails.jsp</result>
+			<result name="success">/jsp/training/LearningPlanCallDetails.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+
+	 	</action> 
+		 	
+		 <action name="Learnings" class="com.konnect.jpms.training.LearningDashboard">
+	 		<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	 	</action>	
+	 		
+	 	<action name="TrainersNameList" class="com.konnect.jpms.training.TrainersNameList">
+			<result name="success">/jsp/training/TrainersNameList.jsp</result>	
+			<result name="load">/jsp/training/TrainersNameList.jsp</result>	
+			<result name="login" type="redirect-action">Login</result>	
+		</action>
+		
+		<action name="TrainingPlansNameList" class="com.konnect.jpms.training.TrainingPlansNameList">
+			<result name="success">/jsp/training/TrainingPlansNameList.jsp</result>	
+			<result name="load">/jsp/training/TrainingPlansNameList.jsp</result>	
+			<result name="login" type="redirect-action">Login</result>	
+		</action>
+		
+		<action name="TrainingPlanDetails" class="com.konnect.jpms.training.TrainingPlanDetails">
+			<result name="success">/jsp/training/TrainingPlanDetails.jsp</result>	
+			<result name="load">/jsp/training/TrainingPlanDetails.jsp</result>	
+			<result name="login" type="redirect-action">Login</result>	
+		</action> 
+	 	
+	 	<action name="CourseDashboardData" class="com.konnect.jpms.training.CourseDashboardData">
+			<result name="success">/jsp/training/CourseDashboardData.jsp</result>	
+			<result name="load">/jsp/training/CourseDashboardData.jsp</result>	
+			<result name="login" type="redirect-action">Login</result>	
+		</action> 
+		
+		<action name="LearningPlanSummary" class="com.konnect.jpms.training.LearningPlanSummary">
+			<result name="success">/jsp/training/LearningPlanSummary.jsp</result>	
+			<result name="load">/jsp/training/LearningPlanSummary.jsp</result>	
+			<result name="login" type="redirect-action">Login</result>	
+		</action>
+		
+				
+<!-- ===start parvez date: 23-09-2021=== -->
+		<action name="VideosDashboard" class="com.konnect.jpms.training.VideosDashboard">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/VideosDashboard.jsp</result>
+			<result name="success">/jsp/training/VideosDashboard.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddNewVideo" class="com.konnect.jpms.training.AddNewVideo">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/AddNewVideo.jsp</result>
+			<result name="success" type="redirect-action">VideosDashboard</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="LearningVideoDetails" class="com.konnect.jpms.training.LearningVideoDetails">
+			<result name="success">/jsp/training/LearningVideoDetails.jsp</result>	
+			<result name="load">/jsp/training/LearningVideoDetails.jsp</result>	
+			<result name="login" type="redirect-action">Login</result>	
+		</action>
+		
+		<action name="ViewVideo" class="com.konnect.jpms.training.ViewVideo"> 
+			<result name="success">/jsp/training/ViewVideo.jsp</result>
+		</action>
+		
+		<action name="LearningRequestApprovalReport" class="com.konnect.jpms.training.LearningRequestApprovalReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/training/LearningRequestApprovalReport.jsp</result>
+			<result name="success">/jsp/training/LearningRequestApprovalReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="LearningRequestPopUp" class="com.konnect.jpms.training.LearningRequestPopUp">  
+			<result name="load">/jsp/training/LearningRequestPopUp.jsp</result>
+			<result name="success">/jsp/training/LearningRequestPopUp.jsp</result>
+			<result name="success">/jsp/training/MyLearningPlan.jsp</result>
+			<result name="LSUCCESS" type="redirect-action">
+				<param name="actionName">MyLearningPlan</param>
+				<param name="fromPage">${fromPage}</param>
+				<param name="dataType">LC</param>
+			</result>
+		</action>
+		
+		<action name="ApproveLearningRequest" class="com.konnect.jpms.training.ApproveLearningRequest">
+			<result name="LRSUCCESS" type="redirect-action">
+				<param name="actionName">LearningRequestApprovalReport</param>
+			</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="GetLRApprovalStatus" class="com.konnect.jpms.training.GetLRApprovalStatus">
+			<result name="success">/jsp/training/GetLRApprovalStatus.jsp</result>
+		</action>
+		
+		<action name="CeoHodLearningRequest" class="com.konnect.jpms.training.CeoHodLearningRequest">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/training/CeoHodLearningRequest.jsp</result>
+			<result name="load">/jsp/training/CeoHodLearningRequest.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+<!-- ===end parvez date: 23-09-2021=== -->
+
+		<action name="LearningDocView" class="com.konnect.jpms.training.LearningDocView">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/training/LearningDocView.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+	</package>
+</struts>   
+ 

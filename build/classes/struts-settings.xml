@@ -1,0 +1,86 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+       
+ 
+	<package name="struts-settings" extends="struts-default">
+
+	<action name="EmployeeActivity" class="com.konnect.jpms.employee.EmployeeActivity">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="view" type="redirect-action">
+			 	<param name="actionName">EmployeeActivity</param>
+			    <param name="empType">${empType}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	</action>
+	
+	<action name="UserActivity" class="com.konnect.jpms.common.UserActivity">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	</action> 
+	 
+	<action name="ConfigSettings" class="com.konnect.jpms.common.ConfigSettings">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<!-- <result name="success">/jsp/common/viewPage.jsp</result> -->
+			<result name="success" type="redirectAction">
+	            <param name="actionName">MyDashboard</param>
+	            <param name="userscreen">${userscreen}</param>
+	            <param name="navigationId">${navigationId}</param>
+	            <param name="toPage">${toPage}</param>
+            </result>
+			<result name="load">/jsp/common/ConfigSettings.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+	</action>    
+     
+     <action name="ConfigSettingsTab" class="com.konnect.jpms.common.ConfigSettings">
+			<result name="error">/jsp/common/ConfigSettings.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/ConfigSettings.jsp</result>
+			<result name="success">/jsp/common/ConfigSettings.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+	</action>
+
+    <action name="NotificationSettings" class="com.konnect.jpms.common.NotificationSettings">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="load">/jsp/common/NotificationSettings.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>	
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+	</action>    
+
+	<action name="NotificationSettingsTab" class="com.konnect.jpms.common.NotificationSettings">
+			<result name="error">/jsp/common/NotificationSettings.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/NotificationSettings.jsp</result>
+			<result name="success">/jsp/common/NotificationSettings.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+	</action>
+	
+	<action name="EmployeeBulkActivity" class="com.konnect.jpms.employee.EmployeeBulkActivity">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">People</param>
+				<param name="callFrom">EMPBLKACTIVITY</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	</action>
+		
+		 		
+	</package>
+</struts>    

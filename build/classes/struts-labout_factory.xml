@@ -1,0 +1,65 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="struts-labout_factory" extends="struts-default">
+
+ 		<action name="AdultWorker" class="com.konnect.jpms.reports.factory.AdultWorkerReport">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="load">/jsp/reports/factory/AdultWorkerReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="ChildWorker" class="com.konnect.jpms.reports.factory.ChildWorkerReport">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="CompensatoryHolidayReport" class="com.konnect.jpms.reports.factory.CompensatoryHolidayReport">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="AttendanceMuster" class="com.konnect.jpms.reports.factory.AttendanceMuster">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="LeaveRegsiterWages" class="com.konnect.jpms.reports.factory.LeaveRegsiterWages">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="load">/jsp/reports/factory/LeaveRegisterWages.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="OvertimeMuster" class="com.konnect.jpms.reports.factory.OvertimeMuster">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="load">/jsp/reports/factory/OvertimeMuster.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+	</package>
+	
+</struts>   

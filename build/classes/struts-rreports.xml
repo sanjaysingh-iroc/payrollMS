@@ -1,0 +1,164 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="struts-rreports" extends="struts-default">
+	
+		<action name="EmployeeRReport" class="com.konnect.jpms.reports.EmployeeRReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+		<action name="ReportTracker" class="com.konnect.jpms.reports.ReportTracker">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="BulkExpenseReport" class="com.konnect.jpms.reports.BulkExpenseReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result> 
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="DepartmentwiseSalarySummaryReport" class="com.konnect.jpms.payroll.reports.DepartmentwiseSalarySummaryReport">
+			<result name="load">/jsp/payroll/reports/DepartmentwiseSalarySummaryReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="WorkForceJoinHealthCareReport" class="com.konnect.jpms.reports.WorkForceJoinHealthCareReport">
+			<result name="load">/jsp/reports/WorkForceJoinHealthCareReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="KmcKncReport" class="com.konnect.jpms.reports.KmcKncReport">
+			<result name="load">/jsp/reports/KmcKncReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="MusterRollCumWagesRegisterReport" class="com.konnect.jpms.reports.MusterRollCumWagesRegisterReport">
+			<interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+            </interceptor-ref>
+			<result name="error">/jsp/login/error.jsp</result>
+			<!-- <result name="login" type="redirect-action">Login</result> -->
+			<result name="load">/jsp/reports/MusterRollCumWagesRegisterReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="MusterRollJobReport" class="com.konnect.jpms.reports.MusterRollJobReport">
+			<interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+            </interceptor-ref>
+			<result name="error">/jsp/login/error.jsp</result>
+			<!-- <result name="login" type="redirect-action">Login</result> -->
+			<result name="load">/jsp/reports/MusterRollJobReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	
+		<action name="Reports" class="com.konnect.jpms.reports.Reports">
+			<result name="error">/jsp/login/error.jsp</result> 
+			<result name="login" type="redirect-action">Login</result>
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/reports/Reports.jsp</result>  
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	
+		<action name="EmployeeMandaysReport" class="com.konnect.jpms.reports.EmployeeMandaysReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/reports/EmployeeMandaysReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Compliances" class="com.konnect.jpms.reports.Compliances">
+			<result name="error">/jsp/login/error.jsp</result> 
+			<result name="login" type="redirect-action">Login</result>
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/reports/Compliances.jsp</result>  
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ExpenseReport" class="com.konnect.jpms.reports.ExpenseReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/ExpenseReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="HalfDayFullDayExceptionReport" class="com.konnect.jpms.reports.HalfDayFullDayExceptionReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/HalfDayFullDayExceptionReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AllActivityHistoryReport" class="com.konnect.jpms.reports.AllActivityHistoryReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/reports/AllActivityHistoryReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="RosterOfEmployee" class="com.konnect.jpms.reports.RosterOfEmployee">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/RosterOfEmployee.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="ghrload">/jsp/reports/RosterOfEmployee.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EmployeeRegister" class="com.konnect.jpms.reports.EmployeeRegister">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/reports/EmployeeRegister.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EmpMasterCTCReport" class="com.konnect.jpms.payroll.reports.EmpMasterCTCReport">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/payroll/reports/EmpMasterCTCReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<!-- ===start parvez date: 14-03-2022=== -->
+		<action name="WorkAnniversaryReport" class="com.konnect.jpms.reports.WorkAnniversaryReport">
+			<result name="success">/jsp/reports/WorkAnniversaryReport.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/reports/WorkAnniversaryReport.jsp</result>
+		</action>
+		<!-- ===end parvez date: 14-03-2022=== -->
+		
+		<!-- ===start parvez date: 14-03-2022=== -->
+		<action name="EmployeeJoiningReport" class="com.konnect.jpms.reports.EmployeeJoiningReport">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/reports/EmployeeJoiningReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		<!-- ===end parvez date: 14-03-2022=== -->
+		
+	</package>
+</struts>   

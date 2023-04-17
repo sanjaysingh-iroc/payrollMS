@@ -1,0 +1,66 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="struts-advanceReport" extends="struts-default">
+		
+		<action name="EmployeeAdvanceReport" class="com.konnect.jpms.reports.advance.EmployeeAdvanceReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="OrganisationTreeView" class="com.konnect.jpms.reports.advance.OrganisationTreeView">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+		</action>
+	
+		 <action name="ViewEmployeeDetails" class="com.konnect.jpms.reports.advance.ViewEmployeeDetails">
+			<result name="success">/jsp/reports/advance/ViewEmployeeDetails.jsp</result>
+		</action> 
+		<action name="RetirementReport" class="com.konnect.jpms.reports.advance.RetirementReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ManPowerReport" class="com.konnect.jpms.reports.advance.ManPowerReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EmployeeSearch" class="com.konnect.jpms.reports.advance.EmployeeSearch">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DepartmentGradeSummary" class="com.konnect.jpms.reports.advance.DepartmentGradeSummary">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<!-- <action name="GratuityReport" class="com.konnect.jpms.reports.advance.GratuityReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+		</action> -->
+		
+		<action name="MedicalPolicyReport" class="com.konnect.jpms.reports.advance.MedicalPolicyReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProbationEmployeeList" class="com.konnect.jpms.reports.advance.ProbationEmployeeList">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+	</package>
+</struts>   
+		

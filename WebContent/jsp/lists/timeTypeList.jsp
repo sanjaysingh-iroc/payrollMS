@@ -1,0 +1,4 @@
+{
+"LATE":"Late",
+"EARLY":"Early"
+}

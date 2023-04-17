@@ -1,0 +1,1019 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="104857600" />
+	<package name="struts-recruitment" extends="struts-default">
+
+		<action name="RequirementApproval" class="com.konnect.jpms.recruitment.RequirementApproval">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/recruitment/RequirementApproval.jsp</result>
+			<result name="success">/jsp/recruitment/RequirementApproval.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="RequirementRequest" class="com.konnect.jpms.recruitment.RequirementRequest">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/recruitment/RequirementRequest.jsp</result>  
+			<!-- <result name="success">/jsp/common/viewPage.jsp</result> -->
+			<result name="success" type="redirect-action">
+				<param name="actionName">RequirementApproval</param>
+				
+				<param name="f_org">${orgID}</param>
+				<param name="location1">${wlocID}</param>
+				<param name="designation">${desigID}</param>
+				<param name="checkStatus">${checkStatus}</param>
+				<param name="fdate">${fdate}</param>
+				<param name="tdate">${tdate}</param>
+				<param name="currUserType">${currUserType}</param>
+			</result>
+			
+			<result name="hrsuccess" type="redirect-action">MyDashboard</result> 
+			<result name="jrsuccess" type="redirect-action">
+				<param name="actionName">RecruitmentDashboard</param>
+			    <param name="fromPage">${frmPage}</param>  
+			</result>
+			
+			<!-- <result name="success" type="redirect-action">RequirementApproval</result> -->
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="dashboard" type="redirect-action">MyDashboard</result>
+		</action>
+
+		<!-- <action name="AddRequestPopUp" class="com.konnect.jpms.recruitment.AddRequestPopUp"> 
+			<result name="load">/jsp/recruitment/RequirementRequest.jsp</result> <result 
+			name="success">/jsp/recruitment/RequirementRequest.jsp</result> <result name="edit">/jsp/recruitment/EditRequest.jsp</result> 
+			 </action> <action name="JobProfiles" class="com.konnect.jpms.recruitment.JobProfiles"> 
+			<result name="error">/jsp/login/error.jsp</result> <result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/common/viewPage.jsp</result> <result name="success">/jsp/common/viewPage.jsp</result> 
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> </action> -->
+
+		<action name="UpdateJobProfile" class="com.konnect.jpms.recruitment.UpdateJobProfile">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="update" type="redirect-action">
+				<param name="actionName">JobProfilesApproval</param>
+				<param name="f_org">${orgID}</param>
+				<param name="location1">${wlocID}</param>
+				<param name="designation">${desigID}</param>
+				<param name="checkStatus">${checkStatus}</param>
+				<param name="fdate">${fdate}</param>
+				<param name="tdate">${tdate}</param>
+				<param name="fromPage">${frmPage}</param>
+			</result>
+			
+			<result name="hrupdate" type="redirect-action">MyDashboard</result>
+			<!-- <result name="update" type="redirect-action">JobProfilesApproval</result> -->
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="UpdateJobProfilePopUp" class="com.konnect.jpms.recruitment.UpdateJobProfile">
+			<result name="load">/jsp/recruitment/UpdateJobProfile.jsp</result>
+			<result name="success">/jsp/recruitment/UpdateJobProfile.jsp</result>
+
+		</action>
+
+		<action name="ReportJobProfilePopUp" class="com.konnect.jpms.recruitment.ReportJobProfilePopUp">
+			<result name="load">/jsp/recruitment/ReportJobProfilePopUp.jsp </result>
+			<result name="success">/jsp/recruitment/ReportJobProfilePopUp.jsp </result>
+		</action>
+
+
+		<action name="UpdateADRRequest" class="com.konnect.jpms.recruitment.UpdateADRRequest">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="dashboard" type="redirect-action">
+				<param name="actionName">MyHome</param>
+	            <param name="toAction">MyHome</param>
+			</result> 
+		</action>
+
+		<action name="JobProfilesApproval" class="com.konnect.jpms.recruitment.JobProfilesApproval">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/recruitment/JobProfilesApproval.jsp</result>
+			<result name="success">/jsp/recruitment/JobProfilesApproval.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="dashboard" type="redirect-action">MyDashboard</result>
+		</action>
+
+		<action name="ViewJobProfilesApprovalPopUp" class="com.konnect.jpms.recruitment.UpdateJobProfile">
+			<result name="load">/jsp/recruitment/UpdateJobProfile.jsp</result>
+			<result name="success">/jsp/recruitment/UpdateJobProfile.jsp</result>
+		</action>
+
+		<action name="JobADRequest" class="com.konnect.jpms.recruitment.JobADRequest">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+
+		<action name="DenyRequestPopUp" class="com.konnect.jpms.recruitment.DenyRequest">
+			<result name="load">/jsp/recruitment/DenyRequest.jsp</result>
+			<result name="success">/jsp/recruitment/DenyRequest.jsp</result>
+		</action>
+
+		<action name="DenyRequest" class="com.konnect.jpms.recruitment.DenyRequest">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="update" type="redirect-action">
+				<param name="actionName">RequirementApproval</param>
+				<param name="f_org">${orgID}</param>
+				<param name="location1">${wlocID}</param>
+				<param name="designation">${desigID}</param>
+				<param name="checkStatus">${checkStatus}</param>
+				<param name="fdate">${fdate}</param>
+				<param name="tdate">${tdate}</param>
+				<param name="currUserType">${currUserType}</param>
+			</result>
+			<result name="hrupdate" type="redirect-action">MyDashboard</result>
+			<!-- <result name="update" type="redirect-action">RequirementApproval</result> -->
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="dashboard" type="redirect-action">
+				<param name="actionName">MyHome</param>
+	            <param name="toAction">MyHome</param>
+			</result> 
+		</action>
+
+		<action name="JobDenyPopUp" class="com.konnect.jpms.recruitment.JobDeny">
+			<result name="load">/jsp/recruitment/JobDeny.jsp</result>
+			<result name="success">/jsp/recruitment/JobDeny.jsp</result>
+		</action>
+
+		<action name="JobDeny" class="com.konnect.jpms.recruitment.JobDeny">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="update" type="redirect-action">
+				<param name="actionName">JobProfilesApproval</param>
+				<param name="f_org">${orgID}</param>
+				<param name="location1">${wlocID}</param>
+				<param name="designation">${desigID}</param>
+				<param name="checkStatus">${checkStatus}</param>
+				<param name="fdate">${fdate}</param>
+				<param name="tdate">${tdate}</param>
+			</result>
+			<result name="hrupdate" type="redirect-action">MyDashboard</result>
+			<!-- <result name="update" type="redirect-action">JobProfilesApproval</result> -->
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="CloseJobPublish" class="com.konnect.jpms.recruitment.CloseJobPublish">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">Applications</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="PublishJob" class="com.konnect.jpms.recruitment.PublishJob">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="DownloadXML" class="com.konnect.jpms.recruitment.DownloadXML">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+
+
+		<action name="JobList" class="com.konnect.jpms.recruitment.JobReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">
+			   <param name="actionName">RecruitmentDashboard</param>
+			   <param name="fromPage">${fromPage}</param>   
+			</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="OpenJobReport" class="com.konnect.jpms.recruitment.OpenJobReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+
+		<action name="JdReport" class="com.konnect.jpms.recruitment.JdReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+
+		<action name="AddCandidate" class="com.konnect.jpms.recruitment.AddCandidate">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="logout" type="redirect-action">Logout</result>
+			<result name="load">/jsp/recruitment/AddCandidate.jsp</result>
+			<!-- <result name="load">/jsp/common/viewPage.jsp</result>  -->
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+			<!-- <result name="deleted" type="redirect-action">OpenJobReport</result> -->
+			<result name="deleted" type="redirect-action">Applications</result>
+			<result name="finish" type="redirectAction">
+				<param name="actionName">Applications</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+			<result name="crfinish" type="redirect-action">CandidateReport</result>
+			<result name="profile" type="redirectAction">
+				<param name="actionName">CandidateMyProfile</param>
+				<param name="CandID">${CandidateId}</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+		</action>
+		
+		<!-- <action name="CustAddCandidate" class="com.konnect.jpms.recruitment.CustAddCandidate">
+			<result name="load">/jsp/recruitment/CustAddCandidate.jsp</result>
+		</action> -->
+		
+		<action name="AddCandidatePopup" class="com.konnect.jpms.recruitment.AddCandidatePopup">
+			<result name="load">/jsp/recruitment/AddCandidate.jsp</result>
+			<result name="success">/jsp/recruitment/AddCandidate.jsp</result> 
+		</action> 
+		
+		<action name="AddCandidateMode" class="com.konnect.jpms.recruitment.AddCandidateMode">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<!-- <result name="load">/jsp/recruitment/AddCandidateMode.jsp</result> -->
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="report" type="redirect-action">CandidateReport</result>
+			<result name="preport" type="redirect-action">PendingCandidateReport</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+				
+		<action name="AddCandidateModePopup" class="com.konnect.jpms.recruitment.AddCandidateModePopup">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/recruitment/AddCandidateModePopup.jsp</result>
+			<!-- <result name="load">/jsp/common/viewPage.jsp</result> -->
+			<result name="success" type="redirectAction">
+				<param name="actionName">Applications</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+			<result name="crsuccess" type="redirect-action">CandidateReport</result>
+			<result name="checkmail">/jsp/recruitment/CandiExistMailMsg.jsp</result>
+			
+			<!-- <result name="success">/jsp/common/viewPage.jsp</result> -->
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="CandidateReport" class="com.konnect.jpms.recruitment.CandidateReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="PendingCandidateReport" class="com.konnect.jpms.recruitment.CandidateReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="CandidateMyProfile" class="com.konnect.jpms.recruitment.CandidateMyProfile">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="returnhr" type="redirect-action">Applications</result>
+			<result name="takeInterview" type="redirect-action">TakeInterview</result>
+		</action>
+
+		<action name="CandidateDenyPopUp" class="com.konnect.jpms.recruitment.CandidateDeny">
+			<result name="load">/jsp/recruitment/CandidateDeny.jsp</result>
+			<result name="success">/jsp/recruitment/CandidateDeny.jsp</result>
+		</action>
+
+		<action name="candidateDenyrequest" class="com.konnect.jpms.recruitment.CandidateDeny">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="update" type="redirect-action">CandidateReport</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="CandidateUpdateADRRequest"
+			class="com.konnect.jpms.recruitment.CandidateUpdateADRRequest">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+
+
+		<action name="AddCriteriaPanel" class="com.konnect.jpms.recruitment.AddCriteriaPanel">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">Applications</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="dashboard" type="redirect-action">MyDashboard</result>
+			<result name="popup">/jsp/recruitment/AddCriteriaPanel.jsp</result>
+		</action>
+		
+		<action name="AddCriteriaPanelPopUp" class="com.konnect.jpms.recruitment.AddCriteriaPanel">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">JobList</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="dashboard" type="redirect-action">MyDashboard</result>
+			<result name="popup">/jsp/recruitment/AddCriteriaPanel.jsp</result>
+		</action>
+
+
+		<action name="GetCandidateEmployeeList" class="com.konnect.jpms.recruitment.GetCandidateEmployeeList">
+			<result name="load">/jsp/recruitment/GetCandidateEmployeeList.jsp</result>
+			<result name="success" type="redirect-action">OpenJobReport</result>
+		</action>
+
+
+		<!-- <action name="getGrade1" class="com.konnect.jpms.recruitment.GetCandidateGradeList"> 
+			<result name="success">/jsp/recruitment/getDesigOrGradeList.jsp</result> 
+			</action> -->
+
+		<!-- <action name="CandidateReport1" class="com.konnect.jpms.recruitment.CandidateReport1"> 
+			<result name="error">/jsp/login/error.jsp</result> <result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/common/viewPage.jsp</result> <result name="success">/jsp/common/viewPage.jsp</result> 
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> <result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+			</action> -->
+
+		<action name="Applications" class="com.konnect.jpms.recruitment.Applications">
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/recruitment/Applications.jsp</result>
+		</action>
+
+		<action name="Offers" class="com.konnect.jpms.recruitment.Offers">
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/recruitment/Offers.jsp</result>
+			<!-- <result name="load">/jsp/recruitment/Offers.jsp</result> -->
+		</action>
+		
+		<action name="OfferAcceptAndRenegotiate" class="com.konnect.jpms.recruitment.OfferAcceptAndRenegotiate">
+			<result name="login" type="redirect-action">Login</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">Offers</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+			<result name="message">/jsp/common/showMessagePage.jsp</result>
+			<result name="load">/jsp/recruitment/OfferAcceptAndRenegotiate.jsp</result>
+		</action>
+
+		<action name="Addinterviewpaneldate" class="com.konnect.jpms.recruitment.Addinterviewpaneldate">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/recruitment/AddAndGetInterviewScheduleDateTime.jsp</result>
+			<!-- <result name="load" type="redirect-action">
+				<param name="actionName">CandidateMyProfile</param>
+				<param name="CandID">${candidateId}</param>
+				<param name="recruitId">${recruitId}</param>
+			</result> -->
+		</action>
+
+		<action name="PopupPanelcomments" class="com.konnect.jpms.recruitment.PopupPanelcomments">
+			<result name="popup">/jsp/recruitment/PopupPanelcomments.jsp</result>
+		</action>
+
+		<action name="GetSelectedCandidateEmployeeList" class="com.konnect.jpms.recruitment.GetSelectedCandidateEmployeeList">
+			<result name="success">/jsp/recruitment/GetSelectedCandidateEmployeeList.jsp</result>
+		</action>
+
+		<action name="Induction" class="com.konnect.jpms.recruitment.Induction">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/recruitment/Induction.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="Onboard" class="com.konnect.jpms.recruitment.Onboarding">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AddEmployee</param>
+				<param name="operation">U</param>
+				<param name="mode">onboard</param>
+				<param name="step">1</param>
+				<param name="empId">${candEmpId}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<!-- <action name="ChartsApplication" class="com.konnect.jpms.recruitment.ChartsApplication"> 
+			<result name="error">/jsp/login/error.jsp</result> <result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/common/viewPage.jsp</result> <result name="success">/jsp/common/viewPage.jsp</result> 
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> <result name="popup">/jsp/recruitment/ApplicationPieChart.jsp</result> 
+			</action> -->
+
+		<action name="ResourcePlanner" class="com.konnect.jpms.recruitment.ResourcePlanner">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/recruitment/ResourcePlanner.jsp</result>
+			<result name="view">/jsp/recruitment/ResourcePlanner.jsp</result>
+			<result name="success">/jsp/recruitment/ResourcePlanner.jsp</result>
+		</action>
+
+		<action name="AddResourcePlanner" class="com.konnect.jpms.recruitment.AddResourcePlanner">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/recruitment/AddResourcePlanner.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">ResourcePlanner</param>
+				<param name="finansyr">${finansyr}</param>
+				<param name="orgid">${orgid}</param>
+				<param name="lvlid">${lvlid}</param>
+				<param name="currUserType">${currUserType}</param>
+				<param name="fromPage">${fromPage}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+
+		<action name="GetDesigfromLevel" class="com.konnect.jpms.recruitment.GetDesigfromLevel">
+			<result name="success">/jsp/recruitment/getDesigfromLevel.jsp</result>
+		</action>
+
+		<action name="GetGradefromDesig" class="com.konnect.jpms.recruitment.GetGradefromDesig">
+			<result name="success">/jsp/recruitment/GetGradefromDesig.jsp</result>
+		</action>
+
+		<action name="AddCustomDesignation" class="com.konnect.jpms.recruitment.AddCustomDesignation">
+			<result name="load">/jsp/recruitment/AddCustomDesignation.jsp</result>
+			<!-- <result name="success" type="redirect-action">RequirementApproval</result> -->
+			<result name="success">/jsp/recruitment/AddCustomDesignation.jsp</result>
+		</action>
+
+		<action name="CandidateInterviewSchedule" class="com.konnect.jpms.recruitment.CandidateInterviewSchedule">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">TakeInterview</result>
+			<result name="loadpopup">/jsp/recruitment/CandidateInterviewSchedule.jsp</result>
+			<result name="candprofile" type="redirect-action">
+				<param name="actionName">CandidateMyProfile</param>
+				<param name="recruitId">${recruitID}</param>
+				<param name="CandID">${candidateID}</param>
+			</result>
+		</action>
+
+		<action name="SearchCandidate" class="com.konnect.jpms.recruitment.SearchCandidate">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="GetPlannedAjax" class="com.konnect.jpms.recruitment.GetPlannedCount">
+			<result name="load">/jsp/recruitment/GetPlannedCount.jsp</result>
+		</action>
+
+
+		<action name="TakeInterview" class="com.konnect.jpms.recruitment.TakeInterview">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<!-- <action name="EmpFormW" class="com.konnect.jpms.employee.EmpFormW"> 
+			<result name="success">/jsp/common/viewPage.jsp</result> </action> -->
+
+
+
+		<action name="CandidateSalaryDetails" class="com.konnect.jpms.recruitment.CandidateSalaryDetails">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="tab">/jsp/recruitment/CandidateSalaryDetails.jsp</result>
+
+			<!-- <result name="insert" type="redirectAction"> <param name="actionName">AddEmployee</param> 
+				<param name="empId">${empId}</param> <param name="step">${step}</param> </result> 
+				<result name="update" type="redirectAction"> <param name="actionName">AddEmployee</param> 
+				<param name="empId">${empId}</param> <param name="mode">profile</param> <param 
+				name="step">${step}</param> </result> -->
+
+		</action>
+
+
+		<action name="SendOpenJobNotification" class="com.konnect.jpms.recruitment.SendOpenJobNotification">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">ReportJobProfilePopUp</param>
+				<param name="recruitId">${recruitId}</param>
+				<param name="view">jobreport</param>
+				<param name="fromPage">${formName}</param>
+			</result>
+			<result name="load" type="redirect-action">
+				 <param name="actionName">Applications</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+		</action>
+		
+		<action name="SendJobReportNotification" class="com.konnect.jpms.recruitment.SendOpenJobNotification">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">ReportJobProfilePopUp</param>
+				<param name="view">jobreport</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+		</action>
+
+		<action name="GetSkillsfromDesig" class="com.konnect.jpms.recruitment.GetSkillsfromDesig">
+			<result name="success">/jsp/recruitment/GetSkillsfromDesig.jsp</result>
+		</action>
+
+		<action name="GetLocationOrg" class="com.konnect.jpms.recruitment.GetLocationOrg">
+			<result name="success">/jsp/recruitment/GetLocationOrg.jsp</result>
+		</action>
+		
+		<action name="GetLevelByOrg" class="com.konnect.jpms.recruitment.GetLevelByOrg">
+			<result name="success">/jsp/recruitment/GetLevelByOrg.jsp</result>
+		</action>
+
+		<action name="GetServicesByOrg" class="com.konnect.jpms.recruitment.GetServicesByOrg">
+			<result name="success">/jsp/recruitment/GetServicesByOrg.jsp</result>
+		</action>
+		
+		<action name="GetSkillsByOrg" class="com.konnect.jpms.recruitment.GetSkillsByOrg">
+			<result name="success">/jsp/recruitment/GetSkillsByOrg.jsp</result>
+		</action>
+		
+		<action name="GetIdealCandidateDesig" class="com.konnect.jpms.recruitment.GetIdealCandidateDesig">
+			<result name="success">/jsp/recruitment/GetIdealCandidateDesig.jsp
+			</result>
+		</action>
+		
+		<action name="ViewCandidatePopUp" class="com.konnect.jpms.recruitment.ViewCandidatePopUp">
+			<result name="load">/jsp/recruitment/ViewCandidatePopUp.jsp</result>
+			<result name="success">/jsp/recruitment/ViewCandidatePopUp.jsp</result>
+		</action>
+
+		<action name="GetSelectedCandidateList" class="com.konnect.jpms.recruitment.GetSelectedCandidateList">
+			<result name="load">/jsp/recruitment/GetSelectedCandidateList.jsp</result>
+			<result name="success" type="redirect-action">Applications</result>
+		</action>
+
+		<action name="SendShortlistApplicationNotification" class="com.konnect.jpms.recruitment.SendShortlistApplicationNotification">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">Applications</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+		</action>
+		
+		<action name="CandidateMyProfilePopup" class="com.konnect.jpms.recruitment.CandidateMyProfilePopup">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/recruitment/CandidateMyProfilePopup.jsp</result>
+			<result name="success">/jsp/recruitment/CandidateMyProfilePopup.jsp</result>
+			<result name="returnhr" type="redirect-action">
+				<param name="actionName">Applications</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+			<result name="takeInterview" type="redirect-action">
+				<param name="actionName">Applications</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+			<result name="takeInterviewCal" type="redirect-action">Calendar</result>
+			
+			<!-- <result name="takeInterview" type="redirectAction"> <param name="actionName">TakeInterview</param> 
+			<param name="roundID">${roundID}</param> </result> -->
+			
+		</action>
+		
+		<action name="SalaryRenegotiatePopup" class="com.konnect.jpms.recruitment.SalaryRenegotiate">
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">Offers</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+			<result name="load">/jsp/recruitment/SalaryRenegotiate.jsp</result>
+		</action>
+		
+		<action name="AddAndGetPanelRound" class="com.konnect.jpms.recruitment.AddAndGetPanelRound">
+			<result name="load">/jsp/recruitment/AddAndGetPanelRound.jsp</result>
+			<result name="success" type="redirect-action">Applications</result>
+		</action>
+		 
+		<action name="DesignationDetails" class="com.konnect.jpms.recruitment.DesignationDetails">
+			<result name="load">/jsp/recruitment/DesignationDetails.jsp</result>
+		</action>
+		
+		<action name="SendMailToCandiForSpecifyDates" class="com.konnect.jpms.recruitment.SendMailToCandiForSpecifyDates">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">Applications</result>
+			<result name="mailsent">/jsp/ajax/Message.jsp</result>
+		</action>
+		
+		<action name="getCandidateApplicationsDetails" class="com.konnect.jpms.recruitment.CandidateApplicationsDetails">
+			<result name="load">/jsp/recruitment/CandidateApplicationsDetails.jsp</result>
+		</action>
+		<action name="sendCandidateOffer" class="com.konnect.jpms.recruitment.sendCandidateOffer">
+			<result name="load">/jsp/recruitment/sendCandidateOfferDetails.jsp</result>
+			<result name="returnhr" type="redirect-action">CandidateReport</result>
+			
+		</action>
+		
+		<action name="AddCandidateApplicationsDetails" class="com.konnect.jpms.recruitment.CandidateApplicationsDetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">CandidateReport</result>
+			<result name="ISUCCESS" type="redirect-action">
+				<param name="actionName">Applications</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+		</action>
+		
+		<action name="GetJobCodeDetails" class="com.konnect.jpms.recruitment.GetJobCodeDetails">
+			<result name="load">/jsp/recruitment/GetJobCodeDetails.jsp</result>
+		</action>
+		
+		 <action name="DesigValidation" class="com.konnect.jpms.recruitment.DesigValidation">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action> 
+		
+		<action name="ShowAllCandidate" class="com.konnect.jpms.recruitment.ShowAllCandidate">
+			<result name="load">/jsp/recruitment/ShowAllCandidate.jsp</result>
+		</action>
+		
+		<action name="OnboardingFromCandidate" class="com.konnect.jpms.recruitment.OnboardingOnline">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AddOnboardingFromCandidate.action</param>
+				<param name="operation">U</param>
+				<param name="mode">profile</param>
+				<param name="step">1</param>
+				<param name="empId">${candEmpId}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddOnboardingFromCandidate" class="com.konnect.jpms.recruitment.OnboardingFromCandidate">
+			<!-- <result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="logout" type="redirect-action">Logout</result> -->
+			<result name="EMPLOGIN" type="redirect-action">
+				<param name="actionName">Login.action</param>
+				<param name="username">${username}</param>
+				<param name="password">${password}</param>
+			</result>
+			<result name="load">/jsp/recruitment/OnboardingFromCandidate.jsp</result>
+			<result name="success">/jsp/recruitment/OnboardingFromCandidate.jsp</result>
+			<!-- <result name="load">/jsp/common/viewPage.jsp</result>  -->
+			<!-- <result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result> -->
+			<!-- <result name="deleted" type="redirect-action">OpenJobReport</result> -->
+			<result name="deleted" type="redirect-action">Applications</result>
+			<result name="finish" type="redirect-action">Applications</result>
+		</action>
+		
+		<action name="AddCandidateByCadi" class="com.konnect.jpms.recruitment.AddCandidateByCadi">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPageOuter.jsp</result> <!-- /jsp/recruitment/AddCandidateByCadi.jsp -->
+			<result name="success">/jsp/common/viewPageOuter.jsp</result>
+			<result name="finish">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPageOuter.jsp</result>
+		</action>
+	
+		<action name="GetSelectedEmployeeForHiring"	class="com.konnect.jpms.recruitment.GetSelectedEmployeeForHiring">
+			<result name="success">/jsp/recruitment/GetSelectedEmployeeForHiring.jsp</result>
+		</action>
+		
+		<action name="GetHiringEmployeeList" class="com.konnect.jpms.recruitment.GetHiringEmployeeList">
+			<result name="success">/jsp/recruitment/GetHiringEmployeeList.jsp</result>
+		</action>
+		
+		<action name="GetHiringFilters" class="com.konnect.jpms.recruitment.GetHiringFilters">
+			<result name="success">/jsp/recruitment/GetHiringFilters.jsp</result>
+		</action>
+		
+		<action name="GetSelectedEmployeeForHiring1" class="com.konnect.jpms.recruitment.GetSelectedEmployeeForHiring1">
+			<result name="success">/jsp/recruitment/GetSelectedEmployeeForHiring1.jsp</result>
+		</action>
+		
+		<action name="GetHiringEmployeeList1" class="com.konnect.jpms.recruitment.GetHiringEmployeeList1">
+			<result name="success">/jsp/recruitment/GetHiringEmployeeList1.jsp</result>
+		</action>
+		
+		<action name="GetHiringFilters1" class="com.konnect.jpms.recruitment.GetHiringFilters1">
+			<result name="success">/jsp/recruitment/GetHiringFilters1.jsp</result>
+		</action>
+		
+		<action name="SetInterviewRoundTitle" class="com.konnect.jpms.recruitment.SetInterviewRoundTitle">
+			<result name="load">/jsp/recruitment/SetInterviewRoundTitle.jsp</result>
+			<result name="success">/jsp/recruitment/SetInterviewRoundTitle.jsp</result>
+		</action>
+		
+		<action name="CloseJob" class="com.konnect.jpms.recruitment.CloseJob">
+			<result name="load">/jsp/recruitment/CloseJob.jsp</result>
+			<result name="ASUCCESS" type="redirect-action">RecruitmentDashboardData</result>
+			<result name="success" type="redirect-action">RecruitmentDashboardData</result>
+			<result name="view" type="redirect-action">
+				<param name="actionName">RecruitmentDashboard</param>
+				<param name="fromPage">${from}</param>
+			</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+		</action> 
+		
+		<action name="DesigRequiredAttribute" class="com.konnect.jpms.recruitment.DesigRequiredAttribute">
+			<result name="load">/jsp/recruitment/DesigRequiredAttribute.jsp</result>
+		</action>
+		
+		<action name="CandiOfferLetterPreview" class="com.konnect.jpms.recruitment.CandiOfferLetterPreview">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddSelectedCandidateInJob" class="com.konnect.jpms.recruitment.AddSelectedCandidateInJob">
+			<result name="load">/jsp/recruitment/AddSelectedCandidateInJob.jsp</result>
+			<result name="success" type="redirect-action">CandidateReport</result>
+		</action>
+		
+		<action name="AddCandidateInOneStep" class="com.konnect.jpms.recruitment.AddCandidateInOneStep">
+			<interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+            </interceptor-ref>
+			<result name="load">/jsp/recruitment/AddCandidateInOneStep.jsp</result>
+			<result name="crfinish" type="redirect-action">CandidateReport</result>
+			<result name="jofinish" type="redirect-action">JobOpportunities</result>
+			<result name="finish" type="redirect-action">
+				<param name="actionName">Applications</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+		</action>
+		
+		<action name="RequirementRequestWithoutWorkflow" class="com.konnect.jpms.recruitment.RequirementRequestWithoutWorkflow">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/recruitment/RequirementRequestWithoutWorkflow.jsp</result>  
+			<!-- <result name="success">/jsp/common/viewPage.jsp</result> -->
+			<result name="NRsuccess" type="redirect-action">
+				<param name="actionName">RequirementApproval</param>
+				<param name="f_org">${orgID}</param>
+				<param name="location1">${wlocID}</param>
+				<param name="designation">${desigID}</param>
+				<param name="checkStatus">${checkStatus}</param>
+				<param name="fdate">${fdate}</param>
+				<param name="tdate">${tdate}</param>
+			</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">RecruitmentDashboard</param>
+			   <param name="fromPage">${frmPage}</param>  
+				<!-- <param name="f_org">${orgID}</param>
+				<param name="location1">${wlocID}</param>
+				<param name="designation">${desigID}</param>
+				<param name="checkStatus">${checkStatus}</param>
+				<param name="fdate">${fdate}</param>
+				<param name="tdate">${tdate}</param> -->
+			</result>
+			
+			<result name="hrsuccess" type="redirect-action">MyDashboard</result>
+		</action>
+		
+		<action name="JobOpportunities" class="com.konnect.jpms.recruitment.JobOpportunity">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPageOuter.jsp</result>
+			<result name="success">/jsp/common/viewPageOuter.jsp</result>
+			<result name="success1">/jsp/recruitment/JobOpportunity.jsp</result>
+			<result name="success2">/jsp/recruitment/JobOpportunityNew.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ViewAssessmentsForRound" class="com.konnect.jpms.recruitment.ViewAssessmentsForRound">
+			<result name="success">/jsp/recruitment/ViewAssessmentsForRound.jsp</result>
+		</action>
+
+		<action name="CandidateTakeAssessment" class="com.konnect.jpms.recruitment.CandidateTakeAssessment">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPageOuter.jsp</result>
+			<result name="success">/jsp/common/viewPageOuter.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="finish" type="redirect-action">Login</result>
+			<result name="attemptAlert">/jsp/recruitment/AttemptOutOfLimit.jsp</result>
+		</action>
+		
+		<action name="CandidateAssessmentScoreSummary" class="com.konnect.jpms.recruitment.CandidateAssessmentScoreSummary">
+			<result name="success">/jsp/recruitment/CandidateAssessmentScoreSummary.jsp</result>
+		</action>
+		
+		<action name="ApplicantTracker" class="com.konnect.jpms.recruitment.ApplicantTracker">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/recruitment/ApplicantTracker.jsp</result>
+		</action>
+		
+		  <action name="CandidateXMLReport" class="com.konnect.jpms.recruitment.CandidateXMLReport">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action> 
+		
+		 <action name="CandidateCSVReport" class="com.konnect.jpms.recruitment.CandidateCSVReport">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action> 
+		 
+		 <action name="GetMinMaxCTCOfDesig" class="com.konnect.jpms.recruitment.GetMinMaxCTCOfDesig">
+			<result name="success">/jsp/recruitment/GetMinMaxCTCOfDesig.jsp</result>
+		</action>
+		
+		<action name="GetRecruitmentPolicyDetails" class="com.konnect.jpms.recruitment.GetRecruitmentPolicyDetails">
+			<result name="success">/jsp/recruitment/GetRecruitmentPolicyDetails.jsp</result>
+		</action> 
+		
+		<action name="ViewCandidateResume" class="com.konnect.jpms.recruitment.ViewCandidateResume">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<!-- <result name="load">/jsp/task/ProjectDocumentFact.jsp</result> -->
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="RequirementDashboard" class="com.konnect.jpms.recruitment.RequirementDashboard">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="RequirementApprovalData" class="com.konnect.jpms.recruitment.RequirementApprovalData">
+			<result name="load">/jsp/recruitment/RequirementApprovalData.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="RecruitmentDashboard" class="com.konnect.jpms.recruitment.RecruitmentDashboard"> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="view">/jsp/recruitment/RecruitmentDashboard.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="RecruitmentDashboardData" class="com.konnect.jpms.recruitment.RecruitmentDashboardData"> 
+			<result name="load">/jsp/recruitment/RecruitmentDashboardData.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="JobNamesList" class="com.konnect.jpms.recruitment.JobNamesList"> 
+			<result name="load">/jsp/recruitment/JobNamesList.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="JobProfileData" class="com.konnect.jpms.recruitment.JobProfileData"> 
+			<result name="load">/jsp/recruitment/JobProfileData.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="TeamApprovals" class="com.konnect.jpms.recruitment.TeamApprovals"> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 
+		 <action name="Workforce" class="com.konnect.jpms.recruitment.Workforce"> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="RecruitmentsDashboard" class="com.konnect.jpms.recruitment.RecruitmentsDashboard"> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="view">/jsp/recruitment/RecruitmentsDashboard.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		<action name="AddCandidateBackgroundDetails" class="com.konnect.jpms.recruitment.AddCandidateBackgroundDetails">
+			<result name="load">/jsp/recruitment/AddCandidateBackgroundDetails.jsp</result>
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+
+		<action name="Background_verficationReport" class="com.konnect.jpms.recruitment.Background_verficationReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="BackgroundDocumentsPreview" class="com.konnect.jpms.recruitment.BackgroundDocumentsPreview">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ViewCandidateResume" class="com.konnect.jpms.recruitment.ViewCandidateResume">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/recruitment/ViewCandidateResume.jsp</result>
+			<result name="success">/jsp/recruitment/ViewCandidateResume.jsp</result>
+		</action>
+		
+		<action name="AlignResumeShortlistWorkflowMember" class="com.konnect.jpms.recruitment.AlignResumeShortlistWorkflowMember">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">Applications</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="dashboard" type="redirect-action">MyDashboard</result>
+			<result name="popup">/jsp/recruitment/AlignResumeShortlistWorkflowMember.jsp</result>
+		</action>
+		
+		<action name="WorkforcePlan" class="com.konnect.jpms.recruitment.WorkforcePlan">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="view">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProjectResourceRequests" class="com.konnect.jpms.recruitment.ProjectResourceRequests">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/recruitment/ProjectResourceRequests.jsp</result>
+			<result name="view">/jsp/recruitment/ProjectResourceRequests.jsp</result>
+			<result name="success">/jsp/recruitment/ProjectResourceRequests.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="ImportJobProfiles" class="com.konnect.jpms.recruitment.ImportJobProfiles">
+			<result name="load">/jsp/recruitment/ImportJobProfiles.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">RecruitmentDashboard</param>
+				<param name="f_org">${orgId}</param>
+			</result>
+		</action>
+		
+		<action name="ImportCandidate" class="com.konnect.jpms.recruitment.ImportCandidate">
+			<result name="load">/jsp/recruitment/ImportCandidate.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">CandidateReport</param>
+				<param name="f_org">${orgId}</param>
+			</result>
+		</action>
+		
+		<action name="AddCandidateInOneStepNew" class="com.konnect.jpms.recruitment.AddCandidateInOneStepNew">
+			<interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+            </interceptor-ref>
+			<result name="load">/jsp/recruitment/AddCandidateInOneStepNew.jsp</result>
+			<result name="crfinish" type="redirect-action">CandidateReport</result>
+			<result name="jofinish" type="redirect-action">JobOpportunities</result>
+			<result name="finish" type="redirect-action">
+				<param name="actionName">Applications</param>
+				<param name="recruitId">${recruitId}</param>
+			</result>
+		</action>
+		
+		<action name="AddCandidateByCadiNew" class="com.konnect.jpms.recruitment.AddCandidateByCadiNew">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPageOuter.jsp</result> <!-- /jsp/recruitment/AddCandidateByCadi.jsp -->
+			<result name="success">/jsp/recruitment/AddCandidateByCadiNew.jsp</result>
+			<result name="finish">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPageOuter.jsp</result>
+		</action>
+		
+	</package>
+</struts>

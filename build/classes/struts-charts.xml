@@ -1,0 +1,28 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    
+<package name="struts-charts" extends="struts-default">
+
+		<action name="AttendenceChart" class="com.konnect.jpms.charts.AttendenceChart">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/chart/AttendenceChart.jsp</result>
+		</action>
+		
+		<action name="LeaveChart" class="com.konnect.jpms.charts.LeaveChart">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/chart/LeaveChart.jsp</result> 
+		</action>
+		
+		<action name="CostCenterChart" class="com.konnect.jpms.charts.CostCenterChart">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/chart/CostCenterChart.jsp</result>
+		</action>
+		
+		
+	</package>
+</struts>   

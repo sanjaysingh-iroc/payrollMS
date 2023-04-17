@@ -1,0 +1,78 @@
+.ui-multiselect { padding:2px 0 2px 4px; text-align:left }
+.ui-multiselect span.ui-icon { float:right }
+.ui-multiselect-single .ui-multiselect-checkboxes input { position:absolute !important; top: auto !important; left:-9999px; }
+.ui-multiselect-single .ui-multiselect-checkboxes label { padding:5px !important }
+
+.ui-multiselect-header { margin-bottom:3px; padding:3px 0 3px 4px }
+.ui-multiselect-header ul { font-size:0.9em }
+.ui-multiselect-header ul li { float:left; padding:0 10px 0 0 }
+.ui-multiselect-header a { text-decoration:none }
+.ui-multiselect-header a:hover { text-decoration:underline }
+.ui-multiselect-header span.ui-icon { float:left }
+.ui-multiselect-header li.ui-multiselect-close { float:right; text-align:right; padding-right:0 }  
+
+.ui-multiselect-menu { display:none; padding:3px; position:absolute; z-index:10000; text-align: left; font-size: 12px; }
+.ui-multiselect-checkboxes { position:relative /* fixes bug in IE6/7 */; overflow-y:auto }
+.ui-multiselect-checkboxes label { cursor:default; display:block; border:1px solid transparent; padding:3px 1px }
+.ui-multiselect-checkboxes label input { position:relative; top:1px }
+.ui-multiselect-checkboxes li { clear:both; font-size:0.9em; padding-right:3px }
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label { text-align:center; font-weight:bold; border-bottom:1px solid }
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label a { display:block; padding:3px; margin:1px 0; text-decoration:none }
+
+/* remove label borders in IE6 because IE6 does not support transparency */
+* html .ui-multiselect-checkboxes label { border:none }
+.ui-multiselect-hasfilter ul { position:relative; top:2px }
+.ui-multiselect-filter { float:left; margin-right:10px; font-size:11px }
+.ui-multiselect-filter input { width:100px; color:#000000 !important; font-size:10px; margin-left:5px; height:15px; padding:2px; border:1px solid #292929; -webkit-appearance:textfield; -webkit-box-sizing:content-box; }
+
+/* Added custom CSS*/
+/* .ui-state-default{font-size:13px !important;background-color: rgb(255, 255, 255) !important; !important;color: rgb(53, 53, 53) !important;font-weight: 100 !important;border-radius: 0px !important;border-color: #d2d6de !important;padding: 6px 12px;color: #555 !important;} */
+.ui-state-default {font-size: 13px !important;background-color: rgb(255, 255, 255) !important;color: rgb(53, 53, 53) !important;font-weight: 100 !important;border-radius: 0px !important;border-color: #d2d6de !important;padding: 6px 12px;color: #555 !important;height: auto !important;padding: 4px 3px !important;min-height: 26px !important;}
+.ui-multiselect-filter>input{color:#000;}
+.ui-multiselect:nth-child(2){
+padding-left: 10px !important;
+}
+
+.ui-multiselect-filter input {
+width: 100%;
+color: #000000 !important;
+font-size: 11px;
+margin-left: 2px;
+height: 16px;
+margin-top: 5px;
+padding: 3px;
+border: 1px solid #CECECE;
+-webkit-appearance: textfield;
+-webkit-box-sizing: content-box;
+}
+
+.ui-corner-all{
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 0px;
+border-top-right-radius: 0px;
+border-top-left-radius: 0px;
+}
+
+.ui-multiselect-checkboxes li label{
+padding-left: 5px;
+}
+
+.ui-helper-reset{
+clear: both;
+}
+
+.ui-multiselect-close{
+display: none;
+}
+
+.ui-multiselect-menu{
+width: 180px !important;
+}
+
+.ui-multiselect{
+position: relative;
+}
+
+.ui-multiselect-checkboxes li label span{
+font-weight: normal;
+}

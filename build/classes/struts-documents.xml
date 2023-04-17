@@ -1,0 +1,154 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="struts-documentss" extends="struts-default">
+	
+		<action name="DocumentList" class="com.konnect.jpms.document.DocumentList">
+			<result name="input">/jsp/common/viewPage.jsp</result>			
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/document/DocumentList.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 
+		 
+		<action name="AddDocument" class="com.konnect.jpms.document.AddDocument">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result> 
+			<result name="load">/jsp/document/AddDocument.jsp</result>
+			<result name="view" type="redirect-action">DocumentList</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="view_tab" type="redirect-action">DocumentList</result>
+			<result name="update">/jsp/document/AddDocument.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="SendMail" class="com.konnect.jpms.document.SendMail">
+			<result name="input">/jsp/common/viewPage.jsp</result>			
+			<result name="load">/jsp/document/SendMail.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<!-- <result name="mailsent_from_profile" type="redirect-action">MyProfile</result> -->
+			
+			<result name="mailsent_from_profile" type="redirect-action">
+				 <param name="actionName">MyProfile</param>
+				 <param name="empId">${emp_id}</param>    
+			</result>
+			
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="SendDocument" class="com.konnect.jpms.document.SendDocument">
+			<result name="input">/jsp/common/viewPage.jsp</result>			
+			<result name="load">/jsp/document/SendDocument.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">IssueDocument</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		
+		<action name="DownloadDocument" class="com.konnect.jpms.document.DownloadDocument">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="DownloadBankStatement" class="com.konnect.jpms.document.DownloadBankStatement">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>   
+
+		<action name="ViewBankStatements" class="com.konnect.jpms.payroll.ViewBankStatements">
+			<result name="success">/jsp/payroll/ViewBankStatements.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="DocumentPreview" class="com.konnect.jpms.document.DocumentPreview">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DocumentReport" class="com.konnect.jpms.document.DocumentReport">
+			<result name="input">/jsp/common/viewPage.jsp</result>			
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="IssueDocument" class="com.konnect.jpms.document.IssueDocument">
+			<result name="input">/jsp/common/viewPage.jsp</result>			
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddCollateral" class="com.konnect.jpms.document.AddCollateral">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result> 
+			<result name="load">/jsp/document/AddCollateral.jsp</result>
+			<!-- <result name="success">/jsp/document/AddCollateral.jsp</result> -->
+			<result name="view" type="redirect-action">DocumentList</result>
+			 <result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result> 
+			<result name="view_tab" type="redirect-action">DocumentList</result>
+			<result name="update">/jsp/document/AddCollateral.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EditCollateral" class="com.konnect.jpms.document.EditCollateral">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result> 
+			<result name="load">/jsp/document/EditCollateral.jsp</result>
+			<result name="view" type="redirect-action">DocumentList</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="view_tab" type="redirect-action">DocumentList</result>
+			<result name="update">/jsp/document/EditCollateral.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddSignature" class="com.konnect.jpms.document.AddSignature">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result> 
+			<result name="load">/jsp/document/AddSignature.jsp</result>
+			<!-- <result name="success">/jsp/document/AddCollateral.jsp</result> -->
+			<result name="view" type="redirect-action">DocumentList</result>
+			 <result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="view_tab" type="redirect-action">DocumentList</result>
+			<result name="update">/jsp/document/AddSignature.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+	</package>
+</struts>   

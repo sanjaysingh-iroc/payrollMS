@@ -1,0 +1,34 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+
+	<package name="struts-quicklinks" extends="struts-default">
+
+		<action name="AddProjectActivity1QL" class="com.konnect.jpms.task.AddProjectActivity1">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+
+		<action name="ReimbursementsQL" class="com.konnect.jpms.requsitions.Reimbursements">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EmployeeLeaveEntryReportQL" class="com.konnect.jpms.reports.EmployeeLeaveEntryReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+	</package>
+</struts>   
+ 

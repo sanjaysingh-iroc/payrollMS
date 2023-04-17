@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+	<listener>
+		<description>
+  	Used to cleanup when a session is destroyed</description>
+		<display-name>ZK Session cleaner</display-name>
+		<listener-class>org.zkoss.zk.ui.http.HttpSessionListener</listener-class>
+	</listener>
+	<servlet>
+		<description>
+  	The ZK loader for ZUML pages</description>
+		<servlet-name>zkLoader</servlet-name>
+		<servlet-class>org.zkoss.zk.ui.http.DHtmlLayoutServlet</servlet-class>
+		<init-param>
+			<param-name>update-uri</param-name>
+			<param-value>/zkau</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>jsp</servlet-name>
+		<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+		<init-param>
+			<param-name>fork</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>xpoweredBy</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>mappedfile</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>trimSpaces</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	 
+	<servlet>
+		<description>
+  	The asynchronous update engine for ZK</description>
+		<servlet-name>auEngine</servlet-name>
+		<servlet-class>org.zkoss.zk.au.http.DHtmlUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>zkLoader</servlet-name>
+		<url-pattern>*.zul</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>zkLoader</servlet-name>
+		<url-pattern>*.zhtml</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>auEngine</servlet-name>
+		<url-pattern>/zkau/*</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>CompressServlet</servlet-name>
+		<servlet-class>com.granule.CompressServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CompressServlet</servlet-name>
+		<url-pattern>/combined.js</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>CompressServlet</servlet-name>
+		<url-pattern>/combined.css</url-pattern>
+	</servlet-mapping>
+
+
+	<error-page>
+		<error-code>400</error-code>
+		<location>/jsp/errorPages/400.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>401</error-code>
+		<location>/jsp/errorPages/401.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>403</error-code>
+		<location>/jsp/errorPages/403.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/jsp/errorPages/404.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>408</error-code>
+		<location>/jsp/errorPages/408.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/jsp/errorPages/500.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>502</error-code>
+		<location>/jsp/errorPages/502.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>503</error-code>
+		<location>/jsp/errorPages/503.jsp</location>
+	</error-page>
+
+
+	<filter>
+		<filter-name>ResponseOverrideFilter</filter-name>
+		<filter-class>org.displaytag.filter.ResponseOverrideFilter</filter-class>
+	</filter>
+
+
+	<filter-mapping>
+		<filter-name>ResponseOverrideFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+	</filter>
+
+	<!-- <filter> <filter-name>CheckDomain</filter-name> <filter-class>com.konnect.jpms.util.CheckDomain</filter-class> 
+		</filter> <filter-mapping> <filter-name>CheckDomain</filter-name> <url-pattern>*.action</url-pattern> 
+		</filter-mapping> -->
+
+	<filter>
+		<filter-name>CheckLogin</filter-name>
+		<filter-class>com.konnect.jpms.util.CheckLogin</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>CheckLogin</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+
+	<!-- <filter>
+		<filter-name>ValidateSoftware</filter-name>
+		<filter-class>com.konnect.jpms.util.ValidateSoftware</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>ValidateSoftware</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping> -->
+
+
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> 
+	
+	
+
+	<session-config>
+		<session-timeout>300</session-timeout> 
+	</session-config> 
+	<welcome-file-list>
+		<welcome-file>jsp/common/index.html</welcome-file>
+	</welcome-file-list>
+
+
+	<jsp-config>
+
+		<taglib>
+			<taglib-uri>http://displaytag.sf.net/</taglib-uri>
+			<taglib-location>/WEB-INF/displaytag.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+	<!-- <multipart-config> <max-file-size>5120000</max-file-size> <max-request-size>5120000</max-request-size> 
+		</multipart-config> -->
+
+	<!-- in cloud use start -->
+		<!-- <security-constraint>
+			<web-resource-collection>
+				<web-resource-name>Automatic SSL Forwarding</web-resource-name>
+				<url-pattern>/secure/*</url-pattern>
+			</web-resource-collection>
+			<user-data-constraint>
+				<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+			</user-data-constraint>
+		</security-constraint>
+	
+		<login-config>
+			<auth-method>CLIENT-CERT</auth-method>
+		</login-config> -->
+	<!-- in cloud use end -->
+
+
+	<!-- <security-constraint> <web-resource-collection> <web-resource-name>no_access</web-resource-name> 
+		<url-pattern>*.jsp</url-pattern> </web-resource-collection> <auth-constraint/> 
+		</security-constraint> -->
+
+
+	<!-- <security-constraint> <web-resource-collection> <web-resource-name>default</web-resource-name> 
+		<url-pattern>/userImages/*</url-pattern> </web-resource-collection> <web-resource-collection> 
+		<web-resource-name>securedapp</web-resource-name> <url-pattern>/*</url-pattern> 
+		</web-resource-collection> <user-data-constraint> <transport-guarantee>CONFIDENTIAL</transport-guarantee> 
+		</user-data-constraint> </security-constraint> -->
+
+<!-- imp in cloud use start -->
+<!-- <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Secure Content</web-resource-name>
+            <url-pattern>/restricted/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>AuthorizedUser</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    ...
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>The Restricted Zone</realm-name>
+    </login-config>
+    ...
+    <security-role>
+        <description>The role required to access restricted content </description>
+        <role-name>AuthorizedUser</role-name>
+    </security-role> -->
+<!--imp in cloud use end -->
+</web-app> 

@@ -1,0 +1,1874 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.multipart.maxSize" value="104857600" />
+	<package name="struts-master" extends="struts-default">
+
+		<action name="AddAllowance" class="com.konnect.jpms.policies.AddAllowance">
+			<result name="input">/jsp/common/viewPage.jsp</result> 
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="previous" type="redirect-action">PayrollPolicy1</result>
+			<result name="view" type="redirect-action">AllowanceReport</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+		</action>
+		
+		<action name="AddHRA" class="com.konnect.jpms.policies.AddHRA">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="HRAReport" class="com.konnect.jpms.reports.master.HRAReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/HRAReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+		<action name="AddCountry" class="com.konnect.jpms.location.AddCountry">
+
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">CountryReport</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="CountryReport" class="com.konnect.jpms.reports.master.CountryReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="CountryReportTab" class="com.konnect.jpms.reports.master.CountryReport">
+			<result name="error">/jsp/reports/master/CountryReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/CountryReport.jsp</result>
+			<result name="success">/jsp/reports/master/CountryReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>
+		
+		<action name="AddDeduction" class="com.konnect.jpms.policies.AddDeduction">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">DeductionReport</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>	
+		</action>
+		
+		<action name="AddDeductionIndia" class="com.konnect.jpms.policies.AddDeductionIndia">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/policies/AddDeductionIndia.jsp</result>
+			<result name="success" type="redirect-action">
+			    <param name="actionName">DeductionReportIndia</param>
+				<param name="financialYear">${financialYear}</param>
+			</result>
+			<!-- <result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strCFYear">${financialYear}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result> -->
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>			
+		</action>
+		
+		<action name="AddDeductionTax" class="com.konnect.jpms.policies.AddDeductionTax">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/policies/AddDeductionTax.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">DeductionReportTax</param><!-- MyDashboard -->
+				 <param name="financialYear">${financialYear}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>			
+		</action>
+		
+		<action name="DeductionReport" class="com.konnect.jpms.reports.master.DeductionReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DeductionReportIndia" class="com.konnect.jpms.reports.master.DeductionReportIndia">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/DeductionReportIndia.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DeductionReportTax" class="com.konnect.jpms.reports.master.DeductionReportTax">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/DeductionReportTax.jsp</result>
+			<result name="male">/jsp/reports/master/DeductionReportTaxM.jsp</result>
+			<result name="female">/jsp/reports/master/DeductionReportTaxF.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddDepartment" class="com.konnect.jpms.employee.AddDepartment">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/employee/AddDepartment.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="view" type="redirect-action">DepartmentReport</result>
+			<result name="view_tab" type="redirect-action">DepartmentReport</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DepartmentReport" class="com.konnect.jpms.reports.master.DepartmentReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/DepartmentReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DepartmentReportTab" class="com.konnect.jpms.reports.master.DepartmentReport">
+			<result name="error">/jsp/reports/master/DepartmentReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/DepartmentReport.jsp</result>
+			<result name="success">/jsp/reports/master/DepartmentReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>
+		
+		<action name="AddService" class="com.konnect.jpms.employee.AddService">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/employee/AddService.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="view" type="redirect-action">ServiceReport</result>
+			<result name="view_tab" type="redirect-action">ServiceReport</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ServiceReport" class="com.konnect.jpms.reports.master.ServiceReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/ServiceReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ServiceReportTab" class="com.konnect.jpms.reports.master.ServiceReport">
+			<result name="error">/jsp/reports/master/ServiceReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/ServiceReport.jsp</result>
+			<result name="success">/jsp/reports/master/ServiceReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>
+		
+		
+		<action name="AddState" class="com.konnect.jpms.location.AddState">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">StateReport</result>
+			<result name="view_tab" type="redirect-action">StateReportTab</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="StateReport" class="com.konnect.jpms.reports.master.StateReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="StateReportTab" class="com.konnect.jpms.reports.master.StateReport">
+			<result name="error">/jsp/reports/master/StateReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/StateReport.jsp</result>
+			<result name="success">/jsp/reports/master/StateReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>
+		
+		<action name="AddUserType" class="com.konnect.jpms.employee.AddUserType">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">UserTypeReport</result>
+			<result name="update" type="redirect-action">UserTypeReport</result>
+			<result name="view_tab" type="redirect-action">UserTypeReportTab</result>
+			<result name="update_tab" type="redirect-action">UserTypeReportTab</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="UserTypeReport" class="com.konnect.jpms.reports.master.UserTypeReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		 <action name="UserTypeReportTab" class="com.konnect.jpms.reports.master.UserTypeReport">
+			<result name="error">/jsp/reports/master/UserTypeReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/UserTypeReport.jsp</result>
+			<result name="success">/jsp/reports/master/UserTypeReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	 	</action>
+	
+		 
+		<action name="AddWLocation" class="com.konnect.jpms.location.AddWLocation">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/location/AddWorkLocation.jsp</result>
+		
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>  
+			</result>
+			<result name="view" type="redirect-action">WLocationReport</result>
+			<result name="view_tab" type="redirect-action">WLocationReportTab</result>
+			<result name="update">/jsp/location/AddWorkLocation.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="WLocationReport" class="com.konnect.jpms.reports.master.WLocationReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/WLocationReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>		
+		
+		<action name="AddBranch" class="com.konnect.jpms.master.AddBranch">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddBranch.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>  
+			</result>
+			<result name="view" type="redirect-action">BankReport1</result>
+			<result name="view_tab" type="redirect-action">BankReport1</result>
+			<result name="update">/jsp/master/AddBranch.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddBank1" class="com.konnect.jpms.master.AddBank1">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddBank1.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>  
+			</result>
+			<result name="view" type="redirect-action">BankReport1</result>
+			<result name="view_tab" type="redirect-action">BankReport1</result>
+			<result name="update">/jsp/master/AddBank1.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="BankReport1" class="com.konnect.jpms.reports.master.BankReport1">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/BankBranchReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+				
+		<action name="WLocationReportTab" class="com.konnect.jpms.reports.master.WLocationReport">
+			<result name="error">/jsp/reports/master/WLocationReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/WLocationReport.jsp</result>
+			<result name="success">/jsp/reports/master/WLocationReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>			
+				
+		<action name="AddDesig" class="com.konnect.jpms.master.AddDesig">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddDesig.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${orgId}</param>  
+			</result>
+			<result name="AESUCCESS" type="redirect-action">
+				 <param name="actionName">AddEmployee.action</param>
+				<param name="operation">U</param>
+				<param name="mode">profile</param>
+				<param name="step">8</param>
+				<param name="empId">${empId}</param>  
+			</result>
+			<result name="view" type="redirect-action">DesigReport</result>
+			<result name="update">/jsp/master/AddDesig.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddUser" class="com.konnect.jpms.employee.AddUser">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">
+				<param name="actionName">People</param>
+				<param name="callFrom">USERS</param>
+			</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="UserReport" class="com.konnect.jpms.reports.master.UserReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/UserReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DesigReport" class="com.konnect.jpms.reports.master.DesigReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DesigReportTab" class="com.konnect.jpms.reports.master.DesigReport">
+			<result name="error">/jsp/reports/master/DesigReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/DesigReport.jsp</result>
+			<result name="success">/jsp/reports/master/DesigReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>
+		
+		<action name="AddCategory" class="com.konnect.jpms.master.AddCategory">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">CategoryReport</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="CategoryReport" class="com.konnect.jpms.reports.master.CategoryReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddLevel" class="com.konnect.jpms.master.AddLevel">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddLevel.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>  
+			</result>
+			<result name="success_redirect" type="redirect-action">
+				 <param name="actionName">LeaveTypeReport</param>
+				 <param name="type">level</param>  
+			</result>
+			<result name="view" type="redirect-action">LevelReport</result>
+			<result name="view_tab" type="redirect-action">LevelReportTab</result>
+			<result name="update">/jsp/master/AddLevel.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="LevelReport" class="com.konnect.jpms.reports.master.LevelReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/LevelReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="LevelReportTab" class="com.konnect.jpms.reports.master.LevelReport">
+			<result name="error">/jsp/reports/LevelReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/LevelReport.jsp</result>
+			<result name="success">/jsp/reports/LevelReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>
+		
+		<action name="AddGrade" class="com.konnect.jpms.master.AddGrade">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddGrade.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${orgId}</param>
+			</result>
+			<result name="update">/jsp/master/AddGrade.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GradeReport" class="com.konnect.jpms.reports.master.GradeReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GradeReportTab" class="com.konnect.jpms.reports.master.GradeReport">
+			<result name="error">/jsp/reports/master/GradeReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/GradeReport.jsp</result>
+			<result name="success">/jsp/reports/master/GradeReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>
+		
+		<action name="AddWlocationType" class="com.konnect.jpms.master.AddWlocationType">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddWlocationType.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param> 
+			</result>
+			<result name="update">/jsp/master/AddWlocationType.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddOrganisation" class="com.konnect.jpms.master.AddOrganisation">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddOrganisation.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="update">/jsp/master/AddOrganisation.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+		<action name="WlocationTypeReport" class="com.konnect.jpms.reports.master.WlocationTypeReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="WlocationTypeReportTab" class="com.konnect.jpms.reports.master.WlocationTypeReport">
+			<result name="error">/jsp/reports/master/WlocationTypeReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/WlocationTypeReport.jsp</result>
+			<result name="success">/jsp/reports/master/WlocationTypeReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>
+		
+		<action name="AddPerk" class="com.konnect.jpms.master.AddPerk">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddPerk.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${orgId}</param>
+				 <param name="strCFYear">${financialYear}</param>
+			</result>
+			<result name="view" type="redirect-action">PerkPolicy</result>
+			<result name="view_tab" type="redirect-action">PerkReportTab</result>
+			<result name="update">/jsp/master/AddPerk.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="PerkPolicy" class="com.konnect.jpms.reports.master.PerkReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/PerkReport.jsp</result>
+			<result name="success">/jsp/reports/master/PerkReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddIncrement" class="com.konnect.jpms.policies.AddIncrement">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/policies/AddIncrement.jsp</result>
+			<!-- <result name="success" type="redirect-action">IncrementReport</result> -->
+			<result name="success" type="redirect-action">
+				 <param name="actionName">IncrementReport</param>
+				 <param name="strOrg">${orgId}</param>  
+			</result>
+			<result name="view" type="redirect-action">IncrementReport</result>
+			<result name="view_tab" type="redirect-action">IncrementReportTab</result>
+			<result name="update">/jsp/policies/AddIncrement.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="IncrementReport" class="com.konnect.jpms.reports.master.IncrementReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddIncrementDA" class="com.konnect.jpms.policies.AddIncrementDA">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/AddIncrementDA.jsp</result>
+			<result name="load">/jsp/policies/AddIncrementDA.jsp</result>
+			<result name="success" type="redirect-action">IncrementReportDA</result>
+			<result name="view" type="redirect-action">IncrementReportDA</result>
+			<result name="view_tab" type="redirect-action">IncrementReportTabDA</result>
+			<result name="update">/jsp/policies/AddIncrementDA.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		
+		<action name="IncrementReportDA" class="com.konnect.jpms.reports.master.IncrementReportDA">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddExemption" class="com.konnect.jpms.master.AddExemption">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddExemption.jsp</result>
+			<result name="view" type="redirect-action">
+				<param name="actionName">ExemptionReport</param>
+				<param name="financialYear">${financialYear}</param>
+			</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strCFYear">${financialYear}</param>
+			</result> 
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ExemptionReport" class="com.konnect.jpms.reports.master.ExemptionReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/ExemptionReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 
+		
+		
+		<!-- <action name="AddOverTime" class="com.konnect.jpms.master.AddOverTime">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> -->
+		
+		<action name="AddBank" class="com.konnect.jpms.master.AddBank">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddBank.jsp</result>
+			<result name="success" type="redirect-action">BankReport</result>
+			<result name="view" type="redirect-action">BankReport</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="BankReport" class="com.konnect.jpms.reports.master.BankReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddSection" class="com.konnect.jpms.master.AddSection">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddSection.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">SectionReport</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="financialYear">${financialYear}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="SectionReport" class="com.konnect.jpms.reports.master.SectionReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/SectionReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddLTA" class="com.konnect.jpms.master.AddLTA">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="LTAReport" class="com.konnect.jpms.reports.master.LTAReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddInvestment" class="com.konnect.jpms.master.AddInvestment">
+			<interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+            </interceptor-ref>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyPay</param>
+	             <param name="callFrom">NotiITDeclarations</param>
+				 <param name="strEmployeeId">${strEmployeeId}</param>
+				 <param name="f_strFinancialYear">${f_strFinancialYear}</param>  
+			</result>
+			<result name="successother" type="redirect-action">
+				 <param name="actionName">Compliance</param>
+				 <param name="callFrom">NotiITDeclarations</param>
+				 <param name="strEmployeeId">${strEmployeeId}</param>
+				 <param name="f_strFinancialYear">${f_strFinancialYear}</param>  
+			</result>
+			<result name="success_tab" type="redirect-action">InvestmentReportTab</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">
+				 <param name="actionName">InvestmentForm</param>
+				 <param name="strEmployeeId">${strEmployeeId}</param>
+				 <param name="f_strFinancialYear">${f_strFinancialYear}</param>  
+			</result>
+		</action>
+		
+		<action name="InvestmentForm" class="com.konnect.jpms.reports.master.InvestmentForm">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/InvestmentForm.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="delete" type="redirect-action">
+				 <param name="actionName">InvestmentForm</param>
+				 <param name="strEmployeeId">${strEmployeeId}</param>
+				 <param name="f_strFinancialYear">${f_strFinancialYear}</param>  
+			</result>
+		</action>
+		
+		
+		<action name="InvestmentReport" class="com.konnect.jpms.reports.master.InvestmentReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/InvestmentReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="InvestmentDetails" class="com.konnect.jpms.reports.master.InvestmentDetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/InvestmentDetails.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+		<action name="InvestmentReportTab" class="com.konnect.jpms.reports.master.InvestmentReport">
+			<result name="error">/jsp/reports/master/InvestmentReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/InvestmentReport.jsp</result>
+			<result name="success">/jsp/reports/master/InvestmentReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>
+		
+		<action name="AddBonus" class="com.konnect.jpms.master.AddBonus">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddBonus.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${orgId}</param>
+				 <param name="strCFYear">${financialYear}</param>
+			</result>
+			<result name="view" type="redirect-action">BonusReport</result>
+			<result name="view_tab" type="redirect-action">LevelReportTab</result>
+			<result name="update">/jsp/master/AddBonus.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="BonusReport" class="com.konnect.jpms.reports.master.BonusReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/BonusReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="BonusReportTab" class="com.konnect.jpms.reports.master.BonusReport">
+			<result name="error">/jsp/reports/master/BonusReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/BonusReport.jsp</result>
+			<result name="success">/jsp/reports/master/BonusReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>
+		
+		<action name="AddOverTime" class="com.konnect.jpms.master.AddOverTime">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddOverTime.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="edit">/jsp/master/AddOverTime.jsp</result>
+			<result name="successupdate" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${org_id}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="OverTimeReport" class="com.konnect.jpms.reports.master.OverTimeReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/OverTimeReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="OverTimeReportTab" class="com.konnect.jpms.reports.master.OverTimeReport">
+			<result name="error">/jsp/reports/master/OverTimeReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/OverTimeReport.jsp</result>
+			<result name="success">/jsp/reports/master/OverTimeReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>
+		
+		<action name="AddGratuity" class="com.konnect.jpms.master.AddGratuity">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GratuityReport" class="com.konnect.jpms.reports.master.GratuityReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/GratuityReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GratuityReportTab" class="com.konnect.jpms.reports.master.GratuityReport">
+			<result name="error">/jsp/reports/master/GratuityReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/GratuityReport.jsp</result>
+			<result name="success">/jsp/reports/master/GratuityReport.jsp</result>
+			<result name="accessdeny">/jsp/errorPages/AccessDenied.jsp</result>
+		</action>
+		
+		<action name="EmpGratuityReport" class="com.konnect.jpms.reports.EmpGratuityReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/EmpGratuityReport.jsp</result>
+			<result name="success">/jsp/reports/EmpGratuityReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="SkillSet" class="com.konnect.jpms.reports.master.SkillsReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/SkillsReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddSkills" class="com.konnect.jpms.master.AddSkills">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddSkills.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+			</result>
+			<result name="update">/jsp/master/AddSkills.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EducationSet" class="com.konnect.jpms.reports.master.EducationReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/EducationReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddEducation" class="com.konnect.jpms.master.AddEducation">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddEducation.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+			</result>
+			<result name="update">/jsp/master/AddEducation.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		 <action name="WorkFlowPolicy" class="com.konnect.jpms.policies.WorkFlowPolicy">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${organization}</param>
+				 <param name="strLocation">${location}</param>
+			</result>
+			<result name="load">/jsp/policies/WorkFlowPolicy.jsp</result>
+			<result name="update">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 
+		<action name="WorkFlowPolicyReport" class="com.konnect.jpms.policies.WorkFlowPolicyReport">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/policies/WorkFlowPolicyReport.jsp</result>
+			<result name="update">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="status">/jsp/policies/PolicyStatusMessage.jsp</result>
+		</action>
+		
+		 <action name="AddWorkFlowMember" class="com.konnect.jpms.policies.AddWorkFlowMember">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result> 
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${organization}</param>
+				 <param name="strLocation">${location}</param>
+			</result>
+			<result name="load">/jsp/policies/AddWorkFlowMember.jsp</result>
+			<result name="update">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>  
+		
+		<action name="GetSalaryHead1" class="com.konnect.jpms.master.GetSalaryHead"> 
+			<result name="success">/jsp/master/GetSalaryHead.jsp</result>
+		</action>
+		
+		<action name="GetSbuDetails" class="com.konnect.jpms.employee.GetSbuDetails"> 
+			<result name="success">/jsp/employee/GetSbuDetails.jsp</result>
+		</action>
+		
+		<action name="GetStateDetails" class="com.konnect.jpms.ajax.GetStateDetails"> 
+			<result name="success">/jsp/ajax/GetStateDetails.jsp</result>
+		</action>
+		
+		<action name="OverTimeHoursRegister" class="com.konnect.jpms.tms.OverTimeHoursRegister">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="OverTimeHours" class="com.konnect.jpms.tms.OverTimeHours">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/tms/OverTimeHours.jsp</result>
+			<result name="success">/jsp/tms/OverTimeHours.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="OverTimeHoursEmp" class="com.konnect.jpms.tms.OverTimeHoursEmp">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="ImportOvertimeHours" class="com.konnect.jpms.tms.ImportOvertimeHours">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>      
+		
+		<action name="UserLoginReport" class="com.konnect.jpms.reports.master.UserLoginReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ChangeUserName" class="com.konnect.jpms.common.ChangeUserName">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/ChangeUserName.jsp</result>
+			<!-- <result name="success" type="redirect-action">UserLoginReport</result> -->
+			<result name="success" type="redirect-action">UserReport</result>
+			<result name="people" type="redirect-action">PeopleUser</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+		</action>   
+		
+		<!-- <action name="GetRemainingWeeklyOffDays" class="com.konnect.jpms.location.GetRemainingWeeklyOffDays"> 
+			<result name="success">/jsp/location/GetRemainingWeeklyOffDays.jsp</result>
+		</action> -->
+		
+		<action name="SuccessionPlanReport" class="com.konnect.jpms.reports.master.SuccessionPlanReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/SuccessionPlanReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GetSuervisorsNameList" class="com.konnect.jpms.recruitment.GetSuervisorsNameList">
+			<result name="success">/jsp/recruitment/GetSuervisorsNameList.jsp</result>
+		</action>
+		
+		<action name="ResendOnboardingFormToCandidate" class="com.konnect.jpms.recruitment.ResendOnboardingFormToCandidate">
+			<result name="success">/jsp/recruitment/ResendOnboardingFormToCandidate.jsp</result>
+		</action>
+		
+		<action name="ResendOfferLetterToCandidate" class="com.konnect.jpms.recruitment.ResendOfferLetterToCandidate">
+			<result name="success">/jsp/recruitment/ResendOfferLetterToCandidate.jsp</result>
+		</action>
+	
+		<action name="ChangeUserType" class="com.konnect.jpms.common.ChangeUserType">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/ChangeUserType.jsp</result>
+			<!-- <result name="success" type="redirect-action">UserLoginReport</result> -->
+			<result name="success" type="redirect-action">UserReport</result>
+			<result name="people" type="redirect-action">PeopleUser</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+		</action> 
+		
+		<action name="ExGratiaSlabs" class="com.konnect.jpms.reports.master.ExGratiaSlabs">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/ExGratiaSlabs.jsp</result>  
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddExGratiaSlab" class="com.konnect.jpms.master.AddExGratiaSlab">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddExGratiaSlab.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="toTab">${toTab}</param>
+			</result>
+			<result name="update">/jsp/master/AddExGratiaSlab.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddExGratia" class="com.konnect.jpms.master.AddExGratia">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddExGratia.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="toTab">${toTab}</param>
+				<param name="strOrg">${strOrg}</param>
+				<param name="strCFYear">${financialYear}</param>
+				<param name="paycycle">${paycycle}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="WeeklyOffPolicy" class="com.konnect.jpms.reports.master.WeeklyOffPolicy">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/WeeklyOffPolicy.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="AddWeeklyOff" class="com.konnect.jpms.master.AddWeeklyOff">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddWeeklyOff.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strLocation">${strLocation}</param>
+			</result>
+			<result name="view" type="redirect-action">WeeklyOffPolicy</result>
+			<result name="view_tab" type="redirect-action">WeeklyOffPolicy</result>
+			<result name="update">/jsp/master/AddWeeklyOff.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="StatutoryIDAndRegistrationInfoReport" class="com.konnect.jpms.reports.master.StatutoryIDAndRegistrationInfoReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/StatutoryIDAndRegistrationInfoReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="UpdateStatutoryIdAndRegInfo" class="com.konnect.jpms.master.UpdateStatutoryIdAndRegInfo">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/UpdateStatutoryIdAndRegInfo.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="update">/jsp/master/UpdateStatutoryIdAndRegInfo.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PayrollSetting" class="com.konnect.jpms.reports.master.PayrollSetting">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/PayrollSetting.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddPayrollSetting" class="com.konnect.jpms.policies.AddPayrollSetting">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/policies/AddPayrollSetting.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="update">/jsp/policies/AddPayrollSetting.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddPaySlipSetting" class="com.konnect.jpms.policies.AddPaySlipSetting">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/policies/AddPaySlipSetting.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="update">/jsp/policies/AddPaySlipSetting.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ReviewPaySlipFormat" class="com.konnect.jpms.policies.ReviewPaySlipFormat">
+			<result name="success" type="redirectAction">ReviewPaySlipFormat</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="PerformanceDashboard" class="com.konnect.jpms.reports.master.PerformanceDashboard">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>	
+		
+		<action name="AddNewPerformance" class="com.konnect.jpms.reports.master.AddNewPerformance">
+			<result name="load">/jsp/reports/master/AddNewPerformance.jsp</result>
+			<result name="success" type="redirect-action">PerformanceDashboard</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+		</action>
+		
+		<action name="Performance" class="com.konnect.jpms.reports.master.Performance">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddEmpPerformance" class="com.konnect.jpms.reports.master.AddEmpPerformance">
+			<result name="load">/jsp/reports/master/AddEmpPerformance.jsp</result>
+			<result name="success" type="redirect-action">Performance</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="UpdateStatutoryIdLocation" class="com.konnect.jpms.master.UpdateStatutoryIdLocation"> 
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/UpdateStatutoryIdLocation.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="update">/jsp/master/UpdateStatutoryIdLocation.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AssignWorkFlow" class="com.konnect.jpms.policies.AssignWorkFlow">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/policies/AssignWorkFlow.jsp</result>
+			<result name="update">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		<action name="UpdateAssignWorkflow" class="com.konnect.jpms.policies.UpdateAssignWorkflow">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/policies/UpdateAssignWorkflow.jsp</result>
+		</action>
+		
+		<action name="AllowancePolicy" class="com.konnect.jpms.policies.AllowancePolicy">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/policies/AllowancePolicy.jsp</result>
+			<result name="ajax">/jsp/ajax/Message.jsp</result>
+			<result name="success">/jsp/policies/AllowancePolicy.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddAllowanceCondition" class="com.konnect.jpms.policies.AddAllowanceCondition">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/policies/AddAllowanceCondition.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+				 <param name="strLevel">${strLevel}</param>
+				 <param name="strSalaryHeadId">${strSalaryHeadId}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddAllowancePaymentLogic" class="com.konnect.jpms.policies.AddAllowancePaymentLogic">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/policies/AddAllowancePaymentLogic.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+				<param name="strLevel">${strLevel}</param>
+				<param name="strSalaryHeadId">${strSalaryHeadId}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GetAllowancePaymentLogicType" class="com.konnect.jpms.policies.GetAllowancePaymentLogicType">
+			<result name="success">/jsp/policies/GetAllowancePaymentLogicType.jsp</result>
+		</action>
+		
+		<action name="AllowanceForm" class="com.konnect.jpms.payroll.AllowanceForm">
+			<result name="load">/jsp/payroll/AllowanceForm.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="UpdateAllowance" class="com.konnect.jpms.ajax.UpdateAllowance">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="PrevAllowance" class="com.konnect.jpms.payroll.PrevAllowance">
+			<result name="load">/jsp/payroll/PrevAllowance.jsp</result>
+		</action>
+		
+		<action name="AllowanceReport" class="com.konnect.jpms.reports.master.AllowanceReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/AllowanceReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ImportSalaryStructure" class="com.konnect.jpms.salary.ImportSalaryStructure">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/salary/ImportSalaryStructure.jsp</result> 
+			<result name="success" type="redirect-action">
+				<param name="actionName">EmpSalaryApproval</param>
+				<param name="f_org">${strOrg}</param>  
+			</result>
+		</action>
+		
+		<action name="GetGoalKraTargetForAllowance" class="com.konnect.jpms.policies.GetGoalKraTargetForAllowance">
+			<result name="success">/jsp/policies/GetGoalKraTargetForAllowance.jsp</result>
+		</action>
+		
+		<action name="GetAnyOneEmployeeAjax" class="com.konnect.jpms.policies.GetAnyOneEmployeeAjax">
+			<result name="success">/jsp/policies/GetAnyOneEmployeeAjax.jsp</result>
+		</action> 
+		
+		<action name="ReimbursementPolicy" class="com.konnect.jpms.reports.master.ReimbursementPolicy">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/ReimbursementPolicy.jsp</result> 
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="AddMobileBillReimbursement" class="com.konnect.jpms.master.AddMobileBillReimbursement">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddMobileBillReimbursement.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddLocalReimbursement" class="com.konnect.jpms.master.AddLocalReimbursement">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddLocalReimbursement.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddTravelAdvanceReimbursement" class="com.konnect.jpms.master.AddTravelAdvanceReimbursement">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddTravelAdvanceReimbursement.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddClaimReimbursement" class="com.konnect.jpms.master.AddClaimReimbursement">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddClaimReimbursement.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		   <!--  Added by M@yuri 18-Oct-2016		 -->
+		<action name="DailyOverTimeReport" class="com.konnect.jpms.reports.master.DailyOverTimeReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/DailyOverTimeReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	   
+		   <!--  Added by M@yuri 19-Oct-2016 ******START****	 -->
+		<action name="QuarterlyOverTimeReport" class="com.konnect.jpms.reports.master.QuarterlyOverTimeReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/QuarterlyOverTimeReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		  
+		<action name="MonthlyOverTimeReport" class="com.konnect.jpms.reports.master.MonthlyOverTimeReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/MonthlyOverTimeReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		 <!-- ***END***	 -->
+			
+			 
+		   <!--  Added by M@yuri 21-Oct-2016 ******START****	 -->
+		<action name="WeeklyHoursReport" class="com.konnect.jpms.reports.master.WeeklyHoursReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/WeeklyHoursReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 <!-- ***END***	 -->
+		 
+		   <!--  Added by M@yuri 24-Oct-2016 ******START****	 -->
+		<action name="LeaveBalanceReport" class="com.konnect.jpms.reports.master.LeaveBalanceReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/LeaveBalanceReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 <!-- ***END***	 --> 
+		 
+		<!--  Added by M@yuri 26-Oct-2016 -->
+		<action name="DepartmentEmpwiseReport" class="com.konnect.jpms.payroll.reports.DepartmentEmpwiseReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/payroll/reports/DepartmentEmpwiseReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ExpenseJournalEntryReport" class="com.konnect.jpms.reports.master.ExpenseJournalEntryReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/ExpenseJournalEntryReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 
+		<action name="AddPerkSalary" class="com.konnect.jpms.master.AddPerkSalary">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddPerkSalary.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${orgId}</param>
+				<param name="strCFYear">${financialYear}</param>
+			</result>
+			<result name="view" type="redirect-action">PerkPolicy</result>
+			<result name="view_tab" type="redirect-action">PerkReportTab</result>
+			<result name="update">/jsp/master/AddPerkSalary.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AssignPerkSalary" class="com.konnect.jpms.master.AssignPerkSalary">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyProfile</param>
+				 <param name="empId">${empId}</param>  
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<!--  Added by M@yuri 4-Jan-2017		 -->
+		<action name="OTRegister" class="com.konnect.jpms.tms.OTRegister">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/tms/OTRegister.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+		</action> 
+		
+		<action name="AnnualVariablePolicy" class="com.konnect.jpms.reports.master.AnnualVariablePolicy">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/AnnualVariablePolicy.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="UpdateAnnualVariablePolicy" class="com.konnect.jpms.policies.UpdateAnnualVariablePolicy">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/policies/UpdateAnnualVariablePolicy.jsp</result>
+		</action>  
+		
+		<action name="AnnualVariableForm" class="com.konnect.jpms.payroll.AnnualVariableForm">
+			<result name="load">/jsp/payroll/AnnualVariableForm.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PrevAnnualVariable" class="com.konnect.jpms.payroll.PrevAnnualVariable">
+			<result name="load">/jsp/payroll/PrevAnnualVariable.jsp</result>
+		</action>	 
+		
+		<action name="UpdateAnnualVariable" class="com.konnect.jpms.ajax.UpdateAnnualVariable">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="Compliance" class="com.konnect.jpms.reports.master.Compliance">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddReimbursementPartOfCTC" class="com.konnect.jpms.master.AddReimbursementPartOfCTC">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddReimbursementPartOfCTC.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddReimbursementCTCHead" class="com.konnect.jpms.master.AddReimbursementCTCHead">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddReimbursementCTCHead.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${orgId}</param>
+			</result>
+			<result name="view" type="redirect-action">ReimbursementPolicy</result>
+			<result name="update">/jsp/master/AddReimbursementCTCHead.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AssignReimbursementHead" class="com.konnect.jpms.master.AssignReimbursementHead">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyProfile</param>
+				 <param name="empId">${empId}</param>  
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ImportAnnualVariable" class="com.konnect.jpms.payroll.ImportAnnualVariable">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/payroll/ImportAnnualVariable.jsp</result> 
+			<result name="success" type="redirect-action">
+				<param name="actionName">ApplyPay</param>
+				<param name="callFrom">${callFrom}</param>
+				<param name="financialYear">${financialYear}</param>
+				<param name="strOrg">${strOrg}</param>
+				<param name="strLevel">${strLevel}</param>
+				<param name="strSalaryHeadId">${strSalaryHeadId}</param>  
+			</result> 
+		</action>
+		
+		<action name="FitmentForBasicPolicy" class="com.konnect.jpms.reports.master.FitmentForBasicPolicy">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ApproveBasicFitment" class="com.konnect.jpms.reports.master.ApproveBasicFitment">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result> 
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="ApproveBasicFitmentStructure" class="com.konnect.jpms.reports.master.ApproveBasicFitmentStructure">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/ApproveBasicFitmentStructure.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DeferBasicFitment" class="com.konnect.jpms.ajax.DeferBasicFitment">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/ajax/DeferBasicFitment.jsp</result>
+			<result name="success" type="redirect-action">ApproveBasicFitment</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ImportAllowanceHours" class="com.konnect.jpms.payroll.ImportAllowanceHours">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/payroll/ImportAllowanceHours.jsp</result> 
+			<result name="success" type="redirect-action">
+				<param name="actionName">PayApprovals</param>
+				<param name="callFrom">AWF</param>
+				<param name="paycycle">${paycycle}</param>
+				<param name="f_org">${f_org}</param>
+				<param name="f_level">${f_level}</param>
+			</result> 
+		</action>
+		
+		<action name="ProductionLine" class="com.konnect.jpms.reports.master.ProductionLine">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/ProductionLine.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddProductionLine" class="com.konnect.jpms.master.AddProductionLine">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddProductionLine.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+		</action>
+		
+		<action name="AddAlignSalaryHead" class="com.konnect.jpms.master.AddAlignSalaryHead">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddAlignSalaryHead.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+		</action>
+		
+		<action name="GetSalaryHeadsByLevel" class="com.konnect.jpms.master.GetSalaryHeadsByLevel"> 
+			<result name="success">/jsp/master/GetSalaryHeadsByLevel.jsp</result>
+		</action>
+		
+		<action name="GetGradeListByLevel" class="com.konnect.jpms.salary.GetGradeListByLevel">
+			<result name="success">/jsp/salary/GetGradeListByLevel.jsp</result>
+		</action>
+		
+		<action name="OvertimeApproval" class="com.konnect.jpms.master.OvertimeApproval">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/OvertimeApproval.jsp</result>
+			<result name="success">/jsp/master/OvertimeApproval.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddUpdateDeleteVDARate" class="com.konnect.jpms.policies.AddUpdateDeleteVDARate">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/policies/AddUpdateDeleteVDARate.jsp</result>
+			<result name="ajax">/jsp/ajax/Message.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="update">/jsp/policies/AddUpdateDeleteVDARate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="UpdateVDAIndex" class="com.konnect.jpms.policies.UpdateVDAIndex">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/policies/UpdateVDAIndex.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="update">/jsp/policies/UpdateVDAIndex.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PeoplePolicy" class="com.konnect.jpms.reports.master.PeoplePolicy">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/PeoplePolicy.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddUpdateRetirementPolicy" class="com.konnect.jpms.policies.AddUpdateRetirementPolicy">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/policies/AddUpdateRetirementPolicy.jsp</result>
+			<result name="ajax">/jsp/ajax/Message.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="update">/jsp/policies/AddUpdateRetirementPolicy.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ComplianceDashboard" class="com.konnect.jpms.reports.master.ComplianceDashboard">
+			<result name="error">/jsp/login/error.jsp</result> 
+			<result name="login" type="redirect-action">Login</result>
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/reports/master/ComplianceDashboard.jsp</result>  
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	
+		<!-- <action name="AddEditDeleteClassAndDivision" class="com.konnect.jpms.master.AddEditDeleteClassAndDivision">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddEditDeleteClassAndDivision.jsp</result>
+			<result name="ajax">/jsp/ajax/Message.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="update">/jsp/master/AddEditDeleteClassAndDivision.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ClassAndDivisionList" class="com.konnect.jpms.master.ClassAndDivisionList">
+			<result name="error">/jsp/login/error.jsp</result> 
+			<result name="login" type="redirect-action">Login</result>
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/master/ClassAndDivisionList.jsp</result>  
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddEditDeleteSubject" class="com.konnect.jpms.master.AddEditDeleteSubject">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddEditDeleteSubject.jsp</result>
+			<result name="ajax">/jsp/ajax/Message.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="update">/jsp/master/AddEditDeleteSubject.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="SubjectList" class="com.konnect.jpms.master.SubjectList">
+			<result name="error">/jsp/login/error.jsp</result> 
+			<result name="login" type="redirect-action">Login</result>
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/master/SubjectList.jsp</result>  
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddEditDeleteParameter" class="com.konnect.jpms.master.AddEditDeleteParameter">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/master/AddEditDeleteParameter.jsp</result>
+			<result name="ajax">/jsp/ajax/Message.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="update">/jsp/master/AddEditDeleteParameter.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ParameterList" class="com.konnect.jpms.master.ParameterList">
+			<result name="error">/jsp/login/error.jsp</result> 
+			<result name="login" type="redirect-action">Login</result>
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/master/ParameterList.jsp</result>  
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> -->
+		
+		<action name="ContributionAmountAssignPolicy" class="com.konnect.jpms.reports.master.ContributionAmountAssignPolicy">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/ContributionAmountAssignPolicy.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<!-- ===start parvez date: 24-06-2022=== -->	
+		<action name="LeaveEncashmentReport" class="com.konnect.jpms.reports.master.LeaveEncashmentReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/master/LeaveEncashmentReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		<!-- ===end parvez date: 24-06-2022=== -->	
+	
+	</package>
+</struts>    

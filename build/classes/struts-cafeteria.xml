@@ -1,0 +1,51 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org//dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="struts-cafeteria" extends ="struts-default">
+		<action name="AddDish" class="com.konnect.jpms.cafeteria.AddDish">
+			<result name="load" type="redirect-action">Cafeteria</result>
+			<result name="success">/jsp/cafeteria/AddDish.jsp</result>
+		</action> 
+		
+		<action name="PlaceOrderForDish" class="com.konnect.jpms.cafeteria.PlaceOrderForDish">
+			<result name="load" type="redirect-action">Cafeteria</result>
+			<result name="success">/jsp/cafeteria/PlaceOrderForDish.jsp</result>
+		</action>
+		
+		<action name="Cafeteria" class="com.konnect.jpms.cafeteria.ViewCafeteria">
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ViewCafeteriaOrders" class="com.konnect.jpms.cafeteria.ViewCafeteriaOrders">
+			<result name="load" type="redirect-action">Cafeteria</result>
+			<result name="success">/jsp/cafeteria/ViewCafeteriaOrders.jsp</result>
+		</action>
+		
+		<action name="ConfirmDishOrder" class="com.konnect.jpms.cafeteria.ConfirmDishOrder">
+			<result name="success">/jsp/cafeteria/ConfirmDishOrder.jsp</result>
+		</action>
+		
+		<action name="AddEmpFoodRequests" class="com.konnect.jpms.cafeteria.AddEmpFoodRequests">
+			<result name="success">/jsp/cafeteria/AddEmpFoodRequests.jsp</result>
+			<result name="load" type="redirect-action">Cafeteria</result>
+		</action>
+		
+		<action name="AddGuests" class="com.konnect.jpms.cafeteria.AddGuests">
+			<result name="success">/jsp/cafeteria/AddGuests.jsp</result>
+			<result name="load" type="redirect-action">Cafeteria</result>
+		</action>
+		
+		<action name="GetDishes" class="com.konnect.jpms.ajax.GetDishes">
+			<result name="success">/jsp/ajax/getDishes.jsp</result>
+		</action>
+		
+		<action name="ViewConfirmedOrders" class="com.konnect.jpms.cafeteria.ViewConfirmedOrders">
+			<result name="success">/jsp/cafeteria/ViewConfirmedOrders.jsp</result>
+		</action>
+	</package>
+</struts>

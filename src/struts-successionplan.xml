@@ -1,0 +1,62 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+   
+	<package name="struts-successionplan" extends="struts-default">
+       
+		<action name="AddSuccessionPlanCriteria" class="com.konnect.jpms.successionplan.AddSuccessionPlanCriteria">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/successionplan/AddSuccessionPlanCriteria.jsp</result>
+			<result name="update">/jsp/successionplan/AddSuccessionPlanCriteria.jsp</result>
+			<!-- <result name="success" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result> -->
+			<result name="success" type="redirect-action">
+				 <param name="actionName">AddSuccessionPlanCriteria</param>
+				 <param name="orgId">${orgId}</param>
+				 <param name="desigId">${desigId}</param>
+				 <param name="operation">${operation}</param>
+				<param name="criteriaId">${criteriaId}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+		</action>
+		
+		<action name="ShowSuccessionPlan" class="com.konnect.jpms.successionplan.ShowSuccessionPlan">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/successionplan/ShowSuccessionPlan.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="SuccessionPlanAction" class="com.konnect.jpms.successionplan.SuccessionPlanAction">
+			<result name="load">/jsp/successionplan/SuccessionPlanAction.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">SuccessionPlan</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddAndRemoveEmpFromSuccessionplan" class="com.konnect.jpms.successionplan.AddAndRemoveEmpFromSuccessionplan"> 
+			<result name="success" type="redirect-action">SuccessionPlan</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="SuccessionPlan" class="com.konnect.jpms.successionplan.SuccessionPlan"> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+	</package>
+</struts>    

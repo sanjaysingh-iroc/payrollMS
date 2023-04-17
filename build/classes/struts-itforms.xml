@@ -1,0 +1,306 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+       
+	<package name="struts-itforms" extends="struts-default">
+
+		<action name="ITFormReports" class="com.konnect.jpms.reports.ITFormReports">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		<action name="ChallanReports" class="com.konnect.jpms.reports.ChallanReports">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		<action name="PTaxPdfReports" class="com.konnect.jpms.reports.PTaxPdfReports">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		<action name="TDSPdfReports" class="com.konnect.jpms.reports.TDSPdfReports">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		<action name="PaymentHeldPdfReports" class="com.konnect.jpms.export.payroll.PaymentHeldPdfReports">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		<action name="EmpCTCPdfReports" class="com.konnect.jpms.export.payroll.EmpCTCPdfReports">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		<action name="SalaryYearlyPdfReport" class="com.konnect.jpms.export.payroll.SalaryYearlyPdfReport">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="EmpSalaryYearlySummaryPdfReports" class="com.konnect.jpms.export.payroll.EmpSalaryYearlySummaryPdfReports">
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="SalaryYearlySummaryPdfReports" class="com.konnect.jpms.export.payroll.SalaryYearlySummaryPdfReports">
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="EmpSalaryYearlyPdfReports" class="com.konnect.jpms.export.payroll.EmpSalaryYearlyPdfReports">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		<action name="EPFSalaryPdfReport" class="com.konnect.jpms.export.payroll.EPFSalaryPdfReport">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		<action name="ESICSalaryPdfReports" class="com.konnect.jpms.export.payroll.ESICSalaryPdfReports">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		<action name="ReimbursementPdfReports" class="com.konnect.jpms.export.payroll.ReimbursementPdfReports">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="Form6ChallanPdfReports" class="com.konnect.jpms.export.payroll.Form6ChallanPdfReports">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		<action name="RegForm5ReturnChallan" class="com.konnect.jpms.export.payroll.RegForm5ReturnChallan">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		<action name="ESICChallanPdfReports" class="com.konnect.jpms.export.payroll.ESICChallanPdfReports">
+		<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="Form16" class="com.konnect.jpms.itforms.Form16">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/itforms/Form16.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Form3A" class="com.konnect.jpms.itforms.Form3A">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/itforms/Form3A.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+		<action name="Form6A" class="com.konnect.jpms.itforms.Form6A">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/itforms/Form6A.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+		<action name="Form5" class="com.konnect.jpms.itforms.Form5">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/itforms/Form5.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Form10" class="com.konnect.jpms.itforms.Form10">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/itforms/Form10.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+		<action name="Form12A" class="com.konnect.jpms.itforms.Form12A">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/itforms/Form12A.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+		<action name="EPFSetting" class="com.konnect.jpms.tax.india.EPFSetting">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/tax/india/EPFSetting.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result> 
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		    
+		<action name="ESISetting" class="com.konnect.jpms.tax.india.ESISetting">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/tax/india/ESISetting.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		        
+		        
+		<action name="LWFSetting" class="com.konnect.jpms.tax.india.LWFSetting">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/tax/india/LWFSetting.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		
+		<action name="MiscSetting" class="com.konnect.jpms.tax.india.MiscSetting">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/tax/india/MiscSetting.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="IncentiveRegisterPdfReport" class="com.konnect.jpms.payroll.reports.IncentiveRegisterPdfReport">
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="PaymentHeldExcelReports" class="com.konnect.jpms.export.payroll.PaymentHeldExcelReports">
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="EmpCTCExcelReport" class="com.konnect.jpms.export.payroll.EmpCTCExcelReport">
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="PTaxExcelReports" class="com.konnect.jpms.export.payroll.PTaxExcelReports">
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="ESICSalaryExcelReports" class="com.konnect.jpms.export.payroll.ESICSalaryExcelReports">
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="TDSExcelReports" class="com.konnect.jpms.export.payroll.TDSExcelReports">
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="EPFSalaryExcelReport" class="com.konnect.jpms.export.payroll.EPFSalaryExcelReport">
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="EmpSalaryYearlyExcelReports" class="com.konnect.jpms.export.payroll.EmpSalaryYearlyExcelReports">
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="BonusPdfReport" class="com.konnect.jpms.export.payroll.BonusPdfReport">
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="ReconciliationReport" class="com.konnect.jpms.payroll.reports.ReconciliationReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/payroll/reports/ReconciliationReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ReconciliationPdfReport" class="com.konnect.jpms.export.payroll.ReconciliationPdfReport">
+			<result name="login" type="redirect-action">Login</result>
+		</action> 
+		
+		<action name="DepartmentwiseReport" class="com.konnect.jpms.payroll.reports.DepartmentwiseReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/payroll/reports/DepartmentwiseReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PayoutReport" class="com.konnect.jpms.payroll.reports.PayoutReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/payroll/reports/PayoutReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="TeamAllocationReport" class="com.konnect.jpms.payroll.reports.TeamAllocationReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/payroll/reports/TeamAllocationReport.jsp</result>
+			<result name="load">/jsp/payroll/reports/TeamAllocationReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ExpenseReport" class="com.konnect.jpms.payroll.reports.ExpenseReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 <action name="EmailValidation" class="com.konnect.jpms.ajax.EmailValidation">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action> 
+		<action name="InvoiceBillReport" class="com.konnect.jpms.reports.InvoiceBillReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/reports/InvoiceBillReport.jsp</result>
+			<result name="load">/jsp/reports/InvoiceBillReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Form16PdfReport" class="com.konnect.jpms.reports.Form16PdfReport">
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="Form27A" class="com.konnect.jpms.itforms.Form27A">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/itforms/Form27A.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Form5ESIC" class="com.konnect.jpms.itforms.Form5ESIC">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/itforms/Form5ESIC.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Form6ESIC" class="com.konnect.jpms.itforms.Form6ESIC">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/itforms/Form6ESIC.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Form3PT" class="com.konnect.jpms.itforms.Form3PT">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/itforms/Form3PT.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+		</action>
+		
+		<action name="Form16A" class="com.konnect.jpms.itforms.Form16A">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/itforms/Form16A.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		  
+		<action name="Form5Kr11" class="com.konnect.jpms.itforms.Form5Kr11">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Form24Q" class="com.konnect.jpms.itforms.Form24Q">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/itforms/Form24Q.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="MyForm16" class="com.konnect.jpms.itforms.MyForm16">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/itforms/MyForm16.jsp</result>
+			<result name="load">/jsp/itforms/MyForm16.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+	</package>
+</struts>   

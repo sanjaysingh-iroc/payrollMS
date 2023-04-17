@@ -1,0 +1,1860 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="104857600" /> 
+	<package name="struts-tasks" extends="struts-default">
+	 
+		<action name="GetProjectCode" class="com.konnect.jpms.task.GetProjectCode">
+			<result name="success">/jsp/task/GetProjectCode.jsp</result>
+		</action>
+		
+		<action name="GetProjects" class="com.konnect.jpms.task.GetProjects">
+			<result name="success">/jsp/task/GetProjects.jsp</result>
+		</action>
+		
+		<action name="GetClientName" class="com.konnect.jpms.task.GetClientName">
+			<result name="success">/jsp/task/GetProjectCode.jsp</result> 
+		</action>
+		
+		<action name="ApproveExtraActivity" class="com.konnect.jpms.task.ApproveExtraActivity">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action> 
+		
+		<action name="GenerateSummayPdfReport" class="com.konnect.jpms.task.GenerateSummayPdfReport">
+			<result name="success">/jsp/task/ProjectReport.jsp</result>
+		</action>
+		
+		<action name="GenerateInvoice" class="com.konnect.jpms.task.GenerateProjectInvoice">
+			<result name="success">/jsp/task/GenerateInvoice.jsp</result>
+		</action>
+		
+		<action name="GenerateProjectInvoice" class="com.konnect.jpms.task.GenerateInvoicePdf">
+			<result name="success">/jsp/task/ProjectReport.jsp</result>
+			<result name="view">/jsp/common/viewPage.jsp</result>
+			<result name="mail" type="redirect-action">
+				<param name="actionName">Billing</param>
+				<param name="proType">${proType}</param>
+			</result>
+		</action>
+		
+		<action name="GetTeamInfoAjax" class="com.konnect.jpms.task.GetTeamInfoAjax">
+			<result name="success">/jsp/task/GetTeamInfoAjax.jsp</result>
+		</action>
+		
+		<action name="GenerateTimeSheet" class="com.konnect.jpms.task.GenerateTimeSheet">
+			<result name="success" type="redirectAction">ExtraActivityView</result>
+		</action>
+		
+		<action name="GenerateTimeSheet1" class="com.konnect.jpms.task.GenerateTimeSheet1">
+			<result name="submit">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="success" type="redirectAction">ExtraActivityView</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="ExportToExcelTimeSheet" class="com.konnect.jpms.task.ExportToExcelTimeSheet">
+		</action>
+		
+		<action name="SendTimeSheetMail" class="com.konnect.jpms.task.SendTimeSheetMail">
+			<result name="success" type="redirectAction">ExtraActivityView</result>
+		</action>
+		
+		<action name="SendProjectReport" class="com.konnect.jpms.task.GenerateProjectReport">
+			<result name="success">/jsp/task/ProjectReport.jsp</result>
+			<!-- <result name="success" type="redirectAction">GenerateSummayPdfReport</result> -->
+		</action>
+
+		<action name="ReAssign" class="com.konnect.jpms.task.ReAssign">
+			<result name="load">/jsp/task/ReAssign.jsp</result>
+			<result name="success" type="redirectAction">ViewAllProjects</result>
+		</action>
+
+		<action name="StartTaskManually" class="com.konnect.jpms.task.StartTaskManually">
+			<result name="success">/jsp/task/StartTaskManually.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="GetEmployeeListAjax" class="com.konnect.jpms.task.GetEmployeeListAjax">
+			<result name="success">/jsp/task/GetEmployeeListAjax.jsp</result>
+		</action>
+		
+		<action name="GetEmployeeListAjax1" class="com.konnect.jpms.task.GetEmployeeListAjax1">
+			<result name="success">/jsp/task/GetEmployeeListAjax1.jsp</result>
+		</action>
+		
+		<action name="GetTeamLeadListAjax" class="com.konnect.jpms.task.GetTeamLeadListAjax">
+			<result name="success">/jsp/task/GetTeamLeadListAjax.jsp</result>
+		</action>
+
+		<action name="GetClientListAjax" class="com.konnect.jpms.task.GetClientListAjax">
+			<result name="success">/jsp/task/GetClientListAjax.jsp</result>
+		</action>
+		
+		<action name="GetEmpClientListAjax" class="com.konnect.jpms.task.GetEmpClientListAjax">
+			<result name="success">/jsp/task/GetEmpClientListAjax.jsp</result>
+		</action>
+
+		<action name="GetClientPocAjax" class="com.konnect.jpms.task.GetClientPocAjax">
+			<result name="success">/jsp/task/GetClientPocAjax.jsp</result>
+		</action>
+
+		<action name="GetActivityListAjax" class="com.konnect.jpms.task.GetActivityListAjax">
+			<result name="success">/jsp/task/GetActivityListAjax.jsp</result>
+		</action>
+		
+		<action name="GetProjectListAjax" class="com.konnect.jpms.task.GetProjectListAjax">
+			<result name="success">/jsp/task/GetProjectListAjax.jsp</result>
+		</action>
+		
+		<action name="GetSkillListAjax" class="com.konnect.jpms.task.GetSkillListAjax">
+			<result name="success">/jsp/task/GetSkillListAjax.jsp</result>
+		</action>
+
+		<action name="ExtraActivityView" class="com.konnect.jpms.task.ExtraActivityView">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="AddExtraActivityPopup" class="com.konnect.jpms.task.AddExtraActivity">
+			<result name="success">/jsp/task/AddExtraActivity.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="AddProjectActivityPopup" class="com.konnect.jpms.task.AddProjectActivity">
+			<result name="success">/jsp/task/AddProjectActivity.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="AddProjectActivity1" class="com.konnect.jpms.task.AddProjectActivity1">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/AddProjectActivity1.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+   		<action name="AddProjectActivity2" class="com.konnect.jpms.task.AddProjectActivity2">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="AddExtraActivity" class="com.konnect.jpms.task.AddExtraActivity">
+			<result name="success" type="redirectAction">ExtraActivityView</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="AddProjectActivity" class="com.konnect.jpms.task.AddProjectActivity">
+			<result name="success" type="redirectAction">ExtraActivityView</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<!-- <action name="PreAddNewProject" class="com.konnect.jpms.task.PreAddNewProject">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action> -->
+		
+		<action name="ProReimbursementSummary" class="com.konnect.jpms.task.ProReimbursementSummary">
+			<result name="success">/jsp/task/ProReimbursementSummary.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="PreAddNewProject1" class="com.konnect.jpms.task.PreAddNewProject1">
+            <interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+                <!-- <param name="allowedTypes">text/xml,application/acad,application/arj,application/astound,application/clariscad,application/drafting,application/dxf,application/i-deas,application/iges,application/java-archive,application/mac-binhex40,application/msaccess,application/msexcel,application/mspowerpoint,application/msproject,application/msword,application/mswrite,application/octet-stream,application/oda,application/pdf,application/postscript,application/pro_eng,application/rtf,application/set,application/sla,application/solids,application/STEP,application/vda,application/x-bcpio,application/x-cpio,application/x-csh,application/x-director,application/x-dvi,application/x-dwf,application/x-gtar,application/x-gzip,application/x-hdf,application/x-javascript,application/x-latex,application/x-macbinary,application/x-midi,application/x-mif,application/x-netcdf,application/x-sh,application/x-shar,application/x-shockwave-flash,application/x-stuffit,application/x-sv4cpio,application/x-sv4crc,application/x-tar,application/x-tcl,application/x-tex,application/x-texinfo,application/x-troff,application/x-troff-man,application/x-troff-me,application/x-troff-ms,application/x-ustar,application/x-wais-source,application/x-winhelp,application/zip,audio/basic,audio/midi,audio/x-aiff,audio/x-mpeg,audio/x-pn-realaudio,audio/x-pn-realaudio-plugin,audio/x-voice,audio/x-wav,image/bmp,image/gif,image/ief,image/jpeg,image/pict,image/png,image/tiff,image/x-cmu-raster,image/x-portable-anymap,image/x-portable-bitmap,image/x-portable-graymap,image/x-portable-pixmap,image/x-rgb,image/x-xbitmap,image/x-xpixmap,image/x-xwindowdump,multipart/x-gzip,multipart/x-zip,text/html,text/plain,text/richtext,text/tab-separated-values,text/x-setext,text/x-sgml,video/mpeg,video/msvideo,video/quicktime,video/vdo,video/vivo,video/x-sgi-movie,x-conference/x-cooltalk,x-world/x-svr,x-world/x-vrml,x-world/x-vrt</param> -->
+            </interceptor-ref>
+			<result name="success">/jsp/task/AddNewProject1.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="report" type="redirectAction">ViewAllProjects</result>
+			<result name="mysuccess" type="redirectAction">ViewMyProjects</result>
+			<result name="docsuccess" type="redirect-action">
+				<param name="actionName">ViewAllProjects</param>
+				<param name="submitType">DOC</param>
+				<param name="proId">${pro_id}</param>
+			</result>
+			<result name="mydocsuccess" type="redirect-action">
+				<param name="actionName">ViewMyProjects</param>
+				<param name="submitType">DOC</param>
+				<param name="proId">${pro_id}</param>
+			</result>
+			<result name="docexit" type="redirect-action">
+				<param name="actionName">ViewAllProjects</param>
+				<param name="submitType">DOCEXIT</param>
+				<param name="proId">${pro_id}</param>
+			</result>
+			<result name="mydocexit" type="redirect-action">
+				<param name="actionName">ViewMyProjects</param>
+				<param name="submitType">DOCEXIT</param>
+				<param name="proId">${pro_id}</param>
+				<!-- <param name="strSearchJob">${strSearchJob}</param> -->
+			</result>
+		</action>
+
+		<!-- <action name="PreAddNewProjectPopup" class="com.konnect.jpms.task.PreAddNewProject">
+			<result name="success">/jsp/task/AddNewProjectPopup.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action> -->
+		
+		<action name="AddNewProject" class="com.konnect.jpms.task.AddNewProject">
+			<result name="success" type="redirect-action">ViewAllProjects</result>
+			<result name="edit">/jsp/task/AddNewProjectPopup.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="AddNewActivityPopup" class="com.konnect.jpms.task.AddNewActivity">
+			<result name="success">/jsp/task/AddNewActivity.jsp</result>
+			<result name="mpsuccess">/jsp/task/AddNewActivity.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="AddNewMilestonePopup" class="com.konnect.jpms.task.AddNewMilestone">
+			<result name="success">/jsp/task/AddNewMilestone.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="AddNewMilestone" class="com.konnect.jpms.task.AddNewMilestone">
+			<result name="success" type="redirectAction">ViewAllProjects</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="AddNewActivity" class="com.konnect.jpms.task.AddNewActivity">
+			<result name="success" type="redirectAction">ViewAllProjects</result>
+			<result name="mpsuccess" type="redirectAction">EmpViewProject</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+	
+		<action name="ViewApprovedProject" class="com.konnect.jpms.task.ViewApprovedProject">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="ViewBlockedProject" class="com.konnect.jpms.task.ViewBlockedProject">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="ViewAllProjects" class="com.konnect.jpms.task.ViewAllProjects">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/task/ViewAllProjects.jsp</result>
+			<result name="mysuccess" type="redirectAction">ViewMyProjects</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="ProjectSummaryView" class="com.konnect.jpms.task.ProjectSummaryView">
+			<result name="success">/jsp/task/ProjectSummaryView.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="ProjectBudgetedSummary" class="com.konnect.jpms.task.ProjectBudgetedSummary">
+			<result name="success">/jsp/task/ProjectBudgetedSummary.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="ProjectCostSummary" class="com.konnect.jpms.task.ProjectCostSummary">
+			<result name="success">/jsp/task/ProjectCostSummary.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="ProjectInvoiceSummary" class="com.konnect.jpms.task.ProjectInvoiceSummary">
+			<result name="success">/jsp/task/ProjectInvoiceSummary.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="save" type="redirectAction">Billing</result>
+		</action>
+		
+		<action name="AllProjectsSummaryView" class="com.konnect.jpms.task.AllProjectsSummaryView">
+			<result name="combine">/jsp/task/AllProjectsSummaryView.jsp</result>
+			<result name="seperate">/jsp/task/AllProjectsSummaryViewIndividual.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="ProjectDocumentView" class="com.konnect.jpms.task.ProjectDocumentView">
+			<result name="success">/jsp/task/ProjectDocumentView.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="PreEditProjectDetails" class="com.konnect.jpms.task.PreEditProjectDetails">
+			<result name="success">/jsp/task/EditProjectDetails.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="EditProjectDetails" class="com.konnect.jpms.task.EditProjectDetails">
+			<result name="success" type="redirectAction">ProjectSummaryView</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="EmpViewProject" class="com.konnect.jpms.task.EmpViewProject">
+			<result name="success">/jsp/task/EmpViewProject.jsp</result>
+			<result name="view" type="redirect-action">
+				<param name="actionName">MyWork</param>
+				<param name="proType">${proType}</param>
+			</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="EmpCompletedViewProject" class="com.konnect.jpms.task.EmpCompletedViewProject">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="TaskUpdateTime" class="com.konnect.jpms.task.TaskUpdateTime">
+			<result name="success" type="redirect-action">
+				<param name="actionName">EmpViewProject</param>
+				<param name="taskId">${id}</param>
+			</result>
+			<!-- <result name="success" type="redirectAction">EmpViewProject</result> -->
+			<result name="MASUCCESS" type="redirectAction">ExtraActivityView</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="EndTaskPopup" class="com.konnect.jpms.task.EndTaskPopup">
+			<result name="success">/jsp/task/endtask.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="AddClient" class="com.konnect.jpms.task.AddClient">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="load">/jsp/task/AddClient.jsp</result>
+			<result name="success" type="redirect-action">Customer</result>
+			<result name="update" type="redirect-action">
+				<param name="actionName">PreAddNewProject1</param>
+				<param name="clientID">${clientID}</param>
+			</result>
+			<result name="updatePClient" type="redirect-action">
+				<param name="actionName">PreAddNewProject1</param>
+				<param name="clientID">${clientID}</param>
+				<param name="pro_id">${proId}</param>
+				<param name="operation">E</param>
+				<param name="step">0</param>
+			</result>
+			<result name="view" type="redirect-action">Customer</result>
+			<result name="view_tab" type="redirect-action">Customer</result>
+			<result name="load">/jsp/task/AddClient.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="Customer" class="com.konnect.jpms.task.ClientReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddTaskService" class="com.konnect.jpms.task.AddTaskService">
+			<result name="success">/jsp/task/AddTaskService.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="update" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddTaskSkill" class="com.konnect.jpms.task.AddTaskSkill">
+			<result name="success">/jsp/task/AddTaskSkill.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="update" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddProjectRate" class="com.konnect.jpms.task.AddProjectRate">
+			<result name="success">/jsp/task/AddProjectRate.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="update" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+		</action>
+		
+		<action name="ProjectServiceReport" class="com.konnect.jpms.task.ProjectServiceReport">
+			<result name="success">/jsp/task/ProjectServiceReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/ProjectServiceReport.jsp</result>
+		</action>
+		
+		<action name="ProjectPerformanceCP" class="com.konnect.jpms.task.ProjectPerformanceCP">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProjectPerformanceWP" class="com.konnect.jpms.task.ProjectPerformanceWP">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="ProjectPerformanceReportCP" class="com.konnect.jpms.task.ProjectPerformanceReportCP">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProjectPerformanceReportWP" class="com.konnect.jpms.task.ProjectPerformanceReportWP">
+			<result name="success">/jsp/task/ProjectPerformanceReportWP.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProjectPerformanceTime" class="com.konnect.jpms.task.ProjectPerformanceTime">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProjectPerformanceOverallWP" class="com.konnect.jpms.task.ProjectPerformanceOverallWP">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="ProjectPerformanceOverallCP" class="com.konnect.jpms.task.ProjectPerformanceOverallCP">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Billing" class="com.konnect.jpms.task.ProjectBilling">
+			<result name="success">/jsp/task/ProjectBilling.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="BillingRegister" class="com.konnect.jpms.task.BillingRegister">
+			<result name="success">/jsp/task/BillingRegister.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProfitabilityByService" class="com.konnect.jpms.task.ProfitabilityByService">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="ProfitabilityByIndustry" class="com.konnect.jpms.task.ProfitabilityByIndustry">
+			<result name="success">/jsp/task/ProfitabilityByIndustry.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="ProfitabilityByWLocation" class="com.konnect.jpms.task.ProfitabilityByWLocation">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="PartnerPerformance" class="com.konnect.jpms.task.PartnerPerformance">
+			<result name="success">/jsp/task/PartnerPerformance.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="ProjectWorkAllocation" class="com.konnect.jpms.task.ProjectWorkAllocation">
+			<result name="success">/jsp/task/ProjectWorkAllocation.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ResourceLoad" class="com.konnect.jpms.task.ProjectAvailabilityCalendar">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/task/ProjectAvailabilityCalendar.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProjectEngagementReport" class="com.konnect.jpms.task.ProjectEngagementCalendar">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/task/ProjectEngagementCalendar.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="Timesheet" class="com.konnect.jpms.task.Timesheet">
+			<result name="success">/jsp/task/Timesheet.jsp</result>
+		</action>
+		
+		<action name="DeleteActivity" class="com.konnect.jpms.task.DeleteActivity">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+
+		<action name="GetProjectClientTask" class="com.konnect.jpms.task.GetProjectClientTask">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+
+		<action name="GetProjectClientTask12" class="com.konnect.jpms.task.GetProjectClientTask12">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+
+		<action name="GetProjectClientTask22" class="com.konnect.jpms.task.GetProjectClientTask22">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+
+		<action name="UpdateTaskPercentage" class="com.konnect.jpms.task.UpdateTaskPercentage">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="load">/jsp/task/UpdateTaskPercentage.jsp</result>
+			<result name="mysuccess" type="redirect-action">
+				<param name="actionName">MyTasks</param>
+				<param name="proType">C</param>
+			</result>
+		</action>
+
+		<action name="ProjectTimesheets" class="com.konnect.jpms.task.ProjectTimesheets">
+			<!-- <result name="mysuccess" type="redirect-action">
+				<param name="actionName">MyTeamTimesheets</param>
+				<param name="timesheetType">${timesheetType}</param>
+				<param name="pageType">${pageType}</param>
+				<param name="paycycle">${paycycle}</param>
+			</result> -->
+			<result name="mysuccess">/jsp/task/ProjectTimesheet.jsp</result>
+			<result name="success">/jsp/task/ProjectTimesheet.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="InvoicePreview" class="com.konnect.jpms.task.InvoicePreview">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		 <action name="ValidateTimeSheet" class="com.konnect.jpms.ajax.ValidateTimeSheet">
+			<result name="success">/jsp/ajax/Message.jsp</result>			
+		</action>
+
+		<action name="UpdateStatus" class="com.konnect.jpms.task.UpdateStatus">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>			
+		</action>      
+		
+		<action name="ProjectInvoice" class="com.konnect.jpms.task.ProjectInvoice">
+			<result name="load">/jsp/task/ProjectInvoice.jsp</result>
+			<result name="FORMAT1LOAD">/jsp/task/ProjectInvoiceFormat_1.jsp</result>
+			<result name="FORMAT2LOAD">/jsp/task/ProjectInvoiceFormat_2.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success" type="redirect-action">Billing</result>
+		</action>
+		
+		<action name="ProjectOwnerDetails" class="com.konnect.jpms.task.ProjectOwnerDetails">
+			<result name="success">/jsp/ajax/Message.jsp</result>			
+		</action>
+		
+		<action name="ReceiveBill" class="com.konnect.jpms.task.ReceiveBill">
+			<result name="load">/jsp/task/ReceiveBill.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success" type="redirect-action">Billing</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">Billing</param>
+				<param name="proType">${proType}</param>
+			</result>
+		</action>
+		
+		<action name="ProjectAdHocInvoice" class="com.konnect.jpms.task.ProjectAdHocInvoice">
+			<result name="load">/jsp/task/ProjectAdHocInvoice.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success" type="redirect-action">Billing</result>
+		</action>
+		
+		<action name="GetClientSpocAndAddress" class="com.konnect.jpms.task.GetClientSpocAndAddress">
+			<result name="success">/jsp/ajax/Message.jsp</result>			
+		</action>
+ 
+		<action name="OutstandingReport" class="com.konnect.jpms.task.OutstandingReport">
+			<result name="load">/jsp/task/OutstandingReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/OutstandingReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="ProfitabilityReport" class="com.konnect.jpms.task.ProfitabilityReport">
+			<result name="load">/jsp/task/ProfitabilityReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/ProfitabilityReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+     
+		<action name="ProjectProRetaInvoice" class="com.konnect.jpms.task.ProjectProRetaInvoice">
+			<result name="load">/jsp/task/ProjectProRetaInvoice.jsp</result>
+			<result name="IFLOAD">/jsp/task/ProjectProRetaInvoiceFormatWise.jsp</result>
+			<result name="FORMAT1LOAD">/jsp/task/ProjectProRetaInvoiceFormat_1.jsp</result>
+			<result name="FORMAT2LOAD">/jsp/task/ProjectProRetaInvoiceFormat_2.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success" type="redirect-action">Billing</result>
+		</action>
+		
+		<action name="ProjectPartialInvoicePopup" class="com.konnect.jpms.task.ProjectPartialInvoicePopup">
+			<result name="load">/jsp/task/ProjectPartialInvoicePopup.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="ProjectPartialInvoice" class="com.konnect.jpms.task.ProjectPartialInvoice">
+			<result name="load">/jsp/task/ProjectPartialInvoice.jsp</result>
+			<result name="FORMAT1LOAD">/jsp/task/ProjectPartialInvoiceFormat_1.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success" type="redirect-action">Billing</result>
+		</action> 
+
+<!-- 		<action name="ReceiveMultipleBill" class="com.konnect.jpms.task.ReceiveMultipleBill">
+			<result name="load">/jsp/task/ReceiveMultipleBill.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success" type="redirect-action">ProjectBilling</result>
+		</action> -->
+
+		<action name="ReceiveMultipleBill" class="com.konnect.jpms.task.ReceiveMultipleBill">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success" type="redirect-action">Billing</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>		
+		
+		<action name="EditEmpRateAndCost" class="com.konnect.jpms.task.EditEmpRateAndCost">
+			<result name="load">/jsp/task/EditEmpRateAndCost.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">PreAddNewProject1</param>
+				<param name="operation">E</param>
+				<param name="pro_id">${proID}</param>
+				<param name="step">1</param>
+			</result>
+		</action>
+		
+		<action name="SalesRegisterReport" class="com.konnect.jpms.task.SalesRegisterReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/SalesRegisterReport.jsp</result>
+			<result name="load">/jsp/task/SalesRegisterReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="MonthlyReceiptReport" class="com.konnect.jpms.task.MonthlyReceiptReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/MonthlyReceiptReport.jsp</result>
+			<result name="load">/jsp/task/MonthlyReceiptReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ClientReimbursementReport" class="com.konnect.jpms.task.ClientReimbursementReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/ClientReimbursementReport.jsp</result>
+			<result name="load">/jsp/task/ClientReimbursementReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProjectCostingReport" class="com.konnect.jpms.task.ProjectCostingReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/ProjectCostingReport.jsp</result>
+			<result name="load">/jsp/task/ProjectCostingReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="ViewAndUpdateExchangeValue" class="com.konnect.jpms.task.ViewAndUpdateExchangeValue">
+			<result name="success">/jsp/task/ViewAndUpdateExchangeValue.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action> 
+		
+		<action name="TaxSetting" class="com.konnect.jpms.task.tax.TaxSetting">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DeleteGeneratedProjectInvoice" class="com.konnect.jpms.task.DeleteGeneratedProjectInvoice">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="CSUCCESS" type="redirect-action">
+				<param name="actionName">Billing</param>
+				<param name="proType">${proType}</param>
+			</result>
+		</action> 
+		
+		<action name="GetWorkLocationByOrganization" class="com.konnect.jpms.task.GetWorkLocationByOrganization">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/GetWorkLocationByOrganization.jsp</result>
+		</action>
+		
+		<action name="GetSBUByOrganization" class="com.konnect.jpms.task.GetSBUByOrganization">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/GetSBUByOrganization.jsp</result>
+		</action>
+		
+		<action name="GetDepartmentByOrganization" class="com.konnect.jpms.task.GetDepartmentByOrganization">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/GetDepartmentByOrganization.jsp</result>
+		</action>
+		
+		<action name="DeleteProjectDocuments" class="com.konnect.jpms.task.DeleteProjectDocuments">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="UpdateProjectDocumentFolder" class="com.konnect.jpms.task.UpdateProjectDocumentFolder">
+			<interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+                <!-- <param name="allowedTypes">text/xml,application/acad,application/arj,application/astound,application/clariscad,application/drafting,application/dxf,application/i-deas,application/iges,application/java-archive,application/mac-binhex40,application/msaccess,application/msexcel,application/mspowerpoint,application/msproject,application/msword,application/mswrite,application/octet-stream,application/oda,application/pdf,application/postscript,application/pro_eng,application/rtf,application/set,application/sla,application/solids,application/STEP,application/vda,application/x-bcpio,application/x-cpio,application/x-csh,application/x-director,application/x-dvi,application/x-dwf,application/x-gtar,application/x-gzip,application/x-hdf,application/x-javascript,application/x-latex,application/x-macbinary,application/x-midi,application/x-mif,application/x-netcdf,application/x-sh,application/x-shar,application/x-shockwave-flash,application/x-stuffit,application/x-sv4cpio,application/x-sv4crc,application/x-tar,application/x-tcl,application/x-tex,application/x-texinfo,application/x-troff,application/x-troff-man,application/x-troff-me,application/x-troff-ms,application/x-ustar,application/x-wais-source,application/x-winhelp,application/zip,audio/basic,audio/midi,audio/x-aiff,audio/x-mpeg,audio/x-pn-realaudio,audio/x-pn-realaudio-plugin,audio/x-voice,audio/x-wav,image/bmp,image/gif,image/ief,image/jpeg,image/pict,image/png,image/tiff,image/x-cmu-raster,image/x-portable-anymap,image/x-portable-bitmap,image/x-portable-graymap,image/x-portable-pixmap,image/x-rgb,image/x-xbitmap,image/x-xpixmap,image/x-xwindowdump,multipart/x-gzip,multipart/x-zip,text/html,text/plain,text/richtext,text/tab-separated-values,text/x-setext,text/x-sgml,video/mpeg,video/msvideo,video/quicktime,video/vdo,video/vivo,video/x-sgi-movie,x-conference/x-cooltalk,x-world/x-svr,x-world/x-vrml,x-world/x-vrt</param> -->
+            </interceptor-ref>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">PreAddNewProject1</param>
+				<param name="operation">E</param>
+				<param name="pro_id">${proId}</param>
+				<param name="step">3</param>
+			</result>
+			<result name="vapsuccess" type="redirect-action">ViewAllProjects</result>
+			<result name="mysuccess" type="redirect-action">ViewMyProjects</result>
+			<result name="mpsuccess" type="redirect-action">MyWork</result>
+			<result name="load">/jsp/task/UpdateProjectDocumentFolder.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+				
+		<action name="GetTaskDescription" class="com.konnect.jpms.task.GetTaskDescription">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/GetTaskDescription.jsp</result>
+		</action>
+
+		<action name="ProjectwiseTimesheetDetails" class="com.konnect.jpms.task.ProjectwiseTimesheetDetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/ProjectwiseTimesheetDetails.jsp</result>
+			<result name="load">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="GetBillingFrequency" class="com.konnect.jpms.task.GetBillingFrequency">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/GetBillingFrequency.jsp</result>
+		</action>
+
+		<action name="GetOrganizationCurrency" class="com.konnect.jpms.task.GetOrganizationCurrency">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/GetOrganizationCurrency.jsp</result>
+		</action>
+
+		<action name="AllClientDetails" class="com.konnect.jpms.task.AllClientDetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>				
+
+		<action name="SaveTaskOrSubtaskAndGetId" class="com.konnect.jpms.task.SaveTaskOrSubtaskAndGetId">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/SaveTaskOrSubtaskAndGetId.jsp</result>
+		</action>
+		
+		<action name="GetSkillwiseEmployee" class="com.konnect.jpms.task.GetSkillwiseEmployee">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/GetSkillwiseEmployee.jsp</result>
+		</action>
+		
+		<action name="DeleteBillingHead" class="com.konnect.jpms.task.DeleteBillingHead">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/DeleteBillingHead.jsp</result>
+		</action>
+		
+		<action name="GetBillingHeadOtherVariable" class="com.konnect.jpms.task.GetBillingHeadOtherVariable">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/GetBillingHeadOtherVariable.jsp</result>
+		</action>
+
+		<action name="CheckDateApprovedStatus" class="com.konnect.jpms.task.CheckDateApprovedStatus">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/CheckDateApprovedStatus.jsp</result>
+		</action>
+		
+		<action name="CustomerProjectTimesheet" class="com.konnect.jpms.task.CustomerProjectTimesheet">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="InvoiceFormat" class="com.konnect.jpms.task.InvoiceFormat">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="GenerateProjectInvoiceFormatwise" class="com.konnect.jpms.task.GenerateInvoicePdfFormatWise">
+			<result name="success">/jsp/task/ProjectReport.jsp</result>
+		</action>
+		
+		<action name="GetOneDaySingleEmpTaskHours" class="com.konnect.jpms.task.GetOneDaySingleEmpTaskHours">
+			<result name="success">/jsp/task/GetOneDaySingleEmpTaskHours.jsp</result>
+		</action>
+		
+		<action name="GetMoreProjects" class="com.konnect.jpms.task.GetMoreProjects">
+			<result name="success">/jsp/task/GetMoreProjects.jsp</result>
+		</action>		
+		
+		<action name="ARManagementSBUReport" class="com.konnect.jpms.task.ARManagementSBUReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success">/jsp/task/ARManagementSBUReport.jsp</result>
+			<result name="load">/jsp/task/ARManagementSBUReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="ARManagementReportXml" class="com.konnect.jpms.task.ARManagementReportXml">
+			<result name="success">/jsp/task/ARManagementSBUReport.jsp</result>
+		</action>
+		
+		<action name="TaxAndBillingSetting" class="com.konnect.jpms.task.tax.TaxAndBillingSetting">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success">/jsp/task/tax/TaxAndBillingSetting.jsp</result>
+			<result name="load">/jsp/task/tax/TaxAndBillingSetting.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="AddTaxHead" class="com.konnect.jpms.task.tax.AddTaxHead">
+			<result name="load">/jsp/task/tax/AddTaxHead.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<!-- <result name="success" type="redirectAction">TaxAndBillingSetting</result> -->
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="AddBillingHead" class="com.konnect.jpms.task.tax.AddBillingHead">
+			<result name="load">/jsp/task/tax/AddBillingHead.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<!-- <result name="success" type="redirectAction">TaxAndBillingSetting</result> -->
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+	
+		<action name="GetProjectOwnerOrgDetails" class="com.konnect.jpms.task.GetProjectOwnerOrgDetails">
+			<result name="success">/jsp/task/GetProjectOwnerOrgDetails.jsp</result>
+		</action>
+		
+		<action name="CheckInvoiceCodeExist" class="com.konnect.jpms.task.CheckInvoiceCodeExist">
+			<result name="success">/jsp/task/CheckInvoiceCodeExist.jsp</result>
+		</action>
+		
+		<action name="ProjectGanttChart" class="com.konnect.jpms.task.ProjectGanttChart">
+			<result name="success">/jsp/task/ProjectGanttChart.jsp</result>
+		</action>
+		
+		<action name="ProjectDocuments" class="com.konnect.jpms.task.ProjectDocuments">
+			<interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+                <!-- <param name="allowedTypes">text/xml,application/acad,application/arj,application/astound,application/clariscad,application/drafting,application/dxf,application/i-deas,application/iges,application/java-archive,application/mac-binhex40,application/msaccess,application/msexcel,application/mspowerpoint,application/msproject,application/msword,application/mswrite,application/octet-stream,application/oda,application/pdf,application/postscript,application/pro_eng,application/rtf,application/set,application/sla,application/solids,application/STEP,application/vda,application/x-bcpio,application/x-cpio,application/x-csh,application/x-director,application/x-dvi,application/x-dwf,application/x-gtar,application/x-gzip,application/x-hdf,application/x-javascript,application/x-latex,application/x-macbinary,application/x-midi,application/x-mif,application/x-netcdf,application/x-sh,application/x-shar,application/x-shockwave-flash,application/x-stuffit,application/x-sv4cpio,application/x-sv4crc,application/x-tar,application/x-tcl,application/x-tex,application/x-texinfo,application/x-troff,application/x-troff-man,application/x-troff-me,application/x-troff-ms,application/x-ustar,application/x-wais-source,application/x-winhelp,application/zip,audio/basic,audio/midi,audio/x-aiff,audio/x-mpeg,audio/x-pn-realaudio,audio/x-pn-realaudio-plugin,audio/x-voice,audio/x-wav,image/bmp,image/gif,image/ief,image/jpeg,image/pict,image/png,image/tiff,image/x-cmu-raster,image/x-portable-anymap,image/x-portable-bitmap,image/x-portable-graymap,image/x-portable-pixmap,image/x-rgb,image/x-xbitmap,image/x-xpixmap,image/x-xwindowdump,multipart/x-gzip,multipart/x-zip,text/html,text/plain,text/richtext,text/tab-separated-values,text/x-setext,text/x-sgml,video/mpeg,video/msvideo,video/quicktime,video/vdo,video/vivo,video/x-sgi-movie,x-conference/x-cooltalk,x-world/x-svr,x-world/x-vrml,x-world/x-vrt</param> -->
+            </interceptor-ref>
+			<result name="success">/jsp/task/ProjectDocuments.jsp</result>
+			<result name="update" type="redirectAction">ViewAllProjects</result>
+			<result name="mysuccess" type="redirectAction">ViewMyProjects</result>
+			<!-- <result name="mpupdate" type="redirectAction">MyTasks</result> -->
+			<result name="mpupdate" type="redirect-action">
+				<param name="actionName">MyWork</param>
+				<param name="taskId">${taskId}</param>
+			</result>
+		</action>
+		
+		<action name="ProjectMilestones" class="com.konnect.jpms.task.ProjectMilestones">
+			<result name="success">/jsp/task/ProjectMilestones.jsp</result>
+		</action>
+		
+		<action name="AddTaskDescription" class="com.konnect.jpms.task.AddTaskDescription">
+			<result name="load">/jsp/task/AddTaskDescription.jsp</result>
+		</action>
+		
+		<action name="GenerateProjectwiseTimesheet" class="com.konnect.jpms.task.GenerateProjectwiseTimesheet">
+			<result name="submit">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="success" type="redirectAction">ExtraActivityView</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="AddCostCalculation" class="com.konnect.jpms.task.tax.AddCostCalculation">
+			<result name="load">/jsp/task/tax/AddCostCalculation.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<!-- <result name="success" type="redirectAction">TaxAndBillingSetting</result> -->
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="EmpTaskActivityHistory" class="com.konnect.jpms.task.EmpTaskActivityHistory">
+			<result name="success">/jsp/task/EmpTaskActivityHistory.jsp</result>
+		</action>
+		
+		<action name="AddProjectCategory" class="com.konnect.jpms.task.tax.AddProjectCategory">
+			<result name="load">/jsp/task/tax/AddProjectCategory.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="UpdateProjectDocumentFile" class="com.konnect.jpms.task.UpdateProjectDocumentFile">
+			<interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+                <!-- <param name="allowedTypes">text/xml,application/acad,application/arj,application/astound,application/clariscad,application/drafting,application/dxf,application/i-deas,application/iges,application/java-archive,application/mac-binhex40,application/msaccess,application/msexcel,application/mspowerpoint,application/msproject,application/msword,application/mswrite,application/octet-stream,application/oda,application/pdf,application/postscript,application/pro_eng,application/rtf,application/set,application/sla,application/solids,application/STEP,application/vda,application/x-bcpio,application/x-cpio,application/x-csh,application/x-director,application/x-dvi,application/x-dwf,application/x-gtar,application/x-gzip,application/x-hdf,application/x-javascript,application/x-latex,application/x-macbinary,application/x-midi,application/x-mif,application/x-netcdf,application/x-sh,application/x-shar,application/x-shockwave-flash,application/x-stuffit,application/x-sv4cpio,application/x-sv4crc,application/x-tar,application/x-tcl,application/x-tex,application/x-texinfo,application/x-troff,application/x-troff-man,application/x-troff-me,application/x-troff-ms,application/x-ustar,application/x-wais-source,application/x-winhelp,application/zip,audio/basic,audio/midi,audio/x-aiff,audio/x-mpeg,audio/x-pn-realaudio,audio/x-pn-realaudio-plugin,audio/x-voice,audio/x-wav,image/bmp,image/gif,image/ief,image/jpeg,image/pict,image/png,image/tiff,image/x-cmu-raster,image/x-portable-anymap,image/x-portable-bitmap,image/x-portable-graymap,image/x-portable-pixmap,image/x-rgb,image/x-xbitmap,image/x-xpixmap,image/x-xwindowdump,multipart/x-gzip,multipart/x-zip,text/html,text/plain,text/richtext,text/tab-separated-values,text/x-setext,text/x-sgml,video/mpeg,video/msvideo,video/quicktime,video/vdo,video/vivo,video/x-sgi-movie,x-conference/x-cooltalk,x-world/x-svr,x-world/x-vrml,x-world/x-vrt</param> -->
+            </interceptor-ref>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">PreAddNewProject1</param>
+				<param name="operation">E</param>
+				<param name="pro_id">${proId}</param>
+				<param name="step">3</param>
+			</result>
+			<result name="vapsuccess" type="redirect-action">ViewAllProjects</result>
+			<result name="mysuccess" type="redirect-action">ViewMyProjects</result>
+			<result name="mpsuccess" type="redirect-action">MyWork</result>
+			<result name="load">/jsp/task/UpdateProjectDocumentFile.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="SetTaskSubtaskType" class="com.konnect.jpms.task.tax.SetTaskSubtaskType">
+			<result name="load">/jsp/task/tax/SetTaskSubtaskType.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<!-- <result name="success" type="redirectAction">TaxAndBillingSetting</result> -->
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="DocumentListView" class="com.konnect.jpms.task.DocumentListView">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProDocumentList" class="com.konnect.jpms.task.DocumentList">
+			<interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+				<!-- <param name="allowedTypes">text/xml,application/acad,application/arj,application/astound,application/clariscad,application/drafting,application/dxf,application/i-deas,application/iges,application/java-archive,application/mac-binhex40,application/msaccess,application/msexcel,application/mspowerpoint,application/msproject,application/msword,application/mswrite,application/octet-stream,application/oda,application/pdf,application/postscript,application/pro_eng,application/rtf,application/set,application/sla,application/solids,application/STEP,application/vda,application/x-bcpio,application/x-cpio,application/x-csh,application/x-director,application/x-dvi,application/x-dwf,application/x-gtar,application/x-gzip,application/x-hdf,application/x-javascript,application/x-latex,application/x-macbinary,application/x-midi,application/x-mif,application/x-netcdf,application/x-sh,application/x-shar,application/x-shockwave-flash,application/x-stuffit,application/x-sv4cpio,application/x-sv4crc,application/x-tar,application/x-tcl,application/x-tex,application/x-texinfo,application/x-troff,application/x-troff-man,application/x-troff-me,application/x-troff-ms,application/x-ustar,application/x-wais-source,application/x-winhelp,application/zip,audio/basic,audio/midi,audio/x-aiff,audio/x-mpeg,audio/x-pn-realaudio,audio/x-pn-realaudio-plugin,audio/x-voice,audio/x-wav,image/bmp,image/gif,image/ief,image/jpeg,image/pict,image/png,image/tiff,image/x-cmu-raster,image/x-portable-anymap,image/x-portable-bitmap,image/x-portable-graymap,image/x-portable-pixmap,image/x-rgb,image/x-xbitmap,image/x-xpixmap,image/x-xwindowdump,multipart/x-gzip,multipart/x-zip,text/html,text/plain,text/richtext,text/tab-separated-values,text/x-setext,text/x-sgml,video/mpeg,video/msvideo,video/quicktime,video/vdo,video/vivo,video/x-sgi-movie,x-conference/x-cooltalk,x-world/x-svr,x-world/x-vrml,x-world/x-vrt</param> -->
+            </interceptor-ref>
+			<result name="success">/jsp/task/DocumentList.jsp</result>
+			<result name="update" type="redirectAction">DocumentListView</result>
+			<result name="updateCommunication" type="redirectAction">Communication</result>
+			<result name="updateCommunication" type="redirect-action">
+				<param name="actionName">Communication</param>
+				<param name="fromPage">${fromPage}</param>
+			</result>
+		</action>
+		
+		<action name="ProjectDocumentFact" class="com.konnect.jpms.task.ProjectDocumentFact">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<!-- <result name="load">/jsp/task/ProjectDocumentFact.jsp</result> -->
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action> 
+		
+		<action name="EditDocumentFolderAndFile" class="com.konnect.jpms.task.EditDocumentFolderAndFile">
+			<interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+                <!-- <param name="allowedTypes">text/xml,application/acad,application/arj,application/astound,application/clariscad,application/drafting,application/dxf,application/i-deas,application/iges,application/java-archive,application/mac-binhex40,application/msaccess,application/msexcel,application/mspowerpoint,application/msproject,application/msword,application/mswrite,application/octet-stream,application/oda,application/pdf,application/postscript,application/pro_eng,application/rtf,application/set,application/sla,application/solids,application/STEP,application/vda,application/x-bcpio,application/x-cpio,application/x-csh,application/x-director,application/x-dvi,application/x-dwf,application/x-gtar,application/x-gzip,application/x-hdf,application/x-javascript,application/x-latex,application/x-macbinary,application/x-midi,application/x-mif,application/x-netcdf,application/x-sh,application/x-shar,application/x-shockwave-flash,application/x-stuffit,application/x-sv4cpio,application/x-sv4crc,application/x-tar,application/x-tcl,application/x-tex,application/x-texinfo,application/x-troff,application/x-troff-man,application/x-troff-me,application/x-troff-ms,application/x-ustar,application/x-wais-source,application/x-winhelp,application/zip,audio/basic,audio/midi,audio/x-aiff,audio/x-mpeg,audio/x-pn-realaudio,audio/x-pn-realaudio-plugin,audio/x-voice,audio/x-wav,image/bmp,image/gif,image/ief,image/jpeg,image/pict,image/png,image/tiff,image/x-cmu-raster,image/x-portable-anymap,image/x-portable-bitmap,image/x-portable-graymap,image/x-portable-pixmap,image/x-rgb,image/x-xbitmap,image/x-xpixmap,image/x-xwindowdump,multipart/x-gzip,multipart/x-zip,text/html,text/plain,text/richtext,text/tab-separated-values,text/x-setext,text/x-sgml,video/mpeg,video/msvideo,video/quicktime,video/vdo,video/vivo,video/x-sgi-movie,x-conference/x-cooltalk,x-world/x-svr,x-world/x-vrml,x-world/x-vrt</param> -->
+            </interceptor-ref>
+			<result name="load">/jsp/task/EditDocumentFolderAndFile.jsp</result>
+			<result name="success" type="redirectAction">DocumentListView</result>
+			<result name="updateCommunication" type="redirect-action">
+				<param name="actionName">Communication</param>
+				<param name="fromPage">${fromPage}</param>
+			</result>
+		</action> 
+		
+		<action name="CopyDocument" class="com.konnect.jpms.task.CopyDocument">
+			<interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+            </interceptor-ref>
+			<result name="load">/jsp/task/CopyDocument.jsp</result>
+			<result name="success" type="redirectAction">DocumentListView</result>
+			<result name="updateCommunication" type="redirect-action">
+				<param name="actionName">Communication</param>
+				<param name="fromPage">${fromPage}</param>
+			</result>
+		</action> 
+		
+		<action name="Peoples" class="com.konnect.jpms.task.People">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/task/People.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="delete">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="AddNewCustomer" class="com.konnect.jpms.task.AddNewCustomer">
+			<result name="load">/jsp/task/AddNewCustomer.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success" type="redirectAction">Customer</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="ProjectTimesheetDenyByCustomer" class="com.konnect.jpms.task.ProjectTimesheetDenyByCustomer">
+			<result name="load">/jsp/task/ProjectTimesheetDenyByCustomer.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">TimesheetsApproval</param>
+				<param name="timesheetType">${timesheetType}</param>
+			</result>
+			<result name="mysuccess" type="redirect-action">
+				<param name="actionName">TeamTimesheetsApproval</param>
+				<param name="timesheetType">${timesheetType}</param>
+				<param name="pageType">${pageType}</param>
+			</result>
+		</action>
+		
+		<action name="AddPeople" class="com.konnect.jpms.task.AddPeople">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<!-- <result name="load_edit" type="redirect">${redirectUrl}</result> -->
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">Resource</result>
+			<result name="report" type="redirect-action">Resource</result>
+			<!-- <result name="deletePending" type="redirect-action">PendingEmployeeReport</result> -->
+			<result name="profile" type="redirectAction">
+	            <param name="actionName">PeopleProfile</param>
+	            <param name="empId">${empId}</param>
+            </result>
+			<result name="rate">/jsp/common/viewPage.jsp</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="invalidsession">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PeopleUser" class="com.konnect.jpms.task.PeopleUser">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/task/PeopleUser.jsp</result>
+			<result name="success">/jsp/task/PeopleUser.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PeopleProfile" class="com.konnect.jpms.task.PeopleProfile">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>	
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GetOrgData" class="com.konnect.jpms.task.GetOrgData">
+			<result name="success">/jsp/task/GetOrgData.jsp</result>
+		</action>
+		
+		<action name="AddtoProject" class="com.konnect.jpms.task.AddtoProject">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/task/AddtoProject.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">ViewAllProjects</param>
+				<param name="submitType">ADDTOPROJECT</param>
+				<param name="proId">${strProject}</param>
+				<param name="step">1</param>
+			</result>
+		</action>
+		
+		<action name="DocumentCategories" class="com.konnect.jpms.task.tax.DocumentCategories">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success">/jsp/task/tax/DocumentCategories.jsp</result>
+			<result name="load">/jsp/task/tax/DocumentCategories.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="InformationDisplay" class="com.konnect.jpms.task.tax.InformationDisplay">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success">/jsp/task/tax/InformationDisplay.jsp</result>
+			<result name="load">/jsp/task/tax/InformationDisplay.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="SetInformationDisplay" class="com.konnect.jpms.task.tax.SetInformationDisplay">
+			<result name="load">/jsp/task/tax/SetInformationDisplay.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<!-- <result name="success" type="redirectAction">InformationDisplay</result> -->
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="TimesheetSetting" class="com.konnect.jpms.task.tax.TimesheetSetting">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success">/jsp/task/tax/TimesheetSetting.jsp</result>
+			<result name="load">/jsp/task/tax/TimesheetSetting.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="UpdateTimesheetWorkflowPolicy" class="com.konnect.jpms.task.tax.UpdateTimesheetWorkflowPolicy">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/tax/UpdateTimesheetWorkflowPolicy.jsp</result>
+		</action>
+		
+		<action name="GetReportCurrSign" class="com.konnect.jpms.task.GetReportCurrSign">
+			<result name="success">/jsp/task/GetReportCurrSign.jsp</result>
+		</action>
+		
+		<action name="ViewCustomerLoginDetail" class="com.konnect.jpms.task.ViewCustomerLoginDetail">
+			<result name="success">/jsp/task/ViewCustomerLoginDetail.jsp</result>
+		</action> 
+		<action name="AddPeopleMode" class="com.konnect.jpms.task.AddPeopleMode">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="view">/jsp/task/AddPeopleMode.jsp</result>
+			<result name="success" type="redirect-action">Peoples</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GenerateInvoicePdfFormatOne" class="com.konnect.jpms.task.GenerateInvoicePdfFormatOne">
+			<result name="success">/jsp/task/ProjectReport.jsp</result>
+			<result name="view">/jsp/common/viewPage.jsp</result>
+			<result name="mail" type="redirect-action">
+				<param name="actionName">Billing</param>
+				<param name="proType">${proType}</param>
+			</result>
+		</action>
+
+		<action name="IFrameProjectAdHocInvoiceFormat_1" class="com.konnect.jpms.task.IFrameProjectAdHocInvoiceFormat_1"> 
+			<result name="success">/jsp/task/IFrameProjectAdHocInvoiceFormat_1.jsp</result>
+		</action>
+		
+		<action name="ProjectAdHocInvoiceFormat_1" class="com.konnect.jpms.task.ProjectAdHocInvoiceFormat_1">
+			<result name="load">/jsp/task/ProjectAdHocInvoiceFormat_1.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">Billing</param>
+				<param name="proType">${proType}</param>
+			</result>
+		</action>
+
+		<action name="CustomerRegistration" class="com.konnect.jpms.task.CustomerRegistration">
+			<result name="load">/jsp/task/CustomerRegistration.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success" type="redirectAction">Login</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="GetNewMilestoneData" class="com.konnect.jpms.task.GetNewMilestoneData">
+			<result name="success">/jsp/task/GetNewMilestoneData.jsp</result>
+		</action>
+		
+		<action name="PendingPeople" class="com.konnect.jpms.task.PendingPeople">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/task/PendingPeople.jsp</result>
+			<result name="success">/jsp/task/PendingPeople.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="delete">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="ProDocVersionHistory" class="com.konnect.jpms.task.ProDocVersionHistory">
+			<result name="success">/jsp/task/ProDocVersionHistory.jsp</result>
+		</action>
+
+		<action name="ViewMyProjects" class="com.konnect.jpms.task.ViewAllProjects">
+			<param name="pageType">MP</param>
+			<result name="myload">/jsp/task/ViewAllProjects.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="TeamTimesheetsApproval" class="com.konnect.jpms.task.TeamTimesheetsApproval">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="MyTimesheet" class="com.konnect.jpms.task.AddProjectActivity1">
+			<param name="fillUserType">MY</param>
+			<result name="success">/jsp/task/AddProjectActivity1.jsp</result>
+			<result name="load">/jsp/task/AddProjectActivity1.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ResourceTimesheet" class="com.konnect.jpms.task.AddProjectActivity1">
+			<param name="fillUserType">MY</param>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProjectDashboard" class="com.konnect.jpms.task.ProjectDashboard">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="delete">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="Feeds" class="com.konnect.jpms.task.Feeds">
+			<!--<interceptor-ref  name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="invalid.token" type="redirectAction">Feeds</result>-->
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="tab">/jsp/task/Feeds.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			
+			<result name="protab" type="redirect-action">
+				<param name="actionName">PreAddNewProject1</param>
+				<param name="operation">E</param>
+				<param name="pro_id">${proId}</param>
+				<param name="step">4</param>
+				<param name="pageType">${pageType}</param>
+			</result>
+			<result name="tasktab" type="redirect-action">
+				<param name="actionName">EmpViewProject</param>
+				<param name="proType">${pageType}</param>
+			</result>
+			<result name="timesheettab" type="redirect-action">
+				<param name="actionName">ProjectTimesheets</param>
+				<param name="timesheetType">${pageType}</param>
+			</result>
+			<result name="invoicetab" type="redirect-action">
+				<param name="actionName">Billing</param>
+				<param name="proType">${pageType}</param>
+			</result>
+			<result name="vaptasktab" type="redirect-action">
+				<param name="actionName">ViewAllProjects</param>
+				<param name="proType">${pageType}</param>
+			</result>
+			<result name="myhubtab" type="redirect-action">
+				<param name="actionName">Hub</param>
+				<param name="type">F</param>
+			</result>
+		</action>
+		
+		<action name="GetAlignedTypeData" class="com.konnect.jpms.task.GetAlignedTypeData">
+			<result name="success">/jsp/task/GetAlignedTypeData.jsp</result>
+		</action>
+		
+		<action name="WorkProgress" class="com.konnect.jpms.task.WorkProgress">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/task/WorkProgress.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="WorkEffort" class="com.konnect.jpms.task.WorkEffort">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/task/WorkEffort.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>  
+
+		<action name="LikeUnlikeAndLikeData" class="com.konnect.jpms.task.LikeUnlikeAndLikeData">
+			<result name="success">/jsp/task/LikeUnlikeAndLikeData.jsp</result>
+		</action>
+		
+		<action name="ProjectSchedule" class="com.konnect.jpms.task.ProjectSchedule">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="BillsReceipts" class="com.konnect.jpms.task.BillsReceipts">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/task/BillsReceipts.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="AddCommentOnPost" class="com.konnect.jpms.task.AddCommentOnPost">
+			<result name="load">/jsp/task/AddCommentOnPost.jsp</result>
+		</action> 
+		
+		<action name="OutstandingBalance" class="com.konnect.jpms.task.OutstandingBalance">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/task/OutstandingBalance.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProjectCosting" class="com.konnect.jpms.task.ProjectCosting">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/task/ProjectCosting.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EditAndDeleteComment" class="com.konnect.jpms.task.EditAndDeleteComment">
+			<result name="load">/jsp/task/EditAndDeleteComment.jsp</result>
+		</action>
+		
+		<action name="MyProjectDashboard" class="com.konnect.jpms.task.MyProjectDashboard">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>	
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result> 
+		</action>
+		
+		<action name="EditAndDeleteFeed" class="com.konnect.jpms.task.EditAndDeleteFeed">
+			<result name="load">/jsp/task/EditAndDeleteFeed.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">Hub</param>
+				 <param name="type">F</param>
+			</result>
+		</action>
+		
+		<action name="ProjectSnapshot" class="com.konnect.jpms.task.ProjectSnapshot">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="tab">/jsp/task/ProjectSnapshot.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>	
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="AddDocumentTaggedWith" class="com.konnect.jpms.task.AddDocumentTaggedWith">
+			<result name="load">/jsp/task/AddDocumentTaggedWith.jsp</result>
+		</action>
+
+		<action name="FeedsPopup" class="com.konnect.jpms.task.Feeds">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/task/Feeds.jsp</result>
+		</action>
+		
+		<action name="TeamMembers" class="com.konnect.jpms.task.TeamMembers">
+			<result name="success">/jsp/task/TeamMembers.jsp</result>
+		</action>
+		
+		<action name="DesktopActivityReport" class="com.konnect.jpms.task.ViewTaskIdealTime">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/task/ViewTaskIdealTime.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ViewSnapShots" class="com.konnect.jpms.task.ViewSnapShots">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="load">/jsp/task/ViewSnapShots.jsp</result>
+			<result name="mysuccess" type="redirect-action">
+				<param name="actionName">ViewSnapShots</param>
+				<param name="proType">C</param>
+			</result>
+		</action>
+		
+		<action name="ViewSnapShot1" class="com.konnect.jpms.task.ViewSnapShot1">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="load">/jsp/task/ViewSnapShots1.jsp</result>
+			<result name="mysuccess" type="redirect-action">
+				<param name="actionName">ViewSnapShot1</param>
+				<param name="proType">C</param>
+			</result>
+		</action>
+		
+		<action name="FeedsByAjax" class="com.konnect.jpms.task.FeedsByAjax">
+			<result name="load">/jsp/task/FeedsByAjax.jsp</result>
+		</action>
+		
+		<action name="Notifications" class="com.konnect.jpms.task.AlertsAndNotifications">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ImportProjects" class="com.konnect.jpms.task.ImportProjects">
+            <interceptor-ref name="defaultStack">
+            	<param name="fileUpload.maximumSize">104857600</param>  
+            </interceptor-ref>
+            <result name="load">/jsp/task/ImportProjects.jsp</result>
+			<!-- <result name="success">/jsp/common/viewPage.jsp</result> -->
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success" type="redirectAction">ViewAllProjects</result>
+			<result name="mysuccess" type="redirectAction">ViewMyProjects</result>
+		</action>
+
+		<action name="ClientOutstandingReport" class="com.konnect.jpms.task.ClientOutstandingReport">
+			<result name="load">/jsp/task/ClientOutstandingReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/ClientOutstandingReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	
+		<action name="EmployeeCostReport" class="com.konnect.jpms.task.EmployeeCostReport">
+	 		<result name="load">/jsp/task/EmployeeCostReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/EmployeeCostReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		 
+		 <action name="ReceiptsReport" class="com.konnect.jpms.task.ReceiptsReport">
+			<result name="load">/jsp/task/ReceiptsReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/ReceiptsReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="CommitmentReport" class="com.konnect.jpms.task.CommitmentReport">
+			<result name="load">/jsp/task/CommitmentReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/CommitmentReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="CostingReport" class="com.konnect.jpms.task.CostingReport">
+			<result name="load">/jsp/task/CostingReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/CostingReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 
+		 <action name="ClientDetailExcelReport" class="com.konnect.jpms.export.ClientDetailExcelReport">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="FeedLikesPopup" class="com.konnect.jpms.task.FeedLikesPopup">
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/FeedLikesPopup.jsp</result>
+		</action>
+		
+		<action name="FeedsImageViewPopUp" class="com.konnect.jpms.task.FeedsImageViewPopUp">
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/FeedsImageViewPopUp.jsp</result>
+		</action>
+		
+		<!-- <action name="ImportTimesheet" class="com.konnect.jpms.tms.ImportTimesheet">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> -->
+		
+		<action name="Resource" class="com.konnect.jpms.task.Resource">
+			<result name="error">/jsp/login/error.jsp</result> 
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>  
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ViewFeedsFilePopup" class="com.konnect.jpms.task.ViewFeedsFilePopup1">
+			<result name="load">/jsp/task/ViewFeedsFilePopup1.jsp</result>
+			<result name="view">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AllProjectNameList" class="com.konnect.jpms.task.AllProjectNameList">
+		 	<result name="load">/jsp/task/AllProjectNameList.jsp</result>
+		 	<result name="view">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProjectDetail" class="com.konnect.jpms.task.ProjectDetail">
+		 	<result name="load">/jsp/task/ProjectDetail.jsp</result>
+		 	<result name="error">/jsp/login/error.jsp</result>
+		</action>
+
+		<action name="TimesheetsApproval" class="com.konnect.jpms.task.TimesheetsApproval">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="MyTasks" class="com.konnect.jpms.task.MyTasks">
+			<!-- <result name="load">/jsp/common/viewPage.jsp</result> -->
+			<result name="load">/jsp/task/MyTasks.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/MyTasks.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="MyTaskNameList" class="com.konnect.jpms.task.MyTaskNameList">
+		 	<result name="load">/jsp/task/MyTaskNameList.jsp</result>
+		 	<result name="error">/jsp/login/error.jsp</result>
+		</action>
+
+		<action name="CheckProjectOwnerOrTL" class="com.konnect.jpms.task.CheckProjectOwnerOrTL">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="TaskBasedReport" class="com.konnect.jpms.task.TaskBasedReport">
+			<result name="load">/jsp/task/TaskBasedReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/TaskBasedReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="ProjectHealthReport" class="com.konnect.jpms.task.ProjectHealthReport">
+			<result name="load">/jsp/task/ProjectHealthReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/ProjectHealthReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="TeamUtilizationReport" class="com.konnect.jpms.task.TeamUtilizationReport">
+			<result name="load">/jsp/task/TeamUtilizationReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/TeamUtilizationReport.jsp</result>
+		</action>
+		
+		<action name="MyselfUtilizationReport" class="com.konnect.jpms.task.MyselfUtilizationReport">
+			<result name="load">/jsp/task/MyselfUtilizationReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/MyselfUtilizationReport.jsp</result>
+		</action>
+		
+		<action name="UtilizationReport" class="com.konnect.jpms.task.UtilizationReport">
+			<result name="load">/jsp/task/UtilizationReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="ProjectSummaryReport" class="com.konnect.jpms.task.ProjectSummaryReport">
+			<result name="load">/jsp/task/ProjectSummaryReport.jsp</result>
+			<result name="success">/jsp/task/ProjectSummaryReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="ProjectAgeingReport" class="com.konnect.jpms.task.ProjectAgeingReport">
+			<result name="load">/jsp/task/ProjectAgeingReport.jsp</result>
+			<result name="success">/jsp/task/ProjectAgeingReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+		
+		<action name="AcceptRescheduleReassign" class="com.konnect.jpms.task.AcceptRescheduleReassign">
+			<result name="load">/jsp/task/AcceptRescheduleReassign.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+			
+		<action name="ConfirmRescheduleReassign" class="com.konnect.jpms.task.ConfirmRescheduleReassign">
+			<result name="load" type="redirectAction">ViewAllProjects</result>	
+		</action>		
+		
+		<action name="DeclineRescheduleReassign" class="com.konnect.jpms.task.DeclineRescheduleReassign">
+			<result name="load" type="redirectAction">ViewAllProjects</result>	
+		</action>
+		
+		<action name="ClientwiseTimesheetReport" class="com.konnect.jpms.task.ClientwiseTimesheetReport">
+	 		<result name="load">/jsp/task/ClientwiseTimesheetReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/ClientwiseTimesheetReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="MyWork" class="com.konnect.jpms.task.MyWorks">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="success">/jsp/task/MyWorks.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="DailyTimesheet" class="com.konnect.jpms.task.DailyTimesheet">
+			<param name="fillUserType">MY</param>
+			<result name="success">/jsp/task/DailyTimesheet.jsp</result>
+			<result name="load">/jsp/task/DailyTimesheet.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="AddClientBrand" class="com.konnect.jpms.task.AddClientBrand">
+			<result name="load">/jsp/task/AddClientBrand.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="success" type="redirectAction">Customer</result>
+			<result name="login" type="redirectAction">Login</result>
+		</action>
+
+		<action name="AddPredefinedTaskForService" class="com.konnect.jpms.task.AddPredefinedTaskForService">
+			<result name="success">/jsp/task/AddPredefinedTaskForService.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="update" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="AddUpdateViewHubContent" class="com.konnect.jpms.task.AddUpdateViewHubContent">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/task/AddUpdateViewHubContent.jsp</result>
+			<result name="success">/jsp/task/AddUpdateViewHubContent.jsp</result>
+		</action>
+		<action name="HRClientVisit" class="com.konnect.jpms.task.HRClientVisit">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 <action name="addNewClientVisit" class="com.konnect.jpms.task.addNewClientVisit">
+			<result name="success">/jsp/task/addNewClientVisit.jsp</result>
+			<result name="load" type="redirect-action">HRClientVisit</result>
+		</action> 
+		<action name="VisitPopup" class="com.konnect.jpms.task.VisitPopup">
+		 	<result name="success">/jsp/task/VisitPopup.jsp</result>
+		</action> 
+		
+		<action name="ResourceStatus" class="com.konnect.jpms.task.ResourceStatus">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProjectTaskAllocation" class="com.konnect.jpms.task.ProjectTaskAllocation">
+			<result name="success">/jsp/task/ProjectTaskAllocation.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="ResourceUtilizationReport" class="com.konnect.jpms.task.ResourceUtilizationReport">
+			<result name="success">/jsp/task/ResourceUtilizationReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+<!-- ===start parvez date: 05-01-2022=== -->
+		<action name="BudgetVSActualEffortsReport" class="com.konnect.jpms.task.BudgetVSActualEffortsReport">
+			<result name="success">/jsp/task/BudgetVSActualEffortsReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+<!-- ===end parvez date: 05-01-2022== -->
+
+		<!--  ===start parvez date: 25-01-2022===  -->
+		<!-- <action name="MonthWiseCommittedReport" class="com.konnect.jpms.task.MonthWiseCommittedReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/MonthWiseCommittedReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> -->
+		
+		<action name="EmployeeSummaryReport" class="com.konnect.jpms.task.EmployeeSummaryReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/EmployeeSummaryReport.jsp</result>
+			<result name="load">/jsp/task/EmployeeSummaryReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		<!--  ===end parvez date: 26-01-2022==  -->
+		<!--  ===start parvez date: 27-01-2022===  -->
+		<action name="EmployeeWiseProjectProgress" class="com.konnect.jpms.task.EmployeeWiseProjectProgress">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/EmployeeWiseProjectProgress.jsp</result>
+			<result name="load">/jsp/task/EmployeeWiseProjectProgress.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ProjectWiseEmployeeProgress" class="com.konnect.jpms.task.ProjectWiseEmployeeProgress">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/ProjectWiseEmployeeProgress.jsp</result>
+			<result name="load">/jsp/task/ProjectWiseEmployeeProgress.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		<!-- ===end parvez date: 27-01-2022== -->
+		
+		<!-- ===start Dattatray date: 28-01-2022=== -->
+		<action name="ProjectCommitmentStatusReport" class="com.konnect.jpms.task.ProjectCommitmentStatusReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/task/ProjectCommitmentStatusReport.jsp</result>
+			<result name="load">/jsp/task/ProjectCommitmentStatusReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		<!-- ===End Dattatray date: 28-01-2022=== -->
+		
+		
+		<action name="MonthWiseCommittedReport" class="com.konnect.jpms.task.MonthWiseCommittedReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/MonthWiseCommittedReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DivisionwiseCumulativePerformanceReport" class="com.konnect.jpms.task.DivisionwiseCumulativePerformanceReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/DivisionwiseCumulativePerformanceReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PartnerwiseMISReport" class="com.konnect.jpms.task.PartnerwiseMISReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/PartnerwiseMISReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PartnerwiseReceiptReport" class="com.konnect.jpms.task.PartnerwiseReceiptReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/PartnerwiseReceiptReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DirectCostWorkingReport" class="com.konnect.jpms.task.DirectCostWorkingReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/DirectCostWorkingReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PartnerwiseCommitmentReport" class="com.konnect.jpms.task.PartnerwiseCommitmentReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/PartnerwiseCommitmentReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddPartnerwiseBudget" class="com.konnect.jpms.task.AddPartnerwiseBudget">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<!-- <result name="success" type="redirect-action">AddPartnerwiseBudget</result> -->
+			<result name="success" >/jsp/task/AddPartnerwiseBudget.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>	
+		</action>
+			
+		<action name="AddInvoicingDetails" class="com.konnect.jpms.task.AddInvoicingDetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" >/jsp/task/AddInvoicingDetails.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>	
+		</action>
+		
+		<action name="AddReceiptDetails" class="com.konnect.jpms.task.AddReceiptDetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" >/jsp/task/AddReceiptDetails.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>	
+		</action>
+		
+		<action name="GetProjectBillingAjax" class="com.konnect.jpms.task.GetProjectBillingAjax">
+			<result name="success">/jsp/task/GetProjectBillingAjax.jsp</result>
+		</action>
+		
+		<action name="BudgetReport" class="com.konnect.jpms.task.BudgetReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/BudgetReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ClusterWiseBudget" class="com.konnect.jpms.task.ClusterWiseBudget">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/ClusterWiseBudget.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="LocationWiseBudget" class="com.konnect.jpms.task.LocationWiseBudget">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/LocationWiseBudget.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+<!-- ===start parvez date: 14-11-2022=== -->
+		<action name="QuarterlyProjectSummaryReport" class="com.konnect.jpms.task.QuarterlyProjectSummaryReport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/QuarterlyProjectSummaryReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+<!-- ===end parvez date: 14-11-2022=== -->		
+
+<!-- ===start parvez date: 21-11-2022=== -->
+		<!-- <action name="ProjectDomainReport" class="com.konnect.jpms.task.ProjectDomainReport">
+			<result name="success">/jsp/task/ProjectDomainReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/task/ProjectDomainReport.jsp</result>
+		</action>
+		
+		<action name="AddDomain" class="com.konnect.jpms.task.AddDomain">
+			<result name="success">/jsp/task/AddDomain.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="update" type="redirect-action">
+				 <param name="actionName">MyDashboard</param>
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> -->
+<!-- ===end parvez date: 21-11-2022=== -->
+
+		<action name="ManDaysUtilizationReport" class="com.konnect.jpms.task.ManDaysUtilizationReport">
+			<result name="success">/jsp/task/ManDaysUtilizationReport.jsp</result>
+			<result name="login" type="redirectAction">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	
+	</package>
+</struts>
+

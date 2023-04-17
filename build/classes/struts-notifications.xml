@@ -1,0 +1,17 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+
+	<package name="struts-notifications" extends="struts-default">
+
+		<action name="TaskBarNotifications" class="com.konnect.jpms.common.TaskBarNotifications">
+			<result name="success">/jsp/common/TaskBarNotifications.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/TaskBarNotifications.jsp</result>
+		</action>
+		
+	</package>
+</struts>   
+ 

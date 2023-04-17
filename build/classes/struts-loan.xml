@@ -1,0 +1,111 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+   
+   
+   
+	<package name="struts-loan" extends="struts-default">
+       
+		<action name="AddLoan" class="com.konnect.jpms.loan.AddLoan">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/loan/AddLoan.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${orgId}</param>
+			</result>
+			<result name="view" type="redirect-action">LoanPolicyReport</result>
+			<result name="view_tab" type="redirect-action">LoanPolicyReport</result>
+			<result name="update">/jsp/loan/AddLoan.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+		</action> 
+		  
+		<action name="LoanPolicyReport" class="com.konnect.jpms.loan.LoanPolicyReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/loan/LoanPolicyReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>  
+		
+		<action name="LoanApplication" class="com.konnect.jpms.loan.LoanApplicationForm">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/loan/LoanApplicationForm.jsp</result>
+			<result name="success" type="redirect-action">LoanApplicationReport</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="LoanApplicationReport" class="com.konnect.jpms.loan.LoanApplicationReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/loan/LoanApplicationReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		
+		<action name="ApproveLoan" class="com.konnect.jpms.loan.ApproveLoan">
+			<!-- <result name="success" type="redirect-action">LoanApplicationReport</result> -->
+			<result name="success" type="redirect-action">
+				<param name="actionName">LoanApplicationReport</param>
+	            <param name="currUserType">${currUserType}</param>
+			</result>
+			<result name="dashboard" type="redirect-action">
+				<param name="actionName">MyHome</param>
+	            <param name="toAction">MyHome</param>
+			</result>
+		</action>
+		
+		<action name="ViewLoanDetails" class="com.konnect.jpms.loan.ViewLoanDetails">
+			<result name="success">/jsp/loan/ViewLoanDetails.jsp</result>
+		</action>
+		
+		<action name="ViewLoanInfo" class="com.konnect.jpms.loan.ViewLoanInformation">
+			<result name="success">/jsp/loan/ViewLoanInformation.jsp</result>
+		</action>
+		
+		<action name="LoanPayments" class="com.konnect.jpms.loan.LoanPayments">
+			<result name="success">/jsp/loan/LoanPayments.jsp</result>
+			<result name="save" type="redirect-action">LoanApplicationReport</result>
+		</action>
+		
+		<action name="LoanBalanceReport" class="com.konnect.jpms.loan.LoanBalanceReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/loan/LoanBalanceReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+	 
+		<action name="AddLoanInfo" class="com.konnect.jpms.loan.AddLoanInfo">
+			<result name="load">/jsp/loan/AddLoan.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PayLoan" class="com.konnect.jpms.loan.PayLoan">
+			<result name="success" type="redirect-action">LoanApplicationReport</result>
+			<result name="load">/jsp/loan/PayLoan.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GetLoanTypeByEmployee" class="com.konnect.jpms.ajax.GetLoanTypeByEmployee">
+			<result name="load">/jsp/ajax/GetLoanTypeByEmployee.jsp</result>
+		</action>
+				
+		<action name="CeoHodLoanRequest" class="com.konnect.jpms.loan.CeoHodLoanRequest">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/loan/CeoHodLoanRequest.jsp</result>
+			<result name="load">/jsp/loan/CeoHodLoanRequest.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+	</package>
+</struts>   

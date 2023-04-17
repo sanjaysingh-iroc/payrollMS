@@ -1,0 +1,231 @@
+/* ================================================================ 
+This copyright notice must be kept untouched in the stylesheet at 
+all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.stunicholls.com/menu/pro_drop_2.html
+Copyright (c) 2005-2007 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any 
+way to fit your requirements.
+=================================================================== */
+
+/*
+.preload1 {background: url(../images/three_1.gif);}
+.preload2 {background: url(../images/three_1a.gif);}
+*/	
+ 
+#nav1 {padding:0; margin: 0px 0px 0px 29px; width:auto; list-style:none; height:35px;
+/*background:#4F9FEA url(../images/vthree_0.gif) repeat-x;*/
+position:relative; z-index:500; font-family:verdana, sans-serif;float:left;}
+
+#nav2 {padding:0; margin: 0px 30px 0px 0px ; /*width:158px;*/ list-style:none; height:35px;
+/*background:#4F9FEA url(../images/vthree_0.gif) repeat-x;*/
+position:relative; z-index:500; font-family:verdana, sans-serif;float:right;}
+
+#nav1 li.top {display:block; float:left; height:35px; margin-top:0px; background: url(../images1/navigation_dots_white.png) no-repeat scroll right center;}
+
+#nav1 li a.top_link {display:block; float:left; height:35px; line-height:33px; color:#fff; text-decoration:none; font-size:12px; font-weight:bold; padding:0 0 0 0px; cursor:pointer; margin-right:1px;
+                        font-family:verdana,arial,helvetica,sans-serif;
+/*background: url(../images/three_0.gif);*/
+}
+
+#nav1 li a.top_link span {float:left;display:block; padding:0 5px 0 5px; height:35px; font-family:verdana,arial,sans-serif; font-size:12px; 
+/*background: url(../images/three_0.gif) right top no-repeat;*/
+}
+#nav1 li a.top_link span.down {float:left;; display:block; padding:0 5px 0 5px; height:35px; font-family:verdana,arial,sans-serif; font-size:12px; 
+/*background: url(../images/three_0a.gif) no-repeat right top;*/
+}
+
+#nav1 li:hover a.top_link {color:#fff;
+/*background: url(../images/three_1.gif) no-repeat;*/
+
+}
+
+/*#nav li:hover a.top_link span {background:url(../images/three_1.gif) no-repeat right top;}*/
+/*#nav li:hover a.top_link span.down {background:url(../images/three_1a.gif) no-repeat right top;}*/
+
+
+#nav2 li.topR {display:block; float:left; height:35px; margin-top:0px; }
+#nav2 li a.topR_link {display:block; float:left; height:35px; line-height:33px; color:#fff; text-decoration:none; font-size:12px; font-weight:bold; padding:0 0 0 0px; cursor:pointer; font-family:verdana,arial,helvetica,sans-serif; 
+/*background: url(../images/three_0.gif);*/
+}
+#nav2 li a.topR_link span {float:left; display:block; padding:0 13px 0 13px; height:35px;
+/*background: url(../images/three_0.gif) right top no-repeat;*/
+background-color: #F7BE81;background-color:#fd972b;
+}
+#nav2 li a.topR_link span.down {float:left; display:block; padding:0 13px 0 13px; height:35px;
+/*background: url(../images/three_0a.gif) no-repeat right top;*/
+}
+
+#nav2 li:hover a.topR_link {color:#fff;
+/*background: url(../images/three_1.gif) no-repeat;*/
+}
+/*#nav li:hover a.top_link span {background:url(../images/three_1.gif) no-repeat right top;}*/
+/*#nav li:hover a.top_link span.down {background:url(../images/three_1a.gif) no-repeat right top;}*/
+
+
+
+
+/* Default list styling */
+
+#nav1 li:hover {position:relative; z-index:200;}
+#nav1 li.top a:hover {background-color: #4FAFEE; height:35;background-color:#e9f5ff;color:#005ba3;}
+#nav1 li.topR a:hover {background-color: #FF8000; height:35}
+
+#nav2 li:hover {position:relative; z-index:200;}
+#nav2 li.top a:hover {background-color: #4FAFEE; height:35}
+#nav2 li.topR a:hover {background-color: #FF8000; height:35}
+
+
+#nav1 li:hover ul.sub
+{left:1px;left:0px; top:34px; background: #4F9FEA; padding:3px;
+/*border:1px solid #ACD6FE;*/
+white-space:nowrap; width:170px; height:auto; z-index:300; /*background: #ff0000;*/
+line-height:25px;
+}
+
+#nav1 li:hover ul.sub li
+{display:block; height:25px; position:relative; float:left; /*width:90px;*/ font-weight:normal;/*border:#005BA3 solid 1px;*/}
+
+#nav1 li:hover ul.sub li a
+{display:block; font-size:11px; height:25px; width:170px; line-height:25px; text-indent:5px; color:#fff; text-decoration:none;
+/*border:1px solid #005BA3;*/
+
+}
+
+#nav1 li ul.sub li a.fly
+{
+background:#4F9FEA url(../images/arrow.gif) 160px no-repeat;
+/*background:#00ff00;*/
+}
+
+#nav1 li:hover ul.sub li a:hover 
+{background:#005BA3; color:#fff; border-color:#fff; font-size:11px; font-family:verdana, sans-serif;}
+
+#nav1 li:hover ul.sub li a.fly:hover
+{background:#005BA3 url(../images/arrow_over.gif) 160px no-repeat; color:#fff;}
+
+
+
+
+#nav2 li:hover ul.subR
+{left:-98px; top:34px; background: #FAAC58; padding:3px;background-color:#ffa84a;/*background:#0000ff;*/
+/*border:1px solid #005BA3;*/
+white-space:nowrap; width:168px; height:auto; z-index:300;
+
+}
+
+#nav2 li:hover ul.subR li
+{display:block; height:20px; position:relative; float:left; width:165px; font-weight:normal;}
+#nav2 li:hover ul.subR li a
+{display:block; font-size:11px; height:18px; width:165px; line-height:18px; text-indent:2px; color:#fff; text-decoration:none; padding-left:5px;
+/*border:1px solid #005BA3;*//*background:#00ff00;*/;background:#ffa84a;}
+
+#nav2 li ul.subR li a.flyR
+{background:#FAAC58 url(../images/arrow1.png) 2px no-repeat;width:165px;}
+
+#nav2 li:hover ul.subR li a:hover 
+{background:#FF8000; color:#fff; border-color:#fff; width:165px;}
+
+#nav2 li:hover ul.subR li a.flyR:hover
+{background:#FF8000 url(../images/arrow_over1.png) 2px no-repeat; color:#fff;width:165px;}
+
+
+#nav1 li:hover li:hover ul,
+#nav1 li:hover li:hover li:hover ul,
+#nav1 li:hover li:hover li:hover li:hover ul,
+#nav1 ul.sub li:hover li:hover li:hover li:hover li:hover ul
+{
+left:152px; top:-4px; background: #4F9FEA;
+padding:3px; 
+border:1px solid #ACD6FE;
+white-space:nowrap;
+width:108px;
+z-index:400;
+height:auto;
+/*background: #00ff00;*/
+}
+
+/*style for second level menu */
+#nav1 li:hover li:hover ul,
+#nav1 li:hover li:hover li:hover ul,
+#nav1 li:hover li:hover li:hover li:hover ul,
+#nav1 li:hover li:hover li:hover li:hover li:hover ul
+{background: #4F9FEA ; white-space:nowrap; width:170px; z-index:400; height:auto;/*background: #ffff00*/;margin:5px 0px 0px 20px;border:##005BA3 solid 1px;}
+
+
+
+
+
+#nav2 li:hover li:hover ul,
+#nav2 li:hover li:hover li:hover ul,
+#nav2 li:hover li:hover li:hover li:hover ul,
+#nav2 ul.subR li:hover li:hover li:hover li:hover li:hover ul
+{left:-178px; top:2px; background: #4F9FEA; padding:3px;
+/*border:1px solid #5c731e;*/
+white-space:nowrap; width:170px; z-index:400; height:auto; right:20px;}
+
+
+#nav2 li:hover li:hover ul,
+#nav2 li:hover li:hover li:hover ul,
+#nav2 li:hover li:hover li:hover li:hover ul,
+#nav2 li:hover li:hover li:hover li:hover li:hover ul
+{background: #ffa84a; /*background: #ffff00;*/
+white-space:nowrap; width:173px; z-index:500; height:auto;}
+
+
+
+#nav1 ul, 
+#nav1 li:hover ul ul,
+#nav1 li:hover li:hover ul ul,
+#nav1 li:hover li:hover li:hover ul ul,
+#nav1 li:hover li:hover li:hover li:hover ul ul
+{position:absolute; left:-9999px; top:-9999px; width:0; height:0; margin:0; padding:0; list-style:none;}
+
+#nav2 ul, 
+#nav2 li:hover ul ul,
+#nav2 li:hover li:hover ul ul,
+#nav2 li:hover li:hover li:hover ul ul,
+#nav2 li:hover li:hover li:hover li:hover ul ul
+{position:absolute; left:-9999px; top:-9999px; width:0; height:0; margin:0; padding:0; list-style:none;}
+
+#nav1 li:hover li:hover a.fly,
+#nav1 li:hover li:hover li:hover a.fly,
+#nav1 li:hover li:hover li:hover li:hover a.fly,
+#nav1 li:hover li:hover li:hover li:hover li:hover a.fly
+{background:#005BA3 url(../images/arrow_over.gif) 160px no-repeat; color:#fff; border-color:#fff;} 
+
+#nav1 li:hover li:hover li a.fly,
+#nav1 li:hover li:hover li:hover li a.fly,
+#nav1 li:hover li:hover li:hover li:hover li a.fly
+{background:#4F9FEA url(../images/arrow.gif) 160px no-repeat; color:#fff;
+/*border-color:#4F9FEA;*/} 
+
+
+#nav2 li:hover li:hover a.flyR,
+#nav2 li:hover li:hover li:hover a.flyR,
+#nav2 li:hover li:hover li:hover li:hover a.flyR,
+#nav2 li:hover li:hover li:hover li:hover li:hover a.flyR
+{background:#ff8000 url(../images/arrow_over1.png) 2px no-repeat; color:#fff; border-color:#fff;} 
+
+#nav2 li:hover li:hover li a.flyR,
+#nav2 li:hover li:hover li:hover li a.flyR,
+#nav2 li:hover li:hover li:hover li:hover li a.flyR
+{background:#ff8000 url(../images/arrow1.png) 2px no-repeat; color:#fff;
+/*border-color:#4F9FEA;*/}
+#nav1 li a.menuSelection1 span {
+	color:#005BA3;	
+}
+#nav2 li a.menuSelection2 span {
+	background-color:#FF8000;	
+}
+#nav1 ul.sub ul li,
+#nav1 ul.sub li,
+#nav2 ul.subR ul li,
+#nav2 ul.subR li
+
+ {
+text-align: left;
+}
+
+

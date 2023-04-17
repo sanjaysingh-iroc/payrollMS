@@ -1,0 +1,96 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="104857600" />
+	<package name="struts-formmanagement" extends="struts-default">
+
+		<action name="FormList" class="com.konnect.jpms.formmanagement.FormList">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/formmanagement/FormList.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddForm" class="com.konnect.jpms.formmanagement.AddForm">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="strOrg">${strOrg}</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="FormSummary" class="com.konnect.jpms.formmanagement.FormSummary">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EditForm" class="com.konnect.jpms.formmanagement.EditForm">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/formmanagement/EditForm.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">FormSummary</param>
+				 <param name="formId">${formId}</param>  
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				 <param name="navigationId">${navigationId}</param>
+				 <param name="toPage">${toPage}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EditSection" class="com.konnect.jpms.formmanagement.EditSection">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/formmanagement/EditSection.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">FormSummary</param>
+				 <param name="formId">${formId}</param>
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				 <param name="navigationId">${navigationId}</param>
+				 <param name="toPage">${toPage}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EditQuestion" class="com.konnect.jpms.formmanagement.EditQuestion">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/formmanagement/EditQuestion.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">FormSummary</param>
+				 <param name="formId">${formId}</param>  
+				 <param name="strOrg">${strOrg}</param>
+				 <param name="userscreen">${userscreen}</param>
+				 <param name="navigationId">${navigationId}</param>
+				 <param name="toPage">${toPage}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="FormPreview" class="com.konnect.jpms.formmanagement.FormPreview">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/formmanagement/FormPreview.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+	</package>
+</struts>    

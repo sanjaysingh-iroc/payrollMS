@@ -1,0 +1,66 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- <constant name="struts.multipart.maxSize" value="104857600" /> -->
+	<package name="struts-library" extends="struts-default">
+		<action name="AddBook" class="com.konnect.jpms.library.AddBook">
+			<result name="success" >/jsp/library/AddBook.jsp</result>
+			<result name="load" type="redirect-action">Library</result>
+		</action> 
+		
+		<action name="Library" class="com.konnect.jpms.library.BookReport">
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			
+		</action> 
+		
+		<action name="RateBook" class="com.konnect.jpms.library.RateBook">
+			<result name="success">/jsp/library/RateBook.jsp</result>
+			<result name="load" type="redirect-action">Library</result>
+		</action> 
+		
+		<action name="PurchaseBook" class="com.konnect.jpms.library.PurchaseBook">
+			<result name="success">/jsp/library/PurchaseBook.jsp</result>
+			<result name="load" type="redirect-action">Library</result>
+		</action> 
+		
+		
+		<action name="ApproveOrDenyBookPurchase" class="com.konnect.jpms.library.ApproveOrDenyBookPurchase">
+			<result name="success">/jsp/library/ApproveOrDenyBookPurchase.jsp</result>
+			<result name="load" type="redirect-action">
+				<param name="actionName">Library</param>
+				<param name="dataType">PR</param>
+			</result>
+		</action> 
+		
+		<!-- <action name="BookIssueReport" class="com.konnect.jpms.library.BookIssueReport">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+		</action>  -->
+		
+		<action name="IssueBook" class="com.konnect.jpms.library.IssueBook">
+			<result name="success">/jsp/library/IssueBook.jsp</result>
+			<result name="load" type="redirect-action">Library</result>
+		</action> 
+		
+		<action name="ApproveOrDenyBookIssueRequest" class="com.konnect.jpms.library.ApproveOrDenyBookIssueRequest">
+			<result name="success">/jsp/library/ApproveOrDenyBookIssueRequest.jsp</result>
+			<result name="load" type="redirect-action">
+				<param name="actionName">Library</param>
+				<param name="dataType">IR</param>
+			</result>
+		</action>
+		
+		<action name="ReturnIssuedBook" class="com.konnect.jpms.library.ReturnIssuedBook">
+			<result name="success">/jsp/library/ReturnIssuedBook.jsp</result>
+			<result name="load" type="redirect-action">
+				<param name="actionName">Library</param>
+				<param name="dataType">IB</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

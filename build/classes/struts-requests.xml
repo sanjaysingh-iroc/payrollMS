@@ -1,0 +1,456 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+ 
+  
+	<package name="struts-requests" extends="struts-default">
+ 
+ 		<action name="UpdateRequest" class="com.konnect.jpms.requsitions.UpdateRequest">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="load">/jsp/requisitions/UpdateRequest.jsp</result>
+			<!-- <result name="update" type="redirect-action">ResignationReport</result> -->
+			<result name="update" type="redirect-action">
+				<param name="actionName">ResignationReport</param>
+	            <param name="currUserType">${currUserType}</param>
+			</result>
+			<result name="dashboard" type="redirect-action">
+				<param name="actionName">MyHome</param>
+	            <param name="toAction">MyHome</param>
+			</result> 
+		  <result name="view" type="redirect-action">
+			 	<param name="actionName">EmployeeActivity</param>
+			    <param name="empType">R</param>
+			</result>
+		   <!-- <result name="accessdeny">/jsp/common/viewPage.jsp</result> -->
+		</action>
+		
+		<action name="GetPerkLimit" class="com.konnect.jpms.requsitions.GetPerkLimit">
+			<result>/jsp/requisitions/GetPerkLimit.jsp</result>
+		</action>
+		
+		<action name="ViewRequest" class="com.konnect.jpms.requsitions.ViewRequest">
+			<result>/jsp/requisitions/ViewRequest.jsp</result>
+		</action>
+	 
+ 		<action name="Requisitions" class="com.konnect.jpms.requsitions.Requisitions">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="MyRequests" class="com.konnect.jpms.requsitions.RequisitionReport">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+				
+		<action name="BonafideRequests" class="com.konnect.jpms.requsitions.BonafideRequest">
+			<result name="input">/jsp/requisitions/BonafideRequest.jsp</result>
+			<result name="error">/jsp/requisitions/BonafideRequest.jsp</result>
+			<result name="login">/jsp/requisitions/BonafideRequest.jsp</result>
+			<result name="load">/jsp/requisitions/BonafideRequest.jsp</result>
+			<result name="success" type="redirect-action">Requisitions</result>
+		</action>
+		
+		<action name="InfraRequests" class="com.konnect.jpms.requsitions.InfrastructureRequest">
+			<result name="input">/jsp/requisitions/InfrastructureRequest.jsp</result>
+			<result name="error">/jsp/requisitions/InfrastructureRequest.jsp</result>
+			<result name="login">/jsp/requisitions/InfrastructureRequest.jsp</result>
+			<result name="load">/jsp/requisitions/InfrastructureRequest.jsp</result>
+			<result name="success" type="redirect-action">Requisitions</result>
+		</action>
+		
+		
+		<action name="OtherRequests" class="com.konnect.jpms.requsitions.OtherRequest">
+			<result name="input">/jsp/requisitions/OtherRequests.jsp</result>
+			<result name="error">/jsp/requisitions/OtherRequests.jsp</result>
+			<result name="login">/jsp/requisitions/OtherRequests.jsp</result>
+			<result name="load">/jsp/requisitions/OtherRequests.jsp</result>
+			<result name="success" type="redirect-action">Requisitions</result>
+		</action>
+		
+		
+		<action name="ReimbursementStatement" class="com.konnect.jpms.requsitions.ReimbursementStatement">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/requisitions/ReimbursementStatement.jsp</result>
+		</action>
+		
+		<action name="ReimbursementTransactions" class="com.konnect.jpms.requsitions.ReimbursementTransactions">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/requisitions/ReimbursementTransactions.jsp</result>
+		</action>
+		
+		
+		<action name="Reimbursements" class="com.konnect.jpms.requsitions.Reimbursements">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/requisitions/MyReimbursements.jsp</result>
+			<result name="load">/jsp/requisitions/MyReimbursements.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="AddReimbursements" class="com.konnect.jpms.requsitions.AddReimbursements">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/requisitions/AddReimbursements.jsp</result>
+			<!-- <result name="success" type="redirect-action">Reimbursements</result> -->
+			<result name="success" type="redirect-action">
+				 <param name="actionName">Reimbursements</param>
+				 <param name="paycycle">${paycycle}</param>
+			</result>
+			<result name="view" type="redirect-action">
+				 <param name="actionName">AddProjectActivity1</param>
+				 <param name="strPaycycle">${paycycle}</param>
+			</result>
+			<result name="removedocument">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		
+		<action name="PaidUnpaidReimbursements" class="com.konnect.jpms.requsitions.PaidUnpaidReimbursements">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/requisitions/PaidUnpaidReimbursements.jsp</result>
+			<result name="load">/jsp/requisitions/PaidUnpaidReimbursements.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		
+		<action name="PaidUnpaidPerks" class="com.konnect.jpms.requsitions.PaidUnpaidPerks">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/requisitions/PaidUnpaidPerks.jsp</result>
+			<result name="load">/jsp/requisitions/PaidUnpaidPerks.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="Perks" class="com.konnect.jpms.requsitions.Perks">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/requisitions/MyPerks.jsp</result>
+			<result name="load">/jsp/requisitions/MyPerks.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="update" type="redirect-action">Perks</result>
+		</action>
+		
+		<action name="UpdateReimbursements" class="com.konnect.jpms.requsitions.UpdateReimbursements">
+			<!-- <result name="success" type="redirect-action">Reimbursements</result> -->
+			<result name="success" type="redirect-action">
+				<param name="actionName">Reimbursements</param>
+	            <param name="currUserType">${currUserType}</param>
+	            <param name="paycycle">${paycycle}</param>
+			</result>
+			<!-- <result name="dashboard" type="redirect-action">MyDashboard</result> -->
+			<result name="dashboard" type="redirect-action">
+				<param name="actionName">MyHome</param>
+	            <param name="toAction">MyHome</param>
+			</result>  
+		</action>
+		
+		<action name="GetEmpWorkFlowPolicyDetails" class="com.konnect.jpms.requsitions.GetEmpWorkFlowPolicyDetails">
+			<result name="success">/jsp/requisitions/GetEmpWorkFlowPolicyDetails.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="ClientConveyanceReport" class="com.konnect.jpms.reports.ClientConveyanceReport">
+	 		<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/ClientConveyanceReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	 	</action>
+	 	
+	 	<action name="GetReimbursementType" class="com.konnect.jpms.ajax.GetReimbursementType">
+			<result>/jsp/ajax/GetReimbursementType.jsp</result>
+		</action>
+		
+		<action name="GetEmpClientList" class="com.konnect.jpms.requsitions.GetEmpClientList">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="GetEmpClientProject" class="com.konnect.jpms.requsitions.GetEmpClientProject">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="UpdatePerks" class="com.konnect.jpms.requsitions.UpdatePerks">
+			<!-- <result name="success" type="redirect-action">Perks</result> -->
+			<result name="success" type="redirect-action">
+				<param name="actionName">Perks</param>
+	            <param name="currUserType">${currUserType}</param>
+			</result>
+			<!-- <result name="dashboard" type="redirect-action">MyDashboard</result> -->
+			<result name="dashboard" type="redirect-action">
+				<param name="actionName">MyHome</param>
+	            <param name="toAction">MyHome</param>
+			</result>
+		</action>
+		
+		<action name="CTCVariable" class="com.konnect.jpms.requsitions.LTA">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/requisitions/LTA.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="update" type="redirect-action">CTCVariable</result>
+		</action>
+		
+		<action name="GetLTAAmount" class="com.konnect.jpms.requsitions.GetLTAAmount">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="UpdateLTA" class="com.konnect.jpms.requsitions.UpdateLTA">
+			<result name="pullout">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">CTCVariable</param>
+	            <param name="currUserType">${currUserType}</param>
+			</result>
+			<result name="dashboard" type="redirect-action">
+				<param name="actionName">MyHome</param>
+	            <param name="toAction">MyHome</param>
+			</result> 
+		</action>
+		
+		<action name="PayCTCVariable" class="com.konnect.jpms.requsitions.PayLTA">
+	 		<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/requisitions/PayLTA.jsp</result>
+			<result name="success">/jsp/requisitions/PayLTA.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	 	</action>
+	 	
+	 	<action name="GetPerkType" class="com.konnect.jpms.requsitions.GetPerkType">
+			<result name="success">/jsp/requisitions/GetPerkType.jsp</result>
+		</action>
+		
+		<action name="AddNewRequisition" class="com.konnect.jpms.requsitions.AddNewRequisition">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/requisitions/AddNewRequisition.jsp</result>
+			<result name="success" type="redirect-action">MyRequests</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="update">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="RequisitionApprovalReport" class="com.konnect.jpms.requsitions.RequisitionApprovalReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="dashboard" type="redirect-action">
+				<param name="actionName">MyHome</param>
+	            <param name="toAction">MyHome</param>
+			</result> 
+		</action>
+		
+		<action name="BulkReimbursements" class="com.konnect.jpms.requsitions.BulkReimbursements">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyPay</param>
+	            <param name="callFrom">MyDashReimbursements</param>
+	             <param name="paycycle">${paycycle}</param>
+			</result> 
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PerkIncentive" class="com.konnect.jpms.requsitions.PerkIncentive">
+	 		<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/requisitions/PerkIncentive.jsp</result>
+			<result name="success">/jsp/requisitions/PerkIncentive.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	 	</action>
+	 	
+	 	<action name="PerkIncentiveReport" class="com.konnect.jpms.reports.PerkIncentiveReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/PerkIncentiveReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ImportReimbursements" class="com.konnect.jpms.requsitions.ImportReimbursements">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">Reimbursements</result>
+			<result name="load">/jsp/requisitions/ImportReimbursements.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="ApplyNewPerk" class="com.konnect.jpms.requsitions.ApplyNewPerk">
+			<result name="success" type="redirect-action">
+				<param name="actionName">Perks</param>
+			</result>
+			<result name="load">/jsp/requisitions/ApplyNewPerk.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="ApplyLTA" class="com.konnect.jpms.requsitions.ApplyLTA">
+			<result name="success" type="redirect-action">
+				<param name="actionName">CTCVariable</param>
+			</result>
+			<result name="load">/jsp/requisitions/ApplyLTA.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="GetTravelPlanDetails" class="com.konnect.jpms.ajax.GetTravelPlanDetails">
+			<result>/jsp/ajax/GetReimbursementType.jsp</result>
+		</action>
+		
+		<action name="ViewReimbursementDetails" class="com.konnect.jpms.requsitions.ViewReimbursementDetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/requisitions/ViewReimbursementDetails.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PerkInSalary" class="com.konnect.jpms.requsitions.PerkInSalary">
+	 		<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/requisitions/PerkInSalary.jsp</result>
+			<result name="success" type="redirect-action">PerkInSalary</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	 	</action>
+	 	
+	 	<action name="GetPerkSalary" class="com.konnect.jpms.requsitions.GetPerkSalary">
+			<result>/jsp/requisitions/GetPerkSalary.jsp</result>
+		</action>
+		
+		<action name="GetPerkSalaryPaycycle" class="com.konnect.jpms.requsitions.GetPerkSalaryPaycycle">
+			<result>/jsp/requisitions/GetPerkSalaryPaycycle.jsp</result>
+		</action>
+		
+		<action name="ApplyPerkInSalary" class="com.konnect.jpms.requsitions.ApplyPerkInSalary">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">PerkInSalary</param>
+			</result>
+			<result name="load">/jsp/requisitions/ApplyPerkInSalary.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+	 	<action name="Perk" class="com.konnect.jpms.requsitions.Perk">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/requisitions/Perk.jsp</result>
+			<result name="load">/jsp/requisitions/Perk.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	
+		<action name="TeamRequests" class="com.konnect.jpms.requsitions.TeamRequests">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="CeoHodReimbursementRequest" class="com.konnect.jpms.requsitions.CeoHodReimbursementRequest">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/requisitions/CeoHodReimbursementRequest.jsp</result>
+			<result name="load">/jsp/requisitions/CeoHodReimbursementRequest.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	
+		<action name="CeoHodPerkRequest" class="com.konnect.jpms.requsitions.CeoHodPerkRequest">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/requisitions/CeoHodPerkRequest.jsp</result>
+			<result name="load">/jsp/requisitions/CeoHodPerkRequest.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	
+		<action name="CeoHodCTCVariableRequest" class="com.konnect.jpms.requsitions.CeoHodCTCVariableRequest">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/requisitions/CeoHodCTCVariableRequest.jsp</result>
+			<result name="load">/jsp/requisitions/CeoHodCTCVariableRequest.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="ReimbursementCTC" class="com.konnect.jpms.requsitions.ReimbursementCTC">
+	 		<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/requisitions/ReimbursementCTC.jsp</result>
+			<result name="load">/jsp/requisitions/ReimbursementCTC.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	 	</action>
+	 	
+	 	<action name="GetReimbursementCTCHead" class="com.konnect.jpms.requsitions.GetReimbursementCTCHead">
+			<result>/jsp/requisitions/GetReimbursementCTCHead.jsp</result>
+		</action>
+		
+		<action name="GetReimbursementCTCHeadPaycycle" class="com.konnect.jpms.requsitions.GetReimbursementCTCHeadPaycycle">
+			<result>/jsp/requisitions/GetReimbursementCTCHeadPaycycle.jsp</result>
+		</action>
+		
+		<action name="PayReimbursementCTC" class="com.konnect.jpms.requsitions.PayReimbursementCTC">
+			<result name="login" type="redirect-action">Login</result>
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/requisitions/PayReimbursementCTC.jsp</result>
+			<result name="load">/jsp/requisitions/PayReimbursementCTC.jsp</result>
+		</action>
+		
+		<action name="TDSReimbursementCTC" class="com.konnect.jpms.requsitions.TDSReimbursementCTC">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result> 
+			<result name="success">/jsp/requisitions/TDSReimbursementCTC.jsp</result>
+			<result name="load">/jsp/requisitions/TDSReimbursementCTC.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="Reimburse" class="com.konnect.jpms.requsitions.Reimburse">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/requisitions/Reimburse.jsp</result>
+			<result name="load">/jsp/requisitions/Reimburse.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="AddReimbursementCTC" class="com.konnect.jpms.requsitions.AddReimbursementCTC">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/requisitions/AddReimbursementCTC.jsp</result>
+			<result name="success" type="redirect-action">ReimbursementCTC</result>
+		</action>
+		
+		<action name="PayReimburse" class="com.konnect.jpms.requsitions.PayReimburse">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/requisitions/PayReimburse.jsp</result>
+			<result name="load">/jsp/requisitions/PayReimburse.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="TDSProject" class="com.konnect.jpms.payroll.TDSProject">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/payroll/TDSProject.jsp</result>
+			<result name="load">/jsp/payroll/TDSProject.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+	
+		<action name="BulkExpenses" class="com.konnect.jpms.requsitions.BulkExpenses">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ViewBulkExpenseDetails" class="com.konnect.jpms.requsitions.ViewBulkExpenseDetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/requisitions/ViewBulkExpenseDetails.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+	</package>	
+</struts>   

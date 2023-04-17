@@ -1,0 +1,118 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+   
+   
+   
+	<package name="struts-roster" extends="struts-default">
+ 
+		<action name="AddShiftRoster" class="com.konnect.jpms.roster.AddShiftRoster">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/roster/AddShift.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+			</result>
+			<result name="update">/jsp/roster/AddShift.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 
+		<action name="ShiftRoster" class="com.konnect.jpms.roster.ShiftRoster">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/roster/ShiftReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ManageRoster" class="com.konnect.jpms.roster.ManageRoster">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/roster/ManageRoster.jsp</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		<action name="ShiftRosterReport" class="com.konnect.jpms.roster.ShiftRosterReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="UpdateShiftRosterReport" class="com.konnect.jpms.roster.UpdateShiftRosterReport">
+		<result name="success" type="redirect-action">ShiftRosterReport</result>
+	</action>
+	
+	<action name="AddShiftRosterReport" class="com.konnect.jpms.roster.AddShiftRosterReport">
+		<result name="success" type="redirect-action">ShiftRosterReport</result>
+	</action>
+	
+	<action name="AddRosterWeeklyOff" class="com.konnect.jpms.roster.AddRosterWeeklyOff">
+		<result name="input">/jsp/common/viewPage.jsp</result>
+		<result name="error">/jsp/login/error.jsp</result>
+		<result name="login" type="redirect-action">Login</result>
+		<result name="load">/jsp/roster/AddRosterWeeklyOff.jsp</result>
+		<result name="success" type="redirect-action">
+			<param name="actionName">MyDashboard</param>
+			<param name="userscreen">${userscreen}</param>
+			<param name="navigationId">${navigationId}</param>
+			<param name="toPage">${toPage}</param>
+			<param name="strOrg">${strOrg}</param>
+		</result>
+		<result name="update">/jsp/roster/AddRosterWeeklyOff.jsp</result>
+		<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	</action>
+	
+	
+	<action name="AddRosterPolicyRules" class="com.konnect.jpms.roster.AddRosterPolicyRules">
+		<result name="input">/jsp/common/viewPage.jsp</result>
+		<result name="error">/jsp/login/error.jsp</result>
+		<result name="login" type="redirect-action">Login</result>
+		<result name="load">/jsp/roster/AddRosterPolicyRules.jsp</result>
+		<result name="success" type="redirect-action">
+			<param name="actionName">MyDashboard</param>
+			<param name="userscreen">${userscreen}</param>
+			<param name="navigationId">${navigationId}</param>
+			<param name="toPage">${toPage}</param>
+			<param name="strOrg">${strOrg}</param>
+		</result>
+		<result name="update">/jsp/roster/AddRosterPolicyRules.jsp</result>
+		<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	</action>
+		
+	<action name="EmpShiftSwappingSuggestionBox" class="com.konnect.jpms.roster.EmpShiftSwappingSuggestionBox">
+		<result name="input">/jsp/common/viewPage.jsp</result>
+		<result name="error">/jsp/login/error.jsp</result>
+		<result name="login" type="redirect-action">Login</result>
+		<result name="load">/jsp/roster/EmpShiftSwappingSuggestionBox.jsp</result>
+		<result name="success" type="redirect-action">
+			<param name="actionName">RosterOfEmployee</param>
+			<param name="calendarYear">${calendarYear}</param>
+			<param name="strMonth">${strMonth}</param>
+		</result>
+		<result name="update">/jsp/roster/EmpShiftSwappingSuggestionBox.jsp</result>
+		<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	</action>
+
+	<action name="ExtRoster" class="com.konnect.jpms.roster.ExtRoster">
+		<result name="error">/jsp/login/error.jsp</result>
+		<result name="login" type="redirect-action">Login</result>
+		<result name="load">/jsp/roster/ExtRoster.jsp</result>
+		<result name="success">/jsp/common/viewPageOuter.jsp</result>
+		<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	</action>
+
+	</package>
+</struts>   

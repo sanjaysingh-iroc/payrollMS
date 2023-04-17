@@ -1,0 +1,731 @@
+
+<?page title="Internal Mail"?>
+
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+
+ 
+<window title="Mail Centre." border="normal" width="100%" style="margin-top:50px">
+
+  		    									
+ <zscript>
+  
+ 	import java.util.*; 
+ 	import org.zkoss.zul.ListModel;
+    import com.konnect.jpms.mail.*;
+    import com.konnect.jpms.util.*;
+	import javax.servlet.http.HttpSession;
+	
+	
+	
+ 	
+    Inbox dbc = new Inbox();
+    List mails = new ArrayList();
+    List drafts = new ArrayList();
+    List sent = new ArrayList();
+    List trash = new ArrayList();
+  	List contacts=new ArrayList();
+  	List ccContacts=new ArrayList();
+  	String setposition="after_start";
+ 	String mailFolder="0";
+ 	String strEmpId=(String)session.get("EMPID");
+      
+    private void loadMails() throws Exception
+    {
+    
+    
+    	dbc.assign(from.getValue(), strEmpId);
+    	dbc.getAllMails(mails);
+      	ListModel model = thelistbox.getModel();
+      	thelistbox.setModel(model);
+      	loadContacts();
+      	loadccContacts();
+      	dbc.checkUpdates(mails,thelistbox,model,from.getValue());
+ 	}
+ 	
+ 	public void loadContacts()
+ 	{
+ 		ListModelList contactsModel= new ListModelList((dbc.getAllContacts(contacts)));
+    }
+    
+    public void loadccContacts()
+ 	{
+ 		ListModelList contactsModelCC= new ListModelList((dbc.getAllContacts(ccContacts)));
+      
+    }
+    
+    private void loadDrafts() throws Exception
+    {
+    	dbc.getAllDrafts(drafts);
+      	ListModel modelDrafts = theDraftslistbox.getModel();
+      	theDraftslistbox.setModel(modelDrafts);
+    }
+    
+    
+    private void loadSent() throws Exception
+   	{
+   		    dbc.getAllSent(sent);
+   		    ListModel modelSent = sentlistbox.getModel();
+   		    sentlistbox.setModel(modelSent);
+   	}
+       
+    private void loadTrash() throws Exception
+   	{
+   		    dbc.getAllTrash(trash);
+   		    ListModel modelTrash = trashlistbox.getModel();
+   		    trashlistbox.setModel(modelTrash);
+   	}
+    
+ </zscript>
+
+ 
+ <borderlayout height="500px">
+ 
+ <east>
+ 
+ </east>
+ <center>
+ <vbox width="250%" height="100%">
+ 	<tabbox>
+ 				<tabs>
+					<tab id="tab1" label="Inbox" onSelect="display.setVisible(false)" />
+					<tab id="tab2" label="Compose" onSelect="display.setVisible(false); clearAll()"/>
+					<tab id="tab3" label="Drafts" onSelect="loadDrafts(); display.setVisible(false)"/>
+					<tab id="tab4" label="Sent" onSelect="loadSent(); display.setVisible(false)"/>
+					<tab id="tab5" label="Trash" onSelect="loadTrash(); display.setVisible(false)"/>
+				</tabs>
+						
+						<tabpanels>
+								<tabpanel>
+									<vbox>
+										<hbox>
+											<button class="input_button" label="Move to Trash" onClick="moveToTrash(thelistbox)"/>										
+										</hbox>
+										
+										<listbox id="thelistbox" width="205%" height="200px" model="@{mails}" multiple="false" mold="paging" onSelect="readMail(); replyButton.setVisible(true); forwardButton.setVisible(true)">
+		    								
+		    								<listhead>
+	        									<listheader label="Sender" width="250px" />
+	        									<listheader label="Subject" width="300px" />
+	        									<listheader label="Time" width="400px" />
+											</listhead>
+											
+												<listitem  id="listit" self="@{each='mail'}" onClick="">
+																				
+																	
+													<listcell visible="false">
+														<label value="@{mail.mail_body}" />
+													</listcell>	
+													
+													<listcell visible="false">
+														<label value="@{mail.mail_id}" />
+													</listcell>							      	
+																							      	
+													<listcell>
+														<label id="fromListLable" value="@{mail.mail_from}" style="@{mail.read_unread}"/>
+													</listcell>
+													
+													<listcell>
+														<label id="subjectListLable" value="@{mail.mail_subject}" style="@{mail.read_unread}" />
+													</listcell>
+													
+													<listcell>
+														<label id="timeStampListLable" value="@{mail.timestamp}" style="@{mail.read_unread}" />
+													</listcell>
+											 											
+												</listitem>
+															
+	     									</listbox>
+    									<hbox>
+    									<button class="input_button" id="replyButton"  visible="false" label="Reply" onClick="replyMail()"></button>
+    									<button class="input_button" id="forwardButton" visible="false" label="Forward" onClick="forwardMail()"></button>    									
+    									</hbox>
+    									<textbox id="display" rows="12" cols="100" visible="false"></textbox>
+    								</vbox>
+    									
+    							</tabpanel>  
+    							
+    							
+  								<tabpanel>
+  										
+  								<toolbar>
+  								
+  				<vlayout spacing="6px">
+  					<listbox>	
+							<listhead visible="false">
+	        					<listheader width="75px"/>
+	        					<listheader width="11%"/>
+	        					<listheader width="8%"/>
+							</listhead>
+					
+						
+				<listitem>
+  						   <listcell>
+  						       <label style="color: blue" value="From:   " pre="true"></label>
+  						   </listcell>
+  								
+  							<listcell>
+  								<label id="from" value="${myName}"/>
+  							</listcell>
+  			   </listitem>	
+  							
+  			<listitem popup="addresspopup">	
+  							<listcell>	
+  								<label style="color: blue" value="To:        " pre="true"/>
+  							</listcell>
+  							
+  							<listcell>
+  							
+  							<bandbox id="to" autodrop="true" width="404px" onChanging="tobd.setFocus(true);" buttonVisible="false">
+  								<bandpopup>
+  							<combobox id="tobd" buttonVisible="false" autodrop="true" width="400px" model="@{contacts}" selectedItem="@{selects}" value="@{selects.mail_to}" onSelect="addContact(tobd,to); to.setFocus(true);">
+     								<comboitem self="@{each=contacts}" label="@{contacts.mail_to}" value="@{contacts.mail_to}"/>
+ 									</combobox>
+ 								</bandpopup>
+ 							</bandbox>
+  								
+ 							</listcell>
+ 							
+ 							<listcell>
+								<label id="toValidate" style="color: red" value="One or More Receivers addresses are  not valid!" pre="true" visible="false"></label>	
+							</listcell>	
+				</listitem>	
+				
+				<listitem>
+					<listcell>
+						<label style="color: blue" value="Subject:" pre="true"></label>
+					</listcell>
+							
+					<listcell>				
+						<textbox id="subject" width="394px" height="16px"/>
+					</listcell>	
+					<listcell>
+								<label id="subjectValidate" style="color: red" value="Subject can not be blank!" pre="true" visible="false"></label>
+					</listcell>
+				</listitem>
+				
+				<listitem popup="addresspopup">
+					<listcell>
+  						<label style="color: blue" value="Cc:        " pre="true"></label>
+  					</listcell>
+  						
+  					<listcell > 	
+  										
+  							<bandbox id="cc" autodrop="true" width="404px" onChanging="ccbd.setFocus(true);"  buttonVisible="false">
+  								<bandpopup>
+  									<combobox id="ccbd" buttonVisible="false" autodrop="true" width="400px" model="@{ccContacts}" selectedItem="@{select}" value="@{select.mail_to}" onSelect="addContact(ccbd,cc)">
+     								<comboitem self="@{each=ccContacts}" label="@{ccContacts.mail_to}" value="@{ccContacts.mail_to}"/>
+ 									</combobox>
+ 								</bandpopup>
+ 							</bandbox>
+ 					</listcell>
+ 					
+ 					<listcell>
+  						<label id="ccValidate" style="color: red" value="Not Valid Address!" pre="true" visible="false"></label>
+  					</listcell>				
+  				</listitem>		
+  		</listbox>				
+    				<hlayout><button class="input_button" label="Send" onClick="sendMail()"></button><button class="input_button" label="Save to Drafts" onClick="moveToDrafts()"/></hlayout>
+								<vlayout id="flist" width="400px" sclass="fileList" />
+  								</vlayout>
+  								</toolbar>			
+  									<label style="color: blue" value="Mail Contents" width="40%" pre="true"></label>
+  									<label id="bodyValidate" style="color: red" value="Mail Body can not be blank!" pre="true" visible="false"></label>
+  								<hbox>
+  									<textbox id="bodyText" rows="15" cols="100"/>
+  								</hbox>
+  											
+  										
+  								</tabpanel> 
+  										
+  								<tabpanel>
+									<vbox>
+										<hbox>
+											<button class="input_button" label="Move to Trash" onClick="moveToTrash(theDraftslistbox)"/>										
+										</hbox>
+															<listbox id="theDraftslistbox" width="200%" height="200px" model="@{drafts}" multiple="false" mold="paging"  onSelect="readMail(draftsText, theDraftslistbox)">
+		    												<listhead>
+	        														<listheader label="Sender" width="250px" />
+	        														<listheader label="Subject" width="250px" />
+	        														<listheader label="Time" width="400px" />
+															</listhead>
+															
+															<listitem  id="draftsListit" self="@{each='drafts'}" >
+											
+																<listcell visible="false">
+																		<label value="@{drafts.mail_body}" />
+																</listcell>		
+																
+																<listcell visible="false">
+																		<label value="@{drafts.mail_id}" />
+																</listcell>		
+																
+																<listcell visible="false">
+																		<label value="@{drafts.mail_to}" />
+																</listcell>							      	
+																							      	
+																<listcell>
+																		<label value="@{drafts.mail_from}" />
+																</listcell>
+													
+																<listcell>
+																		<label value="@{drafts.mail_subject}" />
+																</listcell>
+													
+																<listcell>
+																		<label value="@{drafts.timestamp}" />
+																</listcell>
+													
+														</listitem>
+															
+	 
+    										</listbox>
+    									
+    										<textbox id="draftsText" rows="15" cols="100" visible="false"></textbox>
+    									</vbox>
+    									
+    							</tabpanel> 
+  										
+  								<tabpanel>
+								
+								<vbox>
+									<hbox>
+										<button class="input_button" label="Move to Trash" onClick="moveToTrash(sentlistbox)"/>										
+									</hbox>
+												
+															<listbox id="sentlistbox" width="200%" height="200px" model="@{sent}" multiple="false" mold="paging" onSelect="readMailSent(sentText, sentlistbox)">
+		    												
+		    												<listhead>
+	        														<listheader label=" Recipient" width="250px" />
+	        														<listheader label="Subject" width="250px" />
+	        														<listheader label="Time" width="400px" />
+															</listhead>
+															
+															<listitem  id="sentListit" self="@{each='sent'}" >
+											
+																<listcell visible="false">
+																		<label value="@{sent.mail_body}" />
+																</listcell>		
+																
+																<listcell visible="false">
+																		<label value="@{sent.mail_id}" />
+																</listcell>					      	
+																							      	
+																<listcell>
+																		<label value="@{sent.mail_to}" />
+																</listcell>
+
+																<listcell visible="false">
+																		<label value="@{sent.mail_from}" />
+																</listcell>
+													
+																<listcell>
+																		<label value="@{sent.mail_subject}" />
+																</listcell>
+													
+																<listcell>
+																		<label value="@{sent.timestamp}" />
+																</listcell>
+													
+														</listitem>
+															
+	 
+    										</listbox>
+    									
+    										<textbox id="sentText" rows="15" cols="100" visible="false"></textbox>
+    									</vbox>
+    									
+    								</tabpanel> 		
+    								
+    								<tabpanel>
+												<vbox>
+										<hbox>
+											<button class="input_button" label="Delete Forever" onClick="deleteForever(trashlistbox)"/>										
+										</hbox>
+															<listbox id="trashlistbox" width="200%" height="200px" model="@{trash}" multiple="false" mold="paging" onSelect="readMail(trashText, trashlistbox)">
+		    												<listhead>
+	        														<listheader label="Sender" width="250px" />
+	        														<listheader label="Subject" width="250px" />
+	        														<listheader label="Time" width="400px" />
+															</listhead>
+															
+															<listitem  id="trashListit" self="@{each='trash'}" >
+											
+																<listcell visible="false">
+																		<label value="@{trash.mail_body}" />
+																</listcell>				
+																
+																<listcell visible="false">
+																		<label value="@{trash.mail_id}" />
+																</listcell>				
+																
+																<listcell visible="false">
+																		<label value="@{trash.mail_to}" />
+																</listcell>						      	
+																							      	
+																<listcell>
+																		<label value="@{trash.mail_from}" />
+																</listcell>
+													
+																<listcell>
+																		<label value="@{trash.mail_subject}" />
+																</listcell>
+													
+																<listcell>
+																		<label value="@{trash.timestamp}" />
+																</listcell>
+													
+														</listitem>
+															
+	 
+    										</listbox>
+    									
+    										<textbox id="trashText" rows="15" cols="100" visible="false"></textbox>
+    									</vbox>
+    									
+    								</tabpanel> 			
+    											
+  					</tabpanels>
+  								
+  								
+  							
+							 
+  	</tabbox>
+  </vbox>
+ </center>
+    	
+
+ 
+ <west size="20%" splittable="true" collapsible="true">
+ 
+ 		<tree id="tree" rows="25">
+   
+   			<treechildren>
+   			<treeitem>
+   								<treerow>
+            								<treecell label="Compose New" onClick="tab2.setSelected(true); clearAll()"/>
+       							</treerow>
+   			</treeitem>
+      				<treeitem>
+      							
+         						<treerow>
+            								<treecell label="Mail"/>
+       							</treerow>
+         		<treechildren>
+          						<treeitem>
+                							<treerow>
+                									   <treecell label="Inbox" onClick="tab1.setSelected(true);"/>
+                							</treerow>
+              					</treeitem>
+             
+            				     <treeitem>
+                    						<treerow>
+                           								<treecell label="Drafts" onClick="tab3.setSelected(true); loadDrafts()"/>
+                    						</treerow>
+                 				</treeitem>
+                 				
+                 				<treeitem>
+                    						<treerow>
+                           								<treecell label="Sent" onClick="tab4.setVisible(true); tab4.setSelected(true); loadSent()"/>
+                    						</treerow>
+                 				</treeitem>
+                 				
+                 				<treeitem>
+                    						<treerow>
+                           								<treecell label="Trash" onClick="tab5.setVisible(true); tab5.setSelected(true); loadTrash()"/>
+                    						</treerow>
+                 				</treeitem>
+                	</treechildren>
+            			</treeitem>
+          
+         		
+        </treechildren>
+        
+     
+</tree>
+
+    
+ 
+ </west>
+ <south>
+ <label id="sentSuccess" value="Mail Sent Successfully!" visible="false"></label>
+
+ 
+ </south>
+ 
+ </borderlayout>
+ <popup id="addresspopup" width="300px">
+						<vlayout>
+								Press 'Comma(,)' to saperate the addresses!
+						</vlayout>
+					</popup>
+    <zscript>
+    
+    			loadMails();
+    			    			
+    			  
+    			private void readMail() throws Exception
+    			{
+						System.out.println("Inside the read mail");
+    					Listitem item=thelistbox.getSelectedItem();
+    					Listcell listcell = (Listcell) item.getChildren().get(0);
+						String body=(listcell.getChildren().get(0)).getValue();
+																
+						Listcell listcell1 = (Listcell) item.getChildren().get(2);
+						String Sender=(listcell1.getChildren().get(0)).getValue();
+						
+						Listcell listcell2 = (Listcell) item.getChildren().get(3);
+						String subject=(listcell2.getChildren().get(0)).getValue();
+						
+						Listcell listcell4 = (Listcell) item.getChildren().get(4);
+						String timeStamp=(listcell4.getChildren().get(0)).getValue();
+									
+						Listcell listcellID = (Listcell) item.getChildren().get(1);
+						String mailID=(listcellID.getChildren().get(0)).getValue();
+						
+						
+						String[] ToAndCC=dbc.getToandCC(mailID);
+						dbc.markRead(mailID);
+					
+						String to=ToAndCC[0];
+						String cc=ToAndCC[1];									
+						
+						String allMail="From: "+Sender+"\nTo:"+to+"\nCC: "+cc+"\nSubject: "+subject+"\nTime: "+timeStamp+"\n\n\t"+body;
+						display.setVisible(true);
+						display.setText(allMail);
+						display.setReadonly(true);	
+						
+						int i=thelistbox.getSelectedIndex();
+						
+						
+						dbc.assign(from.getValue(), strEmpId);
+    					dbc.getAllMails(mails);
+    					ListModel model = thelistbox.getModel();
+      					thelistbox.setModel(model);
+						thelistbox.setSelectedIndex(i);
+				} 
+    			  
+    			private void readMail(Textbox display, Listbox thelistbox) throws Exception
+    			{
+						System.out.println("Inside the read mail");
+    					Listitem item=thelistbox.getSelectedItem();
+    					Listcell listcell = (Listcell) item.getChildren().get(0);
+						String body=(listcell.getChildren().get(0)).getValue();
+					
+											
+						Listcell listcell2 = (Listcell) item.getChildren().get(4);
+						String subject=(listcell2.getChildren().get(0)).getValue();
+						
+						Listcell listcell4 = (Listcell) item.getChildren().get(5);
+						String timeStamp=(listcell4.getChildren().get(0)).getValue();
+						
+						Listcell listcellID = (Listcell) item.getChildren().get(1);
+						String mailID=(listcellID.getChildren().get(0)).getValue();
+						
+						String[] ToAndCC=dbc.getToandCC(mailID);
+						String[] ToAndCC=dbc.getToandCC(mailID);
+						
+						String to=ToAndCC[0];
+						String cc=ToAndCC[1];					
+						String sender=from.getValue();
+												
+						String allMail="From:"+sender+"\nTo: "+to+"\nCC: "+cc+"\nSubject:"+subject+"\nTime: "+timeStamp+"\n\n\t"+body;
+						display.setVisible(true);
+						display.setText(allMail);
+						display.setReadonly(true);	
+				} 
+				
+				private void readMailSent(Textbox display, Listbox thelistbox) throws Exception
+    			{
+						System.out.println("Inside the read mail");
+    					Listitem item=thelistbox.getSelectedItem();
+    					Listcell listcell = (Listcell) item.getChildren().get(0);
+						String body=(listcell.getChildren().get(0)).getValue();
+					
+					
+											
+						Listcell listcell1 = (Listcell) item.getChildren().get(2);
+						String recipient=(listcell1.getChildren().get(0)).getValue();
+						
+						Listcell listcell2 = (Listcell) item.getChildren().get(4);
+						String subject=(listcell2.getChildren().get(0)).getValue();
+						
+						Listcell listcell4 = (Listcell) item.getChildren().get(5);
+						String timeStamp=(listcell4.getChildren().get(0)).getValue();
+						String sender=from.getValue();
+						
+						Listcell listcellID = (Listcell) item.getChildren().get(1);
+						String mailID=(listcellID.getChildren().get(0)).getValue();
+					
+						
+						
+						String[] ToAndCC=dbc.getToandCC(mailID);
+						String to=ToAndCC[0];
+						String cc=ToAndCC[1];					
+						
+						String allMail="From:  "+sender+"\nTo:  "+to+"\nCC: "+cc+" \nSubject:"+subject+"\nTime: "+timeStamp+"\n\n\t"+body;
+						display.setVisible(true);
+						display.setText(allMail);
+						display.setReadonly(true);	
+				} 
+				
+				
+				public void sendMail()
+				{
+					sendMails sm=new sendMails();
+					System.out.println(to.getValue());
+					sm.assign(from,to,cc,subject,bodyText);
+					boolean validate=sm.validate(toValidate,ccValidate,subjectValidate,bodyValidate);
+			
+			
+					if(validate==true)
+					{
+						sm.send();
+						to.setValue("");
+						cc.setValue("");
+						subject.setValue("");
+						bodyText.setValue("");
+						sentSuccess.setVisible(true);
+						tab1.setSelected(true);
+					}
+					loadContacts();
+					
+				}
+				
+				public void moveToDrafts()
+				{
+						sendMails sm=new sendMails();
+						System.out.println("Inside the move to drafts");
+    					String sender1=from.getValue();
+    					String sub1=subject.getText();
+    					String body1=bodyText.getText();
+    					String receiver1=to.getText();	
+    						
+    					sm.moveDrafts(sender1,receiver1,sub1,body1);
+    					subject.setValue("");
+    					to.setValue("");
+    					cc.setValue("");
+    					bodyText.setValue("");    					
+    			}
+				
+				public void moveToTrash(Listbox thelistbox)
+				{
+						
+    					
+    					if(thelistbox.getSelectedItem()!=null)
+    					{
+    						Listitem item=thelistbox.getSelectedItem();
+    						Listcell listcell = (Listcell) item.getChildren().get(1);
+							String tobeTrashed=(listcell.getChildren().get(0)).getValue();
+							System.out.println("to be trashed::>"+tobeTrashed);
+							dbc.moveTrash(tobeTrashed);
+							Object obj=new Object();
+							int i=thelistbox.getSelectedIndex();
+							thelistbox.removeItemAt(i);
+						}
+				}
+				
+				public void replyMail()
+				{
+						Listitem item=thelistbox.getSelectedItem();
+    					
+    					
+    					Listcell listcellSender = (Listcell) item.getChildren().get(2);
+    					String sender=(listcellSender.getChildren().get(0)).getValue();
+    					
+    					
+    					tab2.setVisible(true);
+    					tab2.setSelected(true);
+    					
+    					Listcell listcell1 = (Listcell) item.getChildren().get(3);
+    					String tempSub=(listcell1.getChildren().get(0)).getValue();
+    					
+    					
+    					Listcell listcellID = (Listcell) item.getChildren().get(1);
+						String mailID=(listcellID.getChildren().get(0)).getValue();
+						
+						Listcell listcellTime = (Listcell) item.getChildren().get(4);
+						String timeStamp=(listcellTime.getChildren().get(0)).getValue();
+						
+						Listcell listcellBody = (Listcell) item.getChildren().get(0);
+    					String body=(listcellBody.getChildren().get(0)).getValue();
+    					
+						String[] ToAndCC=dbc.getToandCC(mailID);
+						dbc.markRead(mailID);
+					
+						String toText=ToAndCC[0];
+						String ccText=ToAndCC[1];		
+						
+						cc.setValue(ccText);
+						subject.setValue("");
+						subject.setValue("Re:"+tempSub);							
+						to.setValue(sender);
+						
+						String allMail=">From: "+sender+"\n>To:"+toText+"\n>CC: "+ccText+"\n>Subject: "+tempSub+"\n>Time: "+timeStamp+"\n\n\t >"+body;
+    					
+    					bodyText.setValue(allMail);
+				}
+				
+				public void forwardMail()
+				{
+						Listitem item=thelistbox.getSelectedItem();
+    					Listcell listcell = (Listcell) item.getChildren().get(0);
+						String body=(listcell.getChildren().get(0)).getValue();
+						
+						Listcell listcell2 = (Listcell) item.getChildren().get(3);
+						String subjectString=(listcell2.getChildren().get(0)).getValue();
+						tab2.setVisible(true);
+    					tab2.setSelected(true);
+    					bodyText.setText(body);
+    					
+    					to.setValue("");
+    					cc.setValue("");
+    					subject.setValue("");
+    					subject.setText("Fwd:"+subjectString);
+				}
+				
+				public void deleteForever(Listbox trashlistbox)
+				{
+					if(trashlistbox.getSelectedItem()!=null)
+    				{
+						Listitem item=trashlistbox.getSelectedItem();
+    					Listcell listcell = (Listcell) item.getChildren().get(1);
+						String mailId=(listcell.getChildren().get(0)).getValue();
+						dbc.deleteMail(mailId);
+						int i=trashlistbox.getSelectedIndex();
+						trashlistbox.removeItemAt(i);
+					}
+				}
+								
+				
+			int counter=0;	
+			public void addContact(Combobox bd,Bandbox cc)
+			{
+				System.out.println("Value of the counter is as follows:::>"+counter);			
+				if(cc.getValue().trim().length()==0 || cc.getValue()==null)
+					counter=0;
+				if(counter==0)
+				{
+					cc.value=bd.value;
+					counter++;
+				}
+				else	
+					cc.value=cc.value+' '+bd.value; 
+				bd.setValue(null);
+				cc.setFocus(true);
+				cc.close();
+			}
+			
+		
+		
+		public void clearAll()
+		{
+			to.setText("");
+			subject.setText("");
+			cc.setText("");
+			bodyText.setText("");
+		}
+	
+		</zscript>
+    	
+				
+</window>

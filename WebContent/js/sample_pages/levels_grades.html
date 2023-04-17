@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Levels Grade Hierarachy</title>
+<style>
+
+
+.level_list li
+  {
+    list-style-type:none;
+	font-size:16px;
+	font-weight:bold;
+	  }
+
+.level_list ul li
+{
+  list-style-type:none;
+  font-weight:normal;
+  margin:5px 0px; 
+}
+
+.level_list ul li ul li
+{
+  padding:0px 0px 0px 0px;
+}
+.level_list ul li ul li 
+{
+     padding:0px 0px 0px 25px;
+}
+
+.addnew
+{
+  padding:4px 5px;
+  background:#efefef;
+  color:#666666;
+  font-size:12px;
+  display:block;
+  width:245px;
+}
+
+.addnew a
+ {
+   color:#666666;
+ }
+
+.del
+{
+  
+  text-decoration:none;
+  padding:5px;
+  background:#efefef;
+  width:25px;
+  margin:0px 5px 0px 0px;
+  
+}
+
+.level_list ul li .desgn
+{
+  margin:3px 0px 3px 0px;
+}
+
+</style>
+</head>
+
+<body>
+
+  <div style="float:left; border:solid 1px #ccc">
+     
+     <div> <a href="#">+ Add new level</a></div>  
+     <div>
+         <ul class="level_list">
+            
+                <li><a href="#" class="del">-</a>Level 1
+                      <ul>
+                           <li class="addnew desgn"><a href="#">+ add new designation</a></li>
+                           <li class="desgn"><a href="#" class="del">-</a>Designation1
+                                 <ul>
+                                    <li class="addnew desgn"><a href="#">+ add new grade</a></li>
+                                    <li><a href="#" class="del">-</a>Grade 1</li>
+                                    <li><a href="#" class="del">-</a>Grade 2</li>
+                                    <li><a href="#" class="del">-</a>Grade 3</a></li>
+                                 </ul>
+                           </li>
+                           
+                           <li class="desgn"><a href="#" class="del">-</a>Designation2
+                                  <ul>
+                                    <li class="addnew desgn"><a href="#">+ add new grade</a></li>
+                                 </ul>
+                           </li>
+                           
+                     </ul>
+                  </li>     
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 <li><a href="#" class="del">-</a> Level2                 
+                        <ul>
+                           <li class="addnew desgn"><a href="#">+ add new designation</a></li>
+                           <li class="desgn"><a href="#" class="del">-</a>Designation1
+                                 <ul>
+                                    <li class="addnew desgn"><a href="#">+ add new grade</a></li>
+                                    <li><a href="#" class="del">-</a>Grade 1</li>
+                                    <li><a href="#" class="del">-</a>Grade 2</li>
+                                    <li><a href="#" class="del">-</a>Grade 3</li>
+                                 </ul>
+                           </li>
+                           
+                           <li class="desgn"><a href="#" class="del">-</a>Designation2
+                                  <ul>
+                                    <li class="addnew desgn"><a href="#">+ add new grade</a></li>
+                                 </ul>
+                           </li>
+                           
+                           <li class="desgn"><a href="#" class="del">-</a>Designation3
+                           
+                                <ul>
+                                    <li class="addnew desgn"><a href="#">+ add new grade</a></li>
+                                 </ul>
+                           </li>
+                           
+                           <li class="desgn"><a href="#" class="del">-</a>Designation4
+                           
+                              <ul>
+                                    <li class="addnew desgn"><a href="#">+ add new grade</a></li>
+                                 </ul>
+                           </li>
+                           
+                     </ul>
+                 </li>
+                 
+                       
+        
+         </ul>
+         
+     </div>
+     
+        
+  </div>
+
+
+
+</body>
+</html>

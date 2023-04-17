@@ -1,0 +1,129 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="struts-challan" extends="struts-default">
+		<action name="Form5PTChallan" class="com.konnect.jpms.challan.Form5PTChallan">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/challan/Form5PTChallan.jsp</result>
+		</action>
+		
+		<action name="ChallanDetailsView" class="com.konnect.jpms.challan.ChallanDetailsView">
+			<result name="totalamount">/jsp/challan/ChallanDetailsView.jsp</result>
+			<result name="printedNotPaid">/jsp/challan/challanPrintedView.jsp</result>
+			<result name="paychallan">/jsp/challan/PayPrintedChallan.jsp</result>
+			<result name="amountpaid">/jsp/challan/AmountPaidView.jsp</result>
+			<result name="otherCharges">/jsp/challan/PTChallanOtherCharges.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="UpdateChallanData" class="com.konnect.jpms.challan.UpdateChallanData">
+			<result name="success" type="redirectAction">Form5PTChallan</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ReturnCumChallanPdfReports" class="com.konnect.jpms.challan.ReturnCumChallanPdfReports">
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ESICChallan" class="com.konnect.jpms.challan.ESICChallan">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/challan/ESICChallan.jsp</result>
+		</action>
+
+		<!-- <action name="ESICUpdateChallanData" class="com.konnect.jpms.challan.ESICUpdateChallanData">
+			<result name="success" type="redirect-action">
+				<param name="actionName">MenuNavigationInner</param>
+				<param name="NN">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+			<result name="success" type="redirectAction">ESICChallan</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action> -->
+		
+		<action name="ESICUpdateChallanData" class="com.konnect.jpms.challan.ESICUpdateChallanData">
+			<result name="success" type="redirectAction">ESICChallan</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+		<action name="ESICChallanDetailsView" class="com.konnect.jpms.challan.ESICChallanDetailsView">
+			<result name="totalamount">/jsp/challan/ESICChallanInsertDetails.jsp</result>
+			<result name="printedNotPaid">/jsp/challan/ESICPrintedView.jsp</result>
+			<result name="paychallan">/jsp/challan/PayESICPrintedChallan.jsp</result>
+			<result name="amountpaid">/jsp/challan/ESICAmountPaidView.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="TDSTaxChallan" class="com.konnect.jpms.challan.TDSTaxChallan">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/challan/TDSTaxChallan.jsp</result>
+		</action>
+		
+		<action name="TDSChallanDetailsView" class="com.konnect.jpms.challan.TDSChallanDetailsView">
+			<result name="totalamount">/jsp/challan/TDSChallanInsertDetails.jsp</result>
+			<result name="printedNotPaid">/jsp/challan/challanPrintedView.jsp</result>
+			<result name="paychallan">/jsp/challan/PayTDSPrintedChallan.jsp</result>
+			<result name="amountpaid">/jsp/challan/AmountPaidView.jsp</result>
+			<result name="otherCharges">/jsp/challan/TDSChallanOtherCharges.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="TDSUpdateChallanData" class="com.konnect.jpms.challan.TDSUpdateChallanData">
+			<result name="success" type="redirectAction">TDSTaxChallan</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="EPFChallan" class="com.konnect.jpms.challan.EPFChallan">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/challan/EPFChallan.jsp</result>
+		</action>
+
+		<action name="EPFUpdateChallanData" class="com.konnect.jpms.challan.EPFUpdateChallanData">
+			<result name="success" type="redirectAction">EPFChallan</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+		<action name="EPFChallanDetailsView" class="com.konnect.jpms.challan.EPFChallanDetailsView">
+			<result name="totalamount">/jsp/challan/EPFChallanInsertDetails.jsp</result>
+			<result name="printedNotPaid">/jsp/challan/challanPrintedView.jsp</result>
+			<result name="paychallan">/jsp/challan/PayEPFPrintedChallan.jsp</result>
+			<result name="amountpaid">/jsp/challan/AmountPaidView.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PTaxChallanPdfReports" class="com.konnect.jpms.challan.PTaxChallanPdfReports">
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="PTaxChallanECR" class="com.konnect.jpms.challan.PTaxChallanECR">
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="LWFChallan" class="com.konnect.jpms.challan.LWFChallan">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/challan/LWFChallan.jsp</result>
+		</action>
+		
+		<action name="LWFUpdateChallanData" class="com.konnect.jpms.challan.LWFUpdateChallanData">
+			<result name="success" type="redirectAction">LWFChallan</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="LWFChallanDetailsView" class="com.konnect.jpms.challan.LWFChallanDetailsView">
+			<result name="totalamount">/jsp/challan/LWFChallanInsertDetails.jsp</result>
+			<result name="printedNotPaid">/jsp/challan/LWFchallanPrintedView.jsp</result>
+			<result name="paychallan">/jsp/challan/PayLWFPrintedChallan.jsp</result>
+			<result name="amountpaid">/jsp/challan/AmountPaidView.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+	</package>
+</struts>   
+		

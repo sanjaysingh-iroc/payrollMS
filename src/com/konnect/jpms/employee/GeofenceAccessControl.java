@@ -1,0 +1,571 @@
+package com.konnect.jpms.employee;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.struts2.interceptor.ServletRequestAware;
+
+import com.konnect.jpms.select.FillDepartment;
+import com.konnect.jpms.select.FillLevel;
+import com.konnect.jpms.select.FillOrganisation;
+import com.konnect.jpms.select.FillRimbursementType;
+import com.konnect.jpms.select.FillServices;
+import com.konnect.jpms.select.FillWLocation;
+import com.konnect.jpms.util.CommonFunctions;
+import com.konnect.jpms.util.Database;
+import com.konnect.jpms.util.IStatements;
+import com.konnect.jpms.util.UtilityFunctions;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class GeofenceAccessControl extends ActionSupport implements ServletRequestAware, IStatements {
+	private static final long serialVersionUID = 1L;
+	HttpSession session;
+	String strUserType = null;
+	boolean isEmpUserType = false;
+	CommonFunctions CF = null;
+
+	String strSessionEmpId = null;
+
+	String []f_strWLocation;
+	String []f_level;
+	String []f_department;
+	String []f_service; 
+	
+	List<FillDepartment> departmentList;
+	List<FillLevel> levelList;
+	List<FillServices> serviceList;
+	List<FillWLocation> wLocationList;
+
+	String f_org;
+	
+	List<FillOrganisation> organisationList;
+	
+	String[] hideEmpIds;
+	String btnUpdate;
+	
+	private String strLocation;
+	private String strDepartment;
+	private String strSbu;
+	private String strLevel;
+	
+	public String execute() throws Exception {
+
+		session = request.getSession();
+		CF = (CommonFunctions) session.getAttribute(CommonFunctions);
+		if (CF == null)
+			return LOGIN;
+		strUserType = (String) session.getAttribute(USERTYPE);
+		strSessionEmpId = (String) session.getAttribute(EMPID);
+
+		request.setAttribute(TITLE, "Geo-fence Access");
+		request.setAttribute(PAGE, "/jsp/employee/GeofenceAccessControl.jsp");
+		UtilityFunctions uF = new UtilityFunctions();
+		if(strUserType!=null && !strUserType.equalsIgnoreCase(ADMIN)) {
+			organisationList = new FillOrganisation(request).fillOrganisation((String)session.getAttribute(ORG_ACCESS));
+			if(uF.parseToInt(getF_org())<=0) {
+				for(int i=0; organisationList != null && i<organisationList.size(); i++) {
+					if(uF.parseToInt(organisationList.get(i).getOrgId()) == uF.parseToInt((String) session.getAttribute(ORGID))) {
+						setF_org((String) session.getAttribute(ORGID));
+					} else {
+						if(i==0) {
+							setF_org(organisationList.get(0).getOrgId());
+						}
+					}
+				}
+			}
+		} else {
+			if (uF.parseToInt(getF_org()) <= 0) {
+				setF_org((String) session.getAttribute(ORGID));
+			}
+			organisationList = new FillOrganisation(request).fillOrganisation();
+		}
+		/*if(getF_org()==null) {
+			setF_org((String)session.getAttribute(ORGID));
+		}*/
+		if(getStrLocation() != null && !getStrLocation().equals("")) {
+			setF_strWLocation(getStrLocation().split(","));
+		} else {
+			setF_strWLocation(null);
+		}
+		if(getStrDepartment() != null && !getStrDepartment().equals("")) {
+			setF_department(getStrDepartment().split(","));
+		} else {
+			setF_department(null);
+		}
+		if(getStrSbu() != null && !getStrSbu().equals("")) {
+			setF_service(getStrSbu().split(","));
+		} else {
+			setF_service(null);
+		}
+		if(getStrLevel() != null && !getStrLevel().equals("")) {
+			setF_level(getStrLevel().split(","));
+		} else {
+			setF_level(null);
+		}
+		
+		StringBuilder sbpageTitleNaviTrail = new StringBuilder();
+		sbpageTitleNaviTrail.append("<li><i class=\"fa fa-group\"></i><a href=\"People.action\" style=\"color: #3c8dbc;\"> People</a></li>" +
+			"<li class=\"active\">People</li>");
+		request.setAttribute("PAGETITLE_NAVITRAIL", sbpageTitleNaviTrail.toString());
+		
+		loadEmpData(uF);
+//		System.out.println("getBtnUpdate() ===>> " + getBtnUpdate());
+		if(getBtnUpdate() != null) {
+			updateGeofenceAccess(uF);
+		}
+		getEmployeeData();
+		
+		return LOAD;
+
+	}
+
+	
+	private void updateGeofenceAccess(UtilityFunctions uF) {
+
+		Connection con = null;
+		Database db = new Database();
+		db.setRequest(request);
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			con = db.makeConnection(con);
+			
+//			System.out.println("hideEmpIds ===>> " + hideEmpIds);
+			for(int i=0; hideEmpIds!=null && i<hideEmpIds.length; i++) {
+				String[] geoFenceLocations = (String[]) request.getParameterValues("geoFenceLocations_"+hideEmpIds[i]);
+				StringBuilder sbFenceLocations = null;
+				if(geoFenceLocations != null && geoFenceLocations.length>0) {
+					for(String strFenceLocId : geoFenceLocations) {
+						if(sbFenceLocations == null) {
+							sbFenceLocations = new StringBuilder();
+							sbFenceLocations.append(","+strFenceLocId+",");
+						} else {
+							sbFenceLocations.append(strFenceLocId+",");
+						}
+					}
+				}
+				if(sbFenceLocations == null) {
+					sbFenceLocations = new StringBuilder();
+				}
+				System.out.println("sbFenceLocations ===>> " + sbFenceLocations.toString());
+				pst = con.prepareStatement("update user_details set geofence_locations=?, is_geofence=? where emp_id=?");
+				pst.setString(1, sbFenceLocations.toString());
+				pst.setBoolean(2, (uF.parseToInt((String)request.getParameter("chboxGeofence_"+hideEmpIds[i]))>0) ? true : false);
+				pst.setInt(3, uF.parseToInt(hideEmpIds[i]));
+//				pst.addBatch();
+				System.out.println("pst ===>> " + pst);
+				int x = pst.executeUpdate();
+				pst.close();
+			}
+//			System.out.println("x ====>> " + x.length);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.closeResultSet(rs);
+			db.closeStatements(pst);
+			db.closeConnection(con);
+		}
+	}
+
+
+	public String loadEmpData(UtilityFunctions uF) {
+//		paycycleList = new FillPayCycles(getStrPaycycleDuration()).fillPayCycles(CF); 
+//		wLocationList = new FillWLocation().fillWLocation();
+		departmentList = new FillDepartment(request).fillDepartment(uF.parseToInt(getF_org()));
+		levelList = new FillLevel(request).fillLevel(uF.parseToInt(getF_org()));
+		serviceList = new FillServices(request).fillServices(getF_org(),uF);
+		
+		if(strUserType!=null && !strUserType.equalsIgnoreCase(ADMIN)) {
+			wLocationList = new FillWLocation(request).fillWLocation(getF_org(),(String) session.getAttribute(WLOCATION_ACCESS));
+		} else {
+			wLocationList = new FillWLocation(request).fillWLocation(getF_org());
+		}
+		
+		getSelectedFilter(uF);
+		
+		return LOAD;
+	}
+	
+	
+	private void getSelectedFilter(UtilityFunctions uF) {
+		Map<String,String> hmFilter=new HashMap<String, String>();
+		List<String> alFilter = new ArrayList<String>();
+		
+		System.out.println();
+		alFilter.add("ORGANISATION");
+		if(getF_org()!=null) {			
+			String strOrg="";
+			int k=0;
+			for(int i=0;organisationList!=null && i<organisationList.size();i++) {
+				if(getF_org().equals(organisationList.get(i).getOrgId())) {
+					if(k==0) {
+						strOrg=organisationList.get(i).getOrgName();
+					} else {
+						strOrg+=", "+organisationList.get(i).getOrgName();
+					}
+					k++;
+				}
+			}
+			if(strOrg!=null && !strOrg.equals("")) {
+				hmFilter.put("ORGANISATION", strOrg);
+			} else {
+				hmFilter.put("ORGANISATION", "All Organisation");
+			}
+		} else {
+			hmFilter.put("ORGANISATION", "All Organisation");
+		}
+		
+		
+		alFilter.add("LOCATION");
+		if(getF_strWLocation()!=null) {
+			String strLocation="";
+			int k=0;
+			for(int i=0;wLocationList!=null && i<wLocationList.size();i++) {
+				for(int j=0;j<getF_strWLocation().length;j++) {
+					if(getF_strWLocation()[j].equals(wLocationList.get(i).getwLocationId())) {
+						if(k==0) {
+							strLocation=wLocationList.get(i).getwLocationName();
+						} else {
+							strLocation+=", "+wLocationList.get(i).getwLocationName();
+						}
+						k++;
+					}
+				}
+			}
+			if(strLocation!=null && !strLocation.equals("")) {
+				hmFilter.put("LOCATION", strLocation);
+			} else {
+				hmFilter.put("LOCATION", "All Locations");
+			}
+		} else {
+			hmFilter.put("LOCATION", "All Locations");
+		}
+		
+		alFilter.add("DEPARTMENT");
+		if(getF_department()!=null) {
+			String strDepartment="";
+			int k=0;
+			for(int i=0;departmentList!=null && i<departmentList.size();i++) {
+				for(int j=0;j<getF_department().length;j++) {
+					if(getF_department()[j].equals(departmentList.get(i).getDeptId())) {
+						if(k==0) {
+							strDepartment=departmentList.get(i).getDeptName();
+						} else {
+							strDepartment+=", "+departmentList.get(i).getDeptName();
+						}
+						k++;
+					}
+				}
+			}
+			if(strDepartment!=null && !strDepartment.equals("")) {
+				hmFilter.put("DEPARTMENT", strDepartment);
+			} else {
+				hmFilter.put("DEPARTMENT", "All Departments");
+			}
+		} else {
+			hmFilter.put("DEPARTMENT", "All Departments");
+		}
+		
+		alFilter.add("SERVICE");
+		if(getF_service()!=null) {
+			String strService="";
+			int k=0;
+			for(int i=0;serviceList!=null && i<serviceList.size();i++) {
+				for(int j=0;j<getF_service().length;j++) {
+					if(getF_service()[j].equals(serviceList.get(i).getServiceId())) {
+						if(k==0) {
+							strService=serviceList.get(i).getServiceName();
+						} else {
+							strService+=", "+serviceList.get(i).getServiceName();
+						}
+						k++;
+					}
+				}
+			}
+			if(strService!=null && !strService.equals("")) {
+				hmFilter.put("SERVICE", strService);
+			} else {
+				hmFilter.put("SERVICE", "All Services");
+			}
+		} else {
+			hmFilter.put("SERVICE", "All Services");
+		}
+		
+		alFilter.add("LEVEL");
+		if(getF_level()!=null) {
+			String strLevel="";
+			int k=0;
+			for(int i=0;levelList!=null && i<levelList.size();i++) {
+				for(int j=0;j<getF_level().length;j++) {
+					if(getF_level()[j].equals(levelList.get(i).getLevelId())) {
+						if(k==0) {
+							strLevel=levelList.get(i).getLevelCodeName();
+						} else {
+							strLevel+=", "+levelList.get(i).getLevelCodeName();
+						}
+						k++;
+					}
+				}
+			}
+			if(strLevel!=null && !strLevel.equals("")) {
+				hmFilter.put("LEVEL", strLevel);
+			} else {
+				hmFilter.put("LEVEL", "All Levels");
+			}
+		} else {
+			hmFilter.put("LEVEL", "All Levels");
+		}
+		
+		String selectedFilter=CF.getSelectedFilter1(CF,uF,alFilter,hmFilter);
+		request.setAttribute("selectedFilter", selectedFilter);
+	}
+	
+	
+	public void getEmployeeData() {
+
+		Connection con = null;
+		Database db = new Database();
+		db.setRequest(request);
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		UtilityFunctions uF = new UtilityFunctions();
+
+		try {
+			con = db.makeConnection(con);
+			Map<String, String> hmFeatureStatus = CF.getFeatureStatusMap(con);
+			boolean flagMiddleName = uF.parseToBoolean(hmFeatureStatus.get(F_SHOW_EMPLOYEE_MIDDLE_NAME));
+			
+			
+			Map<String, List<String>> hmEmpData = new LinkedHashMap<String, List<String>>();
+			
+			StringBuilder sbQuery = new StringBuilder();
+			sbQuery.append("select emp_per_id,empcode,emp_fname,emp_mname,emp_lname,emp_image,is_geofence,geofence_locations from employee_personal_details epd, employee_official_details eod, user_details ud " +
+				"where epd.emp_per_id = eod.emp_id and eod.emp_id = ud.emp_id and is_alive = true and emp_per_id > 0 ");
+			if(getF_level()!=null && getF_level().length>0) {
+                sbQuery.append(" and grade_id in (select gd.grade_id from grades_details gd, level_details ld, designation_details dd where gd.designation_id = dd.designation_id and dd.level_id = ld.level_id  and ld.level_id in ( "+StringUtils.join(getF_level(), ",")+")) ");
+            }
+            if(getF_department()!=null && getF_department().length>0) {
+                sbQuery.append(" and depart_id in ("+StringUtils.join(getF_department(), ",")+") ");
+            }
+            
+            if(getF_service()!=null && getF_service().length>0) {
+                sbQuery.append(" and (");
+                for(int i=0; i<getF_service().length; i++) {
+                    sbQuery.append(" eod.service_id like '%,"+getF_service()[i]+",%'");
+                    
+                    if(i<getF_service().length-1) {
+                        sbQuery.append(" OR "); 
+                    }
+                }
+                sbQuery.append(" ) ");
+            }
+			if(getF_strWLocation()!=null && getF_strWLocation().length>0) {
+                sbQuery.append(" and wlocation_id in ("+StringUtils.join(getF_strWLocation(), ",")+") ");
+            } else if(strUserType!=null && !strUserType.equalsIgnoreCase(ADMIN) && session.getAttribute(WLOCATION_ACCESS)!=null) {
+				sbQuery.append(" and wlocation_id in ("+session.getAttribute(WLOCATION_ACCESS)+")");
+			}
+            
+			if(uF.parseToInt(getF_org())>0) {
+				sbQuery.append(" and org_id = "+uF.parseToInt(getF_org()));
+			} else if(strUserType!=null && !strUserType.equalsIgnoreCase(ADMIN) && session.getAttribute(ORG_ACCESS)!=null) {
+				sbQuery.append(" and org_id in ("+session.getAttribute(ORG_ACCESS)+")");
+			}
+			sbQuery.append(" order by emp_fname, emp_lname"); 
+			pst = con.prepareStatement(sbQuery.toString());
+//			System.out.println("pst=====>"+pst); 
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				List<String> innerList = new ArrayList<String>();
+				innerList.add(rs.getString("emp_per_id"));
+				innerList.add(rs.getString("empcode"));
+				
+				String strEmpMName = "";
+				if(flagMiddleName) {
+					if(rs.getString("emp_mname") != null && rs.getString("emp_mname").trim().length()>0) {
+						strEmpMName = " "+rs.getString("emp_mname");
+					}
+				}
+				
+				innerList.add(rs.getString("emp_fname")+strEmpMName+" "+rs.getString("emp_lname"));
+				innerList.add(rs.getString("emp_image"));
+				innerList.add(rs.getString("is_geofence")); //4
+				
+				StringBuilder sbLocationList = new StringBuilder();
+				for(int i = 0; wLocationList!=null && i < wLocationList.size(); i++) {
+					List<String> alGeoLocations = new ArrayList<String>();
+					if(rs.getString("geofence_locations") != null && rs.getString("geofence_locations").length()>0) {
+						alGeoLocations = Arrays.asList(rs.getString("geofence_locations").split(","));
+					}
+					FillWLocation fillWLocation = wLocationList.get(i);
+					if(alGeoLocations != null && alGeoLocations.contains(fillWLocation.getwLocationId())) {
+						sbLocationList.append("<option value=\""+fillWLocation.getwLocationId()+"\" selected>"+fillWLocation.getwLocationName()+"</option>");
+					} else {
+						sbLocationList.append("<option value=\""+fillWLocation.getwLocationId()+"\">"+fillWLocation.getwLocationName()+"</option>");
+					}
+				}
+				innerList.add(sbLocationList.toString()); //5
+				hmEmpData.put(rs.getString("emp_per_id"), innerList);
+			}
+			rs.close();
+			pst.close();
+
+			request.setAttribute("hmEmpData", hmEmpData);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.closeResultSet(rs);
+			db.closeStatements(pst);
+			db.closeConnection(con);
+		}
+	}
+
+
+	public String[] getF_strWLocation() {
+		return f_strWLocation;
+	}
+
+	public void setF_strWLocation(String[] f_strWLocation) {
+		this.f_strWLocation = f_strWLocation;
+	}
+
+	public String[] getF_level() {
+		return f_level;
+	}
+
+	public void setF_level(String[] f_level) {
+		this.f_level = f_level;
+	}
+
+	public String[] getF_department() {
+		return f_department;
+	}
+
+	public void setF_department(String[] f_department) {
+		this.f_department = f_department;
+	}
+
+	public String[] getF_service() {
+		return f_service;
+	}
+
+	public void setF_service(String[] f_service) {
+		this.f_service = f_service;
+	}
+
+	public List<FillDepartment> getDepartmentList() {
+		return departmentList;
+	}
+
+	public void setDepartmentList(List<FillDepartment> departmentList) {
+		this.departmentList = departmentList;
+	}
+
+	public List<FillLevel> getLevelList() {
+		return levelList;
+	}
+
+	public void setLevelList(List<FillLevel> levelList) {
+		this.levelList = levelList;
+	}
+
+	public List<FillServices> getServiceList() {
+		return serviceList;
+	}
+
+	public void setServiceList(List<FillServices> serviceList) {
+		this.serviceList = serviceList;
+	}
+
+	public List<FillWLocation> getwLocationList() {
+		return wLocationList;
+	}
+
+	public void setwLocationList(List<FillWLocation> wLocationList) {
+		this.wLocationList = wLocationList;
+	}
+
+	public String getF_org() {
+		return f_org;
+	}
+
+	public void setF_org(String f_org) {
+		this.f_org = f_org;
+	}
+
+	public List<FillOrganisation> getOrganisationList() {
+		return organisationList;
+	}
+
+	public void setOrganisationList(List<FillOrganisation> organisationList) {
+		this.organisationList = organisationList;
+	}
+
+	public String[] getHideEmpIds() {
+		return hideEmpIds;
+	}
+
+	public void setHideEmpIds(String[] hideEmpIds) {
+		this.hideEmpIds = hideEmpIds;
+	}
+
+	public String getBtnUpdate() {
+		return btnUpdate;
+	}
+
+	public void setBtnUpdate(String btnUpdate) {
+		this.btnUpdate = btnUpdate;
+	}
+
+	public String getStrLocation() {
+		return strLocation;
+	}
+
+	public void setStrLocation(String strLocation) {
+		this.strLocation = strLocation;
+	}
+
+	public String getStrDepartment() {
+		return strDepartment;
+	}
+
+	public void setStrDepartment(String strDepartment) {
+		this.strDepartment = strDepartment;
+	}
+
+	public String getStrSbu() {
+		return strSbu;
+	}
+
+	public void setStrSbu(String strSbu) {
+		this.strSbu = strSbu;
+	}
+
+	public String getStrLevel() {
+		return strLevel;
+	}
+
+	public void setStrLevel(String strLevel) {
+		this.strLevel = strLevel;
+	}
+
+	private HttpServletRequest request;
+
+	@Override
+	public void setServletRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+}

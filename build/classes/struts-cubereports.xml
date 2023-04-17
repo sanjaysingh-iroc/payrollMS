@@ -1,0 +1,30 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+       
+	<package name="struts-cubereports" extends="struts-default">
+
+		<action name="CubeReport" class="com.konnect.jpms.reports.cubes.CubeReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+		</action>
+		  
+		<action name="GenerateCubeReport" class="com.konnect.jpms.reports.cubes.GenerateCubeReport">
+			<result name="success">/jsp/reports/cubes/CubeReport.jsp</result>
+		 	
+			<result name="table_time">/jsp/reports/cubes/CubeReportTimeTable.jsp</result>
+			<result name="table_leave">/jsp/reports/cubes/CubeReportLeaveTable.jsp</result>
+			<result name="table_salary">/jsp/reports/cubes/CubeReportSalaryTable.jsp</result>
+			
+			<result name="chart_time">/jsp/reports/cubes/CubeReportTimeChart.jsp</result>
+			<result name="chart_leave">/jsp/reports/cubes/CubeFrame.jsp</result>
+			<result name="chart_salary">/jsp/reports/cubes/CubeReportSalaryChart.jsp</result>
+			<result name="frame">/jsp/reports/cubes/CubeChartFrame.jsp</result>
+			
+		</action>
+		
+	</package>
+</struts>   

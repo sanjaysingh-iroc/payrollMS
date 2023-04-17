@@ -1,0 +1,119 @@
+/*.external-event ui-draggable ui-draggable-handle
+{
+	
+font-size:25px;
+	}*/
+	
+	body
+	{
+	font-size: 12px;
+	
+	}
+	
+tspan
+{
+ 
+ font-family: Baskerville;
+	
+}
+
+text 
+{
+	 font-family: Baskerville;
+	 font-size: 10px;
+	
+}
+
+.external-event
+{
+ font-size:12px;	
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6
+{
+	font-family: Baskerville;	
+	
+}
+
+.site-stats li
+{	font-family: Baskerville; }
+
+.site-stats li small {	font-family: Baskerville; }
+
+.table > tbody > tr > th 
+{
+	 font-size:12px;	
+}
+
+.table > tbody > tr > td
+{
+	line-height: 1.6;
+	
+}
+
+td
+{
+	padding-left:5px;
+}
+
+
+.btn-box-tool:hover
+{
+	color:gray;	
+}
+
+span
+{
+	font-size:12px;
+}
+
+
+rect
+{
+	font-size:10px;
+	
+}
+
+
+
+.highcharts-background
+{
+	font-size:12px;
+	color:red;
+		
+}
+
+
+.site-stats-new li strong
+{
+	
+	font-size: 22px;
+}
+
+.gender-info
+{
+	font-size: 16px;
+}
+
+.gender-perc
+
+{
+	font-size: 20px;
+	
+}
+
+#strSearch
+{
+	line-height: 16px;
+	
+}
+
+
+skin-blue .sidebar-menu>li>.treeview-menu
+{
+	margin-top: -44px;
+	
+}
+
+
+

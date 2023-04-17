@@ -1,0 +1,103 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+   
+   
+   
+	<package name="struts-export" extends="struts-default">
+    
+		  
+		<action name="MyobExtract" class="com.konnect.jpms.export.MyobExtract">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GenerateExcel" class="com.konnect.jpms.export.ExcelExportReports">
+		   <result name="success">/jsp/common/viewPage.jsp</result>		    
+ 		</action>  
+ 		    
+ 		<action name="UploadImage" class="com.konnect.jpms.util.UploadImage">
+ 			<result name="input">/jsp/common/viewPage.jsp</result>
+ 			<result name="profile" type="redirectAction">
+	            <param name="actionName">MyProfile</param>
+	            <param name="empId">${empId}</param>
+            </result>
+            <result name="config" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+ 			<result name="location" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+			</result>
+ 			<result name="update" type="redirect-action">
+             <param name="actionName">CandidateMyProfile</param>
+             <param name="CandID">${empId}</param>          
+            </result>		   
+ 		</action>
+ 		
+ 		<action name="GenerateSalarySlip" class="com.konnect.jpms.salary.GenerateSalarySlip">
+ 			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>		   
+ 		</action> 
+ 		
+ 		<action name="ExportSalarySlip" class="com.konnect.jpms.export.GenerateSalarySlip">
+ 			<result name="login">/jsp/common/viewPage.jsp</result>
+ 	 		<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>		    
+ 		</action>   
+ 		
+ 		<action name="workForcereport" class="com.konnect.jpms.export.WorkForceReports">
+		
+		</action>
+		
+		<action name="GeneratePdfReports" class="com.konnect.jpms.export.GeneratePdfReports">
+		<result name="success">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+		<action name="GeneratePdfResource" class="com.konnect.jpms.export.GeneratePdfResource">
+		<result name="success">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="SalaryPaidExcel" class="com.konnect.jpms.export.SalaryPaidExcel">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+		</action>
+ 		
+ 		<action name="TimeSheetHoursExcel" class="com.konnect.jpms.export.TimeSheetHoursExcel">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+		</action>
+ 		
+ 		<action name="LoanInfoExport" class="com.konnect.jpms.export.LoanInfoExport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EPFECRExport" class="com.konnect.jpms.export.ecr.EPFECRExport">
+			<result name="success">/jsp/common/viewPage.jsp</result>
+		</action>
+ 		
+ 		<action name="ReimbursementCTCPayslip" class="com.konnect.jpms.export.ReimbursementCTCPayslip">
+ 	 		<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>		    
+ 		</action> 
+ 		
+ 		<action name="EmployeeSalaryHeadDetails" class="com.konnect.jpms.ajax.EmployeeSalaryHeadDetails">
+ 	 		<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>		    
+ 		</action> 
+ 		
+ 		<action name="GetBankStatusForNEFT" class="com.konnect.jpms.ajax.GetBankStatusForNEFT">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action> 
+ 		
+ 		<action name="ExportExcelMultiSheetReport" class="com.konnect.jpms.export.ExportExcelMultiSheetReport">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+	</package>
+</struts>    

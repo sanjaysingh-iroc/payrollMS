@@ -1,0 +1,1651 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="struts-performance" extends="struts-default">
+
+		<action name="CreateAppraisal" class="com.konnect.jpms.performance.CreateAppraisel">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/CreateAppraisel.jsp</result>
+			<result name="success">/jsp/performance/CreateAppraisel.jsp</result>
+			<result name="cancel" type="redirect-action">AppraisalDashboard</result>
+			<result name="update" type="redirect-action">AppraisalDashboard</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		<action name="getDesignation" class="com.konnect.jpms.performance.GetDesigList"> 
+			<result name="success">/jsp/performance/getDesigOrGradeList.jsp</result>
+		</action>
+
+		<action name="getGrade" class="com.konnect.jpms.performance.GetGradeList">
+			<result name="success">/jsp/performance/getDesigOrGradeList.jsp</result>
+		</action>
+		
+		<action name="getEmployeeList" class="com.konnect.jpms.performance.GetEmployeeList">
+			<result name="success">/jsp/performance/GetEmployeeList.jsp</result>
+		</action>
+
+		<action name="AppraisalSummary" class="com.konnect.jpms.performance.AppraisalSummary">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/AppraisalSummary.jsp</result>
+			<result name="view">/jsp/performance/AppraisalScoreSummary.jsp</result>
+			<result name="success">/jsp/performance/AppraisalSummary.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="AppraisalReport" class="com.konnect.jpms.performance.AppraisalReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Appraisal" class="com.konnect.jpms.performance.Appraisal">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/Appraisal.jsp</result>
+			<result name="success">/jsp/performance/Appraisal.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<!-- <action name="AppraisalDetail" class="com.konnect.jpms.performance.AppraisalDetail">
+			<result name="success">/jsp/performance/AppraisalDetail.jsp</result>
+		</action>
+
+		<action name="SubmitAppraisalQuestions"
+			class="com.konnect.jpms.performance.SubmitAppraisalQuestions">
+			<result name="success" type="redirect-action">
+				<param name="actionName">Appraisal</param>
+				<param name="id">${id}</param>
+			</result>
+			<result name="profile" type="redirect-action">MyAppraisal</result>
+		</action>
+
+		<action name="AppraisalAjax" class="com.konnect.jpms.performance.AppraisalAjax">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+
+		<action name="MyAppraisal" class="com.konnect.jpms.performance.MyAppraisal">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="MyAppraisalDetail" class="com.konnect.jpms.performance.MyAppraisalDetails">
+			<result name="success">/jsp/performance/MyAppraisalDetails.jsp</result>
+		</action>
+
+
+		<action name="AppraisalSattlement" class="com.konnect.jpms.performance.AppraisalSattlement">
+			<result name="success">/jsp/performance/AppraisalSattlement.jsp</result>
+		</action>
+
+		<action name="AppraisalFinalSattlement"
+			class="com.konnect.jpms.performance.AppraisalFinalSattlement">
+			<result name="success" type="redirect-action">
+				<param name="actionName">Appraisal</param>
+				<param name="id">${id}</param>
+				<param name="type">type</param>
+			</result>
+
+		</action>
+
+		<action name="PendingAppraisal" class="com.konnect.jpms.performance.PendingAppraisal">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+
+		</action> -->
+
+		<action name="TeamPerformance" class="com.konnect.jpms.performance.TeamPerformance">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/TeamPerformance.jsp</result>
+			<result name="success">/jsp/performance/TeamPerformance.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="StaffAppraisal" class="com.konnect.jpms.performance.StaffAppraisal">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/StaffAppraisal.jsp</result>
+			<result name="success">/jsp/performance/StaffAppraisal.jsp</result>
+			<result name="update" type="redirect-action">
+				<param name="actionName">StaffAppraisalPreview</param>
+				<param name="id">${id}</param>
+				<param name="empID">${empID}</param>
+				<param name="userType">${userType}</param>
+				<param name="appFreqId">${appFreqId}</param>
+				<param name="role">${role}</param>
+		<!-- ===start parvez date: 23-08-2022=== -->
+				<param name="dataType">${dataType}</param>
+		<!-- ===end parvez date: 23-08-2022=== -->
+			</result>
+			<result name="finish" type="redirect-action">
+				<param name="actionName">EmpAppraisalSummary</param>
+				<param name="id">${id}</param>
+				<param name="empID">${empID}</param>
+				<param name="userType">${userType}</param>
+				<param name="appFreqId">${appFreqId}</param>
+				<!-- <param name="appFreqId">${appFreqId}</param> -->
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="AppraisalStatus" class="com.konnect.jpms.performance.AppraisalStatus">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/performance/AppraisalStatus.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="MESSAGE">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+
+		<action name="AppraisalFinalStatus"
+			class="com.konnect.jpms.performance.AppraisalFinalStatus">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="OrientationDetails" class="com.konnect.jpms.performance.OrientationDetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/OrientationDetails.jsp</result>
+			<result name="success">/jsp/performance/OrientationDetails.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="AddOrientation" class="com.konnect.jpms.performance.AddOrientation">
+			<result name="success">/jsp/performance/AddOrientation.jsp</result>
+			<result name="update" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+			</result>
+			<!-- <result name="update" type="redirect-action">OrientationDetails</result> -->
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+
+
+		<action name="AppraisalAttributeDetails" class="com.konnect.jpms.performance.AppraisalAttributeDetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/AppraisalAttributeDetails.jsp</result>
+			<result name="success">/jsp/performance/AppraisalAttributeDetails.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="AddAppraisalAttribute" class="com.konnect.jpms.performance.AddAppraisalAttribute">
+			<result name="success">/jsp/performance/AddAppraisalAttribute.jsp</result>
+			<!-- <result name="update" type="redirect-action">AppraisalAttributeDetails</result> -->
+			<result name="update" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+			</result>
+			
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+
+		<action name="AppraisalElementDetails"
+			class="com.konnect.jpms.performance.AppraisalElementDetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddAppraisalElement"
+			class="com.konnect.jpms.performance.AddAppraisalElement">
+			<result name="success">/jsp/performance/AddAppraisalElement.jsp
+			</result>
+			<result name="update" type="redirect-action">AppraisalElementDetails</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AppraisalScoreStatus" class="com.konnect.jpms.performance.AppraisalScoreStatus">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="popup">/jsp/performance/AppraisalScoreStatus.jsp</result>
+			<result name="status">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AppraisalScore" class="com.konnect.jpms.performance.AppraisalScore">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="popup">/jsp/performance/AppraisalScore.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AppraisalGraph" class="com.konnect.jpms.performance.AppraisalGraph">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AppraisalGraphReport" class="com.konnect.jpms.performance.AppraisalGraphReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/AppraisalGraphReport.jsp</result>
+			<result name="success">/jsp/performance/AppraisalGraphReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AppraisalEmpProfile" class="com.konnect.jpms.performance.AppraisalEmpProfile">
+			<result name="success">/jsp/performance/AppraisalEmpProfile.jsp</result>
+		</action>
+		
+		<action name="AppraisalRemark" class="com.konnect.jpms.performance.AppraisalRemark">
+			<result name="load">/jsp/performance/AppraisalRemark.jsp</result>
+			<!-- <result name="success" type="chain">EmployeeActivity
+				<param name="actionName">EmployeeActivity</param>
+				<param name="strEmpId">${empid}</param>
+			</result> -->
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalStatus</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			<result name="view">/jsp/performance/AppraisalRemark.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="CompletedAppraisal" class="com.konnect.jpms.performance.CompletedAppraisal">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EmpAppraisalSummary" class="com.konnect.jpms.performance.EmpAppraisalSummary">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/EmpAppraisalSummary.jsp</result>
+			<result name="success">/jsp/performance/EmpAppraisalSummary.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GoalSetting" class="com.konnect.jpms.performance.GoalSetting">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ScoreCard" class="com.konnect.jpms.performance.ScoreCard">
+			<result name="success">/jsp/performance/ScoreCard.jsp</result>
+		</action>
+		<action name="GoalSummary" class="com.konnect.jpms.performance.GoalSummary">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/GoalSummary.jsp</result>
+			<result name="success">/jsp/performance/GoalSummary.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="FullAppraisalDetails" class="com.konnect.jpms.performance.FullAppraisalDetails">
+			<result name="success">/jsp/performance/FullAppraisalDetails.jsp</result>
+		</action>
+		
+		<action name="TeamGoal" class="com.konnect.jpms.performance.TeamGoal">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="MyGoal" class="com.konnect.jpms.performance.MyGoal">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GoalKRATarget" class="com.konnect.jpms.performance.GoalKRA"> 
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/GoalKRA.jsp</result>
+			<result name="success">/jsp/performance/GoalKRA.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GoalChart" class="com.konnect.jpms.performance.GoalChart">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/performance/GoalChart.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+		</action> 
+		
+		<action name="EditGoalPopUp" class="com.konnect.jpms.performance.EditGoalPopUp">
+			<result name="load">/jsp/performance/EditGoal.jsp</result>
+			<result name="success">/jsp/performance/EditGoal.jsp</result>
+			<result name="edit">/jsp/performance/EditGoal.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EditGoal" class="com.konnect.jpms.performance.EditGoal">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">GoalSummary</result>
+			<result name="GKSUCCESS" type="redirect-action">GoalKRATarget</result>
+			<result name="GTSUCCESS" type="redirect-action">GoalKRATarget</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>  
+		<action name="NewGoalPopUp" class="com.konnect.jpms.performance.NewGoalPopUp">
+			<result name="load">/jsp/performance/NewGoal.jsp</result>
+			<result name="success">/jsp/performance/NewGoal.jsp</result>
+			<result name="edit">/jsp/performance/NewGoal.jsp</result>
+		</action>
+		
+		<action name="NewGoal" class="com.konnect.jpms.performance.NewGoal">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">GoalSummary</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		<action name="getGoalEmployeeList" class="com.konnect.jpms.performance.getGoalEmployeeList">
+			<result name="success">/jsp/performance/GetGoalEmployeeList.jsp</result>
+		</action> 
+		
+		<action name="PublishAppraisal" class="com.konnect.jpms.performance.PublishAppraisal">
+			<result name="login" type="redirect-action">Login</result>
+			<result>/jsp/performance/PublishAppraisal.jsp</result>			
+		</action>
+		
+		<action name="AddAppraisalLevel" class="com.konnect.jpms.performance.AddAppraisalLevel">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalSummary</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EditAppraisal" class="com.konnect.jpms.performance.EditAppraisal">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="freqsuccess">/jsp/performance/EditAppraisalResult.jsp</result>
+			<result name="success">/jsp/performance/EditAppraisalResult.jsp</result>
+			<!-- <result name="freqsuccess" type="redirect-action">AppraisalDashboard</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalSummary</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result> -->
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		 <action name="AddLevelData" class="com.konnect.jpms.performance.AddLevelData">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalSummary</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="TrainingGap" class="com.konnect.jpms.performance.TrainingGap">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/TrainingGap.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="KRA" class="com.konnect.jpms.performance.KRA">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Target" class="com.konnect.jpms.performance.Target">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ExistAppraisalReport" class="com.konnect.jpms.performance.ExistAppraisalReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="CreateAppraisalFromTemplate" class="com.konnect.jpms.performance.CreateAppraisalFromTemplate">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalSummary</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="CreateExistAppraisal" class="com.konnect.jpms.performance.CreateExistAppraisal">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddAppraisalLevelForAttribute" class="com.konnect.jpms.performance.AddAppraisalLevelForAttribute">
+			<result name="success">/jsp/performance/AddAppraisalLevelForAttribute.jsp</result>
+			<!-- <result name="update" type="redirect-action">AppraisalAttributeDetails</result> --> 
+			<result name="update" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${strOrg}</param>
+			</result>
+						
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddAppraisalAttributeForLevel" class="com.konnect.jpms.performance.AddAppraisalAttributeForLevel">
+			<result name="success">/jsp/performance/AddAppraisalAttributeForLevel.jsp</result>
+			<result name="update" type="redirect-action">
+				<param name="actionName">AppraisalAttributeDetails</param>
+				<param name="type">${type}</param>
+			</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GetSelectedEmployee"	class="com.konnect.jpms.performance.GetSelectedEmployee">
+			<result name="success">/jsp/performance/GetSelectedEmployee.jsp</result>
+		</action>
+		
+		<action name="MyGoalPopUp" class="com.konnect.jpms.performance.MyGoalPopUp">
+			<result name="load">/jsp/performance/MyPersonalGoal.jsp</result>
+			<result name="success">/jsp/performance/MyPersonalGoal.jsp</result>
+			<result name="edit">/jsp/performance/MyPersonalGoal.jsp</result>
+		</action>
+		
+		<action name="MyPersonalGoal" class="com.konnect.jpms.performance.MyPersonalGoal">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">MyGoal</result>
+			<result name="GSUCCESS" type="redirect-action">KRATarget</result>
+			<result name="TSUCCESS" type="redirect-action">GoalKRATarget</result>
+			<result name="KSUCCESS" type="redirect-action">GoalKRATarget</result>
+			<result name="update" type="redirect-action">KRATarget</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		<!--  <action name="MyPersonalGoal_1" class="com.konnect.jpms.performance.MyPersonalGoal_1">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">MyGoal</result>
+			<result name="GSUCCESS" type="redirect-action">
+				<param name="actionName">KRATarget_1</param>
+				<param name="callFrom">${callFrom}</param>
+			</result>
+			<result name="TSUCCESS" type="redirect-action">
+				<param name="actionName">GoalKRATargets_1</param>
+				<param name="callFrom">${callFrom}</param>
+			</result>
+			<result name="KSUCCESS" type="redirect-action">
+				<param name="actionName">GoalKRATargetDashboardData</param>
+				
+			</result>
+			<result name="update" type="redirect-action">KRATarget_1</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		-->
+		
+		<action name="MyPersonalGoal_1" class="com.konnect.jpms.performance.MyPersonalGoal_1">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">MyGoal</result>
+			<result name="GSUCCESS" type="redirect-action">KRATarget</result>
+			<result name="TSUCCESS" type="redirect-action">GoalKRATarget_1</result>
+			<result name="KSUCCESS" type="redirect-action">GoalKRATarget_1</result>
+			<result name="update" type="redirect-action">KRATarget</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="EditMyPersonalGoalPopUp" class="com.konnect.jpms.performance.EditMyPersonalGoalPopUp">
+			<result name="load">/jsp/performance/EditMyPersonalGoal.jsp</result>
+			<result name="success">/jsp/performance/EditMyPersonalGoal.jsp</result>
+			<result name="edit">/jsp/performance/EditMyPersonalGoal.jsp</result>
+		</action>
+		<action name="EditMyPersonalGoalPopUp_1" class="com.konnect.jpms.performance.EditMyPersonalGoalPopUp_1">
+			<result name="load">/jsp/performance/EditMyPersonalGoal_1.jsp</result>
+			<result name="success">/jsp/performance/EditMyPersonalGoal_1.jsp</result>
+			<result name="edit">/jsp/performance/EditMyPersonalGoal_1.jsp</result>
+		</action>
+		
+		<action name="EditMyPersonalGoal" class="com.konnect.jpms.performance.EditMyPersonalGoal">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">MyGoal</result>
+			<result name="GSUCCESS" type="redirect-action">
+				<param name="actionName">KRATarget</param>
+			</result>
+			
+		   <result name="TSUCCESS" type="redirect-action">
+				<param name="actionName">GoalKRATarget</param>
+				<param name="proPage">${proPage}</param>
+				<param name="minLimit">${minLimit}</param>
+			</result>
+			<result name="KSUCCESS" type="redirect-action">
+				<param name="actionName">GoalKRATarget_1</param>
+				<param name="proPage">${proPage}</param>
+				<param name="minLimit">${minLimit}</param>
+			</result>
+			<result name="update" type="redirect-action">KRATarget</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	<!-- ===start Parvez date: 30-12-2021=== -->		
+			
+			<result name="NGSUCCESS" type="redirect-action">
+				<param name="actionName">EditMyPersonalGoalPopUp</param>
+				<param name="goalTitle">${goalTitle}</param>
+				<param name="dataType">${dataType}</param>
+				<param name="fromPage">${fromPage}</param>
+			</result>
+	<!-- ===end parvez date: 30-12-2021=== -->		
+		</action> 
+		
+			<action name="EditMyPersonalGoal_1" class="com.konnect.jpms.performance.EditMyPersonalGoal_1">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">MyGoal</result>
+			<result name="GSUCCESS" type="redirect-action">
+				<param name="actionName">KRATarget</param>
+			</result>
+			
+		   <result name="TSUCCESS" type="redirect-action">
+				<param name="actionName">GoalKRATarget</param>
+				<param name="proPage">${proPage}</param>
+				<param name="minLimit">${minLimit}</param>
+			</result>
+			<result name="KSUCCESS" type="redirect-action">
+				<param name="actionName">GoalKRATarget_1</param>
+				<param name="proPage">${proPage}</param>
+				<param name="minLimit">${minLimit}</param>
+			</result>
+			<result name="update" type="redirect-action">KRATarget</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		
+		
+		<action name="getLocatoinList" class="com.konnect.jpms.performance.GetLocationList"> 
+			<result name="success">/jsp/performance/GetLocationList.jsp</result>
+		</action>
+		
+		<action name="getDepartmentList" class="com.konnect.jpms.performance.GetDepartmentList"> 
+			<result name="success">/jsp/performance/GetDepartmentList.jsp</result>
+		</action>
+		
+		<action name="getLevelList" class="com.konnect.jpms.performance.GetLevelList"> 
+			<result name="success">/jsp/performance/GetLevelList.jsp</result>
+		</action>
+		
+		<action name="getParameterList" class="com.konnect.jpms.performance.GetParameterList"> 
+			<result name="success">/jsp/performance/GetParameterList.jsp</result>
+		</action>
+		 
+		 <action name="KRADetails" class="com.konnect.jpms.performance.KRADetails">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 
+		 <action name="AddKRADetails" class="com.konnect.jpms.performance.AddKRADetails">
+			<result name="success">/jsp/performance/AddKRADetails.jsp</result>
+			<result name="load">/jsp/performance/EditKRA.jsp</result>
+			<result name="update" type="redirect-action">
+				<param name="actionName">KRADetails</param>
+				<param name="type">${type}</param></result>  
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="TeamPerformanceReport" class="com.konnect.jpms.performance.TeamPerformanceReport">
+			<result name="success">/jsp/performance/TeamPerformanceReport.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		 <action name="TeamAnalysisSummaryReport" class="com.konnect.jpms.performance.TeamAnalysisSummaryReport">
+			<result name="success">/jsp/performance/TeamAnalysisSummaryReport.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		 
+		 <action name="MyTeamKRA" class="com.konnect.jpms.performance.MyTeamKRA">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result> 
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="MyKRA" class="com.konnect.jpms.performance.MyKRA">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 
+		<action name="EmpListPopup" class="com.konnect.jpms.performance.EmpListPopup">
+			<result name="success">/jsp/performance/EmpListPopup.jsp</result>
+		</action>
+		
+		<action name="AppraisalDashboard" class="com.konnect.jpms.performance.AppraisalDashboard">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="view">/jsp/performance/AppraisalDashboard.jsp</result>
+			<result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/performance/AppraisalDashboard.jsp</result>
+			<result name="success">/jsp/performance/AppraisalDashboard.jsp</result>
+			<result name="requestLoad">/jsp/performance/AppraisalDashboard.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 
+		<action name="AddQuestionSystemOther" class="com.konnect.jpms.performance.AddQuestionSystemOther">
+		<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalSummary</param>
+				<param name="id">${id}</param>
+				<param name="type">${type}</param>
+				 <param name="appFreqId">${appFreqId}</param> 
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		 
+		<action name="getEditQuestionDetails" class="com.konnect.jpms.performance.GetEditQuestionDetails"> 
+			<result name="success">/jsp/performance/GetEditQuestionDetails.jsp</result>
+		</action>
+		 
+		<action name="addEditQuestionDetails" class="com.konnect.jpms.performance.GetEditQuestionDetails">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalSummary</param>
+				<param name="id">${id}</param>
+			    <param name="appFreqId">${appFreqId}</param> 
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="openAppraisalLevelAndSystem" class="com.konnect.jpms.performance.AddAppraisalLevelAndSystem"> 
+			<result name="success">/jsp/performance/AddAppraisalLevelAndSystem.jsp</result>
+				<result name="input">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="addAppraisalLevelAndSystem" class="com.konnect.jpms.performance.AddAppraisalLevelAndSystem">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalSummary</param>
+				<param name="id">${id}</param>
+				 <param name="appFreqId">${appFreqId}</param> 
+				  <param name="fromPage">${fromPage}</param> 
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DeleteAppraisal" class="com.konnect.jpms.performance.DeleteAppraisal"> 
+			<result name="success" type="redirect-action">Reviews</result>
+			<result name="MSUCCESS" type="redirect-action">MyHR</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DeleteAppraisalLevelAndSystem" class="com.konnect.jpms.performance.DeleteAppraisalLevelAndSystem"> 
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalSummary</param>
+				<param name="id">${id}</param>
+				 <param name="appFreqId">${appFreqId}</param> 
+			</result>
+			<result name="view" type="redirect-action">
+				<param name="actionName">MyReviewSummary</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="SelectQuestion" class="com.konnect.jpms.performance.SelectQuestion">
+			<result name="load">/jsp/performance/SelectQuestion.jsp</result>
+		</action>
+		
+		<action name="SetQuestionToTextfield" class="com.konnect.jpms.performance.SetQuestionToTextfield">
+			<result name="success">/jsp/performance/SetQuestionToTextfield.jsp</result>
+		</action>
+		
+		<action name="GoalTarget" class="com.konnect.jpms.performance.GoalTarget"> 
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="KRATarget" class="com.konnect.jpms.performance.KRATarget">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/KRATarget.jsp</result>
+			<result name="view">/jsp/performance/KRATarget.jsp</result>
+			<result name="success">/jsp/performance/KRATarget.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		<action name="KRATarget_1" class="com.konnect.jpms.performance.KRATarget_1">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/KRATarget_1.jsp</result>
+			<result name="view">/jsp/performance/KRATarget_1.jsp</result>
+			<result name="success">/jsp/performance/KRATarget_1.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="UpdateTarget" class="com.konnect.jpms.performance.UpdateTarget"> 
+			<result name="success">/jsp/performance/UpdateTarget.jsp</result>
+			<!-- <result name="update" type="redirect-action">KRATarget</result>
+			<result name="load" type="redirect-action">GoalTarget</result> -->
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="MyPersonalTarget" class="com.konnect.jpms.performance.MyPersonalTarget">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">KRATarget</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="MyPTargetPopup" class="com.konnect.jpms.performance.MyPTargetPopup">
+			<result name="load">/jsp/performance/MyPersonalTarget.jsp</result>
+			<result name="success">/jsp/performance/MyPersonalTarget.jsp</result>
+			<result name="edit">/jsp/performance/MyPersonalTarget.jsp</result>
+		</action>
+		
+		<action name="AppraisalApproveMembers" class="com.konnect.jpms.performance.AppraisalApproveMembers">
+			<result name="success">/jsp/performance/AppraisalApproveMembers.jsp</result>
+		</action>
+		
+		<action name="ShowAllSingleOpenWithoutMarkQue" class="com.konnect.jpms.performance.ShowAllSingleOpenWithoutMarkQue">
+			<result name="load">/jsp/performance/ShowAllSingleOpenWithoutMarkQue.jsp</result>
+		</action>
+		
+		<action name="addAllSingleOpenWithoutMarkQueStatus" class="com.konnect.jpms.performance.ShowAllSingleOpenWithoutMarkQue">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalStatus</param>
+				<param name="id">${appid}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalStatus</param>
+				<param name="id">${appid}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="TargetStatus" class="com.konnect.jpms.performance.TargetStatus">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="popup">/jsp/performance/TargetStatus.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ShowAnswerType" class="com.konnect.jpms.performance.ShowAnswerType">
+			<result name="success">/jsp/performance/ShowAnswerType.jsp</result>
+		</action>
+		
+		<action name="EditAppraisalPopUp" class="com.konnect.jpms.performance.EditAppraisal">
+			<result name="load">/jsp/performance/EditAppraisal.jsp</result>
+			<result name="success">/jsp/performance/EditAppraisal.jsp</result>
+		</action>
+			
+		<action name="EditAppraisalSectionAndSubsectionPopUp" class="com.konnect.jpms.performance.EditAppraisalSectionAndSubsection">
+			<result name="load">/jsp/performance/EditAppraisalSectionAndSubsection.jsp</result>
+			<result name="success">/jsp/performance/EditAppraisalSectionAndSubsection.jsp</result>
+		</action>
+			
+		<action name="EditAppraisalSectionAndSubsection" class="com.konnect.jpms.performance.EditAppraisalSectionAndSubsection">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalSummary</param>
+				<param name="id">${id}</param>
+			   <param name="appFreqId">${appFreqId}</param> 
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="UserTypeListPopUp" class="com.konnect.jpms.performance.UserTypeListPopUp">
+			<result name="load">/jsp/performance/UserTypeListPopUp.jsp</result>
+			<result name="success">/jsp/performance/UserTypeListPopUp.jsp</result>
+		</action>
+		
+		<action name="AppraisalPreview" class="com.konnect.jpms.performance.AppraisalPreview">
+			<result name="load">/jsp/performance/AppraisalPreview.jsp</result>
+			<result name="success">/jsp/performance/AppraisalPreview.jsp</result>
+			<!-- <result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result> -->
+		</action> 
+		
+		<action name="StaffAppraisalPreview" class="com.konnect.jpms.performance.StaffAppraisalPreview">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/StaffAppraisalPreview.jsp</result>
+			<result name="success">/jsp/performance/StaffAppraisalPreview.jsp</result>
+			<result name="ajax">/jsp/performance/StaffAppraisalPreview.jsp</result>
+			<result name="update" type="redirect-action">
+				<param name="actionName">EmpAppraisalSummary</param>
+				<param name="id">${id}</param>
+				<param name="empID">${empID}</param>
+				<param name="appFreqId">${appFreqId}</param>
+				<param name="userType">${userType}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+					
+		<action name="EditStaffAppraisalQueAnswerPopUp" class="com.konnect.jpms.performance.EditStaffAppraisalQueAnswer">
+			<result name="load">/jsp/performance/EditStaffAppraisalQueAnswer.jsp</result>
+			<result name="success">/jsp/performance/EditStaffAppraisalQueAnswer.jsp</result>
+		</action>
+			
+		<action name="EditStaffAppraisalQueAnswer" class="com.konnect.jpms.performance.EditStaffAppraisalQueAnswer">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">StaffAppraisalPreview</param>
+				<param name="id">${id}</param>
+				<param name="empID">${empID}</param>
+				<param name="appFreqId">${appFreqId}</param>
+				<param name="userType">${userType}</param>
+				<param name="dataType">${dataType}</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>					
+		
+		<action name="DeleteCGOMAndQuestion" class="com.konnect.jpms.performance.DeleteCGOMAndQuestion"> 
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalSummary</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			
+			<result name="view" type="redirect-action">
+				<param name="actionName">MyReviewSummary</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+			
+		<action name="ExistAppraisalReportPopup" class="com.konnect.jpms.performance.ExistAppraisalReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/ExistAppraisalReportPopup.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="ShowOrientationWiseEmpChoosePopup" class="com.konnect.jpms.performance.ShowOrientationWiseEmpChoosePopup">
+			<result name="load">/jsp/performance/ShowOrientationWiseEmpChoosePopup.jsp</result>
+		</action>
+			
+		<action name="SetEmployeeToOrientation" class="com.konnect.jpms.performance.SetEmployeeToOrientation">
+			<result name="success">/jsp/performance/SetEmployeeToOrientation.jsp</result>
+		</action>
+		
+		<action name="MyReviews" class="com.konnect.jpms.performance.MyReviews">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	
+		<action name="CreateMyReview" class="com.konnect.jpms.performance.CreateMyReview">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/CreateMyReview.jsp</result>
+			<result name="success">/jsp/performance/CreateMyReview.jsp</result>
+			<result name="cancel" type="redirect-action">
+				<param name="actionName" >KRATarget</param>
+				<param name="fromPage" >MyHR</param>
+			</result>
+			<result name="update" type="redirect-action">
+				<param name="actionName" >KRATarget</param>
+				<param name="fromPage" >MyHR</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="MyReviewSummary" class="com.konnect.jpms.performance.MyReviewSummary">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/MyReviewSummary.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AddMyReviewCompentencyQuestions" class="com.konnect.jpms.performance.AddMyReviewCompentencyQuestions">
+		<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyReviewSummary</param>
+				<param name="id">${id}</param>
+				<param name="type">${type}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GetMyReviewEditQuestionDetails" class="com.konnect.jpms.performance.GetMyReviewEditQuestionDetails"> 
+			<result name="success">/jsp/performance/GetMyReviewEditQuestionDetails.jsp</result>
+		</action>
+		 
+		<action name="AddMyReviewEditQuestionDetails" class="com.konnect.jpms.performance.GetMyReviewEditQuestionDetails">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyReviewSummary</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EditMyReviewSectionAndSubsectionPopUp" class="com.konnect.jpms.performance.EditMyReviewSectionAndSubsection">
+			<result name="load">/jsp/performance/EditMyReviewSectionAndSubsection.jsp</result>
+			<result name="success">/jsp/performance/EditMyReviewSectionAndSubsection.jsp</result>
+		</action>
+			
+		<action name="EditMyReviewSectionAndSubsection" class="com.konnect.jpms.performance.EditMyReviewSectionAndSubsection">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyReviewSummary</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="OpenMyReviewSectionAndSubsection" class="com.konnect.jpms.performance.AddMyReviewSectionAndSubsection"> 
+			<result name="success">/jsp/performance/AddMyReviewSectionAndSubsection.jsp</result>
+		</action>
+		
+		<action name="AddMyReviewSectionAndSubsection" class="com.konnect.jpms.performance.AddMyReviewSectionAndSubsection">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyReviewSummary</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EditMyReviewPopUp" class="com.konnect.jpms.performance.EditMyReview">
+			<result name="load">/jsp/performance/EditMyReview.jsp</result>
+			<result name="success">/jsp/performance/EditMyReview.jsp</result>
+		</action>
+		
+		<action name="EditMyReview" class="com.konnect.jpms.performance.EditMyReview">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyReviewSummary</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+				<param name="fromPage">${fromPage}</param>
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="MyReviewStatus" class="com.konnect.jpms.performance.MyReviewStatus">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ExistMyReviewReportPopup" class="com.konnect.jpms.performance.ExistMyReviewReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/ExistMyReviewReportPopup.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="MyReviewScoreStatus" class="com.konnect.jpms.performance.MyReviewScoreStatus">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="popup">/jsp/performance/MyReviewScoreStatus.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="MyReviewScore" class="com.konnect.jpms.performance.MyReviewScore">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="popup">/jsp/performance/MyReviewScore.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GetAttributeList" class="com.konnect.jpms.performance.GetAttributeList">
+			<result name="success">/jsp/performance/GetAttributeList.jsp</result>
+		</action>
+		
+		<action name="GetGoalFilters" class="com.konnect.jpms.performance.GetGoalFilters">
+			<result name="success">/jsp/performance/GetGoalFilters.jsp</result>
+		</action>
+		
+		<action name="IFrameAddAppraisalSectionSubsection" class="com.konnect.jpms.performance.IFrameAddAppraisalSectionSubsection"> 
+			<result name="success">/jsp/performance/IFrameAddAppraisalSectionSubsection.jsp</result>
+		</action>
+				
+		<action name="IFrameStaffAppraisal" class="com.konnect.jpms.performance.IFrameStaffAppraisal"> 
+			<result name="success">/jsp/performance/IFrameStaffAppraisal.jsp</result>
+		</action>
+		
+		<action name="UpdateTargetRemark" class="com.konnect.jpms.performance.UpdateTargetRemark">
+			<result name="load">/jsp/performance/UpdateTargetRemark.jsp</result>
+			<result name="SUCCESS">/jsp/performance/UpdateTargetRemark.jsp</result>
+			<!-- <result name="GSUCCESS" type="redirect-action">GoalTarget</result> -->
+		</action>
+		
+		<action name="ImportReviewSectionSubsection" class="com.konnect.jpms.performance.ImportReviewSectionSubsection">
+			<result name="load">/jsp/performance/ImportReviewSectionSubsectionPopup.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">Reviews</param>
+				<param name="reviewId">${reviewId}</param>
+				<param name="appFreqId">${appFreqId}</param> 
+				<!-- <param name="importMsg">${importMsg}</param> -->
+			</result>
+			<!-- <result name="GSUCCESS" type="redirect-action">GoalTarget</result> -->
+		</action>
+		
+		<action name="IFrameAddMyReviewSectionAndSubsection" class="com.konnect.jpms.performance.IFrameAddMyReviewSectionAndSubsection"> 
+			<result name="success">/jsp/performance/IFrameAddMyReviewSectionAndSubsection.jsp</result>
+		</action>
+		
+		<action name="openMyReviewSectionAndSubsection" class="com.konnect.jpms.performance.AddMyReviewSectionAndSubsection"> 
+			<result name="success">/jsp/performance/AddMyReviewSectionAndSubsection.jsp</result>
+				<result name="input">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GetGoalKRATargetForReview" class="com.konnect.jpms.performance.GetGoalKRATargetForReview"> 
+			<result name="success">/jsp/performance/GetGoalKRATargetForReview.jsp</result>
+		</action>
+					
+		<action name="GetGoalTargetKRA" class="com.konnect.jpms.performance.GetAndAddGoalTargetKRA"> 
+			<result name="load">/jsp/performance/GetAndAddGoalTargetKRA.jsp</result>
+		</action>
+		
+		<action name="AddGoalTargetKRA" class="com.konnect.jpms.performance.GetAndAddGoalTargetKRA"> 
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalSummary</param>
+				<param name="id">${id}</param>
+			   <param name="appFreqId">${appFreqId}</param> 
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="DeleteGoalTargetKRA" class="com.konnect.jpms.performance.GetAndAddGoalTargetKRA"> 
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalSummary</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param> 
+			</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GoalChartIndividualGoal" class="com.konnect.jpms.performance.GoalChartIndividualGoal">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/performance/GoalChartIndividualGoal.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+		</action> 
+		
+		<action name="Goals" class="com.konnect.jpms.performance.Goals"> 
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="CloseReview" class="com.konnect.jpms.performance.CloseReview">
+			<result name="load">/jsp/performance/CloseReview.jsp</result>
+			<result name="success" type="redirect-action">ReviewNamesList</result>
+			<result name="MSUCCESS" type="redirect-action">KRATarget</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+		</action> 
+		
+		<action name="CloseGoalTargetKRA" class="com.konnect.jpms.performance.CloseGoalTargetKRA">
+			<result name="load">/jsp/performance/CloseGoalTargetKRA.jsp</result>
+			<result name="success" type="redirect-action">GoalSummary</result>
+			<result name="MSUCCESS" type="redirect-action">
+				<param name="actionName">KRATarget</param>
+				
+			</result>
+			<result name="GTSUCCESS" type="redirect-action">
+				<param name="actionName">GoalKRATarget</param>
+				<param name="proPage">${proPage}</param>
+				<param name="minLimit">${minLimit}</param>
+			</result>
+			<result name="GKSUCCESS" type="redirect-action">
+				<param name="actionName">GoalKRATarget</param>
+				<param name="proPage">${proPage}</param>
+				<param name="minLimit">${minLimit}</param>
+			</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+		</action>
+		
+		<action name="GetElementwiseAttributeList" class="com.konnect.jpms.performance.GetElementwiseAttributeList">
+			<result name="success">/jsp/performance/GetElementwiseAttributeList.jsp</result>
+		</action>
+		
+		<action name="RemoveEmpFromGoal" class="com.konnect.jpms.performance.RemoveEmpFromGoal">
+			<result name="GTSUCCESS" type="redirect-action">
+				<param name="actionName">GoalKRATarget</param>
+				<param name="proPage">${proPage}</param>
+				<param name="minLimit">${minLimit}</param>
+			</result>
+			<result name="GKSUCCESS" type="redirect-action">
+				<param name="actionName">GoalKRATarget</param>
+				<param name="proPage">${proPage}</param>
+				<param name="minLimit">${minLimit}</param>
+			</result>
+		</action>
+		
+		<action name="AppriasalEmpActivityLevelSalary" class="com.konnect.jpms.performance.AppriasalEmpActivityLevelSalary">
+	 		<result name="load">/jsp/performance/AppriasalEmpActivityLevelSalary.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+	 	</action>
+	 	
+	 	<action name="GetDesignationByLevel" class="com.konnect.jpms.performance.GetDesignationByLevel"> 
+			<result name="success">/jsp/performance/GetDesignationByLevel.jsp</result>
+		</action>
+		
+		<action name="AppraisalBulkFinalization" class="com.konnect.jpms.performance.AppraisalBulkFinalization">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">AppraisalStatus</param>
+				<param name="id">${id}</param>
+				<param name="appFreqId">${appFreqId}</param>
+				<param name="strMessage">${strMessage}</param>
+				<param name="fromPage">${fromPage}</param>
+			</result>
+			<result name="load">/jsp/performance/AppraisalBulkFinalization.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="SetSelfFillEmployee" class="com.konnect.jpms.performance.SetSelfFillEmployee">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="UpdateKRATaskStatus" class="com.konnect.jpms.performance.UpdateKRATaskStatus"> 
+			<result name="success">/jsp/performance/UpdateKRATaskStatus.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ViewManagerAndHRComentsOfGoalKRATarget" class="com.konnect.jpms.performance.ViewManagerAndHRComentsOfGoalKRATarget">
+			<result name="success">/jsp/performance/ViewManagerAndHRComentsOfGoalKRATarget.jsp</result>
+		</action> 
+		
+		<action name="ExitFeedBackPdf" class="com.konnect.jpms.performance.ExitFeedbackPdf">
+			<result name="load">/jsp/performance/ExitFeedbackPdf.jsp</result>
+			<result name="success">/jsp/performance/ExitFeedbackPdf.jsp</result>
+		</action> 
+		
+		<action name="ViewGoalKRATargetAlignedPerformanceIncentives" class="com.konnect.jpms.performance.ViewGoalKRATargetAlignedPerformanceIncentives">
+			<result name="success">/jsp/performance/ViewGoalKRATargetAlignedPerformanceIncentives.jsp</result>
+		</action>
+		
+		<action name="SelfReviewRequestApproveDeny" class="com.konnect.jpms.performance.SelfReviewRequestApproveDeny">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="dashboard" type="redirect-action">
+				<param name="actionName">MyHome</param>
+	            <param name="toAction">MyHome</param>
+			</result>
+		</action>
+		
+		<action name="UpdateActualAchievedGoal" class="com.konnect.jpms.performance.UpdateActualAchievedGoal">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load" type="redirect-action">GoalKRATarget</result>
+			<!-- <result name="success" type="redirect-action">
+				<param name="actionName">GoalKRATarget</param>
+				<param name="proPage">${proPage}</param>
+				<param name="minLimit">${minLimit}</param>
+			</result> -->
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GetEmpMaxWorkingHrs" class="com.konnect.jpms.performance.GetEmpMaxWorkingHrs">
+			
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/GetEmpMaxWorkingHrs.jsp</result>
+			
+		</action>
+		<action name="GetMembersByOrientation" class="com.konnect.jpms.performance.GetMembersByOrientation">
+			
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/performance/GetMembersByOrientation.jsp</result>
+			
+		</action>
+		
+		<action name="ReviewNamesList" class="com.konnect.jpms.performance.ReviewNamesList"> 
+			<result name="load">/jsp/performance/ReviewNamesList.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		<action name="ReviewDetails" class="com.konnect.jpms.performance.ReviewDetails"> 
+			<result name="load">/jsp/performance/ReviewDetails.jsp</result>
+		</action>
+		
+		<action name="SelfReviewRequests" class="com.konnect.jpms.performance.SelfReviewRequests"> 
+			<result name="load">/jsp/performance/SelfReviewRequests.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="GoalKRATargetDashboard" class="com.konnect.jpms.performance.GoalKRATargetDashboard"> 
+			<result name="load">/jsp/performance/GoalKRATargetDashboard.jsp</result>
+			<result name="view">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		
+		<action name="GoalKRATargetDashboardData" class="com.konnect.jpms.performance.GoalKRATargetDashboardData"> 
+			<result name="load">/jsp/performance/GoalKRATargetDashboardData.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="GoalKRAEmpList" class="com.konnect.jpms.performance.GoalKRAEmpList"> 
+			<result name="load">/jsp/performance/GoalKRAEmpList.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			
+		</action>
+		
+		<action name="GoalSummaryDashboard" class="com.konnect.jpms.performance.GoalSummaryDashboard"> 
+			<result name="load">/jsp/performance/GoalSummaryDashboard.jsp</result>
+			<result name="view">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="GoalDashboardData" class="com.konnect.jpms.performance.GoalDashboardData"> 
+			<result name="load">/jsp/performance/GoalDashboardData.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="HRReviewDashboard" class="com.konnect.jpms.performance.HRReviewDashboard"> 
+			<result name="load">/jsp/performance/HRReviewDashboard.jsp</result>
+			<result name="view">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="HRReviewDashboardData" class="com.konnect.jpms.performance.HRReviewDashboardData"> 
+			<result name="load">/jsp/performance/HRReviewDashboardData.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="MyHR" class="com.konnect.jpms.performance.MyHR"> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="Analytics" class="com.konnect.jpms.performance.Analytics"> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GoalKRATargets" class="com.konnect.jpms.performance.GoalKRATargets"> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		<action name="GoalKRATargets_1" class="com.konnect.jpms.performance.GoalKRATargets_1"> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+		<action name="Reviews" class="com.konnect.jpms.performance.Reviews"> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="CeoHodAppraisalRequest" class="com.konnect.jpms.performance.CeoHodAppraisalRequest"> 
+			<result name="load">/jsp/performance/CeoHodAppraisalRequest.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="ReviewerViewStatus" class="com.konnect.jpms.performance.ReviewerViewStatus"> 
+			<result name="load">/jsp/performance/ReviewerViewStatus.jsp</result>
+			<result name="status">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="StaffAppraisalCorrection" class="com.konnect.jpms.performance.StaffAppraisalCorrection">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/StaffAppraisalCorrection.jsp</result>
+			<result name="success">/jsp/performance/StaffAppraisalCorrection.jsp</result>
+			<!-- <result name="update" type="redirect-action">
+				<param name="actionName">StaffAppraisalPreview</param>
+				<param name="id">${id}</param>
+				<param name="empID">${empID}</param>
+				<param name="userType">${userType}</param>
+				<param name="appFreqId">${appFreqId}</param>
+			</result> -->
+			<result name="finish" type="redirect-action">
+				<param name="actionName">EmpAppraisalSummaryReviewer</param>
+				<param name="id">${id}</param>
+				<param name="empID">${empID}</param>
+				<param name="userType">${userType}</param>
+				<param name="appFreqId">${appFreqId}</param>
+				<!-- <param name="appFreqId">${appFreqId}</param> -->
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EmpAppraisalSummaryReviewer" class="com.konnect.jpms.performance.EmpAppraisalSummaryReviewer">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/EmpAppraisalSummaryReviewer.jsp</result>
+			<result name="success">/jsp/performance/EmpAppraisalSummaryReviewer.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="RevieweeAppraisers" class="com.konnect.jpms.performance.RevieweeAppraisers">
+			<result name="load">/jsp/performance/RevieweeAppraisers.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+		</action>
+		
+		<action name="GenerateReviewPdfReport" class="com.konnect.jpms.performance.GenerateReviewPdfReport">
+			<result name="success">/jsp/performance/AppraisalStatus.jsp</result>
+		</action>
+		
+		<action name="CohortsReportManager" class="com.konnect.jpms.performance.CohortsReportManager">
+			<result name="success">/jsp/performance/AppraisalStatus.jsp</result>
+		</action>
+		
+		<action name="GoalKRATargetDashboard_1" class="com.konnect.jpms.performance.GoalKRATargetDashboard"> 
+			<result name="load">/jsp/performance/GoalKRATargetDashboard_1.jsp</result>
+			<result name="view">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="GoalKRATargetDashboardData_1" class="com.konnect.jpms.performance.GoalKRATargetDashboardData"> 
+			<result name="load">/jsp/performance/GoalKRATargetDashboardData_1.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="MyGoalPopUp_1" class="com.konnect.jpms.performance.MyGoalPopUp_1">
+			<result name="load">/jsp/performance/MyPersonalGoal_1.jsp</result>
+			<result name="success">/jsp/performance/MyPersonalGoal_1.jsp</result>
+			<result name="edit">/jsp/performance/MyPersonalGoal_1.jsp</result>
+		</action>
+		
+		<action name="MyHR_1" class="com.konnect.jpms.performance.MyHR_1"> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="GoalKRATargetCompany" class="com.konnect.jpms.performance.GoalKRACompany_1"> 
+			<result name="success">/jsp/performance/GoalKRACompany_1.jsp</result>
+			<result name="load">/jsp/performance/GoalKRACompany_1.jsp</result>
+		</action>
+		
+		<action name="GoalKRAEmpList_1" class="com.konnect.jpms.performance.GoalKRAEmpList"> 
+			<result name="load">/jsp/performance/GoalKRAEmpList_1.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		 
+		<action name="BscView" class="com.konnect.jpms.performance.BscView"> 
+			<result name="LOAD">/jsp/performance/BscView.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="BscDetails" class="com.konnect.jpms.performance.BscDetails"> 
+			<result name="load">/jsp/performance/BscDetails.jsp</result>
+		</action>
+		
+		<action name="GoalKRABsc" class="com.konnect.jpms.performance.GoalKRABsc"> 
+			<result name="load">/jsp/performance/GoalKRABsc.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GoalKRAComment" class="com.konnect.jpms.performance.GoalKRAComment"> 
+			<result name="success">/jsp/performance/GoalKRAComment.jsp</result>
+		</action>
+		
+		<action name="GoalKRATarget_1" class="com.konnect.jpms.performance.GoalKRA_1"> 
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/GoalKRA_1.jsp</result>
+			<result name="success">/jsp/performance/GoalKRA_1.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="CorporateGoalNameList" class="com.konnect.jpms.performance.CorporateGoalNameList"> 
+			<result name="load">/jsp/performance/CorporateGoalNameList.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		 <action name="BscPerspectiveDetails" class="com.konnect.jpms.performance.BscPerspectiveDetails"> 
+			<result name="load">/jsp/performance/BscPerspectiveDetails.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action> 
+		
+		 <action name="EditAndDeleteBSC" class="com.konnect.jpms.performance.EditAndDeleteBSC"> 
+			<result name="load">/jsp/performance/EditAndDeleteBSC.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action> 
+		
+	 <!-- <action name="one_to_one" class="com.konnect.jpms.performance.OneToOne"> 
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="CreateOneToOne" class="com.konnect.jpms.performance.CreateOneToOne">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/CreateOneToOne.jsp</result>
+			<result name="success" type="redirect-action">one_to_one</result>
+			<result name="cancel" type="redirect-action">one_to_one</result>
+			<result name="update" type="redirect-action">one_to_one</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="OneToOneNamesList" class="com.konnect.jpms.performance.OneToOneNamesList"> 
+			<result name="load">/jsp/performance/OneToOneNamesList.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="OneToOneDetails" class="com.konnect.jpms.performance.OneToOneDetails"> 
+			<result name="load">/jsp/performance/OnetooneDetails.jsp</result>
+		</action>
+		
+		<action name="OneToOneSummary" class="com.konnect.jpms.performance.OneToOneSummary">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/OneToOneSummary.jsp</result>
+			<result name="view">/jsp/performance/OneToOneScoreSummary.jsp</result>
+			<result name="success">/jsp/performance/OneToOneSummary.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GetGoalsList" class="com.konnect.jpms.performance.GetGoalsList">
+			<result name="success">/jsp/performance/GetGoalsList.jsp</result>
+		</action>
+		<action name="PublishOneToOne" class="com.konnect.jpms.performance.PublishOneToOne">
+			<result>/jsp/performance/PublishOneToOne.jsp</result>		
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+	 -->	
+		<action name="EmployeePerformanceKPI" class="com.konnect.jpms.performance.EmployeePerformanceKPI">
+			<result name="success">/jsp/performance/EmployeePerformanceKPI.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EmployeeComparisonData" class="com.konnect.jpms.performance.EmployeeComparisonData">
+			<result name="success">/jsp/performance/EmployeeComparisonData.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AutoGeneratedRevieweePanel" class="com.konnect.jpms.performance.AutoGeneratedRevieweePanel">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="AnnualAppraisalReport" class="com.konnect.jpms.performance.AnnualAppraisalReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/AnnualAppraisalReport.jsp</result>
+			<result name="success">/jsp/performance/AnnualAppraisalReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ApproveDenyGoalKRA" class="com.konnect.jpms.performance.ApproveDenyGoalKRA">
+			<result name="success">/jsp/performance/GoalKRA.jsp</result>
+			<result name="TSUCCESS" type="redirect-action">
+				<param name="actionName">GoalKRATarget</param>
+				<param name="strEmpId">${strEmpId}</param>
+				<param name="dataType">L</param>
+				<param name="currUserType">${currUserType}</param>
+				<param name="fromPage">GKT</param>			
+				<param name="from">${from}</param>			
+			</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>		
+		
+	<!-- ===start parvez date: 20-07-2022=== -->	
+		<action name="ReviewDiscussionDashboard" class="com.konnect.jpms.performance.ReviewDiscussionDashboard"> 
+			<result name="load">/jsp/performance/ReviewDiscussionDashboard.jsp</result>
+			<result name="view">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="ReviewDiscussionDashboardData" class="com.konnect.jpms.performance.ReviewDiscussionDashboardData"> 
+			<result name="load">/jsp/performance/ReviewDiscussionDashboardData.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="ReviewDiscussionEmpList" class="com.konnect.jpms.performance.ReviewDiscussionEmpList"> 
+			<result name="load">/jsp/performance/ReviewDiscussionEmpList.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			
+		</action>
+		
+		<action name="OneOneReviewDiscussionDetails" class="com.konnect.jpms.performance.OneOneReviewDiscussionDetails"> 
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/performance/OneOneReviewDiscussionDetails.jsp</result>
+			<result name="success">/jsp/performance/OneOneReviewDiscussionDetails.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	<!-- ===end parvez date: 20-07-2022=== -->	
+		
+	</package>
+</struts>

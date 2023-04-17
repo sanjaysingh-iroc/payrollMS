@@ -1,0 +1,936 @@
+@charset "utf-8";
+/* CSS Document */
+
+body
+{
+  margin:0 auto;
+  font-family:Verdana,Arial, Geneva, sans-serif;
+  background:#fff;
+  padding:0px;
+  line-height:20px;
+  height: 100% !important;
+}
+
+div,h1,h2,h3,h4,h5,p,ul,ol,li,img,a {
+	margin: 0px;
+	padding: 0px;
+	outline:none;
+	border:0px solid #fff;
+}
+
+#wrapper
+{
+	margin:0px auto;
+	width:auto;
+	height:100% !important;
+	
+	background-repeat:repeat-x;
+}
+
+
+.container
+{
+ /* width:1000px;*/
+ width:100%;
+  
+  margin:0px auto;
+ /* border:#ccc solid 1px;*/
+  /*-moz-box-shadow: 0px 0px 10px #999;*/
+ /* -webkit-box-shadow: 0px 10px 10px #999;*/
+ float:left;
+  height:100% !important;
+   background:#f9f9f9;
+   /* background-image:url(../images1/page-bg.png); */
+   background-repeat:repeat-x;
+   
+  
+}
+
+#header
+{
+	margin:0px auto;
+	padding:0px 0px 0px 0px;
+	/*width:999px;*/
+	width:auto;
+	height:99px;
+	border:#ccc solid 0px;
+	background:url(../images1/header_bg_right.png);
+	background-repeat:no-repeat;
+	background-position:right;
+	background-color:#fff;
+	
+}
+
+.topbar
+{
+  
+  width:auto;
+  height:31px;
+  background:#efefef;
+  background-image:url(../images1/topbar_bg.png);
+  background-repeat:repeat-x;
+ /* -moz-box-shadow: 0px 2px 4px #ccc;*/
+  -webkit-box-shadow: 0px 2px 4px #ccc;
+}
+ 
+
+
+.topbar_emp
+{
+  
+  width:auto;
+  height:31px;
+  background:#efefef;
+  background-image:url(../images1/topbar_bg_emp.png);
+  background-repeat:repeat-x;
+ /* -moz-box-shadow: 0px 2px 4px #ccc;*/
+  -webkit-box-shadow: 0px 2px 4px #ccc;
+}
+ 
+ 
+.logininfo
+{
+  float:right;
+  width:auto;
+  font-size:12px;
+  margin:4px 0px 5px 0px;
+}
+
+.logininfo span
+{
+  font-weight:700;
+}
+
+.signout
+{
+  float:right;
+  margin:3px 10px 5px 10px;
+  font-size:12px;
+}
+
+.signout a
+{
+ color:#666666;
+ text-decoration:none;
+ display:block;
+ float:left;
+ font-size:12px;
+ font-weight:700;
+ text-shadow:0px 1px 1px #fff;
+ padding:1px 8px 1px 8px;
+ background:#CCCCCC;
+ -moz-border-radius:4px;
+ -webkit-border-radius:4px;
+ border-radius:4px;
+}
+
+
+.signout a:hover
+{
+  text-decoration:none;
+  background:#666666;
+  color:#FFFFFF;
+  text-shadow:none;
+}
+
+a.setting_head
+{
+  text-indent:-9999px;
+  background:url(../images1/settings.png);
+  background-repeat:no-repeat;
+  padding:2px;
+  width:25px;
+  background-color:none;
+}
+
+a.setting_head:hover
+{
+  background:url(../images1/settings.png);
+  background-repeat:no-repeat;
+}
+
+a.chat
+{
+  text-indent:-9999px;
+  background:url(../images1/chat.png);
+  background-repeat:no-repeat;
+  padding:2px;
+  width:25px;
+  background-color:none;
+}
+
+a.chat:hover
+{
+  background:url(../images1/chat.png);
+  background-repeat:no-repeat;
+}
+
+.topicons
+{
+  float:left;
+  margin:0px 10px 0px 10px;
+  width:auto;
+  height:28px;
+  
+}
+
+.topicons .icon
+{
+  float:left;
+  margin:0px 2px 0px 2px
+  width:auto;
+  background-image:url(../images1/mailCount.png);
+  background-repeat: no-repeat;
+  padding:3px 0px 0px 10px;
+  width: 30px;
+  height: 30px;
+}
+
+
+#header .logo
+{
+	margin:5px 10px 0px 10px;
+	float:left;
+	height:60px;
+}
+
+
+#nav
+{
+	margin:0px auto;
+	padding:0px 0px 0px 0px;
+	/*width:999px;*/
+	width:auto;
+	height:28px;
+	/*border:#00f solid 1px;*/
+	background:#0099FF;
+	background-image:url(../images1/subnav_background.gif);
+	background-repeat:repeat-x;
+	-moz-box-shadow:0px 2px 4px #ccc;
+	-webkit-box-shadow: 0px 2px 4px #ccc;
+	border:solid #ccc 1px;
+	border-top:0px solid #ccc;
+	
+}
+
+#announcement
+ {
+   height:37px;
+ }
+
+#shadow
+{
+	/*margin:0px 5px;*/
+	/*padding:10px 10px 10px 10px;*/
+	/*width:979px;*/
+	width:100%;
+	min-height:73%;
+	height:auto;
+	/*float:left;*/
+	/* -moz-box-shadow: 0 6px 10px #999999;*/
+/*	border:#00f solid 1px;*/
+    	
+	border:#ccc solid 0px;
+	/*background:#fff;*/
+	float:left;
+	padding:10px 0px 10px 0px;
+}
+
+.shadowlogin
+{
+	/*margin:0px 5px;*/
+	/*padding:10px 10px 10px 10px;*/
+	/*width:979px;*/
+	width:100%;
+	min-height:450px;
+	height:auto;
+	/*float:left;*/
+	height:auto;
+	  	
+	border:#ccc solid 0px;
+	/* background:#061240; */
+	float:left;
+	
+}
+
+
+
+.tab_pagetitle{
+  	float:left;
+  	width:97%;
+  	margin:0px 0px 10px 2px; 
+  	border:#CCCCCC solid 0px;
+ 	-moz-border-radius: 4px 4px 4px 4px;
+   	-webkit-border-radius: 4px 4px 4px 4px;
+   	border-radius: 4px 4px 4px 4px;
+   	font-size:16px;
+   	font-weight:300;
+   	color:#346897;
+   	font-weight:bolder;
+   	text-shadow: 0 1px 2px #fff;
+}
+
+
+a.print {
+    background-image: url("../images1/print.png");
+    background-repeat: no-repeat;
+    display: block;
+    height: 32px;
+    text-indent: -9999px;
+    width: 32px;
+}
+
+a.help {
+    background-image: url("../images1/help.png");
+    background-repeat: no-repeat;
+    display: block;
+    height: 25px;
+    text-indent: -9999px;
+    width: 20px;
+}
+
+.leftbox
+{
+  float:left;
+  /*width:650px;*/
+  min-height:450px;
+  width:50%;
+}
+
+.rightbox
+{
+   float:right;
+  width:45%;
+  min-height:460px;
+    
+ }
+
+
+.reportWidth{
+	width:955px;
+	width:97%;
+	margin:10px 5px;
+	background:#fff;
+	 float:left;
+  /*width:650px;*/
+  min-height:450px;
+  border:#a1a1a1 solid 1px;
+  -moz-border-radius: 4px 4px 4px 4px;
+   -webkit-border-radius: 4px 4px 4px 4px;
+   border-radius: 4px 4px 4px 4px;
+   padding: 10px 10px 20px 10px;
+   -moz-box-shadow:#ccc 0px 0px 0px;
+   -webkit-box-shadow:#ccc 0px 0px 0px;
+   box-shadow:#ccc 0px 0px 0px;
+}
+
+
+
+
+
+
+.content
+{
+  width:800px;
+/*  border:#00FFFF solid 1px;*/
+  min-height:500px;
+  height:auto;
+  float:left;
+  background:#999999;
+  margin:10px 0px 10px 40px;
+}
+
+#footer
+{
+	margin:0px auto;
+	width:100%;
+	height:30px;
+	position: absolute;
+	bottom:0;
+}
+
+.footer_content
+{
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 0px 0px;
+	height:30px;
+	width:100%;
+	background:#0066FF;
+	 /* -moz-box-shadow: 0px 10px 10px #999;
+  -webkit-box-shadow: 0px 10px 10px #999;*/
+	
+	background-image:url(../images1/subnav_background.gif);
+	background-repeat:repeat-x;
+	float:left;
+	/*position:absolute;
+	bottom:0;*/
+	
+	border:solid #ccc 0px;
+	border-top:0px solid #ccc;
+}
+
+.footer_content p
+{ 
+  font-size:10px;
+  margin:8px 20px 0px 0px;
+  float:right;
+  color:#666;
+  text-shadow:1px 1px 0px #fff;
+}
+
+
+/* style for login page */
+
+.wrapperlogin
+{
+  width:990px;
+  margin:0px auto;
+}
+
+
+.rightbox_login
+{
+  float:right;
+  margin:20px 0px 20px 0px;
+  /*padding:10px;*/
+  width:540px;
+  height:auto;
+  border:#999999 solid 0px;
+  
+  /* background:url(../images1/loginbanner.png); */
+  background:url(../images1/banner_dailyhrz.png);
+  background-repeat:no-repeat;
+  background-color:#061240;
+  color:#FFFFFF;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  border-radius:10px;
+  
+}
+
+.leftbox_login
+{
+  /* float:left;
+  margin:20px 0px 20px 0px; */
+  margin:20px auto;
+  padding:35px 20px;
+  width:380px;
+  height:auto;
+  border:#ccc solid 1px;
+  background:#efefef;
+  /*background-image:url(../images1/login_bg.png);
+  background-repeat:repeat-x;*/
+ /* color:#FFFFFF;*/
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  border-radius:10px;
+  overflow: hidden;
+  
+}
+
+.rightbanner
+{
+  float:left;
+  width:100%;
+  height:280px;
+  border:solid 0px #ccc;
+  margin:10px 0px 10px 0px;
+}
+
+.r1
+{
+   float:left;
+  width:auto;
+  border:solid 0px #ccc;
+  margin:10px 0px 10px 0px;
+  padding:10px 20px;
+ 
+}
+
+.r2
+{
+   float:left;
+  width:auto;
+  border:solid 0px #ccc;
+  margin:10px 0px 10px 0px;
+  padding:10px 20px;
+ 
+}
+
+.r3
+{
+   float:left;
+  width:auto;
+  border:solid 0px #ccc;
+  margin:10px 0px 10px 0px;
+  padding:10px 20px;
+ 
+}
+
+.info
+ {
+   width:450px;
+   float:left;
+   font-size:14px;
+ }
+ 
+ .download
+ {
+   width:50px;
+   float:right;
+ }
+ 
+ .info h2
+ {
+   margin:0px 0px 10px 0px;
+   font-size:14px;
+   color:#68AC3B;
+ }
+
+.loginform
+ {
+   float:left;
+   width:auto;
+   border:#0000CC solid 0px;
+   margin:0px 0px 0px 20px;
+   
+ }
+
+.logindetails
+ {
+   float:left;
+   margin:20px 0px 10px 0px;
+ }
+ 
+ .logindetails h2
+  {
+    font-size:16px;
+	margin:0px 0px 10px 0px;
+  }
+  
+  .usrpass
+    {
+	  margin:10px 0px 20px 0px;
+	}
+	
+	.usrpass .up1
+     {
+	   margin:15px 0px 5px 0px;
+	   padding:0px 0px 0px 25px;
+	   background-image:url(../images1/tick_circle.png);
+	   background-repeat:no-repeat;
+	   background-position:left;
+	   font-weight:bold;
+	 }	
+	 
+	  .usrpass .up2
+     {
+	   margin:5px 0px 5px 0px;
+	   padding:0px 0px 0px 25px;
+	   }	 
+	
+	
+   .usrpass h3
+    {
+	  font-size:14px;
+	  margin:0px 0px 10px 0px;
+	}	
+	
+  .loginform h4
+    {
+	  margin:0px 0px 20px 0px;
+	} 	
+	
+.download a
+    {
+       text-indent:-99999px;
+	   background-image:url(../images1/download.png);
+	   background-repeat:no-repeat;
+	   display:block;
+	   width:45px;
+	   height:45px;
+    }	
+	
+	
+.download a:hover
+    {
+       text-indent:-99999px;
+	   background-image:url(../images1/download_hover.png);
+	   background-repeat:no-repeat;
+	   display:block;
+	   width:45px;
+	   height:45px;
+    }		
+	
+/* stylesheet for dashboard admin */
+
+.page_subtitle
+   {
+     margin-bottom:15px; 
+	 width: 100%;
+	 float:left;
+   }	
+ 
+.page_subtitle h3
+  {
+    font-size:16px;
+	font-weight:bold;
+  }    
+   
+ .dashboard_linksholder
+  {
+    border: 1px solid #ccc; margin:10px; 
+	width:100%;
+	float:left;
+	padding:0px;
+	-moz-border-radius: 4px 4px 4px 4px;
+   -webkit-border-radius: 4px 4px 4px 4px;
+   border-radius: 4px 4px 4px 4px;
+  }  
+  
+.lic_info  .mg_ln
+   {
+     background-image:url(../images1/tick.png);
+	 background-repeat:no-repeat;
+	 background-position:left;
+	
+	 
+   }
+   
+.lic_info  .mg_ln:hover
+   {
+     background-image:url(../images1/tick.png);
+	 background-repeat:no-repeat;
+	 background-position:left;
+	
+	 
+   }  
+    
+
+
+.lic_info  .mg_disable
+   {
+     background-image:url(../images1/cross.png);
+	 background-repeat:no-repeat;
+	 background-position:left;
+	
+	 
+   }
+   
+.lic_info  .mg_disable:hover
+   {
+     background-image:url(../images1/cross.png);
+	 background-repeat:no-repeat;
+	 background-position:left;
+	
+	 
+   }  
+   
+   
+   
+ .dashboard_linksholder h2
+   {
+     padding:5px 5px 5px 40px;
+	 background:#efefef;
+	 color:#333;
+	
+	 
+   } 
+   
+ .comp_info h2
+   { 
+      background:url(../images1/icons/fancy-globe.png);
+	 background-repeat:no-repeat;
+	 background-position:0px 5px;
+	 background-color:#efefef;
+     
+   }  
+   
+  .comp_setting h2
+    {
+	   background:url(../images1/icons/configuration.png);
+	 background-repeat:no-repeat;
+	 background-position:left;
+	 background-color:#efefef;
+	} 
+	
+    .lic_info h2
+	  {
+			 background:url(../images1/icons/leaves.png);
+			 background-repeat:no-repeat;
+			 background-position:left;
+			 background-color:#efefef;	
+		   
+      } 
+	  
+	.lic_info 
+	  {
+	    float:right;
+		width:100%;
+	  }    
+   
+  
+ .mg_ln
+ {
+   padding:5px 5px 5px 60px;
+   background:#fff;
+   border-top:solid 1px #ccc;
+   
+ } 
+ 
+ .mg_ln:hover
+ {
+  
+   background:#e5ffc4;
+   border-top:solid 1px #ccc;
+   color:#FFFFFF;
+  
+ } 
+ 
+  .mg_ln:hover a
+   {
+     color:#4b7515;
+   }
+
+
+
+ .mg_disable
+ {
+   padding:5px 5px 5px 60px;
+   background:#fff;
+   border-top:solid 1px #ccc;
+   
+ } 
+ 
+ .mg_disable:hover
+ {
+  
+   background:#e5ffc4;
+   border-top:solid 1px #ccc;
+   color:#FFFFFF;
+  
+ } 
+ 
+  .mg_disable:hover a
+   {
+     color:#4b7515;
+   }
+
+
+
+ .infotext
+   {
+      line-height:16px;
+	 font-size:11px;
+	 color:#777;
+   }
+   
+ .upgrade
+   {
+    float:right;
+	width:100%;
+	border:none;
+   }  
+   
+  .upgrade h3
+    {
+	  margin:0px 0px 10px 0px;
+	} 
+	
+  a.upg
+    {
+	  /*display:block;*/
+	  padding:10px 20px;
+	  background:#FF9900;
+	  color:#FFFFFF;
+	  width:200px;
+	  height:35px;
+	  text-align:center;
+	  -moz-border-radius:5px;
+	  -webkit-border-radius:5px;
+	  border-radius:5px;
+	  font-size:15px;
+	  line-height:35px;
+	  margin:10px;
+	  
+	  border:solid 1px #FF6600;
+	  -moz-box-shadow:2px 2px 3px #aaa;
+	}	
+	
+  a.upg:hover
+    {
+	  color:#FFFFFF;
+	  text-decoration:none;
+	   width:200px;
+	  height:35px;
+	  padding:10px 20px;
+	   font-size:15px;
+	  line-height:35px;
+	    border:solid 1px #FF6600;
+	  
+	}	
+ 
+ .planallows
+   {
+      float:left;margin:0px 0px 20px 0px;width:100%;
+    }
+	
+	.planallows ul li
+	  {
+	    list-style-type:circle;
+		margin:0px 0px 10px 40px;
+	  }
+	.planallows h2
+	  {
+	    padding:5px;
+	  }  
+	  
+	  
+/* style for attendance report page */
+
+.cameearly
+  {
+    background-image:url(../images1/inout_markers/cameearly.png);
+	background-repeat:no-repeat;
+	background-position:top;
+	float:left;
+	width:10px;
+  }	  
+  
+ .camelate
+  {
+    background-image:url(../images1/inout_markers/camelate.png);
+	background-repeat:no-repeat;
+	background-position:top;
+	float:left;
+	width:10px;
+  }	  
+	  
+.cameontime
+  {
+    background-image:url(../images1/inout_markers/cameontime.png);
+	background-repeat:no-repeat;
+	background-position:top;
+	float:left;
+	width:10px;
+  }	  
+	  
+.leftearly
+  {
+    background-image:url(../images1/inout_markers/leftearly.png);
+	background-repeat:no-repeat;
+	background-position:top;
+	float:right;
+	width:10px;
+  }	  
+	  
+	  
+	  .wentontime
+  {
+    background-image:url(../images1/inout_markers/wentontime.png);
+	background-repeat:no-repeat;
+	background-position:top;
+	float:right;
+	width:10px;
+  }	  
+	  
+	  
+	  .worklate
+  {
+    background-image:url(../images1/inout_markers/worklate.png);
+	background-repeat:no-repeat;
+	background-position:top;
+	float:right;
+	width:10px;
+  }	 
+  
+  .qstn_atdnce {
+	background-image: url(../images1/inout_markers/question.png);
+	background-repeat: no-repeat;
+	float:right;	
+	width: 13px;
+	background-position: right;
+}
+  
+  .data
+   {
+     float:left;
+	 /* padding:0px 5px; */
+   } 
+   
+.attendance table 
+  {
+   /* background:#efefef;*/
+	border:1px solid #e1e1e1;
+	
+	margin:1em auto;
+		border-collapse:collapse;
+
+  }
+  
+  .attendance table tr td	
+   {
+	/* padding:5px; */
+	border:#e2e2e2 solid 1px;
+	}
+  
+ .attendance table tr.darktable td	{
+	background:#efefef;
+	padding:5px;
+	font-weight:bold;
+	color:#666;
+	}
+	
+	.attendance table tr.table_result
+	 {
+	   font-weight:bold;
+	 }
+
+  
+ /* style for Employee Dashboard */
+ 
+  .right
+   {
+     float:right;
+	 width:33%;
+   } 
+     
+#collapsing-nav li ul
+   {
+     margin:5px 0px 5px 20px;
+   }	  	  
+	   
+#collapsing-nav li span
+   {
+     display:block;
+	 background:#efefef;
+	 margin:0px 0px 2px 0px;
+   }	   
+	
+#collapsing-nav li span a
+   {
+      text-decoration:none;
+   }		  
+   
+  .param1
+     {
+	   border:solid 1px #CCCCCC; width:300px;height:auto;margin-bottom:20px; float:left; 
+	   -moz-border-radius:5px;
+	   -webkit-border-radius:5px;
+	    border-radius:5px;
+	   }
+  .param2
+     {
+	  border:solid 1px #CCCCCC; width:300px;height:auto;margin-bottom:20px; float:left;
+	   -moz-border-radius:5px;
+	   -webkit-border-radius:5px;
+	    border-radius:5px;
+	   }	
+	 
+	.report_genarator
+	  {
+	   border:solid 1px #CCCCCC; width:70%;min-height:600px;margin-bottom:20px; float:left;
+	   -moz-border-radius:5px;
+	   -webkit-border-radius:5px;
+	   border-radius:5px;
+	  }      

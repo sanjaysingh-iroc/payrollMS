@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="104857600" />
+	<package name="struts-meetingroom" extends="struts-default">
+		<action name="MeetingRooms" class="com.konnect.jpms.meetingroom.MeetingRoom">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+		</action> 
+				
+	   <action name="AddMeetingRoom" class="com.konnect.jpms.meetingroom.AddMeetingRoom">
+			<result name="success" >/jsp/meetingroom/AddMeetingRoom.jsp</result>
+			<result name="load" type="redirect-action">MeetingRooms</result>
+			<result name="login" type="redirect-action">Login</result>
+			
+		</action> 
+		
+		<action name="MeetingRoomBooking" class="com.konnect.jpms.meetingroom.MeetingRoomBooking">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/meetingroom/MeetingRoomBooking.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+		</action> 
+		
+		<action name="GetBookingDetailsPopup" class="com.konnect.jpms.meetingroom.GetBookingDetailsPopup">
+			<result name="load" type="redirect-action">MeetingRoomBooking</result>
+			<result name="success">/jsp/meetingroom/GetBookingDetailsPopup.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			
+		</action>
+		 
+		<action name="AddMeetingRoomBookingPopup" class="com.konnect.jpms.meetingroom.MeetingRoomBookingPopup">
+			<result name="success" >/jsp/meetingroom/MeetingRoomBookingPopup.jsp</result>
+			<result name="load" type="redirect-action">
+				<param name="actionName">Calendar</param>
+				<param name="dataType">MRB</param>
+			</result>
+			<result name="login" type="redirect-action">Login</result>
+			
+		</action> 
+		
+		<action name="GetMeetingRoomDetails" class="com.konnect.jpms.meetingroom.GetMeetingRoomDetails">
+			<result name="success" >/jsp/meetingroom/GetMeetingRoomDetails.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			
+		</action> 
+		
+		
+		
+		<action name="ApproveOrDenyBookingRequests" class="com.konnect.jpms.meetingroom.ApproveOrDenyBookingRequests">
+			<result name="load" type="redirect-action">
+			    <param name="actionName">MeetingRooms</param>
+			    <param name="dataType">MBR</param>
+			 </result>
+			<result name="success">/jsp/meetingroom/ApproveOrDenyBookingRequests.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			
+		</action> 
+		
+	</package>
+</struts>

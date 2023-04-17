@@ -1,0 +1,159 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="struts-offboarding" extends="struts-default">
+		
+		<action name="OffboardEmployee" class="com.konnect.jpms.offboarding.OffboardEmployee">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ExitForm" class="com.konnect.jpms.offboarding.ExitForm">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<!-- <result name="view" type="redirect-action">
+			 	<param name="actionName">EmployeeActivity</param>
+			    <param name="empType">R</param>
+			</result> -->
+		</action>
+		
+		<action name="DeleteOffboardDocument" class="com.konnect.jpms.ajax.DeleteOffboardDocument">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+			<result name="comment">/jsp/offboarding/offboardComment.jsp</result>
+			<result name="reSend" type="redirectAction">
+				<param name="actionName">ExitForm</param>
+           		<param name="id">${id}</param>
+           		<param name="resignId">${resignId}</param>
+			</result>
+		</action>
+		
+		<action name="OffboardSalaryPreview" class="com.konnect.jpms.offboarding.OffboardSalaryPreview">
+			<result name="success">/jsp/offboarding/OffboardSalaryPreview.jsp</result>
+			<result name="sattlement">/jsp/offboarding/ClearenceForm.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>	
+		
+		<action name="ExportPDF" class="com.konnect.jpms.offboarding.ExportPDF">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ExitFeedbackForms" class="com.konnect.jpms.offboarding.ExitFeedbackForms">
+			<result name="success">/jsp/offboarding/ExitFeedbackForms.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>	
+		
+		<action name="ExportFullFinalExcel" class="com.konnect.jpms.offboarding.ExportFullFinalExcel">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<!--Old  -->
+		<action name="IFrameFeedbackForm" class="com.konnect.jpms.offboarding.IFrameFeedbackForm"> 
+			<result name="success">/jsp/offboarding/IFrameFeedbackForm.jsp</result>
+		</action>
+		
+		<action name="ResigFeedbackForm" class="com.konnect.jpms.offboarding.ResigFeedbackForm">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/offboarding/ResigFeedbackForm.jsp</result>
+			<result name="success">/jsp/offboarding/ResigFeedbackForm.jsp</result>
+			<!-- <result name="update" type="redirect-action">
+				<param name="actionName">ResigFeedbackFormPreview</param>
+				<param name="strEmpId">${strEmpId}</param>
+				<param name="resignId">${resignId}</param>
+			</result> -->
+			<result name="finish" type="redirect-action">
+				<param name="actionName">ExitForm</param>
+				<param name="id">${strEmpId}</param>
+				<param name="resignId">${resignId}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="IFrameViewFeedbackForm" class="com.konnect.jpms.offboarding.IFrameViewFeedbackForm"> 
+			<result name="success">/jsp/offboarding/IFrameViewFeedbackForm.jsp</result>
+		</action>
+		
+		<action name="ResigFeedbackFormPreview" class="com.konnect.jpms.offboarding.ResigFeedbackFormPreview">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/offboarding/ResigFeedbackFormPreview.jsp</result>
+			<result name="success">/jsp/offboarding/ResigFeedbackFormPreview.jsp</result>
+			<!-- <result name="update" type="redirect-action">
+				<param name="actionName">ResigFeedbackFormPreview</param>
+				<param name="strEmpId">${strEmpId}</param>
+				<param name="resignId">${resignId}</param>
+			</result> -->
+			<result name="finish" type="redirect-action">
+				<param name="actionName">ExitForm</param>
+				<param name="id">${strEmpId}</param>
+				<param name="resignId">${resignId}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		
+<!-- new -->
+		<action name="IFrameClearenceForm" class="com.konnect.jpms.offboarding.IFrameClearenceForm"> 
+			<result name="success">/jsp/offboarding/IFrameClearenceForm.jsp</result>
+		</action>
+		
+		<action name="ResigClearenceForm" class="com.konnect.jpms.offboarding.ResigClearenceForm">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/offboarding/ResigClearenceForm.jsp</result>
+			<result name="success">/jsp/offboarding/ResigClearenceForm.jsp</result>
+			<!-- <result name="update" type="redirect-action">
+				<param name="actionName">ResigFeedbackFormPreview</param>
+				<param name="strEmpId">${strEmpId}</param>
+				<param name="resignId">${resignId}</param>
+			</result> -->
+			<result name="finish" type="redirect-action">
+				<param name="actionName">ExitForm</param>
+				<param name="id">${strEmpId}</param>
+				<param name="resignId">${resignId}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="IFrameViewClearenceForm" class="com.konnect.jpms.offboarding.IFrameViewClearenceForm"> 
+			<result name="success">/jsp/offboarding/IFrameViewClearenceForm.jsp</result>
+		</action>
+		
+		<action name="ResigClearanceFormPreview" class="com.konnect.jpms.offboarding.ResigClearanceFormPreview">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/offboarding/ResigClearanceFormPreview.jsp</result>
+			<result name="success">/jsp/offboarding/ResigClearanceFormPreview.jsp</result>
+			<!-- <result name="update" type="redirect-action">
+				<param name="actionName">ResigClearanceFormPreview</param>
+				<param name="strEmpId">${strEmpId}</param>
+				<param name="resignId">${resignId}</param>
+			</result> -->
+			<result name="finish" type="redirect-action">
+				<param name="actionName">ExitForm</param>
+				<param name="id">${strEmpId}</param>
+				<param name="resignId">${resignId}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ExitEmpPdf" class="com.konnect.jpms.offboarding.ExitEmpPdf">
+			<result>/jsp/ajax/StatusMessage.jsp</result>
+		</action> 
+		
+	</package>
+</struts>   
+ 

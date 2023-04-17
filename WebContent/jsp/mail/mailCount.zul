@@ -1,0 +1,25 @@
+
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+
+
+<window id="winCount">
+
+<label id="mailCountLabel" value="@{mailCount}"/>
+
+	<zscript>
+	 
+	import com.konnect.jpms.mail.*;
+	MailCountClass objMCC=new MailCountClass();
+	objMCC.MailCountClassDo(mailCountLabel);
+	
+	
+		if(mailCountLabel.getValue().length()>=0){
+					mailCountLabel.setStyle("display:block");
+					mailCountLabel.setStyle("background-image:url('images1/ajax-loading-1.gif')");
+					
+		}else{
+					mailCountLabel.setStyle("display:none");
+		}
+	</zscript>
+	
+</window>

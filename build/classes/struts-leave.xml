@@ -1,0 +1,633 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+ 
+	<package name="struts-leave" extends="struts-default">
+
+
+		<!-- <action name="AddLeaveType" class="com.konnect.jpms.leave.AddLeaveType">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">AddLeaveType</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result> 
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> -->  
+		  
+		 <action name="AddLeaveBreakType" class="com.konnect.jpms.leave.AddLeaveBreakType">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/AddLeaveBreakType.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">LeaveBreakTypeReport</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="strLocation">${strLocation}</param>    
+			</result>
+			<result name="view" type="redirect-action">LeaveBreakTypeReport</result>
+			<result name="view_tab" type="redirect-action">LeaveBreakTypeReport</result>
+			<result name="update">/jsp/leave/AddLeaveBreakType.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="LeaveBreakTypeReport" class="com.konnect.jpms.leave.LeaveBreakTypeReport">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="EmployeeIssueLeaveBreak" class="com.konnect.jpms.leave.EmployeeIssueLeaveBreak">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/EmployeeIssueLeaveBreak.jsp</result>
+			<!-- <result name="success" type="redirect-action">LeaveTypeReport</result> -->
+			<result name="success" type="redirect-action">
+				 <param name="actionName">LeaveBreakTypeReport</param>
+				 <param name="strOrg">${orgId}</param>
+				 <param name="strLocation">${strLocation}</param>  
+			</result>
+			<result name="view" type="redirect-action">LeaveBreakTypeReport</result>
+			<result name="view_tab" type="redirect-action">LeaveBreakTypeReport</result>
+			<result name="update">/jsp/leave/EmployeeIssueLeaveBreak.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPageBreak.jsp</result>
+		</action>
+		
+		<action name="AddLeaveType" class="com.konnect.jpms.leave.AddLeaveType">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/AddLeaveType.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${orgId}</param>
+				 <param name="strLocation">${strLocation}</param>
+			</result>
+			<result name="view" type="redirect-action">LeaveTypeReport</result>
+			<result name="view_tab" type="redirect-action">LeaveTypeReport</result>
+			<result name="update">/jsp/leave/AddLeaveType.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+	
+		<action name="LeaveTypeReport" class="com.konnect.jpms.reports.master.LeaveTypeReport">
+			<result name="load">/jsp/reports/LeaveTypeReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="LeaveTypeReportTab" class="com.konnect.jpms.reports.master.LeaveTypeReport">
+			<result name="load">/jsp/reports/LeaveTypeReport.jsp</result>
+			<result name="success">/jsp/reports/LeaveTypeReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<!-- <action name="EmployeeIssueLeave" class="com.konnect.jpms.leave.EmployeeIssueLeave">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">EmployeeIssueLeave</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> -->
+		
+		<action name="EmployeeIssueLeave" class="com.konnect.jpms.leave.EmployeeIssueLeave">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/EmployeeIssueLeave.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">MyDashboard</param>
+				<param name="userscreen">${userscreen}</param>
+				<param name="navigationId">${navigationId}</param>
+				<param name="toPage">${toPage}</param>
+				<param name="strOrg">${orgId}</param>
+				 <param name="strLocation">${strLocation}</param>
+			</result>
+			<result name="view" type="redirect-action">LeaveTypeReport</result>
+			<result name="view_tab" type="redirect-action">LeaveTypeReport</result>
+			<result name="update">/jsp/leave/EmployeeIssueLeave.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+
+		<action name="EmployeeIssueLeaveReport" class="com.konnect.jpms.reports.EmployeeIssueLeaveReport">
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EmployeeIssueLeaveReportTab" class="com.konnect.jpms.reports.EmployeeIssueLeaveReport">
+			<result name="load">/jsp/reports/EmployeeIssueLeaveReport.jsp</result>
+			<result name="success">/jsp/reports/EmployeeIssueLeaveReport.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		 
+		<action name="EmployeeLeaveEntry" class="com.konnect.jpms.leave.EmployeeLeaveEntry">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/EmployeeLeaveEntry.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">EmployeeLeaveEntryReport</result>
+			<!-- <result name="update" type="redirect-action">ManagerLeaveApprovalReport</result> -->
+			<result name="update" type="redirect-action">Approvals</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="updatesucess" type="redirect-action">
+				<param name="actionName">AddProjectActivity1</param>
+				<param name="submitType">LOAD</param>
+				<param name="strPaycycle">${strPaycycle}</param>
+			</result>
+			<result name="rostersuccess" type="redirect-action">
+				<param name="actionName">RosterOfEmployee</param>
+			<param name="calendarYear">${calendarYear}</param>
+			<param name="strMonth">${strMonth}</param>
+			</result>
+		</action>
+		
+		<action name="ApplyTravel" class="com.konnect.jpms.leave.ApplyTravel">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>  
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/ApplyTravel.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<!-- <result name="view" type="redirect-action">EmployeeLeaveEntry</result> -->
+			<result name="update" type="redirect-action">
+				<param name="actionName">EmployeeLeaveEntryReport</param>
+				<param name="dataType">T</param>
+				<param name="type">${type}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result> 
+			<result name="finish" type="redirect-action">
+				<param name="actionName">EmployeeLeaveEntryReport</param>
+				<param name="dataType">T</param>
+			</result> 
+		</action>
+
+		<action name="ApplyTravelPopUp" class="com.konnect.jpms.leave.ApplyTravel">  
+			<result name="load">/jsp/leave/ApplyTravel.jsp</result>
+			<result name="success">/jsp/leave/ApplyTravel.jsp</result>
+		</action>
+
+		<action name="ApplyLeavePopUp" class="com.konnect.jpms.leave.EmployeeLeaveEntry">
+			<result name="load">/jsp/leave/ApplyLeave.jsp</result>
+			<result name="success">/jsp/leave/ApplyLeave.jsp</result>
+		</action>
+		 
+		<action name="ApplyCompLeavePopUp" class="com.konnect.jpms.leave.EmployeeCompLeaveEntry">
+			<result name="load">/jsp/leave/ApplyLeave.jsp</result>
+			<result name="success">/jsp/leave/ApplyLeave.jsp</result>
+		</action>
+		
+		<action name="LeaveEntryReportInner" class="com.konnect.jpms.reports.EmployeeLeaveEntryReport">
+			<result name="load">/jsp/reports/LeaveEntryReport.jsp</result>
+			<result name="success">/jsp/reports/LeaveEntryReport.jsp</result>
+		</action>
+		
+		<action name="ManagerLeaveApproval" class="com.konnect.jpms.leave.ManagerLeaveApproval">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">ManagerLeaveApprovalReport</result>
+			<result name="update" type="redirect-action">
+				 <param name="actionName">ManagerLeaveApprovalReport</param>
+				 <param name="leaveStatus">${leaveStatus}</param>
+				 <param name="strStartDate">${strStartDate}</param> 
+				 <param name="strEndDate">${strEndDate}</param>  
+				  <param name="currUserType">${currUserType}</param> 
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<!-- <result name="dashboard" type="redirect-action">MyDashboard</result> -->
+			<result name="dashboard" type="redirect-action">
+				<param name="actionName">MyHome</param>
+	            <param name="toAction">MyHome</param>
+			</result> 
+			<result name="popup1">/jsp/leave/ManagerLeaveApproval.jsp</result>
+		</action>
+		
+		
+		<action name="ApproveTravel" class="com.konnect.jpms.leave.ApproveTravel">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/TravelApproval.jsp</result>
+			<result name="success">/jsp/leave/TravelApproval.jsp</result>
+			<result name="view" type="redirect-action">
+				<param name="actionName">TravelApprovalReport</param>
+	            <param name="currUserType">${currUserType}</param> 
+				<param name="leaveStatus">${leaveStatus}</param>
+				<param name="strStartDate">${strStartDate}</param>
+				<param name="strEndDate">${strEndDate}</param>
+			</result>
+			<result name="update" type="redirect-action">
+				<param name="actionName">TravelApprovalReport</param>
+	            <param name="currUserType">${currUserType}</param>
+				<param name="leaveStatus">${leaveStatus}</param>
+				<param name="strStartDate">${strStartDate}</param>
+				<param name="strEndDate">${strEndDate}</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="dashboard" type="redirect-action">
+				<param name="actionName">MyHome</param>
+	            <param name="toAction">MyHome</param>
+			</result>
+		</action>
+
+		<action name="ManagerLeaveApprovalReport" class="com.konnect.jpms.reports.ManagerLeaveApprovalReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/ManagerLeaveApprovalReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EmployeeLeaveEntryReport" class="com.konnect.jpms.reports.EmployeeLeaveEntryReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/LeaveEntryReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="EmployeeLeaveEntryDetailsReport" class="com.konnect.jpms.reports.EmployeeLeaveEntryDetailsReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="LeaveEntryReportInner" class="com.konnect.jpms.reports.EmployeeLeaveEntryReport">
+			<result name="load">/jsp/reports/LeaveEntryReport.jsp</result>
+			<result name="success">/jsp/reports/LeaveEntryReport.jsp</result>
+		</action>
+		
+		<!-- <action name="ManagerLeaveApproval" class="com.konnect.jpms.leave.ManagerLeaveApproval">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="view" type="redirect-action">ManagerLeaveApprovalReport</result>
+			<result name="update" type="redirect-action">ManagerLeaveApprovalReport</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="dashboard" type="redirect-action">MyDashboard</result>
+		</action> -->
+
+		<!-- <action name="ManagerLeaveApprovalReport" class="com.konnect.jpms.reports.ManagerLeaveApprovalReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> -->
+		
+		<action name="EmployeeLeaveBreakdown" class="com.konnect.jpms.reports.EmployeeLeaveBreakdown">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GeneratePdf" class="com.konnect.jpms.requsitions.GeneratePdf">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ApplyLeaveEncashment" class="com.konnect.jpms.leave.ApplyLeaveEncashment">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/leave/ApplyLeaveEncashment.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">LeaveEncashment</param>
+				 <param name="strPaycycle">${strPaycycle}</param>
+			</result>
+			<result name="view" type="redirect-action">
+				 <param name="actionName">AddProjectActivity1</param>
+				 <param name="strPaycycle">${strPaycycle}</param>
+			</result>
+		</action>
+		
+		<action name="LeaveEncashment" class="com.konnect.jpms.leave.LeaveEncashment">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/leave/LeaveEncashment.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="view" type="redirect-action">
+				 <param name="actionName">AddProjectActivity1</param>
+				 <param name="strPaycycle">${strPaycycle}</param>
+			</result>
+		</action>
+		
+		<action name="LeaveDescription" class="com.konnect.jpms.leave.LeaveDescription">
+			<result name="success">/jsp/leave/LeaveDescription.jsp</result>
+			<result name="load">/jsp/leave/LeaveDescription.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+
+		<action name="GetLeaveEncashmentInfo" class="com.konnect.jpms.ajax.GetLeaveEncashmentInfo">
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="AdvanceReport" class="com.konnect.jpms.leave.AdvanceReport">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/leave/TravelAdvanceReport.jsp</result>
+			<result name="load">/jsp/leave/TravelAdvanceReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		 		
+		 <action name="ApproveAdvance" class="com.konnect.jpms.leave.ApproveAdvance">
+			<result name="load">/jsp/leave/ApproveAdvance.jsp</result>
+			<result name="update" type="redirect-action">AdvanceReport</result>
+		</action>		
+		 		
+		<action name="SettleAdvance" class="com.konnect.jpms.leave.SettleAdvance">
+			<result name="load">/jsp/leave/SettleAdvance.jsp</result>
+			<result name="update" type="redirect-action">AdvanceReport</result>
+		</action>
+		
+		<action name="TravelAdvanceEligibility" class="com.konnect.jpms.leave.TravelAdvanceEligibility">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/TravelAdvanceEligibilityReport.jsp</result>
+			<result name="update">/jsp/common/showUpdate.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="UpdateEmpTravelEligibilityApproval" class="com.konnect.jpms.ajax.UpdateEmpTravelEligibilityApproval">
+			<result name="login" type="redirect-action">Login</result>
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="LeaveCard" class="com.konnect.jpms.leave.LeaveCard">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="LeaveCard1" class="com.konnect.jpms.leave.LeaveCard1">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/LeaveCard1.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="BreakCard" class="com.konnect.jpms.leave.BreakCard">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="GetPolicyDetailsByAjax"	class="com.konnect.jpms.leave.GetPolicyDetailsByAjax">
+			<result name="success">/jsp/leave/GetPolicyDetailsByAjax.jsp</result>
+		</action>
+		
+		<action name="GetEmployeePolicyDetails"	class="com.konnect.jpms.leave.GetEmployeePolicyDetails">
+			<result name="success">/jsp/leave/GetEmployeePolicyDetails.jsp</result>
+		</action> 
+		
+		<action name="GetLeaveApprovalStatus" class="com.konnect.jpms.leave.GetLeaveApprovalStatus">
+			<result name="success">/jsp/leave/GetLeaveApprovalStatus.jsp</result>
+		</action>
+		
+		<action name="LeaveValidation" class="com.konnect.jpms.ajax.LeaveValidation">
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="GetTypeOfLeave" class="com.konnect.jpms.leave.GetTypeOfLeave">
+			<result name="success">/jsp/leave/GetTypeOfLeave.jsp</result>
+		</action> 
+		
+		<action name="ModifyLeave" class="com.konnect.jpms.leave.ModifyLeave">
+			<result name="success">/jsp/leave/ModifyLeave.jsp</result>
+			<result name="update">/jsp/ajax/StatusMessage.jsp</result>
+		</action>
+		
+		<action name="RegularizeLeaveBalance" class="com.konnect.jpms.leave.RegularizeLeaveBalance">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/RegularizeLeaveBalance.jsp</result>
+			<result name="success" type="redirect-action">
+				 <param name="actionName">LeaveCard1</param>
+				 <param name="f_org">${f_org}</param>
+				 <param name="paycycle">${paycycle}</param> 
+				 <param name="wLocation">${wLocation}</param>
+				 <param name="f_department">${f_department}</param>  
+			</result>
+			<result name="update">/jsp/leave/RegularizeLeaveBalance.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="ChangeBreakPolicyType" class="com.konnect.jpms.leave.ChangeBreakPolicyType">
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/ChangeBreakPolicyType.jsp</result>
+			<result name="success">/jsp/ajax/StatusMessage.jsp</result>			
+		</action> 
+		
+		<action name="TravelApprovalReport" class="com.konnect.jpms.reports.TravelApprovalReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/reports/TravelApprovalReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+			<result name="ajax">/jsp/ajax/StatusMessage.jsp</result> 
+		</action>
+		
+		<action name="UpdateLeaveEncashment" class="com.konnect.jpms.ajax.UpdateLeaveEncashment">
+			<!-- <result name="success" type="redirect-action">LeaveEncashment</result> -->
+			<result name="success" type="redirect-action">
+				<param name="actionName">LeaveEncashment</param>
+	            <param name="currUserType">${currUserType}</param>
+			</result>
+			<result name="load">/jsp/ajax/UpdateLeaveEncashment.jsp</result>
+			<!-- <result name="dashboard" type="redirect-action">MyDashboard</result> -->
+			<result name="dashboard" type="redirect-action">
+				<param name="actionName">MyHome</param>
+	            <param name="toAction">MyHome</param>
+			</result> 
+		</action>
+		
+		<action name="LeaveCardYearly" class="com.konnect.jpms.leave.LeaveCardYearly">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/LeaveCardYearly.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="AdvanceTravelReport" class="com.konnect.jpms.leave.AdvanceTravelReport">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="load">/jsp/leave/AdvanceTravelReport.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="GetEmpTravelPolicyDetails"	class="com.konnect.jpms.leave.GetEmpTravelPolicyDetails">
+			<result name="success">/jsp/leave/GetEmpTravelPolicyDetails.jsp</result>
+		</action>
+		
+		<action name="ApplyOptionalHolidayLeave" class="com.konnect.jpms.leave.ApplyOptionalHolidayLeave">
+			<result name="load">/jsp/leave/ApplyOptionalHolidayLeave.jsp</result>
+			<result name="success">/jsp/leave/ApplyOptionalHolidayLeave.jsp</result>
+		</action>
+		
+		<action name="LeaveRegularise" class="com.konnect.jpms.leave.LeaveRegularise">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/LeaveRegularise.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+		
+		<action name="TravelDesk" class="com.konnect.jpms.leave.TravelDesk">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="TravelBookingAttachment" class="com.konnect.jpms.leave.TravelBookingAttachment">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/TravelBookingAttachment.jsp</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">TravelDesk</param>
+			</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="TravelReport" class="com.konnect.jpms.leave.TravelReport">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<!--  Added by M@yuri 15-Oct-2016	 -->
+		<action name="LeaveApprovedReport" class="com.konnect.jpms.leave.LeaveApprovedReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/LeaveApprovedReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<!--  Added by M@yuri 18-Oct-2016		 -->
+		<action name="LeaveCancelledReport" class="com.konnect.jpms.leave.LeaveCancelledReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/LeaveCancelledReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action> 
+			
+		<!--  Added by M@yuri 18-Oct-2016		 -->
+		<action name="LeavePendingReport" class="com.konnect.jpms.leave.LeavePendingReport">
+			<result name="error">/jsp/common/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/LeavePendingReport.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Absence" class="com.konnect.jpms.leave.Absence">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="Approvals" class="com.konnect.jpms.leave.Approvals">
+			<result name="error">/jsp/login/error.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<action name="CeoHodLeaveRequest" class="com.konnect.jpms.leave.CeoHodLeaveRequest">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/leave/CeoHodLeaveRequest.jsp</result>
+			<result name="load">/jsp/leave/CeoHodLeaveRequest.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="CeoHodTravelRequest" class="com.konnect.jpms.leave.CeoHodTravelRequest">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/leave/CeoHodTravelRequest.jsp</result>
+			<result name="load">/jsp/leave/CeoHodTravelRequest.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="CeoHodLeaveEncashmentRequest" class="com.konnect.jpms.leave.CeoHodLeaveEncashmentRequest">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="success">/jsp/leave/CeoHodLeaveEncashmentRequest.jsp</result>
+			<result name="load">/jsp/leave/CeoHodLeaveEncashmentRequest.jsp</result>
+			<result name="login" type="redirect-action">Login</result>
+		</action>
+		
+		<action name="ViewEmpLeaveBalance" class="com.konnect.jpms.leave.ViewEmpLeaveBalance">
+			<result name="success">/jsp/leave/ViewEmpLeaveBalance.jsp</result>
+		</action>
+		
+		<action name="LeaveFactoryRegister" class="com.konnect.jpms.leave.LeaveFactoryRegister">
+            <result name="error">/jsp/common/error.jsp</result>
+            <result name="login" type="redirect-action">Login</result>
+            <result name="load">/jsp/leave/LeaveFactoryRegister.jsp</result>
+            <result name="success">/jsp/common/viewPage.jsp</result>
+            <result name="accessdeny">/jsp/common/viewPage.jsp</result>
+        </action>
+        
+        <action name="ApplyOnDutyPopUp" class="com.konnect.jpms.leave.ApplyOnDuty">  
+			<result name="load">/jsp/leave/ApplyOnDuty.jsp</result>
+			<result name="success">/jsp/leave/ApplyOnDuty.jsp</result>
+		</action>
+				
+		<action name="ApplyOnDuty" class="com.konnect.jpms.leave.ApplyOnDuty">
+			<result name="input">/jsp/common/viewPage.jsp</result>
+			<result name="error">/jsp/login/error.jsp</result>  
+			<result name="login" type="redirect-action">Login</result>
+			<result name="load">/jsp/leave/ApplyOnDuty.jsp</result>
+			<result name="success">/jsp/common/viewPage.jsp</result>
+		</action>
+		
+		<!-- ===start parvez date: 01-10-2022=== -->
+		<action name="AddLeaveComment" class="com.konnect.jpms.leave.AddLeaveComment">
+			<result name="load">/jsp/leave/AddLeaveComment.jsp</result>
+			<!-- <result name="success" type="redirect-action">UpdateClockEntries</result> -->
+			<result name="update" type="redirect-action">
+				 <param name="actionName">ManagerLeaveApprovalReport</param>
+				 <param name="leaveStatus">${leaveStatus}</param>
+				 <param name="strStartDate">${strStartDate}</param> 
+				 <param name="strEndDate">${strEndDate}</param>  
+				 <param name="currUserType">${currUserType}</param> 
+			</result>
+		</action>
+		<!-- ===end parvez date: 01-10-2022=== -->
+		
+	</package>
+</struts>  

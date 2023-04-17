@@ -1,0 +1,143 @@
+@charset "utf-8";
+
+/* CSS Document */
+table.itis {
+	border: 1px solid #666;
+	/*	width: 100%; */
+	margin: 20px 0 20px 0 !important;
+}
+
+table.itis td {
+	/* padding: 2px 10px 5px 10px !important; */
+	font-size: 10px;
+	color: #333333; 
+	font-family:verdana, sans-serif;
+}
+
+
+table.itis th {
+	/* padding: 5px 10px 5px 10px !important; */
+	text-align: center;
+	vertical-align: top;
+	font-size: 11px;
+	color: #333333;
+	background: #efefef;
+}
+
+table.itis td a,table.itis td a:ACTIVE,table.itis td a:VISITED {
+	font-size: 10px;
+	color: blue;
+	text-decoration: none;
+	font-family:verdana, sans-serif;
+}
+
+table.itis td a:hover {
+	font-size: 10px;
+	text-decoration: none;
+	font-family:verdana, sans-serif;
+}
+
+table.itis thead tr {
+	/* background-color: #99CCFF; */
+	font-family:verdana, sans-serif;
+	background: url("../images1/subnav_background.gif") repeat-x scroll 50% 10% #E6E6E6;
+}
+
+table.itis th.sorted {
+	/* background-color: #CCCCCC; */
+}
+
+table.itis th a,table.itis th a:visited {
+	color: black;
+}
+
+table.itis th a:hover {
+	text-decoration: underline;
+	color: black;
+	font-size:10px;
+	font-family:verdana, sans-serif;
+}
+
+table.itis th.sorted a,table.itis th.sortable a {
+	background-position: right;
+	display: block;
+/*	padding: 2px 4px 2px 4px !important; */
+	text-align: center;
+	vertical-align: top;
+	font-size: 12px;
+	color: #333333;
+	font-weight: bold;
+	font-family: Verdana,sans-serif
+	text-decoration: underline;
+	
+	 
+	/*	width: 100%; */
+}
+
+table.itis th.sortable a {
+	background-image: url(../images1/arrow_off.png);
+	background-repeat: no-repeat;
+}
+
+table.itis th.order1 a {
+	background-image: url(../images1/arrow_down.png);
+	background-repeat: no-repeat;
+}
+
+table.itis th.order2 a {
+	background-image: url(../images1/arrow_up.png);
+	background-repeat: no-repeat;
+}
+
+table.itis tr.odd {
+	/* background-color: #CEE3F6; */
+	background-color: #EFEFEF;
+}
+
+table.itis tr.tableRowEven,tr.even {
+	/* background-color: #EFF5FB; */
+	background-color: white;
+}
+
+span.pagebanner,span.pagelinks {
+	font-size: 12px;
+	font-family:verdana, sans-serif;
+}
+
+.group-1 {
+	font-weight: bold;
+	padding-bottom: 10px;
+	border-top: 1px solid black;
+}
+
+.exportlinks{
+	font-size: 12px;
+	font-family:verdana, sans-serif;
+	margin:10px 0px;
+}
+
+.group-2 {
+	font-style: italic;
+	border-top: 1px solid black;
+}
+
+.grouped-table tr.even {
+	background-color: #fff;
+}
+
+.grouped-table tr.odd {
+	background-color: #fff;
+}
+
+
+.blueColor {
+	color: blue;
+}
+
+.greenColor {
+	color: green;
+}
+
+.orangeColor {
+	color: orange;
+}

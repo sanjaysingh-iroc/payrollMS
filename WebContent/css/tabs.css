@@ -1,0 +1,103 @@
+/* root element for tabs  */
+ul.tabs { 
+	list-style:none; 
+	margin:0 !important; 
+	padding:0;	
+	border-bottom:0px solid #666;	
+	height:30px;
+}
+
+/* single tab */
+ul.tabs li { 
+	float:left;	 
+	text-indent:0;
+	padding:0;
+	margin:0 !important;
+	list-style-image:none !important; 
+	color:#777;
+}
+
+/* link inside the tab. uses a background image */
+ul.tabs a { 
+	/* background: url(/tools/img/tabs/blue.png) no-repeat -420px 0; */
+	/*background-color:#CFCFCF;*/
+	font-size:11px;
+	display:block;
+	height: 30px;  
+	line-height:30px;
+	width: auto;
+	text-align:center;	
+	text-decoration:none;
+	color:#777;
+	padding:0px 15px 0px 15px;
+	margin:0px 5px 0px 0px;	
+	position:relative;
+	top:1px;
+	border:solid 2px #346897;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+	-webkit-border-radius-top-left:5px;
+	-webkit-border-radius-top-right:5px;
+	border-radius-topleft:5px;
+    border-radius-topright:5px;
+	
+}
+
+ul.tabs a:active {
+	outline:none;		
+}
+
+/* when mouse enters the tab move the background image */
+ul.tabs a:hover {
+	background-position: -420px -31px;	
+	color:#346897;	
+}
+
+/* active tab uses a class name "current". its highlight is also done by moving the background image. */
+ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
+	background-position: -420px -62px;		
+	cursor:default !important; 
+	color:#fff !important;
+	background-color: #346897;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+	-webkit-border-radius-topleft:5px;
+	-webkit-border-radius-topright:5px;
+	border-radius-topleft:5px;
+    border-radius-topright:5px;
+}
+
+/* Different widths for tabs: use a class name: s, l, xl */
+
+
+/* width 1 */
+ul.tabs a.s 			{ background-position: -553px 0; width:81px; }
+ul.tabs a.s:hover 	{ background-position: -553px -31px; }
+ul.tabs a.s.current  { background-position: -553px -62px; }
+
+/* width 2 */
+ul.tabs a.l 			{ background-position: -247px -0px; width:174px; }
+ul.tabs a.l:hover 	{ background-position: -247px -31px; }
+ul.tabs a.l.current  { background-position: -247px -62px; }
+
+
+/* width 3 */
+ul.tabs a.xl 			{ background-position: 0 -0px; width:248px; }
+ul.tabs a.xl:hover 	{ background-position: 0 -31px; }
+ul.tabs a.xl.current { background-position: 0 -62px; }
+
+
+/* initially all panes are hidden */ 
+.panes .pane {
+	display:none;		
+}
+
+.panes
+  {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 3px solid #346897;
+    padding: 15px;
+	float:left;
+	width:97%;
+  }
+
