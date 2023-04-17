@@ -1,4 +1,4 @@
-package com.konnect.main;
+package com.konnect.jpms.export;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;

@@ -41,10 +41,10 @@
             </result>		   
  		</action>
  		
- 		<action name="GenerateSalarySlip" class="com.konnect.jpms.salary.GenerateSalarySlip">
+ 		<!-- <action name="GenerateSalarySlip" class="com.konnect.jpms.salary.GenerateSalarySlip">
  			<result name="success">/jsp/common/viewPage.jsp</result>
 			<result name="accessdeny">/jsp/common/viewPage.jsp</result>		   
- 		</action> 
+ 		</action>  -->
  		
  		<action name="ExportSalarySlip" class="com.konnect.jpms.export.GenerateSalarySlip">
  			<result name="login">/jsp/common/viewPage.jsp</result>

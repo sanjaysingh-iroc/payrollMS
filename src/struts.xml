@@ -265,13 +265,13 @@
 		</action>
 		
 		
-		<action name="RosterActualHours" class="com.konnect.jpms.reports.RosterVsActualHours">
+		<!-- <action name="RosterActualHours" class="com.konnect.jpms.reports.RosterVsActualHours">
 			<result name="input">/jsp/common/viewPage.jsp</result>
 			<result name="success">/jsp/common/viewPage.jsp</result>
 			<result name="load">/jsp/common/viewPage.jsp</result>
 			<result name="login" type="redirect-action">Login</result>
 			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
-		</action>
+		</action> -->
 		
 		<action name="RosterActualHoursEmp" class="com.konnect.jpms.reports.RosterVsActualHoursE">
 			<result name="input">/jsp/common/viewPage.jsp</result>
@@ -1014,12 +1014,12 @@
 			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
 	 	</action>
 
-		<action name="GetCreditDetails" class="com.konnect.jpms.ajax.SalaryCreditDetails">
-			<!-- <result>/jsp/common/viewPage.jsp</result> -->
+		<!-- <action name="GetCreditDetails" class="com.konnect.jpms.ajax.SalaryCreditDetails">
+			<result>/jsp/common/viewPage.jsp</result>
 			<result name="update" type="redirect-action">SalaryDetails</result>
 			<result name="error">/jsp/login/error.jsp</result>
 			<result>/jsp/ajax/salaryCreditDetails.jsp</result>  
-		</action>
+		</action> -->
 		
 		<action name="MyMail" class="com.konnect.jpms.mail.MailClass">
 			<result name="success">/jsp/common/viewPage.jsp</result> 
@@ -1031,20 +1031,20 @@
 			<result name="login" type="redirect-action">Login</result>
 		</action>
 		
-		<action name="ShowClockInClockOutChart" class="com.konnect.jpms.charts.ClockInClockOutChart">
+		<!-- <action name="ShowClockInClockOutChart" class="com.konnect.jpms.charts.ClockInClockOutChart">
 			<result name="candlestick">/jsp/chart/ClockInClockOutChart.jsp</result>
 			<result name="spline">/jsp/chart/ClockEntriesSplineChart.jsp</result>
 			<result name="pie">/jsp/chart/LeaveEntriesPieChart.jsp</result>
 			<result name="scatter">/jsp/chart/ClockEntriesPerService.jsp</result>
 			<result name="bar">/jsp/chart/SalaryBreakUpChart.jsp</result>
-		</action>
+		</action> -->
 		
-		<action name="generateHourlySalarySlip" class="com.konnect.jpms.salary.generateHourlySalarySlip">
-		   <!-- <result>/jsp/common/viewPage.jsp</result> -->
+		<!-- <action name="generateHourlySalarySlip" class="com.konnect.jpms.salary.generateHourlySalarySlip">
+		   <result>/jsp/common/viewPage.jsp</result>
 		   <result name="update" type="redirect-action">SalaryDetails</result>
 		   <result name="error">/jsp/login/error.jsp</result>
 		   <result>/jsp/ajax/salaryCreditDetails.jsp</result>  
- 		</action>
+ 		</action> -->
 	 
 	 	<action name="EmployeeSalaryDetails" class="com.konnect.jpms.salary.EmployeeSalaryDetails">
 	 		<result name="error">/jsp/common/error.jsp</result>
@@ -1426,13 +1426,13 @@
 			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
 		</action>
 		
-		<action name="BroadcastMessage" class="com.konnect.jpms.common.BroadcastMessage">
+		<!-- <action name="BroadcastMessage" class="com.konnect.jpms.common.BroadcastMessage">
 			<result name="error">/jsp/login/error.jsp</result>
 			<result name="login" type="redirect-action">Login</result>
 			<result name="load">/jsp/common/viewPage.jsp</result>
 			<result name="success">/jsp/common/viewPage.jsp</result>
 			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
-		</action>
+		</action> -->
 		
 		<action name="AttendanceRegister" class="com.konnect.jpms.tms.AttendanceRegister">
 			<result name="error">/jsp/login/error.jsp</result>
@@ -2634,14 +2634,14 @@
 			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
 		</action>
 		
-		<action name="PayrollDashboard_2" class="com.konnect.jpms.payroll.PayrollDashboard_2">
+		<!-- <action name="PayrollDashboard_2" class="com.konnect.jpms.payroll.PayrollDashboard_2">
 			<result name="error">/jsp/login/error.jsp</result> 
 			<result name="login" type="redirect-action">Login</result>
 			<result name="input">/jsp/common/viewPage.jsp</result>
 			<result name="load">/jsp/payroll/PayrollDashboard_2</result>  
 			<result name="success">/jsp/common/viewPage.jsp</result>
  			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
-		</action>
+		</action> -->
 	
 	<!--****************** -->	
 		<action name="RosterPolicyMinHrsHD_FD" class="com.konnect.jpms.policies.RosterPolicyMinHrsHD_FD">

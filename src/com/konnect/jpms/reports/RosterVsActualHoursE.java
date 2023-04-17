@@ -32,7 +32,7 @@ public class RosterVsActualHoursE extends ActionSupport implements ServletReques
 	String strSessionEmpId = null;
 	boolean isEmpUserType = false; 
 	CommonFunctions CF = null; 
-	private static Logger log = Logger.getLogger(RosterVsActualHours.class);
+	private static Logger log = Logger.getLogger(RosterVsActualHoursE.class);
 	
 	public String execute() throws Exception { 
 

@@ -6,20 +6,20 @@
    
    
 	<package name="struts-new" extends="struts-default">
-	<action name="ApprovePayrollNew" class="com.konnect.jpms.payroll.ApprovePayrollNew">
+	<!-- <action name="ApprovePayrollNew" class="com.konnect.jpms.payroll.ApprovePayrollNew">
 			<result name="error">/jsp/login/error.jsp</result> 
 			<result name="login" type="redirect-action">Login</result>
 			<result name="load">/jsp/common/viewPage.jsp</result>
-			<!-- <result name="success" type="redirect">${redirectUrl}</result> -->
+			<result name="success" type="redirect">${redirectUrl}</result>
 			 <result name="success" type="redirectAction">
-	            <!-- <param name="actionName">${redirectUrl}</param> -->
+	            <param name="actionName">${redirectUrl}</param>
 	            <param name="actionName">ApprovePayroll</param>
 	            <param name="strPaycycleDuration">${strPaycycleDuration}</param>
 	            <param name="paycycle">${paycycle}</param>
             </result>
 			 
 			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
-		</action> 
+		</action>  -->
 		
 		<action name="ClockEntriesNew" class="com.konnect.jpms.tms.ClockEntriesNew">
 			<result name="error">/jsp/login/error.jsp</result>
@@ -29,7 +29,7 @@
 			<result name="accessdeny">/jsp/common/viewPage.jsp</result>
 		</action>
 		
-		<action name="AddClockEntriesNew" class="com.konnect.jpms.tms.AddClockEntriesNew">
+		<!-- <action name="AddClockEntriesNew" class="com.konnect.jpms.tms.AddClockEntriesNew">
 			<result name="login" type="redirect-action">Login</result>
 			<result name="load">/jsp/tms/AddClockEntriesNew.jsp</result>
 			<result name="delete">/jsp/ajax/StatusMessage.jsp</result>
@@ -41,7 +41,7 @@
 				 <param name="location">${location}</param>
 				 <param name="level">${level}</param>
 			</result>
-		</action> 
+		</action>  -->
 		
 	</package>
 </struts>    

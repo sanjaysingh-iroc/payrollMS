@@ -23,7 +23,6 @@ import com.konnect.jpms.select.FillOrganisation;
 import com.konnect.jpms.select.FillWLocation;
 import com.konnect.jpms.util.CommonFunctions;
 import com.konnect.jpms.util.Database;
-import com.konnect.jpms.util.EncryptionUtility;
 import com.konnect.jpms.util.IStatements;
 import com.konnect.jpms.util.Notifications;
 import com.konnect.jpms.util.UtilityFunctions;

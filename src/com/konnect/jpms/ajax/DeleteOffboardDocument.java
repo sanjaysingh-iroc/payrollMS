@@ -23,7 +23,6 @@ import com.konnect.jpms.payroll.PayPayroll;
 import com.konnect.jpms.select.FillFinancialYears;
 import com.konnect.jpms.util.CommonFunctions;
 import com.konnect.jpms.util.Database;
-import com.konnect.jpms.util.EncryptionUtility;
 import com.konnect.jpms.util.IStatements;
 import com.konnect.jpms.util.UserAlerts;
 import com.konnect.jpms.util.UtilityFunctions;

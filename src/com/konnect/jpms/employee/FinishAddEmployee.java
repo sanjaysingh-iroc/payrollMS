@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import com.konnect.jpms.util.CommonFunctions;
 import com.konnect.jpms.util.Database;
-import com.konnect.jpms.util.EncryptionUtility;
 import com.konnect.jpms.util.IStatements;
 import com.konnect.jpms.util.Notifications;
 import com.konnect.jpms.util.UserAlerts;
